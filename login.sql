@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `Login` (
   `email` varchar(30) DEFAULT '',
   `s_date` date DEFAULT NULL,
   PRIMARY KEY (`uid`),
-  UNIQUE KEY `uid` (`uid`)
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- 테이블 데이터 5g_db.Login:~1 rows (대략적) 내보내기
