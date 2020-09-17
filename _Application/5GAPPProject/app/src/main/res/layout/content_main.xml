@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_main"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.viewpager2.widget.ViewPager2
+                android:layout_weight="1"
+                android:id="@+id/viewPager2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="horizontal"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_home"
+                android:src="@drawable/ic_home"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="37dp"
+                android:layout_below="@id/viewPager2"/>
+
+            <TextView
+                android:id="@+id/home_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="40dp"
+                android:layout_below="@id/button_home"
+                android:gravity=""
+                android:text="회사 홈" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_car"
+                android:src="@drawable/ic_car"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/viewPager2"
+                android:layout_toRightOf="@id/button_home"/>
+
+            <TextView
+                android:id="@+id/car_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="106dp"
+                android:layout_below="@id/button_home"
+                android:text="오시는 길" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_board"
+                android:src="@drawable/ic_board"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/viewPager2"
+                android:layout_toRightOf="@id/button_car"/>
+
+            <TextView
+                android:id="@+id/board_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="187dp"
+                android:layout_below="@id/button_home"
+                android:text="게시판" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_time"
+                android:src="@drawable/ic_time"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/viewPager2"
+                android:layout_toRightOf="@id/button_board"/>
+
+            <TextView
+                android:id="@+id/time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="267dp"
+                android:layout_below="@id/button_home"
+                android:text="일정" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_bell"
+                android:src="@drawable/ic_bell"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/viewPager2"
+                android:layout_toRightOf="@id/button_time"/>
+
+            <TextView
+                android:id="@+id/bell_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="328dp"
+                android:layout_below="@id/button_home"
+                android:text="문의사항" />
+
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/bell_table"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_round"
+                android:layout_below="@id/button_home"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="공지사항"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </TableRow>
+                <ListView
+                    android:id="@+id/notice_list_show"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"/>
+            </TableLayout>
+
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/board_table"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_round"
+                android:layout_below="@id/bell_table"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="게시판"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </TableRow>
+                <ListView
+                    android:id="@+id/board_list_show"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"/>
+            </TableLayout>
+
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/download_table"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_round"
+                android:layout_below="@id/board_table"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="자료실"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableLayout>
+
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
