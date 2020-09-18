@@ -1,23 +1,26 @@
 package com.uitlab.a5gappproject
 
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ListView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.content_main.*
+
 
 class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener,BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -36,6 +39,14 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
         // 2. 툴바 왼쪽 버튼 설정
         supportActionBar!!.setDisplayShowTitleEnabled(true)    // 타이틀 안보이게 하기
+
+        //검색 아이콘 기능(인텐트)
+
+        button_bell.setOnClickListener({
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        })
+
 
         //배너
         val viewPager2: ViewPager2 = findViewById(R.id.viewPager2);
@@ -56,7 +67,13 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         /*DrawerLayout, BottomLayout 활성화 부분*/
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val DrawernavView: NavigationView = findViewById(R.id.drawer_nav_view)
-        var toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        var toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         DrawernavView.setNavigationItemSelectedListener(this)
@@ -87,13 +104,30 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     }
 
 
+
     override fun onNavigationItemSelected(m: MenuItem): Boolean {
         when(m.itemId){
-            R.id.navigation_home->{
+            R.id.navigation_home -> {
                 Log.e("hello", "world")
+            }
+            R.id.menu_search->{
+                val intent = Intent(this, SearchActivity::class.java)
+                startActivity(intent)
             }
         }
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.menu_search->{
+                val intent = Intent(this, SearchActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
