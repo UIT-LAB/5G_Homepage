@@ -40,12 +40,13 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         // 2. 툴바 왼쪽 버튼 설정
         supportActionBar!!.setDisplayShowTitleEnabled(true)    // 타이틀 안보이게 하기
 
-        //검색 아이콘 기능(인텐트)
+        //회사 홈페이지 바로가기 (인텐드)
+        button_home.setOnClickListener(homebutton)
 
-        button_bell.setOnClickListener({
-            val intent = Intent(this, SearchActivity::class.java)
-            startActivity(intent)
-        })
+        //회사 찾아 오시는 길 바로가기 (인텐드)
+        button_car.setOnClickListener(dirbutton)
+
+
 
 
         //배너
@@ -103,6 +104,22 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         board_list_show.adapter = BoardAdapter
     }
 
+    //메인 버튼 오버라이딩
+    val homebutton = object : View.OnClickListener{
+        override fun onClick(p0: View?) {
+            val intent = Intent(this@MainActivity, WebActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    val dirbutton = object : View.OnClickListener{
+        override fun onClick(p0: View?) {
+            val intent = Intent(this@MainActivity, dirActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+
 
 
     override fun onNavigationItemSelected(m: MenuItem): Boolean {
@@ -110,6 +127,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             R.id.navigation_home -> {
                 Log.e("hello", "world")
             }
+            //검색 아이콘 기능(인텐트)
             R.id.menu_search->{
                 val intent = Intent(this, SearchActivity::class.java)
                 startActivity(intent)
