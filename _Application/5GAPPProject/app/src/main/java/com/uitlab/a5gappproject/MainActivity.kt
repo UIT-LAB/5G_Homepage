@@ -132,6 +132,12 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                 val intent = Intent(this, SearchActivity::class.java)
                 startActivity(intent)
             }
+
+            //로그인 아이콘 기능(인텐트)
+            R.id.menu_login->{
+                val intent = Intent(this, loginActivity::class.java)
+                startActivity(intent)
+            }
         }
         return true
     }
@@ -142,11 +148,16 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                 val intent = Intent(this, SearchActivity::class.java)
                 startActivity(intent)
             }
-
+            R.id.menu_login->{
+                val intent = Intent(this, loginActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         return super.onOptionsItemSelected(item)
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
