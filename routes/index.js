@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('인덱스입니다.');
+  res.render('index');
 });
 
 module.exports = router;
