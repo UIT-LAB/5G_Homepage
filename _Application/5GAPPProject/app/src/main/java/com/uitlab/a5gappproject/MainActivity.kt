@@ -19,10 +19,11 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.content_main.*
 
 
-class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener,BottomNavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener,BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     var viewPager2: ViewPager2? = null
     var btnToggle: Button? = null
@@ -39,15 +40,6 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
         // 2. 툴바 왼쪽 버튼 설정
         supportActionBar!!.setDisplayShowTitleEnabled(true)    // 타이틀 안보이게 하기
-
-        //회사 홈페이지 바로가기 (인텐드)
-        button_home.setOnClickListener(homebutton)
-
-        //회사 찾아 오시는 길 바로가기 (인텐드)
-        button_car.setOnClickListener(dirbutton)
-
-
-
 
         //배너
         val viewPager2: ViewPager2 = findViewById(R.id.viewPager2);
@@ -80,6 +72,9 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         DrawernavView.setNavigationItemSelectedListener(this)
         BottomnavView.setOnNavigationItemSelectedListener(this)
 
+        button_home.setOnClickListener(this)
+        button_car.setOnClickListener(this)
+
         //공지사항 리스트 뷰 설정
         var NoticeList = arrayListOf<NoticeItem>(
             NoticeItem("5G 프로젝트 어플 안내", "2020-09-17"),
@@ -104,29 +99,8 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         board_list_show.adapter = BoardAdapter
     }
 
-    //메인 버튼 오버라이딩
-    val homebutton = object : View.OnClickListener{
-        override fun onClick(p0: View?) {
-            val intent = Intent(this@MainActivity, WebActivity::class.java)
-            startActivity(intent)
-        }
-    }
-
-    val dirbutton = object : View.OnClickListener{
-        override fun onClick(p0: View?) {
-            val intent = Intent(this@MainActivity, dirActivity::class.java)
-            startActivity(intent)
-        }
-    }
-
-
-
-
     override fun onNavigationItemSelected(m: MenuItem): Boolean {
         when(m.itemId){
-            R.id.navigation_home -> {
-                Log.e("hello", "world")
-            }
             //검색 아이콘 기능(인텐트)
             R.id.menu_search->{
                 val intent = Intent(this, SearchActivity::class.java)
@@ -163,5 +137,19 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
+    }
+
+    override fun onClick(item: View?) {
+        when(item!!.id){
+            R.id.button_home->{
+                val intent = Intent(this@MainActivity, WebActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.button_car->{
+                val intent = Intent(this@MainActivity, dirActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
     }
 }

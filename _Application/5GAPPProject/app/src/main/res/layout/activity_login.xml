@@ -49,6 +49,7 @@
         android:text="Sign up"
         android:id="@+id/signupButton"
         android:textAllCaps="false"
+
         android:layout_alignTop="@+id/loginButton"
         android:layout_alignEnd="@+id/passwordInput" />
 

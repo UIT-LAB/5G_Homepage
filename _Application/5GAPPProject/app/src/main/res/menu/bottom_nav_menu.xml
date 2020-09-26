@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cnb_unselectedColor="#666666">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/mood"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:title="홈"
+        app:cnb_iconColor="@color/navigation_color_mood"/>
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/chart"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:title="게시판"
+        app:cnb_iconColor="@color/navigation_color_chart"/>
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/profile"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:title="알림"
+        app:cnb_iconColor="@color/navigation_color_profile"/>
 
+    <item
+        android:id="@+id/habit_tracker"
+        android:icon="@drawable/ic_perm_identity_black_24dp"
+        android:title="프로필"
+        app:cnb_iconColor="@color/navigation_color_habit"/>
 </menu>
