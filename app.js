@@ -3,6 +3,18 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mysql = require('mysql')
+
+var connection = mysql.createConnection({
+  host: 'localhost',
+  port: '9928',
+  user: 'root',
+  password: 'zkfrnrtn12',
+  database : 'test',
+  multipleStatements: true
+})
+
+connection.connect()
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
@@ -30,6 +42,7 @@ app.use('/intro', introRouter);
 app.use('/member', memberRouter);
 
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -46,4 +59,17 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.get('/db',function(req,res,next){
+  connection.query(`SELECT * FROM user`), function (error, result, fields) {
+      if(err){
+        throw err;
+      }
+      else {
+        console.log(result);
+        res.render({result : result});
+      }
+  }
+
+})
+app.listen(3000);
 module.exports = app;
