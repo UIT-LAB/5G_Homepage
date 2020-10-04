@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `Login` (
   `uid` int(11) NOT NULL,
   `id` varchar(20) NOT NULL,
   `pw` varchar(20) NOT NULL DEFAULT '',
-  `group` varchar(30) DEFAULT '',
+  `groups` varchar(30) DEFAULT '',
   `email` varchar(30) DEFAULT '',
   `s_date` date DEFAULT NULL,
   PRIMARY KEY (`uid`),
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `Login` (
 -- 테이블 데이터 5g_db.Login:~1 rows (대략적) 내보내기
 DELETE FROM `Login`;
 /*!40000 ALTER TABLE `Login` DISABLE KEYS */;
-INSERT INTO `Login` (`uid`, `id`, `pw`, `group`, `email`, `s_date`) VALUES
+INSERT INTO `Login` (`uid`, `id`, `pw`, `groups`, `email`, `s_date`) VALUES
 	(1, '123', 'asd123123', 'UIT', 'hqweqwe@naver.com', '2020-12-23');
 /*!40000 ALTER TABLE `Login` ENABLE KEYS */;
 
