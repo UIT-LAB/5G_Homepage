@@ -24,9 +24,9 @@
                 android:layout_height="wrap_content">
 
                 <ImageButton
+                    android:id="@+id/button_back_arrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/button_back_arrow"
                     android:src="@drawable/ic_arrow_back_black_24dp"
                     />
 
@@ -41,6 +41,7 @@
 
             </TableRow>
         </TableLayout>
+
 
         <ListView
             android:id="@+id/listView"

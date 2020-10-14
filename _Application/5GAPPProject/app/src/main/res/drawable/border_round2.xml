@@ -3,8 +3,8 @@
     <stroke
         android:width="0.5dp"
         android:color="#a0a0a0"/>
-    <corners android:radius="11dp"/> <!-- 모서리 기울기 -->
-    <solid android:color="#D6D7D7"/><!-- 배경색 -->
+    <corners android:radius="10dp"/> <!-- 모서리 기울기 -->
+    <solid android:color="#03A9F4"/><!-- 배경색 -->
     <padding
         android:bottom="8dp"
         android:left="8dp"
