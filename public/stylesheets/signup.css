@@ -1,0 +1,28 @@
+body{
+    background-image: url('/images/testback.jpg');
+    background-size: cover;
+}
+p {
+    font-family: Arial;
+    color: cornsilk;
+    text-align : center;
+}
+div.submitbtn{
+    margin:auto;
+    width: 70%;
+    padding-top: 20px;
+}
+div.submitbtn input{
+    padding: 5px;
+    width: 100px;
+}
+div.button{
+    margin:auto;
+    padding-top : 20px;
+}
+.sign input{
+    display: block;
+    margin:0 auto;
+    width : 300px;
+   
+}
