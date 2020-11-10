@@ -12,9 +12,8 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- 테이블 5g_db.Login 구조 내보내기
-DROP TABLE IF EXISTS `Login`;
 CREATE TABLE IF NOT EXISTS `Login` (
-  `uid` int(11) NOT NULL,
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
   `id` varchar(20) NOT NULL,
   `pw` varchar(20) NOT NULL DEFAULT '',
   `groups` varchar(30) DEFAULT '',
@@ -22,13 +21,16 @@ CREATE TABLE IF NOT EXISTS `Login` (
   `s_date` date DEFAULT NULL,
   PRIMARY KEY (`uid`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
--- 테이블 데이터 5g_db.Login:~1 rows (대략적) 내보내기
+-- 테이블 데이터 5g_db.Login:~4 rows (대략적) 내보내기
 DELETE FROM `Login`;
 /*!40000 ALTER TABLE `Login` DISABLE KEYS */;
 INSERT INTO `Login` (`uid`, `id`, `pw`, `groups`, `email`, `s_date`) VALUES
-	(1, '123', 'asd123123', 'UIT', 'hqweqwe@naver.com', '2020-12-23');
+	(1, '123', 'asd123123', 'UIT', 'hqweqwe@naver.com', '2020-12-23'),
+	(4, 'lgh97102511', '1234', 'UIT', 'lgh971025@naver.com', '2020-12-23'),
+	(6, 'lgh971025', '1234', 'UIT', 'lgh971025@naver.com', '2020-12-23'),
+	(13, 'lgh97102', '1234', 'UIT1', 'lgh9710215@naver.com', '2020-12-24');
 /*!40000 ALTER TABLE `Login` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
