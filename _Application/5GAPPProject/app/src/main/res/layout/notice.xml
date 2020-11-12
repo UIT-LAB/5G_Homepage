@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TableLayout
+        android:id="@+id/notice_table"
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:elevation="@dimen/activity_horizontal_margin"
+        android:layout_margin="10dp"
+        android:background="@drawable/border_round"
+
+        >
+
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="[공지사항]"
+                android:padding="10dp"
+                android:textColor="#2196F3"
+                android:id="@+id/noticeText"
+                android:textSize="17dp"
+                android:textStyle="bold"
+
+                />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/noticearticle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_span="8"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                tools:text="공지사항 이다! 불만이냐!" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/noticedate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                tools:text="2020-11-09"
+                android:textColor="#505253"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/noticename"
+                android:layout_marginLeft="200dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                tools:text="송준하"
+                android:textColor="#505253"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>

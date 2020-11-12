@@ -19,6 +19,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_board.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.content_main.*
 
@@ -74,13 +75,14 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
         button_home.setOnClickListener(this)
         button_car.setOnClickListener(this)
+        button_board.setOnClickListener(this)
 
         //공지사항 리스트 뷰 설정
         var NoticeList = arrayListOf<NoticeItem>(
-            NoticeItem("5G 프로젝트 어플 안내", "2020-09-17"),
-            NoticeItem("UIT LAB 추진중", "2020-09-17"),
-            NoticeItem("공지사항", "2020-09-17"),
-            NoticeItem("5G 프로젝트 어플 베타", "2020-09-17")
+            NoticeItem("5G 프로젝트 어플 안내", "2020-09-17", "송준하"),
+            NoticeItem("UIT LAB 추진중", "2020-09-17", "송준하"),
+            NoticeItem("공지사항", "2020-09-17", "오른 짱"),
+            NoticeItem("5G 프로젝트 어플 베타", "2020-09-17", "관리자")
 
         )
 
@@ -122,7 +124,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
                 val intent = Intent(this, SearchActivity::class.java)
                 startActivity(intent)
             }
-            R.id.menu_login->{
+            R.id.menu_login-> {
                 val intent = Intent(this, loginActivity::class.java)
                 startActivity(intent)
             }
@@ -147,6 +149,10 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             }
             R.id.button_car->{
                 val intent = Intent(this@MainActivity, dirActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.button_board->{
+                val intent = Intent(this@MainActivity, NoticeActivity::class.java)
                 startActivity(intent)
             }
 
