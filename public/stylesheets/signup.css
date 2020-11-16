@@ -1,0 +1,22 @@
+body{
+    background-image:url('/images/dark.jpg');
+    background-size: cover;
+}
+#pageh{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    color: lightcyan;
+    text-align: center;
+}
+.btnwow{
+    padding-top: 25px;
+    text-align: center;
+}
+.holy{
+    color: lightcyan;
+    padding-top: 4px;
+    text-align: center;
+}
+.ipnow{
+    width: 60%;
+}

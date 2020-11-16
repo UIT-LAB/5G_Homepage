@@ -9,13 +9,13 @@ router.get('/', function(req, res, next) {
 
 router.get('/db', function(req, res, next){
     db.query('select * from Login ', function (error, result) {
-        let date = dayjs(result[0].s_date)
+        let date = new dayjs();
         if (error) {
             throw error;
           }    
         else {
-            console.log(date);
-            res.send(date.format('YYYY-MM-DD'));
+            console.log(result);
+            res.send(result);
             
         };
     });
