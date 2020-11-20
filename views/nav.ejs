@@ -16,53 +16,37 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
 
-    <style type="text/css">
-        a:link {
-            color: white;
-            text-decoration: none;
-        }
-
-        a:visited {
-            color: white;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: white;
-            text-decoration: none;
-        }
+    <style>
+        @import url(./stylesheets/nav.css);
     </style>
-
-    <title>5G navbar</title>
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-md navba-white bg-dark" style="position: fixed; top: 0; left: 0; right: 0;">
+    <nav class="navbar nav_form navbar-expand-md navba-white bg-dark">
         <div class="w-100 order-md-0">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">대표말</a>
+                    <a class="nav-link" href="/intro">대표말</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">멤버소개</a>
+                    <a class="nav-link" href="/member">멤버소개</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">학술논문</a>
+                    <a class="nav-link" href="/board">학술논문</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">갤러리</a>
+                    <a class="nav-link" href="/album">갤러리</a>
                 </li>
             </ul>
         </div>
         <div class="mx-auto">
-            <a class="navbar-brand" href="">
-                <img src="./images/5g.png" width="30" height="30" alt="">
+            <a class="navbar-brand" href="/">
+                <img src="./images/5g.png" class="logo_size" alt="">
             </a>
         </div>
         <div class="navbar-collapse w-100 order-3">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link btn btn-outline-light" href="#">로그인</a>
+                    <a class="nav-link btn btn-outline-light" href="/login">로그인</a>
                 </li>
             </ul>
         </div>
