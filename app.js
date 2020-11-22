@@ -3,24 +3,22 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mysql = require('mysql')
+var session = require('express-session');
 
-var connection = mysql.createConnection({
-  host: 'localhost',
-  port: '9928',
-  user: 'root',
-  password: 'zkfrnrtn12',
-  database : 'test',
-  multipleStatements: true
-})
-
-connection.connect()
+var options = {
+  host: 'conative.myds.me',
+  port: '32773',
+  user : 'root',
+  password: 'dudwoalswo12',
+  database: '5g_db'
+};
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var boardRouter = require('./routes/board');
-var albumRouter = require('./routes/album');
 var introRouter = require('./routes/intro');
+var albumRouter = require('./routes/album');
+var signUpRouter = require('./routes/signUp');
 var memberRouter = require('./routes/member');
 var app = express();
 
@@ -34,12 +32,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/board', boardRouter);
 app.use('/album', albumRouter);
 app.use('/intro', introRouter);
+app.use('/signUp', signUpRouter);
 app.use('/member', memberRouter);
+
 
 
 
