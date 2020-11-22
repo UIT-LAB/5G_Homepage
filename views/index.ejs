@@ -21,187 +21,233 @@
             font-family: maple;
             src: url('./font/Maplestory Bold.ttf');
         }
+
+        @import url(./stylesheets/index.css);
     </style>
 
     <title>5G</title>
     <link href="./images/5g.png" rel="shortcut icon" type="image/x-icon">
-
-    <style type="text/css">
-        a:link {
-            color: white;
-            text-decoration: none;
-        }
-
-        a:visited {
-            color: white;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: white;
-            text-decoration: none;
-        }
-    </style>
-
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navba-white bg-dark" style="position: fixed; top: 0; left: 0; right: 0;">
-        <div class="w-100 order-md-0">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">대표말</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">멤버소개</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">학술논문</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">갤러리</a>
-                </li>
-            </ul>
-        </div>
-        <div class="mx-auto">
-            <a class="navbar-brand" href="">
-                <img src="./images/logo.png" width="50" height="30" alt="">
+   <header>
+        <% include ./nav %>
+   </header>
+
+   <section>
+        <div style="margin-top:60px; margin-bottom: 30px" id="carouselExampleFade" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-interval="2000">
+                    <img src="./images/555.jpg" class="d-block w-100" alt="0" style="height: 50vh;">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>    
+            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
             </a>
         </div>
-        <div class="navbar-collapse w-100 order-3">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-light" href="#">로그인</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div style="margin-top:56px; margin-bottom: 56px" id="carouselExampleFade" class="carousel slide carousel-fade"
-        data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-interval="2000">
-                <img src="./images/555.jpg" class="d-block w-100" alt="0" style="height: 50vh;">
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
 
     <div class="container marketing">
-        <!-- Three columns of text below the carousel -->
         <div class="row">
             <div class="col-lg-4">
-                <span style="margin-left: 10px; font-family: maple;">공지사항</span>
-                <a type="button" class="btn btn-outline-light"
-                    style="border: solid 1px black; margin-left: 220px; color:black" role="button" href="#">+</a>
+                <table style="width: 100%;">
+                    <td>
+                        <span style="margin-left: 10px; font-family: maple;">공지사항</span>
+                    </td>
+                    <td align= right>
+                        <a  href="#"><input type="button" class="btn" value="+"
+                        style="border: solid 1px black;"></a>
+                    </td>
+                </table>
                 <hr style="border: solid 1px lightgray">
                 <div>
-                    <span>
-                        <img src="./images/itrc.png" style="width: 100px; height: 100px;">
-                    </span>
-                    <span style="margin-left: 20px;">
-                        <a href="#" style="color: black; font-weight: bold;">ITRC 사업 안내</a>
-                    </span>
+                    <table>
+                        <tr>
+                            <td>
+                                <span>
+                                    <a href="#"><img src="./images/itrc.png" style="width: 100px; height: 100px; margin-right: 15px"></a>
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">ITRC 사업 안내</a>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <hr>
                 <div>
-                    <span>
-                        <img src="./images/5g.png" style="width: 100px; height: 100px;">
-                    </span>
-                    <span style="margin-left: 20px;">
-                        <a href="#" style="color: black; font-weight: bold;">5G 홈페이지 개설 안내</a>
-                    </span>
+                    <table>
+                        <tr>
+                            <td>
+                                <span>
+                                    <a href="#"><img src="./images/logo.png" style="width: 100px; height: 100px; margin-right: 15px"></a>
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">5G 홈페이지 개설 안내</a>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <hr>
                 <div>
-                    <span>
-                        <a href="#"><img src="./images/5g.png" style="width: 100px; height: 100px;"></a>
-                    </span>
-                    <span style="margin-left: 20px;">
-                        <a href="#" style="color: black; font-weight: bold;"></a>
-                    </span>
+                    <table>
+                        <tr>
+                            <td>
+                                <span>
+                                    <a href="#"><img src="./images/logo.png" style="width: 100px; height: 100px; margin-right: 15px"></a>
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하</a>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
-                <span style="margin-left: 10px; font-family: maple;">학위논문</span>
-                <a type="button" class="btn btn-outline-light"
-                    style="border: solid 1px black; margin-left: 220px; color:black" role="button" href="#">+</a>
+                <table style="width: 100%;">
+                        <td>
+                            <span style="margin-left: 10px; font-family: maple;">학위논문</span>
+                        </td>
+                        <td align= right>
+                            <a  href="#"><input type="button" class="btn" value="+"
+                            style="border: solid 1px black;"></a>
+                        </td>
+                </table>
                 <hr style="border: solid 1px lightgray">
                 <div>
-                    <span>
-                        <a href="#"><img src="./images/report.svg" style="width: 100px; height: 100px;"></a>
-                    </span>
-                    <span style="margin-left: 20px;">
-                        <a href="#" style="color: black; font-weight: bold; font-size: 12px">이기종 네트워크를 위한 다중 셀 검출 기법</a>
-                    </span>
+                    <table>
+                        <tr>
+                            <td>
+                                <span>
+                                    <a href="#"><img src="./images/report.svg" style="width: 100px; height: 100px; margin-right: 15px"></a>
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">이기종 네트워크를 위한 다중 셀 검출 기법sdsds</a>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <hr>
                 <div>
-                    <span>
-                        <a href="#"><img src="./images/report.svg" style="width: 100px; height: 100px;"></a>
-                    </span>
-                    <span style="margin-left: 20px;">
-                        <a href="#" style="color: black; font-weight: bold; font-size: 12px">수중음향통신을 위한 물리계층 기술</a>
-                    </span>
+                    <table>
+                        <tr>
+                            <td>
+                                <span>
+                                    <a href="#"><img src="./images/report.svg" style="width: 100px; height: 100px; margin-right: 15px"></a>
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">이기종 네트워크를 위한 다중 셀 검출 기법sdsds</a>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <hr>
                 <div>
-                    <span>
-                        <a href="#"><img src="./images/5g.png" style="width: 100px; height: 100px;"></a>
-                    </span>
-                    <span style="margin-left: 20px;">
-                        <a href="#" style="color: black; font-weight: bold; font-size: 13px">이기종 네트워크를 위한 다중 셀 검출 기법</a>
-                    </span>
+                    <table>
+                        <tr>
+                            <td>
+                                <span>
+                                    <a href="#"><img src="./images/report.svg" style="width: 100px; height: 100px; margin-right: 15px"></a>
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">이기종 네트워크를 위한 다중 셀 검출 기법sdsds</a>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
-                <span style="margin-left: 10px; font-family: maple;">갤러리</span>
-                <a type="button" class="btn btn-outline-light"
-                    style="border: solid 1px black; margin-left: 220px; color:black" role="button" href="#">+</a>
+                <table style="width: 100%;">
+                    <td>
+                        <span style="margin-left: 10px; font-family: maple;">학위논문</span>
+                    </td>
+                    <td align= right>
+                        <a  href="#"><input type="button" class="btn" value="+"
+                        style="border: solid 1px black;"></a>
+                    </td>
+                </table>
                 <hr style="border: solid 1px lightgray">
                 <div>
-                    <span>
-                        <a href="#"><img src="./images/고학림.jpg" style="width: 100px; height: 100px;"></a>
-                    </span>
-                    <span style="margin-left: 20px;">
-                        <a href="#" style="color: black; font-weight: bold;">해양IT 연구 소장 취임식</a>
-                    </span>
-                    <hr>
-                    <div>
-                        <span>
-                            <a href="#"><img src="./images/해양it.jpg" style="width: 100px; height: 100px;"></a>
-                        </span>
-                        <span style="margin-left: 20px;">
-                            <a href="#" style="color: black; font-weight: bold;">해양보전 및 복원 ICT기술 포럼</a>
-                        </span>
-                    </div>
-                    <hr>
-                    <div>
-                        <span>
-                            <a href="#"><img src="./images/5g.png" style="width: 100px; height: 100px;"></a>
-                        </span>
-                        <span style="margin-left: 20px;">
-                            <a href="#" style="color: black; font-weight: bold;">Open the 5G Homepage</a>
-                        </span>
-                    </div>
+                    <table>
+                        <tr>
+                            <td>
+                                <span>
+                                    <a href="#"><img src="./images/고학림.jpg" style="width: 100px; height: 100px; margin-right: 15px"></a>
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">이기종 네트워크를 위한 다중 셀 검출 기법sdsds</a>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <hr>
+                <div>
+                    <table>
+                        <tr>
+                            <td>
+                                <span>
+                                    <a href="#"><img src="./images/해양it.jpg" style="width: 100px; height: 100px; margin-right: 15px"></a>
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">해양보전 및 복원 ICT 기술 포럼</a>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <hr>
+                <div>
+                    <table>
+                        <tr>
+                            <td>
+                                <span>
+                                    <a href="#"><img src="./images/logo.png" style="width: 100px; height: 100px; margin-right: 15px"></a>
+                                </span>
+                            </td>
+                            <td>
+                                <span>
+                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">open the 5g homepage</a>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
+        </div>
 
 
         <!-- START THE FEATURETTES -->
 
-        <hr class="featurette-divider">
+        <hr class="featurette-divider" style="margin-top: 30px; margin-bottom: 30px;">
         <div class="row featurette">
             <div class="col-md-7">
                 <h2 class="featurette-heading"><span class="text-muted">제목<br>부제</span></h2>
@@ -257,6 +303,7 @@
 
         <hr class="featurette-divider">
     </div>
+    </section>
 </body>
 
 </html>
