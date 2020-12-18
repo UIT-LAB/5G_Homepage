@@ -20,6 +20,8 @@ var introRouter = require('./routes/intro');
 var albumRouter = require('./routes/album');
 var signUpRouter = require('./routes/signUp');
 var memberRouter = require('./routes/member');
+var findIdRouter = require('./routes/findId');
+var findPwRouter = require('./routes/findPw');
 var app = express();
 
 // view engine setup
@@ -41,6 +43,8 @@ app.use('/album', albumRouter);
 app.use('/intro', introRouter);
 app.use('/signUp', signUpRouter);
 app.use('/member', memberRouter);
+app.use('/findId', findIdRouter);
+app.use('/findPw', findPwRouter);
 
 
 
