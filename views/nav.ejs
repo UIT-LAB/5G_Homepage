@@ -20,9 +20,9 @@
         @import url(./stylesheets/nav.css);
     </style>
 </head>
-<body>
-    <nav class="navbar nav_form navbar-expand-md navba-white bg-dark">
-        <div class="w-100 order-md-0">
+<body style="min-width: 770px;">
+    <nav class="navbar nav_form navbar-expand-md navba-white bg-dark" style="z-index: 9999">
+        <div align=left class="collapse navbar-collapse w-100 order-md-0" id="navbar-main">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="/intro">대표말</a>
@@ -38,18 +38,21 @@
                 </li>
             </ul>
         </div>
-        <div class="mx-auto">
+        <span align=center class="mx-auto">
             <a class="navbar-brand" href="/">
                 <img src="./images/5g.png" class="logo_size" alt="">
             </a>
-        </div>
-        <div class="navbar-collapse w-100 order-3">
+        </span>
+        <div align=right class="collapse navbar-collapse w-100 order-3" id="navbar-main">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link btn btn-outline-light" href="/login">로그인</a>
                 </li>
             </ul>
         </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
+            hello
+        </button>
     </nav>
 </body>
 
