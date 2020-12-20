@@ -1,22 +1,42 @@
 body{
-    background-image:url('/images/dark.jpg');
+    background-color: lightblue;
+    /*background-image:url('/images/space.png');*/
     background-size: cover;
 }
 #pageh{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: bold;
-    color: lightcyan;
+    color: black;
     text-align: center;
 }
+.formsign{
+    width: 100%;
+    max-width: 800px;
+    height:650px;
+    padding: 15px;
+    margin: auto;
+    background-color: white; 
+    border-radius: 20px;
+}
+/* table css*/
+table{
+    padding :10px;
+}
+thead{
+    text-align:center;
+}
+thead #main{
+    font-size:30px;
+}
+td{
+    width:500px;
+}
 .btnwow{
+    color: black;
     padding-top: 25px;
     text-align: center;
 }
 .holy{
-    color: lightcyan;
+    color: black;
     padding-top: 4px;
-    text-align: center;
-}
-.ipnow{
-    width: 60%;
 }

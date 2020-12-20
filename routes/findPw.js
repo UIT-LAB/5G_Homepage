@@ -4,7 +4,7 @@ var db = require('../config/db')
 var dayjs =  require('dayjs')
 
 router.get('/', function(req, res, next) {
-    res.render('index');
+    res.render('findPw');
 });
 
 module.exports = router;
