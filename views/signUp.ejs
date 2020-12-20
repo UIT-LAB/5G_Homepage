@@ -14,66 +14,186 @@
             <img src="images/5g.png" alt="">
         </div>
 
-        <div id="pageh">
-                <h3>회원가입</h3>
-        </div>
-
-        <div class="container">
-            <form action="./signUp/signup_data" method="POST">
-                <div class="wow" align="center">
-                    <p class="holy">아이디</p>
-                    <input type="text" name ="signupId" class="ipnow form-control" placeholder="아이디를 입력해 주세요">
-                </div>
-                <div class="wow" align="center">
-                    <p class="holy">비밀번호</p>
-                    <input type="password" name ="signupPw" class="ipnow form-control" placeholder="비밀번호를 입력해주세요">
-                </div>
-                <div class="wow" align="center">
-                    <p class="holy">비밀번호 확인</p>
-                    <input type="password" class="ipnow form-control" placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요">
-                </div>
-                <div class="wow" align="center">
-                    <p class="holy">이름</p>
-                    <input type="text" name ="signupName" class="ipnow form-control" placeholder="이름을 입력해 주세요">
-                </div>
-                <div class="wow" align="center">
-                    <p class="holy">이메일</p>
-                    <input type="email" name ="signupEmail"class="ipnow form-control" placeholder="이메일 주소를 입력해주세요">
-                </div>
-                
-                <!-- Button trigger modal -->
-                <div class="btnwow">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                        약관 동의
-                    </button>
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">약관 동의</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body">
-                                동의해라
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="btnwow">
-                    <button type="submit" id="join-submit" class="btn btn-primary">
-                        회원가입
-                    </button>
-                </div>
-            </form>
-        </div>
+        <div class="formsign">
+            <form action="./signUp/signup_data" method="POST" onsubmit="checking()">
+                <table align="center">
+                    <thead>
+                        <th><p id="main">5G 회원가입</p></th>
+                    </thead>
+                    <tbody>
+                        <tr> 
+                            <th><p class="holy">아이디</p></th> 
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="divid">
+                                    <div class="input-group">
+                                        <input type="text" name ="signup_Id" class="ipnow form-control" id="signupid" placeholder="아이디" style="width : 60%">
+                                        <span class="input-group-btn">
+                                            <input type="button" class="btn btn-primary" value="중복 확인">
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr> 
+                            <th><p class="holy">비밀번호</p></th> 
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="divpw">
+                                    <input type="password" name ="signup_Pw" class="ipnow form-control" id="signuppw" placeholder="비밀번호">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr> 
+                            <th><p class="holy">비밀번호 확인</p></th> 
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="divpwcheck">
+                                    <input type="password" name="singuppwcheck" class="ipnow form-control" id="signuppwcheck" placeholder="비밀번호 확인">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr> 
+                            <th><p class="holy">이름</p></th> 
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="divname">
+                                    <input type="text" name ="signup_Name" class="ipnow form-control" id="signupname" placeholder="이름">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr> 
+                            <th><p class="holy">이메일</p></th> 
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="divemail">
+                                    <input type="email" name ="signup_Email"class="ipnow form-control" id="signupemail" placeholder="이메일">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <div class="btnwow">
+                                    <label for="agreeck">
+                                        <input type="checkbox" name="agree" id="agreeck">(필수) 개인정보 약관동의
+                                    </label>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                        약관 동의
+                                    </button>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">약관 동의</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                동의해라
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <div class="btnwow">
+                                    <button type="submit" id="join-submit" class="btn btn-primary" onclick="gologin()">
+                                        회원가입
+                                    </button>
+                                </div>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
 </body>
 </html>
+<script>
+    function checking(){
+    var re1 = /^[a-zA-Z0-9]{4,12}$/;
+    var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+    var re3 = /^[가-힝a-zA-Z]{2,}$/;
+
+    var uitid = document.getElementById("signupid");
+    var uitname = document.getElementById("singupname");
+    var uitpw = document.getElementById("singuppw");
+    var uitpwcheck = document.getElementById("signuppwcheck");
+    var uitemail = document.getElementById("signupemail");
+    
+    if ((uitid.value) == ""){
+            alert("아이디를 입력하지 않았습니다.");
+            uitid.focus();
+            return false;
+        }
+
+    if(!check(re1,uitid,"아이디는 4~12자의 영문 대소문자와 숫자로 입력")){
+        return flase;
+    }
+
+    if ((uitpw.value) == ""){
+        alert("비밀번호를 입력해 주세요");
+        uitpw.focus();
+        return false;
+    }
+    if ((uitpwcheck.value == "")){
+        alert("비밀번호를 입력해 주세요");
+        uitpwcheck.focus();
+        return false;
+    }
+    if (!check(re1,uitpw,"비밀번호는 4~12자의 대소문자와 숫자로만 입력 가능합니다.")) {
+        return false;
+    }
+    if (!check(re1,uitpwcheck,"비밀번호는 4~12자의 대소문자와 숫자로만 입력 가능합니다.")) {
+        return false;
+    }
+    if ((uitpw.value)!=(uitpwcheck.value)) {
+        alert("비밀번호가 일치 하지 않습니다.");
+        uitpw.focus();
+        uitpwcheck.focus();
+        return false;
+    }
+    if ((utiemail.value)=="") {
+        alert("이메일을 입력해 주세요");
+        uitemail.focus();
+        return false;
+    }
+    if (!check(re2,uitemail,"이메일을 잘못 입력 했습니다.")) {
+        return false;
+    }
+    if ((uitname.value)=="") {
+        alert("이름을 입력해 주세요");
+        uitname.focus();
+        return false;
+    }
+    if (!check(re3,uitname,"이름이 잘못 되었습니다.")) {
+        return false;
+    }
+    
+}
+function send(f){
+    if(f.agree.checked==true){
+        return true;
+    }else{
+        alert("약관에 동의해주시기 바랍니다.");
+        return false;
+    }
+}
+function gologin(){
+    alert("회원가입을 축하합니다.");
+}
+</script>
