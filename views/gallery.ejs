@@ -40,44 +40,20 @@
         <div class="album py-5">
             <div class="container">
                 <div class="row">
+                    <% for(let i= 0; i< result.length; i++){ %>
                     <div class="col-md-4" style="margin-bottom: 30px;">
                         <div class="card" style="border: solid 1px black;">
                             <a href="#" onclick="show()">
-                                <img src="./images/잠수함 세미나.jpg" alt="" width="100%" height="300">
+                                <img src="./images/<%=result[i].img%>" alt="" width="100%" height="300">
                                 <div class="card-body">
-                                    <p class="card-text" style="color: black;">잠수함 과학기술 발전 세미나</p>
+                                    <p class="card-text" style="color: black;"><%=result[i].title%></p>
                                     <hr>
-                                    <p class="card-text" style="color: black; text-align: right;">2019. 11.</p>
+                                    <p class="card-text" style="color: black; text-align: right;"><%= dayjs(result[i].write_date).format('YYYY.MM'); %></p>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-4" style="margin-bottom: 30px;">
-                        <div class="card" style="border: solid 1px black;">
-                            <a href="#">
-                                <img src="./images/고신뢰 세미나.jpg" alt="" width="100%" height="300">
-                                <div class="card-body">
-                                    <p class="card-text" style="color: black;">초연결 고신뢰 산업 지능 기술 세미나</p>
-                                    <hr>
-                                    <p class="card-text" style="color: black; text-align: right;">2019. 10.</p>
-                                    
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="margin-bottom: 30px;">
-                        <div class="card" style="border: solid 1px black;">
-                            <a href="#">
-                                <img src="./images/워크샵.jpg" alt="" width="100%" height="300">
-                                <div class="card-body">
-                                    <p class="card-text" style="color: black;">해양IT융합기술연구소 워크샵</p>
-                                    <hr>
-                                    <p class="card-text" style="color: black; text-align: right;">2018. 3.</p>
-                                
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <% } %>
                 </div>
             </div>
         </div>

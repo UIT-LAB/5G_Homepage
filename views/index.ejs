@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -185,65 +186,31 @@
                         <span style="margin-left: 10px; font-family: maple;">갤러리</span>
                     </td>
                     <td align= right>
-                        <a  href="/album"><input type="button" class="btn" value="+"
+                        <a  href="/gallery"><input type="button" class="btn" value="+"
                         style="border: solid 1px black;"></a>
                     </td>
                 </table>
+                <% for(let i=0; i<3; i++) { %>
                 <hr style="border: solid 1px lightgray">
                 <div>
                     <table>
                         <tr>
                             <td>
                                 <span>
-                                    <a href="#"><img src="./images/고학림.jpg" style="width: 100px; height: 100px; margin-right: 15px"></a>
+                                    <a href="#"><img src="./images/<%=result[i].img%>" style="width: 100px; height: 100px; margin-right: 15px"></a>
                                 </span>
                             </td>
                             <td>
                                 <span>
-                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">이기종 네트워크를 위한 다중 셀 검출 기법sdsds</a>
+                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px"><%=result[i].title%></a>
                                 </span>
                             </td>
                         </tr>
                     </table>
                 </div>
+                <% } %>
                 <hr>
-                <div>
-                    <table>
-                        <tr>
-                            <td>
-                                <span>
-                                    <a href="#"><img src="./images/해양it.jpg" style="width: 100px; height: 100px; margin-right: 15px"></a>
-                                </span>
-                            </td>
-                            <td>
-                                <span>
-                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">해양보전 및 복원 ICT 기술 포럼</a>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <hr>
-                <div>
-                    <table>
-                        <tr>
-                            <td>
-                                <span>
-                                    <a href="#"><img src="./images/logo.png" style="width: 100px; height: 100px; margin-right: 15px"></a>
-                                </span>
-                            </td>
-                            <td>
-                                <span>
-                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">open the 5g homepage</a>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div><!-- /.col-lg-4 -->
-        </div>
-
-
+            </div>    
         <!-- START THE FEATURETTES -->
 
         <hr class="featurette-divider" style="margin-top: 30px; margin-bottom: 30px;">

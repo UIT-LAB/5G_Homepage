@@ -10,10 +10,10 @@ router.get('/', function(req, res, next) {
 router.post('/signup_data', function(req, res, next){
     let date = new dayjs();
     var body = req.body;
-    var id = body.signupId;
-    var pw = body.signupPw;
-    var name = body.signupName;
-    var email = body.signupEmail;
+    var id = body.signup_Id;
+    var pw = body.signup_Pw;
+    var name = body.signup_Name;
+    var email = body.signup_Email;
     var datetime = date.format('YYYY-MM-DD HH:mm:ss');
     var sql = {id:id, pw:pw , name:name, email:email, date:datetime};
 
