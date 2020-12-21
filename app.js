@@ -17,11 +17,12 @@ var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var boardRouter = require('./routes/board');
 var introRouter = require('./routes/intro');
-var albumRouter = require('./routes/album');
+var galleryRouter = require('./routes/gallery');
 var signUpRouter = require('./routes/signUp');
 var memberRouter = require('./routes/member');
 var findIdRouter = require('./routes/findId');
 var findPwRouter = require('./routes/findPw');
+var noticeRouter = require('./routes/notice');
 var app = express();
 
 // view engine setup
@@ -39,12 +40,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/board', boardRouter);
-app.use('/album', albumRouter);
+app.use('/gallery', galleryRouter);
 app.use('/intro', introRouter);
 app.use('/signUp', signUpRouter);
 app.use('/member', memberRouter);
 app.use('/findId', findIdRouter);
 app.use('/findPw', findPwRouter);
+app.use('/notice', noticeRouter);
 
 
 

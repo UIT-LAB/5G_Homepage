@@ -50,49 +50,51 @@
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalinfo">
                     더 보기
                   </button>
-                    <!-- Modal -->
-                  <div class="modal" id="modalinfo">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="info">
-                        <div class="modal-header">
-                          <h5 id="Modaltitle">상세 정보</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                      <div class="modal-body">
-                        <table align="center">
-                          <tr>
-                            <th rowspan="6">
-                                <img src="images/member/고학림.jpg" alt="사진">
-                            </th>
-                          </tr>
-                          <tr>
-                            <td align="center">고학림</td>
-                          </tr>
-                          <tr>
-                            <td align="center">호서대학교 해양it 대표</td>
-                          </tr>
-                          <tr>
-                            <td align="center">포지션</td>
-                          </tr>
-                          <tr>
-                            <td align="center">010 0101 0101</td>
-                          </tr>
-                          <tr>
-                            <td align="center">asd123@gmail.com</td>
-                          </tr>
-                      </table> 
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                      </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
             <% } %>
+              <!-- Modal -->
+              <% for (let j = 0; j < result.length;j++){ %>
+                <div class="modal" id="modalinfo">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="info">
+                    <div class="modal-header">
+                      <h5 id="Modaltitle">상세 정보</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                  <div class="modal-body">
+                    <table align="center">
+                      <tr>
+                        <th rowspan="6">
+                            <img src="images/member/<%=result[j].m_image%>" alt="사진">
+                        </th>
+                      </tr>
+                      <tr>
+                        <td align="center"><%=result[j].m_name%></td>
+                      </tr>
+                      <tr>
+                        <td align="center"><%=result[j].m_group%></td>
+                      </tr>
+                      <tr>
+                        <td align="center"><%=result[j].m_position%></td>
+                      </tr>
+                      <tr>
+                        <td align="center"><%=result[j].m_email%></td>
+                      </tr>
+                      <tr>
+                        <td align="center"><%=result[j].m_phone%></td>
+                      </tr>
+                  </table> 
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <% } %>
 <%-include include/footer.ejs%> 
       
