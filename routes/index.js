@@ -5,7 +5,7 @@ var dayjs =  require('dayjs');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  var select_Gallery = `select * from Gallery ORDER BY write_date DESC` ;
+  var select_Gallery = `select * from Gallery ORDER BY g_write_date DESC` ;
   db.query(select_Gallery, function (error, result) {
     if (error) {
         throw error;

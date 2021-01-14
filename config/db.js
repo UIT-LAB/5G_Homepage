@@ -3,9 +3,9 @@ const mysql = require('mysql')
 
 const db_config = {
     host: 'conative.myds.me',
-    port: '32773',
+    port: '4304',
     user : 'root',
-    password: 'dudwoalswo12',
+    password: 'qwerty12',
     database: '5g_db'
 };
 
