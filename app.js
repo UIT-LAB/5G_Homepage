@@ -5,13 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 
-var options = {
-  host: 'conative.myds.me',
-  port: '32773',
-  user : 'root',
-  password: 'dudwoalswo12',
-  database: '5g_db'
-};
+
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
@@ -35,7 +29,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+//로그인 세션
+app.use(session({
+  secret: 'test@~',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 24000 * 60 * 60 // 쿠키 유효기간 24시간
+  }
+}));
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
@@ -47,7 +49,6 @@ app.use('/member', memberRouter);
 app.use('/findId', findIdRouter);
 app.use('/findPw', findPwRouter);
 app.use('/notice', noticeRouter);
-
 
 
 
@@ -67,17 +68,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.get('/db',function(req,res,next){
-  connection.query(`SELECT * FROM user`), function (error, result, fields) {
-      if(err){
-        throw err;
-      }
-      else {
-        console.log(result);
-        res.render({result : result});
-      }
-  }
-
-})
 app.listen(3000);
 module.exports = app;

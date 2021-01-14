@@ -44,11 +44,11 @@
                     <div class="col-md-4" style="margin-bottom: 30px;">
                         <div class="card" style="border: solid 1px black;">
                             <a href="#" onclick="show()">
-                                <img src="./images/<%=result[i].img%>" alt="" width="100%" height="300">
+                                <img src="./images/<%=result[i].g_img%>" alt="" width="100%" height="300">
                                 <div class="card-body">
-                                    <p class="card-text" style="color: black;"><%=result[i].title%></p>
+                                    <p class="card-text" style="color: black;"><%=result[i].g_title%></p>
                                     <hr>
-                                    <p class="card-text" style="color: black; text-align: right;"><%= dayjs(result[i].write_date).format('YYYY.MM'); %></p>
+                                    <p class="card-text" style="color: black; text-align: right;"><%= dayjs(result[i].g_write_date).format('YYYY.MM'); %></p>
                                 </div>
                             </a>
                         </div>

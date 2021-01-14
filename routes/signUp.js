@@ -15,9 +15,9 @@ router.post('/signup_data', function(req, res, next){
     var name = body.signup_Name;
     var email = body.signup_Email;
     var datetime = date.format('YYYY-MM-DD HH:mm:ss');
-    var sql = {id:id, pw:pw , name:name, email:email, date:datetime};
+    var sql = {u_id:id, u_pw:pw , u_name:name, u_email:email, u_date:datetime};
 
-    db.query('INSERT INTO Login SET ?', sql , function (error, result) {
+    db.query('INSERT INTO UserInfo SET ?', sql , function (error, result) {
         if(error) {
             throw error;
         }    
