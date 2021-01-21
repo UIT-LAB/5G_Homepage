@@ -30,24 +30,30 @@
             <input type="password" id="inputpw" class="form-control" placeholder="PW">
             <br>
             <div class="searchbtn">
-                <div class="searchid"><button class="btn btn-dark btn-block" type="button"><a href="/findId">ID찾기</a></button></div>
-                <div class="searchpw"><button class="btn btn-dark btn-block" type="button"><a href="/findPw">PW찾기</a></button></div>
+                <div class="searchid"><button class="btn btn-dark btn-block" type="button"onclick="gofindId()">ID찾기</a></button></div>
+                <div class="searchpw"><button class="btn btn-dark btn-block" type="button"onclick="gofindPw()">PW찾기</a></button></div>
             </div>
             <hr style="border: solid 1px lightgray">
             <div class="hello">
                 <div class="login"><button class="btn btn-dark btn-block" type="submit" onclick="itrclogin()">로그인</button></div>
-                <div class="signin"><button class="btn btn-dark btn-block" type="submit" onclick="gosignup()">회원가입</button></div>
+                <div class="signin"><button class="btn btn-dark btn-block" type="button" onclick="gosignup()">회원가입</button></div>
             </div>
     </form>
 </body>
 
 </html>
 <script>
+    function gofindId() {
+        location.href="login/findId";
+    }
+    function gofindPw() {
+        location.href="login/findPw";
+    }
     function itrclogin(){
         location.href="index.ejs";
     }
     function gosignup(){
-        location.href="signUp.ejs";
+        location.href="login/signUp";
     }
     function checking(){
         var re1 = /^[a-zA-Z0-9]{4,12}$/;

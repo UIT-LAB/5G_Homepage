@@ -18,7 +18,7 @@
 
     <title>5G member</title>
     <style>
-      @import url(./stylesheets/member.css);
+      @import url(/stylesheets/member.css);
    </style>
 </head>
 
@@ -29,7 +29,7 @@
 
         <section class="jumbotron text-center">
             <div class="container">
-                <img src="./images/5g.png" alt="">
+                <img src="/images/5g.png" alt="">
             </div>
         </section> 
        
@@ -38,14 +38,19 @@
         </div>
         <hr>
         <div class="row row-cols-1 row-cols-md-4" align="center">
-              <% for(let i= 0; i< result.length; i++){ %>
-              <div class="col mb-4">
+          <% for(var i = (m_num - 1) * max_value; i < m_num * max_value; i++){ %>
+            <% var data_value = result[i];
+                if(data_value === undefined){
+                    continue;
+                }
+            %>
+            <div class="col mb-4">
               <div class="card w-75">
-                <img src="images/member/<%=result[i].m_image%>" alt="사진" class="card-img-top" width="170" height="350">
+                <img src="/images/member/<%=data_value.m_image%>" alt="사진" class="card-img-top" width="170" height="350">
                 <div class="card-body">
-                  <h5 class="card-title"><%=result[i].m_name%></h5>
-                  <p class="card-text"><%=result[i].m_group%></p>
-                  <p class="card-text"><%=result[i].m_email%></p>
+                  <h5 class="card-title"><%=data_value.m_name%></h5>
+                  <p class="card-text"><%=data_value.m_group%></p>
+                  <p class="card-text"><%=data_value.m_email%></p>
 
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalinfo">
                     더 보기
@@ -54,6 +59,19 @@
               </div>
             </div>
             <% } %>
+             
+        </div>
+        <div>
+          <nav>
+            <ul class="pagination justify-content-center">
+              <li class="page-item"><a class="page-link" style="color: black;" href="#">이전</a></li>
+              <% for(var i = 1; i<= Math.ceil(result.length / max_value); i++){ %>
+              <li class="page-item"><a class="page-link" style="color: black;" href="/member/<%= i %>"><%= i %></a>
+              <% } %>
+              <li class="page-item"><a class="page-link"style="color: black;" href="#">다음</a></li>
+            </ul>
+          </nav>
+        </div>
               <!-- Modal -->
               <% for (let j = 0; j < result.length;j++){ %>
                 <div class="modal" id="modalinfo">
@@ -69,7 +87,7 @@
                     <table align="center">
                       <tr>
                         <th rowspan="6">
-                            <img src="images/member/<%=result[j].m_image%>" alt="사진">
+                            <img src="/images/member/<%=result[j].m_image%>" alt="사진">
                         </th>
                       </tr>
                       <tr>
