@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageButton
+        android:id="@+id/search_back_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:src="@drawable/ic_baseline_keyboard_backspace_24" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/search_back_button"
+        app:iconifiedByDefault="false"
+        android:background="@android:color/white"
+        app:queryHint="검색어를 입력하시오"
+        tools:ignore="MissingConstraints"
+        app:searchIcon="@null"
+        app:queryBackground="@null"/>
+
+    <ImageView
+        android:id="@+id/search_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="100dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/search_view"
+        android:src="@drawable/ic_search_black_24dp"/>
+
+    <TextView
+        android:id="@+id/sigin_title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_below="@id/search_image"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#5E5E5E"
+        android:text="게시판의 글을 검색해보세요" />
+
+
+</RelativeLayout>

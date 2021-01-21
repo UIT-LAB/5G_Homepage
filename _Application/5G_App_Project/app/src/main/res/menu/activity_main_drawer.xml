@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:icon="@drawable/ic_horizontal_rule_black_24dp" android:title="연구소">
+        <menu>
+            <item
+                android:id="@+id/drawer_info"
+                android:icon="@drawable/ic_arrow_right_black_24dp"
+                android:title="연구소 소개" />
+            <item
+                android:id="@+id/drawer_paper"
+                android:icon="@drawable/ic_arrow_right_black_24dp"
+                android:title="연구소 논문" />
+            <item
+                android:id="@+id/drawer_member"
+                android:icon="@drawable/ic_arrow_right_black_24dp"
+                android:title="연구원 소개" />
+        </menu>
+    </item>
+
+    <item android:icon="@drawable/ic_horizontal_rule_black_24dp" android:title="알림판">
+        <menu>
+            <item
+            android:id="@+id/drawer_notice"
+            android:icon="@drawable/ic_arrow_right_black_24dp"
+            android:title="공지사항" />
+            <item
+                android:id="@+id/drawer_post"
+                android:icon="@drawable/ic_arrow_right_black_24dp"
+                android:title="정보 게시판" />
+            <item
+                android:id="@+id/drawer_question"
+                android:icon="@drawable/ic_arrow_right_black_24dp"
+                android:title="문의사항"/>
+        </menu>
+    </item>
+
+    <item android:icon="@drawable/ic_horizontal_rule_black_24dp" android:title="기타 사항">
+        <menu>
+            <item
+                android:id="@+id/drawer_homepage"
+                android:icon="@drawable/ic_arrow_right_black_24dp"
+                android:title="연구실 홈페이지" />
+            <item
+                android:id="@+id/drawer_map"
+                android:icon="@drawable/ic_arrow_right_black_24dp"
+                android:title="연구실 오시는 길" />
+        </menu>
+    </item>
+</menu>
