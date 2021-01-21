@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <ImageView
+        android:id="@+id/login_logo_image"
+        android:layout_width="250dp"
+        android:layout_height="210dp"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/search_logo"
+        android:scaleType="centerCrop"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/emailInput"
+        android:layout_centerHorizontal="true"
+        android:hint="Email"
+        android:layout_below="@id/login_logo_image"
+        android:layout_marginTop="60dp"
+        android:textColorHint="#2196F3"
+        android:backgroundTint="#2196F3"
+        android:textColor="#2196F3"
+        android:textCursorDrawable="@null"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/passwordInput"
+        android:inputType="textPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/emailInput"
+        android:hint="Password"
+        android:textColorHint="#03A9F4"
+        android:backgroundTint="#03A9F4"
+        android:textColor="#03A9F4"
+        android:textCursorDrawable="@null"/>
+
+    <CheckBox
+        android:id="@+id/remember_id_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember ID"
+        android:textColor="#3F51B5"
+        android:buttonTint="#3F51B5"
+        android:layout_marginTop="6dp"
+        android:layout_below="@+id/passwordInput"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/login_Button"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:text="Log in"
+        android:textColor="#FFF"
+        android:textSize="25dp"
+        android:textAllCaps="false"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/remember_id_checkbox"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/login_btn_design"/>
+
+    <TextView
+        android:id="@+id/login_signup_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="100dp"
+        android:layout_below="@id/login_Button"
+        android:text="You are not a member?"/>
+
+    <Button
+        android:id="@+id/login_signup_btn"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:background="@null"
+        android:layout_marginTop="15dp"
+        android:textSize="12dp"
+        android:textColor="#E91E63"
+        android:layout_marginLeft="3dp"
+        android:layout_toRightOf="@id/login_signup_text"
+        android:layout_below="@id/login_Button"
+        android:text="Sign Up"/>
+
+
+
+</RelativeLayout>
