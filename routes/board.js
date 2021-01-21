@@ -7,6 +7,19 @@ router.get('/', function(req, res, next) {
     res.render('board');
 });
 
+router.get('/question', function(req, res, next) {
+    res.render('question');
+});
+
+router.get('/post', function(req, res, next) {
+    res.render('post');
+});
+
+router.get('/notice', function(req, res, next) {
+    res.render('notice');
+});
+
+/*  insert문 
 router.post('/board_add', function(req, res, next){
     let date = new dayjs();
     var body = req.body;
@@ -26,5 +39,5 @@ router.post('/board_add', function(req, res, next){
         };
     });
 })
-
+*/
 module.exports = router;
