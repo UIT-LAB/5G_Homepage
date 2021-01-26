@@ -55,7 +55,7 @@ router.post('/changePw', function(req, res){
                 res.send('<script>alert(`정보가 일치하지 않습니다.`); location.href=`/findPw`</script>')
             }
             else if(result[0].isChk == 1){
-                res.render('find_Change_Pw',{result : result, });
+                res.render('find_Change_Pw',{result : result});
             }
         };
     });

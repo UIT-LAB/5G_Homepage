@@ -10,21 +10,20 @@ router.get('/:num', function(req, res, next){
           throw error;
         }    
       else {
-          res.render('member', {result : result, m_num : req.params.num, max_value:12});
+          res.render('member/member', {result : result, m_num : req.params.num, max_value:12});
       };
   });
 })
 
 router.get('/detail', function(req,res,next){
    db.query('select * from Member', function (error, result) {
-      let date = new dayjs();
-       if (error) {
-          throw error;
-        }    
-       else {
-          res.render('member', {result : result});
-          console.log(result);
-       };
+     if (error) {
+       throw error;
+     }    
+     else {
+       res.render('member', {result : result});
+       console.log(result);
+     };
   });
 })
 module.exports = router;

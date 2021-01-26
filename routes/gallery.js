@@ -10,7 +10,7 @@ router.get('/:num', function(req, res, next) {
             throw error;
           }    
         else {
-            res.render('gallery', {result : result, g_num : req.params.num, max_value:9, dayjs });
+            res.render('gallery/gallery', {result : result, g_num : req.params.num, max_value:9, dayjs });
             console.log(result);
         };
     });
@@ -22,7 +22,7 @@ router.get('/detail', function(req, res, next) {
             throw error;
           }    
         else {
-            res.render('gallery', {result : result, g_num : req.params.num, max_value:9, dayjs });
+            res.render('gallery/gallery', {result : result, g_num : req.params.num, max_value:9, dayjs });
             console.log(result);
         };
     });
