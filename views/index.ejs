@@ -1,62 +1,118 @@
 <!DOCTYPE html>
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
-        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
-        integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
-        crossorigin="anonymous"></script>
-    </line>
-
-    <style>
-        @font-face {
-            font-family: maple;
-            src: url('/font/Maplestory Bold.ttf');
-        }
-
-        @import url(./stylesheets/index.css);
-    </style>
-
-    <title>5G</title>
-    <link href="/images/5g.png" rel="shortcut icon" type="image/x-icon">
+    <link href="https://cdn.discordapp.com/attachments/751431280519807068/800629207469785128/5g.png" rel="shortcut icon" type="images/x-icon">
 </head>
-
 <body>
-   <header>
-        <% include ./nav %>
-   </header>
-
-   <section>
-        <div style="margin-top:60px; margin-bottom: 30px" id="carouselExampleFade" data-ride="carousel">
+    <header>
+        <% include ./include/header %>
+    </header>
+    <section>
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active" data-interval="2000">
-                    <img src="/images/555.jpg" class="d-block w-100" alt="0" style="height: 50vh;">
-                </div>
+              <div class="carousel-item active">
+                <img src="./images/555.jpg" class="d-block w-100" style="height: 50vh;">
+              </div>
+              <div class="carousel-item">
+                <img src="./images/gall.jpg" class="d-block w-100" style="height: 50vh;">
+              </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-            </a>    
-            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
             </a>
         </div>
+        <div class="container mt-3">
+            <div class="row gx-5">
+                <div class="col-md">
+                    <table class="table table-hover" style="table-layout: fixed;">
+                        <thead class="align-middle">
+                            <th>공지사항</th>
+                            <th><a href="#"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
+                        </thead>
+                        <tbody class="align-middle">
+                            <tr scope="row">
+                                <th>12</th>
+                                <td>hi</td>
+                            </tr></a>
+                            <tr>
+                                <th>1</th>
+                                <td>hi</td>
+                            </tr>
+                            <tr>
+                                <th>1</th>
+                                <td>hi</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md">
+                    <table class="table">
+                        <thead class="align-middle">
+                            <th>학위논문</th>
+                            <th><a href="#"><input type="button" class="btn btn-outline-dark  float-end" value="+"></a></th>
+                        </thead>
+                        <tbody class="align-middle">
 
-    <div class="container marketing">
-        <div class="row">
-            <div class="col-lg-4">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <div class="row gx-5">
+                <div class="col-md">
+                    <table class="table text-middle">
+                        <thead class="align-middle">
+                            <th>게시판</th>
+                            <th><a href="#"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
+                        </thead>
+                        <tbody class="align-middle">
+                            <tr>
+                                <th>1</th>
+                                <td>hi</td>
+                            </tr>
+                            <tr>
+                                <th>1</th>
+                                <td>hi</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md">
+                    <table class="table text-middle">
+                        <thead class="align-middle">
+                            <th width="20%">갤러리</th>
+                            <th width="80%"><a href="#"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
+                        </thead>
+                        <tbody class="align-middle">
+                            <% for(let i=0; i<3; i++){ %>
+                                <tr>
+                                    <td>
+                                        <img src="./images/<%=result[i].g_img%>" style="width: 100px; height: 100px;">
+                                    </td>
+                                    <td>
+                                        <%=result[i].g_title%>
+                                    </td>
+                                </tr>
+                            <%}%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <div class="container marketing">
+        <div class="row gx-5">
+            <div class="col-md">
                 <table style="width: 100%;">
                     <td>
                         <span style="margin-left: 10px; font-family: maple;">공지사항</span>
@@ -67,58 +123,8 @@
                     </td>
                 </table>
                 <hr style="border: solid 1px lightgray">
-                <div>
-                    <table>
-                        <tr>
-                            <td>
-                                <span>
-                                    <a href="#"><img src="/images/itrc.png" style="width: 100px; height: 100px; margin-right: 15px"></a>
-                                </span>
-                            </td>
-                            <td>
-                                <span>
-                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">ITRC 사업 안내</a>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <hr>
-                <div>
-                    <table>
-                        <tr>
-                            <td>
-                                <span>
-                                    <a href="#"><img src="/images/logo.png" style="width: 100px; height: 100px; margin-right: 15px"></a>
-                                </span>
-                            </td>
-                            <td>
-                                <span>
-                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">5G 홈페이지 개설 안내</a>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <hr>
-                <div>
-                    <table>
-                        <tr>
-                            <td>
-                                <span>
-                                    <a href="#"><img src="/images/logo.png" style="width: 100px; height: 100px; margin-right: 15px"></a>
-                                </span>
-                            </td>
-                            <td>
-                                <span>
-                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하</a>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
+            </div>
+            <div class="col-md">
                 <table style="width: 100%;">
                         <td>
                             <span style="margin-left: 10px; font-family: maple;">학위논문</span>
@@ -134,7 +140,7 @@
                         <tr>
                             <td>
                                 <span>
-                                    <a href="#"><img src="/images/report.svg" style="width: 100px; height: 100px; margin-right: 15px"></a>
+                                    <a href="#"><img src="./images/report.svg" style="width: 100px; height: 100px; margin-right: 15px"></a>
                                 </span>
                             </td>
                             <td>
@@ -151,7 +157,7 @@
                         <tr>
                             <td>
                                 <span>
-                                    <a href="#"><img src="/images/report.svg" style="width: 100px; height: 100px; margin-right: 15px"></a>
+                                    <a href="#"><img src="./images/report.svg" style="width: 100px; height: 100px; margin-right: 15px"></a>
                                 </span>
                             </td>
                             <td>
@@ -168,7 +174,7 @@
                         <tr>
                             <td>
                                 <span>
-                                    <a href="#"><img src="/images/report.svg" style="width: 100px; height: 100px; margin-right: 15px"></a>
+                                    <a href="#"><img src="./images/report.svg" style="width: 100px; height: 100px; margin-right: 15px"></a>
                                 </span>
                             </td>
                             <td>
@@ -179,8 +185,8 @@
                         </tr>
                     </table>
                 </div>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
+            </div>
+            <div class="col-md">
                 <table style="width: 100%;">
                     <td>
                         <span style="margin-left: 10px; font-family: maple;">갤러리</span>
@@ -197,7 +203,7 @@
                         <tr>
                             <td>
                                 <span>
-                                    <a href="#"><img src="/images/<%=result[i].g_img%>" style="width: 100px; height: 100px; margin-right: 15px"></a>
+                                    <a href="#"><img src="./images/<%=result[i].g_img%>" style="width: 100px; height: 100px; margin-right: 15px"></a>
                                 </span>
                             </td>
                             <td>
@@ -210,66 +216,8 @@
                 </div>
                 <% } %>
                 <hr>
-            </div>    
-        <!-- START THE FEATURETTES -->
-
-        <hr class="featurette-divider" style="margin-top: 30px; margin-bottom: 30px;">
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading"><span class="text-muted">제목<br>부제</span></h2>
-                <p class="lead">
-                    내용
-                </p>
             </div>
-            <div class="col-md-5">
-                <img src="/images/cat.jpg" class="img-fluid" width="500" height="500">
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for
-                        yourself.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
-                    euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-                    tellus ac cursus commodo.</p>
-            </div>
-            <div class="col-md-5 order-md-1">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                    height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
-                    focusable="false" role="img" aria-label="Placeholder: 500x500">
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
-                        dy=".3em">500x500</text>
-                </svg>
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
-                    euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-                    tellus ac cursus commodo.</p>
-            </div>
-            <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                    height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
-                    focusable="false" role="img" aria-label="Placeholder: 500x500">
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
-                        dy=".3em">500x500</text>
-                </svg>
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
     </div>
-    </section>
+    </div>
 </body>
-
 </html>
