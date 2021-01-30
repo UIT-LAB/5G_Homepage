@@ -1,4 +1,40 @@
-.carousel-item img{
-    width: 100%;
-    height: 380px;
+.main1 tbody tr:hover{
+    cursor: pointer;
+}
+.boardnav tbody tr:hover{
+    cursor: pointer;
+}
+
+.text-right .btn{
+    width: 85px;
+    font-size: 24px;
+    height: 45px;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.text-right .btn:hover{
+    background-color: black;
+    color: white;
+}
+
+<<<<<<< HEAD
+
+.cmttable tbody th{
+    font-size: 25px;
+    border-right: 2px solid black;
+    padding: 8px;
+}
+.cmttable tbody td{
+    font-size: 25px;
+    padding: 8px;
+=======
+.cmttable{
+    font-size: 18px;
+}
+.cmttable tbody th{
+    padding: 10px;
+    border-right: 3px solid black;
+>>>>>>> f9a8e76951ff834c4640ce22d37ab7793eaccc7a
 }
