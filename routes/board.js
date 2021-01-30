@@ -3,10 +3,6 @@ var router = express.Router();
 var db = require('../config/db')
 var dayjs =  require('dayjs')
 
-router.get('/', function(req, res, next) {
-    res.render('board/board');
-});
-
 router.get('/question/:num', function(req, res, next) {
     db.query('select * from Question_Board', function (error, result) {
         if (error) {

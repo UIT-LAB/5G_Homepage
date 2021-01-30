@@ -19,6 +19,7 @@
     color: white;
 }
 
+<<<<<<< HEAD
 
 .cmttable tbody th{
     font-size: 25px;
@@ -28,4 +29,12 @@
 .cmttable tbody td{
     font-size: 25px;
     padding: 8px;
+=======
+.cmttable{
+    font-size: 18px;
+}
+.cmttable tbody th{
+    padding: 10px;
+    border-right: 3px solid black;
+>>>>>>> f9a8e76951ff834c4640ce22d37ab7793eaccc7a
 }
