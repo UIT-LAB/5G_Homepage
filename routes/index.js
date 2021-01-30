@@ -11,8 +11,7 @@ router.get('/', function(req, res, next) {
         throw error;
       }    
     else {
-        res.render('index', {result : result, dayjs});
-        console.log(result);
+        res.render('index', {g_result : result, dayjs, name:req.session.u_name});
     };
   });
 });

@@ -6,7 +6,7 @@
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <style>
-      @import url(./stylesheets/member.css);
+      @import url(/stylesheets/member.css);
    </style>
 </head>
 
@@ -14,7 +14,7 @@
 
   <section>
     <div>
-      <img src="./images/555.jpg" alt="0" class="memberimg">
+      <img src="/images/555.jpg" alt="0" class="memberimg">
     </div>
   </section> 
      
@@ -28,7 +28,7 @@
       <table class="membertable" align="center">
         <tr>
           <th>
-            <img src="images/member/<%=result[i].m_image%>" alt="사진" width="150" height="150">
+            <img src="/images/member/<%=result[i].m_image%>" alt="사진" width="150" height="150">
           </th>
           <td>
             <ul>
@@ -62,7 +62,7 @@
           <table id="imtable">
             <tr>
               <th rowspan="3">
-                <img src="images/member/고학림.jpg" id="imgmodal">
+                <img src="/images/member/고학림.jpg" id="imgmodal">
               </th>
               <td>&#149;</td>
               <th id="namemodal"></th>
@@ -132,6 +132,6 @@
     modal.find('.modal-body #imtable #positionmodal').text("직급 : "+position);
     modal.find('.modal-body #comtable #phonemodal').text(phone);
 
-    document.getElementById('imgmodal').src = ("images/member/"+photo);
+    document.getElementById('imgmodal').src = ("/images/member/"+photo);
   });
 </script>

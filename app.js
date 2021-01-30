@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 var session = require('express-session');
+require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
@@ -25,12 +26,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+var MySQLStore = require('express-mysql-session')(session);   
+
 //로그인 세션
 app.use(session({
   name: 'sessionID',
-  secret: 'test@~',
+  secret: 'asdhgasdsdgaasdg',
   resave: false,
   saveUninitialized: true,
+  store: new MySQLStore({
+    host : process.env.DB_host,
+    port : process.env.DB_port,
+    user : process.env.DB_user,
+    password : process.env.DB_password,
+    database : process.env.DB_database
+  }),
   cookie: {
     maxAge: 24000 * 60 * 60 // 쿠키 유효기간 24시간
   }

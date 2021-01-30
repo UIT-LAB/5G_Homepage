@@ -10,7 +10,7 @@ router.get('/:num', function(req, res, next){
           throw error;
         }    
       else {
-          res.render('member/member', {result : result, m_num : req.params.num, max_value:12});
+          res.render('member/member', {result : result, m_num : req.params.num, max_value:12,name:req.session.u_name});
       };
   });
 })
@@ -21,7 +21,7 @@ router.get('/detail', function(req,res,next){
        throw error;
      }    
      else {
-       res.render('member', {result : result});
+       res.render('member', {result : result,name:req.session.u_name});
        console.log(result);
      };
   });

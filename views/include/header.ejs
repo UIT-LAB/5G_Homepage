@@ -52,9 +52,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/gallery/1">갤러리</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board/notice/1">게시판</a>
+                    </li>
+                    <%if(name){ %>
+                        <li class="nav-item"><a class="nav-link"><%= name %>님 환영합니다!</a></li>
+                    <%}%>
                 </ul>
                 <form class="d-flex">
-                    <a href="/login"><input class="btn form-control btn-outline-light" type="button" value="Login"></a>
+                    <%if(name){ %><a href="/login/logout"><input class="btn form-control btn-outline-light" type="button" value="Logout"></a>
+                    <%}else{%><a href="/login"><input class="btn form-control btn-outline-light" type="button" value="Login"></a><%}%>
                 </form>
             </div>
         </div>

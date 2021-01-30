@@ -15,8 +15,10 @@
       @import url(/stylesheets/board.css);
     </style>
 </head>
-
 <body>
+  <header>
+    <% include ../nav %>
+</header>
   <div style="margin-top:60px; margin-bottom: 30px" id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" data-interval="2000">
@@ -24,9 +26,6 @@
         </div>
     </div>
 </div>
-<header>
-  <% include ../nav %>
-</header>
     <div class="boardnav row mt-5 mb-5 fs-4">
         <div class="col-md-1 mt-5">
             <table class="table table-hover table-bordered text-center border-dark">
@@ -70,7 +69,7 @@
                   <td onclick="location.href='/board/notice/detail/<%= i+1 %>'" ><%= data_value.n_title %></td>
                   <td class ="text-center"><%= data_value.n_writer %></td>
                   <td class ="text-center"><%= dayjs(data_value.n_writer_date).format('YY.MM.DD');%></td>
-                  <td class ="text-center">0</td>
+                  <td class ="text-center"><%= data_value.n_view %></td>
                 </tr>
                 <% } %>
               </tbody>
