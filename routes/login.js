@@ -5,11 +5,11 @@ var db = require('../config/db')
 var dayjs =  require('dayjs')
 
 router.get('/', function(req, res, next) {
-    res.render('login');
+    res.render('Login/login');
 });
 //----------- findID
 router.get('/findId', function(req, res, next) {
-    res.render('findId');
+    res.render('Login/findId');
 });
 
 router.post('/findId', function(req, res){
@@ -38,7 +38,7 @@ router.post('/findId', function(req, res){
 })
 //----------- findPW
 router.get('/findPw', function(req, res, next) {
-    res.render('findPw');
+    res.render('Login/findPw');
 });
 
 router.post('/changePw', function(req, res){
@@ -90,7 +90,7 @@ router.post('/pwCheck', function(req, res){
 })
 //----------- signUp
 router.get('/signUp', function(req, res, next) {
-    res.render('signUp');
+    res.render('Login/signUp');
 });
 
 router.post('/signup_data', function(req, res, next){

@@ -47,7 +47,7 @@ router.get('/post/detail/:num', function(req, res, next) {
         throw error;
       }    
       else {
-        res.render('board/post_detail', {result : result, n_num : req.params.num, max_value:15, dayjs  });
+        res.render('board/post_detail', {result : result, p_num : req.params.num, max_value:15, dayjs  });
       };
     });
 });
