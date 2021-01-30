@@ -1,62 +1,63 @@
 <!DOCTYPE html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://cdn.discordapp.com/attachments/751431280519807068/800629207469785128/5g.png" rel="shortcut icon" type="images/x-icon">
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
-
-        <style>
-			.jb-wrap {
-	            margin: 150px;
-	            border: none;
-	            position: relative;
-            }
-
-            .jb-wrap img {
-	            vertical-align: middle;
-                border-radius: 20px;
-            }
-
-            .jb-text {
-                padding: 5px 10px;
-                border-radius: 20px;
-	            background-color: rgba(255, 255, 255, 0.5);
-	            position: absolute;
-	            top: 40%;
-	            left: 60%;
-	            transform: translate( -30%, -30% );
-            }
-		</style>
+    <style>
+        .table-hover tbody tr{
+            cursor: pointer;
+        }
+    </style>
 </head>
-<body style="background-color: #ece6cc;">
+<body>
     <header>
-        <% include ./nav %>
+        <% include ../include/header %>
     </header>
-    <div class="jb-wrap">
-        <div class="jb-image"><img src="/images/intro.jpg" class="img-fluid" alt="Responsive image" style="width: 100%;"></div>
-        <div class="jb-text">해양IT 융합기술연구소는<br><br>
-
-            전 세계적으로 매년 약 8,200만명의 인구가 증가하면서 향후 지구 전체 인구에 대한 식량, 에너지 및 자원 부족이 예상됩니다.<br><br>
-            
-            지구는 약 70%의 표면이 물로 구성되어 있고, 바다에는 전세계 동식물의 약 80%가 있으며, 그 외에도 많은 자원이 있습니다.<br><br>
-            
-            하지만 바다는 아직도 미지의 세계 입니다. 육상에서는 전기, 컴퓨터에 이어 4차 산업 혁명 기술이 여러 산업에 적용되고 있지만, 바다에서는 물속의 데이터를 실시간으로 수집하고 분석하기 위한 효율적인 통신망이 구축되어 있지 않은 실정입니다.<br><br>
-            
-            해양 융합기술 연구소에서는 바다에서도 육지와 같이 자유로운 통신이 가능하고, 이를 통해 육상에서도 효율적으로 수중의 정보 관측, 제어 및 위치 추적 등을 수행할 수 있게 하는 수중 통신망/플랫폼 기술을 연구하고, 이를 통해 해양 신산업 발전에 기여합니다.<br><br>
-            
-            이를 위해 해양IT 융합기술 연구소는 현재 분산형 수중 관측제어망 개발 등 수중 기지국 통신망 구축을 위한 대형 국가 연구개발사업을 수행하고 있으며, 많은 기업들과 산학 협력 및 민관군과 산학연이 함께하는 주기적인 포럼 및 세미나 개최를 통해 해양융합 분야에서 신해양산업을 주도할 수 있는 연구와 인력양성을 수행 하고 있습니다.<br><br>
-            
-            감사합니다</div>
+    <div class="container">
+        <div class="row mt-5 mb-5">
+            <div class="col-md-2">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li style="cursor: pointer;" class="breadcrumb-item" onclick="location.href='/intro'">소개</li>
+                        <li class="breadcrumb-item active" aria-current="page">대표말</li>
+                    </ol>
+                </nav>
+                <table class="table table-hover table-bordered text-center">
+                    <tbody>
+                        <tr onclick="location.href='/intro'">
+                            <td>대표말</td>
+                        </tr>
+                        <tr onclick="location.href='/intro/business'">
+                            <td>사업소개</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-10">
+                <div class="text-center m-5">
+                    <h1>대표말</h1>
+                    5G 사업단장님 말씀
+                </div>
+                <div class="row featurette">
+                    <div class="col-lg-5">
+                        <img class="img-fluid img-thumbnail mx-auto d-block" src="/images/member/고학림.jpg" width="90%">
+                    </div>
+                    <div class="col-lg-7 order-lg-2 mt-5">
+                        <h2 class="featurette-heading text-primary">5G 사업단은</h2><br>
+                        <p class="fs-5">
+                            5세대 이동통신은 2018년부터 채용되는 무선 네트워크 기술이다.<br><br>
+                            2017년 12월의 3GPP 릴리스 15가 5G의 가장 일반적인 정의이다.<br><br>
+                            일부는 더 엄격한 ITU IMT-2020 정의를 더 선호하지만 훨씬 더 빠른 속도의 고주파수 대역만 포함하고 있다.<br><br>
+                            위키백과 5세대 이동 통신 발췌<br><br>
+                            내용 받고 싶어요 ㅠㅠ<br><br>
+                        </p>
+                        <p class="fs-5 text-end">사업단장 교수 고학림</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <footer>
+        <% include ../include/footer %>
+    </footer>
 </body>
+</html>

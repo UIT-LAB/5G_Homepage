@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-    res.render('intro');
+    res.render('intro/intro');
 });
-router.get('/greetings', function(req, res, next) {
-    res.render('intro');
+router.get('/business', function(req, res, next) {
+    res.render('intro/business');
 });
 router.get('/history', function(req, res, next) {
     res.render('intro');

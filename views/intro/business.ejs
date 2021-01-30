@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<head>
+    <link href="https://cdn.discordapp.com/attachments/751431280519807068/800629207469785128/5g.png" rel="shortcut icon"
+        type="images/x-icon">
+
+    <style>
+        .table-hover tbody tr {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <% include ../include/header %>
+    </header>
+    <div class="container">
+        <div class="row mt-5 mb-5">
+            <div class="col-sm-2">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li style="cursor: pointer;" class="breadcrumb-item" onclick="location.href='/intro'">소개</li>
+                        <li class="breadcrumb-item active" aria-current="page">사업소개</li>
+                    </ol>
+                </nav>
+                <table class="table table-hover table-bordered text-center">
+                    <tbody>
+                        <tr onclick="location.href='/intro'">
+                            <td>대표말</td>
+                        </tr>
+                        <tr onclick="location.href='/intro/business'">
+                            <td>사업소개</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-10">
+                <div class="text-center m-5">
+                    <h1>사업소개</h1>
+                    5G 사업 소개 게시판
+                </div>
+
+                <div class="row p-3">
+                    <div class="col-md-7 order-md-2">
+                        <h2 class="text-primary">사진에서 사업 이름이 안 보여요</h2>
+                        <p class="lead">
+                            내용을 모르겠어요
+                        </p>
+                    </div>
+                    <div class="col-md-5 order-md-1">
+                        <img src="/images/business1.jpg" alt="" width="100%">
+                    </div>
+                </div>
+                <hr>
+                <div class="row p-3">
+                    <div class="col-md-7 order-md-1">
+                        <h2 class="text-primary">민감 데이터 식별 및 보호를 위한<br>데이터 프라이버시 기술</h2>
+                        <p class="lead">
+                            내용을 모르겠어요
+                        </p>
+                    </div>
+                    <div class="col-md-5 order-md-2">
+                        <img src="/images/business2.jpg" alt="" width="100%">
+                    </div>
+                </div>
+                <hr>
+                <div class="row p-3">
+                    <div class="col-md-7 order-md-2">
+                        <h2 class="text-primary">스마트 양식 위한 빅데이터 및 딥러닝 모델 개발</h2>
+                        <p class="lead">
+                            내용을 모르겠어요
+                        </p>
+                    </div>
+                    <div class="col-md-5 order-md-1">
+                        <img src="/images/business3.jpg" alt="" width="100%">
+                    </div>
+                </div>
+                <hr>
+                <div class="row p-3">
+                    <div class="col-md-7 order-md-1">
+                        <h2 class="text-primary">5G 빅데이터를 이용한 제조지능 서비스</h2>
+                        <p class="lead">
+                            내용을 모르겠어요
+                        </p>
+                    </div>
+                    <div class="col-md-5 order-md-2">
+                        <img src="/images/business4.jpg" alt="" width="100%">
+                    </div>
+                </div>
+                <hr>
+                <div class="row p-3">
+                    <div class="col-md-7 order-md-2">
+                        <h2 class="text-primary">초연결·고신뢰산업지능센터</h2>
+                        <p class="lead">
+                            첨단 ICT 신기술 연구·교육을 통한<br>
+                            4-IR 시대 고품질 일자리 창출
+                        </p>
+                    </div>
+                    <div class="col-md-5 order-md-1">
+                        <img src="/images/business5.jpg" alt="" width="100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <% include ../include/footer %>
+    </footer>
+</body>
+</html>
