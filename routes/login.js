@@ -5,11 +5,11 @@ var db = require('../config/db')
 var dayjs =  require('dayjs')
 
 router.get('/', function(req, res, next) {
-    res.render('login');
+    res.render('Login/login');
 });
 //----------- findID
 router.get('/findId', function(req, res, next) {
-    res.render('findId');
+    res.render('Login/findId');
 });
 
 router.post('/findId', function(req, res){
@@ -29,7 +29,7 @@ router.post('/findId', function(req, res){
                         throw error;
                     }
                     else {
-                        res.render('find_Result_Id',{result : result});
+                        res.render('Login/find_Result_Id',{result : result});
                     }
                 });
             }
@@ -38,7 +38,7 @@ router.post('/findId', function(req, res){
 })
 //----------- findPW
 router.get('/findPw', function(req, res, next) {
-    res.render('findPw');
+    res.render('Login/findPw');
 });
 
 router.post('/changePw', function(req, res){
@@ -55,7 +55,7 @@ router.post('/changePw', function(req, res){
                 res.send('<script>alert(`정보가 일치하지 않습니다.`); location.href=`/findPw`</script>')
             }
             else if(result[0].isChk == 1){
-                res.render('find_Change_Pw',{result : result});
+                res.render('Login/find_Change_Pw',{result : result});
             }
         };
     });
@@ -81,7 +81,7 @@ router.post('/pwCheck', function(req, res){
                         throw error;
                     }
                     else {
-                        res.render('pwCheck_Success.ejs',{result : result});
+                        res.render('Login/pwCheck_Success.ejs',{result : result});
                     }
                 });
             }
@@ -90,7 +90,7 @@ router.post('/pwCheck', function(req, res){
 })
 //----------- signUp
 router.get('/signUp', function(req, res, next) {
-    res.render('signUp');
+    res.render('Login/signUp');
 });
 
 router.post('/signup_data', function(req, res, next){
@@ -110,6 +110,26 @@ router.post('/signup_data', function(req, res, next){
         else {
             console.log("회원가입을 축하합니다.");
             res.redirect("/");
+        };
+    });
+})
+
+router.post('/idcheck', function(req, res, next){
+    var body = req.body;
+    var chk_id = body.signup_Id;
+    var datas = [chk_id];
+    
+    db.query(`Select EXISTS (Select * from UserInfo where u_id=?) as isChk`,datas,function (error, result) {
+        if(error) {
+            throw error;
+        }    
+        else {
+            if(result[0].isChk == 0){
+                res.send('<script>alert(`사용 가능한 아이디 입니다.`); </script>')
+            }
+            else if(result[0].isChk == 1){
+                res.send('<script>alert(`중복된 아이디 입니다.`); </script>')
+            }
         };
     });
 })

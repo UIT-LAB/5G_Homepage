@@ -5,16 +5,28 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    
 </head>
 <body>
-   
-    당신의 아이디는 <br>
-   <% for (var i =0; i < result.length; i++) { %>
-   <%= result[i].u_id %><br>
-   <% } %>
-   입니다.
+    <div class="main1">
+        <div class="main2">
+            <div class="main3">
+                <div>
+                    당신의 아이디는 <br>
+                    <% for (var i =0; i < result.length; i++) { %>
+                    <%= result[i].u_id %><br>
+                    <% } %>
+                    입니다.
+                </div>
+
+                <div class="icon">
+                    <img class="mb-4" src="/images/5g.png" alt="" width="72" height="72">
+                </div>
+                <div class="main4 d-lg-block col-lg-6"></div>      
+            </div>
+        </div>
+    </div>
    
 </body>
 </html>

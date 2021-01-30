@@ -1,19 +1,88 @@
-th{
-    padding: 10px;
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+body{
+    font-family: 'Nanum Gothic', sans-serif;
 }
-td{
-    width: 200px;
-}
-.info{
-    position: relative;
-    border-radius: 15px;
-    display:flex;
-    flex-direction: column;
+
+.memberimg{
     width: 100%;
-    pointer-events: auto;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.2);
-    border-radius: 18px;
-    outline: 0;
+    height: 50vh;
+}
+.membertable .hello{
+    text-align: center;
+}
+.title p{
+    font-size: 50px;
+}
+
+.membertable{
+    border-top: 1px solid black;
+}
+.membertable:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+.membertable ul{
+    text-align: left;
+}
+.membertable th{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 170px;
+}
+.detailbtn{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+
+#imgmodal{
+    width: 200px;
+    height: 250px;
+}
+#imtable td{
+    width: 30px;
+    text-align: right;
+}
+#comtable{
+    margin-top: 20px;
+    text-align: center;
+    width: 450px;
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+}
+#comtable #hello{
+    border-top: 2px solid black;
+}
+#comtable #world{
+    border-top: 1px solid black;
+}
+#comtable #emailmodal{
+    border-left: 1px solid black;
+}
+#comtable #phonemodal{
+    border-left: 1px solid black;
+}
+
+#cartable{
+    margin-top: 20px;
+    text-align: center;
+    width: 450px;
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+}
+#cartable #holy{
+    border-top: 2px solid black;
+}
+#cartable #moly{
+    border-top: 1px solid black;
+}
+#cartable #now{
+    width: 110px;
+    border-right: 1px solid black;
+}
+#cartable #wow{
+    width: 110px;
+    border-right: 1px solid black;
 }

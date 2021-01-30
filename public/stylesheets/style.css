@@ -1,78 +1,68 @@
-html,body {
-  height: 100%;
+body{ 
+    background-size: cover;
+    background-color: gray;
 }
-body {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: lightblue;
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.main1{
+    display: flex;
+    height: 100%;
+    margin-top: 150px;
+    align-items: center;
 }
-a {
-  color: #00B7FF;
+.main2{
+    width: 100%;
+    max-width: 50%;
+    height: 100%;
+    color: white;
 }
-.form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
-  background-color: white; 
-  border-radius: 20px;
+.main3{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 16%;
+    align-items: center;
+    left: 0;
+    top: 0;
 }
-.form-signin .checkbox {
-  font-weight: 400;
+.main4{
+    display: none;
+    background-image:url("/images/nl.jpg");
+    background-size: cover;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
 }
-.form-signin .form-control {
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
+
+.form-signin{
+    width: 100%;
+    max-width: 482px;
 }
 .form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
-.searchbtn{
-  width: 90%;
-  margin: 10px auto;
-  display: flex;
-}
-.searchid{
-  padding-right: 3px;
-  width: 30%;
-  flex: 1;
-}
-.searchpw{
-  padding-right: 3px;
-  width: 30%;
-  flex: 1;
-}
-.hello{
-  width: 90%;
-  margin: 10px auto;
-  display: flex;
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
 }
 .login{
-  padding-right: 3px;
-  width: 30%;
-  flex: 1;
+    margin-bottom: 10px;
 }
-.signin{
-  padding-right: 3px;
-  width: 30%;
-  flex: 1;
+
+.icon{
+    padding-top: 150px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
 }
