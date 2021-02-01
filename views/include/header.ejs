@@ -17,12 +17,12 @@
     
     <style>
         @font-face {
-           font-family: maple;
-            src: url('./../font/Maplestory\ Bold.ttf');
+           font-family: malgum;
+            src: url('/font/malgunbd.ttf');
         }
 
         body{
-            font-family: maple;
+            font-family: malgum;
         }
     </style>
 
@@ -30,7 +30,7 @@
     
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid container">
             <a class="navbar-brand" href="/">
                 <img src="/images/5g.png" width="30" height="30">
@@ -52,16 +52,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/gallery/1">갤러리</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/board/notice/1">게시판</a>
-                    </li>
-                    <%if(name){ %>
-                        <li class="nav-item"><a class="nav-link"><%= name %>님 환영합니다!</a></li>
-                    <%}%>
+                    
                 </ul>
                 <form class="d-flex">
-                    <%if(name){ %><a href="/login/logout"><input class="btn form-control btn-outline-light" type="button" value="Logout"></a>
-                    <%}else{%><a href="/login"><input class="btn form-control btn-outline-light" type="button" value="Login"></a><%}%>
+                    <%if(name){ %>
+                        <span class="text-white p-2 align-middle"><%= name %>님 환영합니다!</span>
+                        <a href="/login/logout"><input class="btn form-control btn-outline-light" type="button" value="Logout"></a>
+                    <%}
+                    else{%>
+                        <a href="/login"><input class="btn form-control btn-outline-light" type="button" value="Login"></a>
+                    <%}%>
+                    
                 </form>
             </div>
         </div>
