@@ -3,7 +3,7 @@
 body{
     font-family: 'Nanum Gothic', sans-serif;
 }
-
+/*table*/
 .memberimg{
     width: 100%;
     height: 50vh;
@@ -18,10 +18,6 @@ body{
 .membertable{
     border-top: 1px solid black;
 }
-.membertable:hover{
-    background-color: lightgray;
-    cursor: pointer;
-}
 .membertable ul{
     text-align: left;
 }
@@ -29,14 +25,20 @@ body{
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    width: 170px;
+    width: 300px;
+}
+.membertable td{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 180px;
 }
 .detailbtn{
     text-align: center;
     padding-bottom: 10px;
 }
 
-
+/*modal*/
 #imgmodal{
     width: 200px;
     height: 250px;
@@ -85,4 +87,31 @@ body{
 #cartable #wow{
     width: 110px;
     border-right: 1px solid black;
+}
+
+/*media query*/
+@media (min-width: 576px){
+    .container .row .membertable{
+        width: 430px;
+    }
+}
+@media (min-width: 768px){
+    .container .row .membertable{
+        width: 430px;
+    }
+}
+@media (min-width: 992px){
+    .container .row .membertable{
+        width: 630px;
+    }
+}
+@media (min-width: 1200px){
+    .container .row .membertable{
+        width: 500px;
+    }
+}
+@media (min-width: 1400px){
+    .container .row .membertable{
+        width: 630px;
+    }
 }

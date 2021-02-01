@@ -11,7 +11,9 @@
 </head>
 
 <body>
-
+  <header>
+    <% include ../include/header %>
+</header>
   <section>
     <div>
       <img src="/images/555.jpg" alt="0" class="memberimg">
@@ -22,34 +24,37 @@
     <p>introduce 5G member</p>
   </div>
   <hr>
-  <div class="container">
-    <div class="row row-cols-2" align="center">
-    <% for(let i= 0; i< result.length; i++){ %>
-      <table class="membertable" align="center">
-        <tr>
-          <th>
-            <img src="/images/member/<%=result[i].m_image%>" alt="사진" width="150" height="150">
-          </th>
-          <td>
-            <ul>
-              <h3 align="left"><%=result[i].m_name%></h3>
-              <li><p>소속 : <%=result[i].m_group%></p></li>
-              <li><p>이메일 : <%=result[i].m_email%></p></li>
-              <li><p>연락처 : <%=result[i].m_phone%></p></li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td class="detailbtn" colspan="2">
-            <button type="button" id="membtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uitmodal"
-            data-name="<%=result[i].m_name%>" data-photo="<%=result[i].m_image%>" data-group="<%=result[i].m_group%>" data-email="<%=result[i].m_email%>"
-            data-position="<%=result[i].m_position%>" data-phone="<%=result[i].m_phone%>">더 보기</button>
-          </td>
-        </tr>
-      </table>
-    <% } %>
-    </div>
-  </div> 
+  
+   <div class="container">
+    <div class="row row-cols-4" align="center">
+      <% for(let i= 0; i< result.length; i++){ %>
+        <table class="membertable" align="center">
+          <tr>
+            <td>
+              <img src="/images/member/<%=result[i].m_image%>" alt="사진" width="150" height="150">
+            </td>
+            <th>
+              <ul>
+                <h3 align="left"><%=result[i].m_name%></h3>
+                <li><p>소속 : <%=result[i].m_group%></p></li>
+                <li><p>이메일 : <%=result[i].m_email%></p></li>
+                <li><p>연락처 : <%=result[i].m_phone%></p></li>
+              </ul>
+            </th>
+          </tr>
+  
+          <tr>
+            <td class="detailbtn" colspan="2">
+              <button type="button" id="membtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uitmodal"
+              data-name="<%=result[i].m_name%>" data-photo="<%=result[i].m_image%>" data-group="<%=result[i].m_group%>" data-email="<%=result[i].m_email%>"
+              data-position="<%=result[i].m_position%>" data-phone="<%=result[i].m_phone%>">더 보기</button>
+            </td>
+          </tr>
+        </table>
+      <% } %>
+      </div>
+   </div>
+ 
   
   <div class="modal fade" id="uitmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -111,6 +116,9 @@
       </div>
     </div>
   </div>
+  <footer>
+    <% include ../include/footer %>
+</footer>
 
 </body>
 
