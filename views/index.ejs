@@ -35,7 +35,7 @@
                     <table class="table table-hover" style="table-layout: fixed;">
                         <thead class="align-middle">
                             <th>공지사항</th>
-                            <th><a href="#"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
+                            <th><a href="/board/notice/1"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
                         </thead>
                         <tbody class="align-middle">
                             <tr scope="row">
@@ -56,11 +56,20 @@
                 <div class="col-md">
                     <table class="table">
                         <thead class="align-middle">
-                            <th>학위논문</th>
-                            <th><a href="#"><input type="button" class="btn btn-outline-dark  float-end" value="+"></a></th>
+                            <th width="20%">학위논문</th>
+                            <th width="80%"><a href="/research"><input type="button" class="btn btn-outline-dark  float-end" value="+"></a></th>
                         </thead>
                         <tbody class="align-middle">
-
+                            <% for(let i=0; i<3; i++){ %>
+                                <tr>
+                                    <td>
+                                        <img src="/images/report.svg" style="width: 100px; height: 100px;">
+                                    </td>
+                                    <td>
+                                        <%=results[i].research_name_ko%>
+                                    </td>
+                                </tr>
+                            <%}%>
                         </tbody>
                     </table>
                 </div>
@@ -72,7 +81,7 @@
                     <table class="table text-middle">
                         <thead class="align-middle">
                             <th>게시판</th>
-                            <th><a href="#"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
+                            <th><a href="/board/1"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
                         </thead>
                         <tbody class="align-middle">
                             <tr>
@@ -90,16 +99,16 @@
                     <table class="table text-middle">
                         <thead class="align-middle">
                             <th width="20%">갤러리</th>
-                            <th width="80%"><a href="#"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
+                            <th width="80%"><a href="/gallery/1"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
                         </thead>
                         <tbody class="align-middle">
                             <% for(let i=0; i<3; i++){ %>
                                 <tr>
                                     <td>
-                                        <img src="./images/<%=g_result[i].g_img%>" style="width: 100px; height: 100px;">
+                                        <img src="/images/<%=result[i].g_img%>" style="width: 100px; height: 100px;">
                                     </td>
                                     <td>
-                                        <%=g_result[i].g_title%>
+                                        <%=result[i].g_title%>
                                     </td>
                                 </tr>
                             <%}%>
@@ -109,115 +118,8 @@
             </div>
         </div>
     </section>
-
-        <div class="container marketing">
-        <div class="row gx-5">
-            <div class="col-md">
-                <table style="width: 100%;">
-                    <td>
-                        <span style="margin-left: 10px; font-family: maple;">공지사항</span>
-                    </td>
-                    <td align= right>
-                        <a  href="#"><input type="button" class="btn" value="+"
-                        style="border: solid 1px black;"></a>
-                    </td>
-                </table>
-                <hr style="border: solid 1px lightgray">
-            </div>
-            <div class="col-md">
-                <table style="width: 100%;">
-                        <td>
-                            <span style="margin-left: 10px; font-family: maple;">학위논문</span>
-                        </td>
-                        <td align= right>
-                            <a  href="/board"><input type="button" class="btn" value="+"
-                            style="border: solid 1px black;"></a>
-                        </td>
-                </table>
-                <hr style="border: solid 1px lightgray">
-                <div>
-                    <table>
-                        <tr>
-                            <td>
-                                <span>
-                                    <a href="#"><img src="./images/report.svg" style="width: 100px; height: 100px; margin-right: 15px"></a>
-                                </span>
-                            </td>
-                            <td>
-                                <span>
-                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">이기종 네트워크를 위한 다중 셀 검출 기법sdsds</a>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <hr>
-                <div>
-                    <table>
-                        <tr>
-                            <td>
-                                <span>
-                                    <a href="#"><img src="./images/report.svg" style="width: 100px; height: 100px; margin-right: 15px"></a>
-                                </span>
-                            </td>
-                            <td>
-                                <span>
-                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">이기종 네트워크를 위한 다중 셀 검출 기법sdsds</a>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <hr>
-                <div>
-                    <table>
-                        <tr>
-                            <td>
-                                <span>
-                                    <a href="#"><img src="./images/report.svg" style="width: 100px; height: 100px; margin-right: 15px"></a>
-                                </span>
-                            </td>
-                            <td>
-                                <span>
-                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px">이기종 네트워크를 위한 다중 셀 검출 기법sdsds</a>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="col-md">
-                <table style="width: 100%;">
-                    <td>
-                        <span style="margin-left: 10px; font-family: maple;">갤러리</span>
-                    </td>
-                    <td align= right>
-                        <a  href="/gallery"><input type="button" class="btn" value="+"
-                        style="border: solid 1px black;"></a>
-                    </td>
-                </table>
-                <% for(let i=0; i<3; i++) { %>
-                <hr style="border: solid 1px lightgray">
-                <div>
-                    <table>
-                        <tr>
-                            <td>
-                                <span>
-                                    <a href="#"><img src="./images/<%=g_result[i].g_img%>" style="width: 100px; height: 100px; margin-right: 15px"></a>
-                                </span>
-                            </td>
-                            <td>
-                                <span>
-                                    <a href="#" style="color: black; font-weight: bold; font-size: 13px"><%=g_result[i].g_title%></a>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <% } %>
-                <hr>
-            </div>
-    </div>
-    </div>
+    <footer>
+        <% include ./include/footer %>
+    </footer>
 </body>
 </html>

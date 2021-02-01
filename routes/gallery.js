@@ -5,7 +5,7 @@ var db = require('../config/db')
 var dayjs =  require('dayjs')
 
 router.get('/:num', function(req, res, next) {
-    db.query('select * from Gallery', function (error, result) {
+    db.query('select * from Gallery ORDER BY gid DESC', function (error, result) {
         if (error) {
             throw error;
           }    
@@ -17,7 +17,7 @@ router.get('/:num', function(req, res, next) {
 });
 
 router.get('/detail', function(req, res, next) {
-    db.query('select * from Gallery', function (error, result) {
+    db.query('select * from Gallery ORDER BY gid DESC', function (error, result) {
         if (error) {
             throw error;
           }    

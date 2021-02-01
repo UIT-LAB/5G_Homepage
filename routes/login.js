@@ -18,18 +18,31 @@ router.post('/', function(req, res, next) {
     s.update(pw);
     var output = s.digest('hex');
     var datas = [id, output];
+
+    var select_Gallery = `select g_title, g_img from Gallery ORDER BY g_write_date DESC LIMIT 3`;
+    var select_Research = `select research_name_ko from Research_Fields ORDER BY date_start DESC LIMIT 3`;
     
     db.query('select * from UserInfo where u_id=? and u_pw=?',datas, function(err,result){
         if(err) throw err;
         if(result[0]!==undefined){                            
             req.session.u_name = result[0].u_name;
             req.session.isLogined = true;
-            db.query(`select * from Gallery`, function (error, result) {
+            db.query(select_Gallery, function (error, result) {
                 if(error){
                     throw error;
                 }
-                gallery = result;
-                res.render('index', {'g_result': gallery, name:req.session.u_name});
+                else{
+                    gallery = result;
+                    db.query(select_Research, function (error, result){
+                        if(error){
+                            throw error;
+                        }
+                        else{
+                            research = result;
+                            res.render('index', {'result': gallery, 'results':research , name:req.session.u_name});
+                        }
+                    })
+                }
             });
         };
     });
