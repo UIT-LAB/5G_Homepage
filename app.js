@@ -14,6 +14,7 @@ var galleryRouter = require('./routes/gallery');
 var memberRouter = require('./routes/member');
 var researchRouter = require('./routes/research');
 var helmet = require('helmet')
+var FileStore = require('session-file-store')(session);   
 var app = express();
 
 // view engine setup
@@ -26,7 +27,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var MySQLStore = require('express-mysql-session')(session);   
 
 //로그인 세션
 app.use(session({
@@ -34,13 +34,7 @@ app.use(session({
   secret: 'asdhgasdsdgaasdg',
   resave: false,
   saveUninitialized: true,
-  store: new MySQLStore({
-    host : process.env.DB_host,
-    port : process.env.DB_port,
-    user : process.env.DB_user,
-    password : process.env.DB_password,
-    database : process.env.DB_database
-  }),
+  store: new FileStore(),
   cookie: {
     maxAge: 24000 * 60 * 60 // 쿠키 유효기간 24시간
   }

@@ -15,17 +15,17 @@
     </style>
   </head>
 <body>
-  <div style="margin-top:60px; margin-bottom: 30px" id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+  <header>
+    <% include ../include/header %>
+  </header>
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" data-interval="2000">
             <img src="/images/gall.jpg" class="d-block w-100" alt="0" style="height: 40vh;">
         </div>
     </div>
 </div>
-<header>
-  <% include ../nav %>
-</header>
-    <div class="boardnav row mt-5 mb-5 fs-4">
+  <div class="boardnav row mt-5 mb-5 fs-4">
         <div class="col-md-1 mt-5">
             <table class="table table-hover table-bordered text-center border-dark">
                 <tbody>
@@ -50,68 +50,34 @@
               <thead>
                 <tr>
                   <th class ="text-center" scope="col" width="10%"><%= p_num %>번</th>
-                  <th class ="text-center"scope="col"width="60%"><%= result[p_num-1].p_title %></th>
-                  <th class ="text-center" scope="col" width="10%">작성자 : <%= result[p_num-1].p_writer %></th>
-                  <th class ="text-center" scope="col" width="20%">작성날짜 : <%= dayjs(result[p_num-1].p_writer_date).format('YY.MM.DD'); %></th>
+                  <th class ="text-center"scope="col"width="60%"><%= result[0].p_title %></th>
+                  <th class ="text-center" scope="col" width="10%">작성자 : <%= result[0].p_writer %></th>
+                  <th class ="text-center" scope="col" width="20%">작성날짜 : <%= dayjs(result[0].p_writer_date).format('YY.MM.DD'); %></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                <td class="text-center mt-5 fs-1 p-5"colspan="4"><%= result[p_num-1].p_content %></td>
+                <td class="text-center mt-5 fs-1 p-5"colspan="4"><%= result[0].p_content %></td>
                 </tr>
               </tbody>
              </table>
-             <div class="text-right fs-2">
+             <div class="float-end fs-2">
                 <input type ="button" value="목록" onclick="location.href='/board/post/1'"/>
                 <input type ="button" value="수정" onclick="location.href='/board/post/update/<%= p_num%>'"/>
-                <input type ="submit" value="삭제" onclick="javascript: form.action='/board/post/delete'"/>
-                <input type="hidden" name="titlex" value="<%= result[p_num-1].p_title%>"/>
-                <input type="hidden" name="writerx" value="<%= result[p_num-1].p_writer%>"/>
-                <input type="hidden" name="contentx" value="<%= result[p_num-1].p_content%>"/>
+                <input type ="submit" value="삭제" onclick="form.action='/board/post/delete'"/>
+                <input type="hidden" name="titlex" value="<%= result[0].p_title%>"/>
+                <input type="hidden" name="writerx" value="<%= result[0].p_writer%>"/>
+                <input type="hidden" name="contentx" value="<%= result[0].p_content%>"/>
                 
               </form>
 
-<<<<<<< HEAD
-          </div>
-          <br>
-          <table class="cmttable p-5">
-            <tbody class="text-center mt-5 fs-1 p-5">
-              <tr>
-                <th>날짜 작성</th>
-                <td>댓글 입니다.</td>
-              </tr>
-            </tbody>
-           </table>
-           <br>
-
-          <div  class="text-center fs-2">
-            <input type="text" name="post_comment">
-            <input type ="button" value="댓글 작성" />
-          </div> 
-      </div>
-=======
-              <table class="cmttable">
-                <thead>
-                  <tr>
-                    <td class="text-center" >날짜</td>
-                    <td class="text-center" colspan="4">코멘트</td>
-                  </tr>
-                </thead>
-                <tbody class="align-center">
-                  <tr>
-                    <th>댓글 작성 날짜</th>
-                    <td colspan="4">댓글 기능</td>
-                  </tr>
-                </tbody>
-               </table>
-
-               <br>
-              <div  class="text-left fs-2">
-                <input type ="button" value="댓글 작성" />
-              </div> 
+              
           </div>
         </div>
      </div>
->>>>>>> f9a8e76951ff834c4640ce22d37ab7793eaccc7a
+     
+     <footer>
+      <%include ../include/footer %>
+    </footer>
   </body>
 </html>
