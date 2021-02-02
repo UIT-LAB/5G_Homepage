@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="#fff">
 
     <ImageButton
         android:id="@+id/question_back_button"

@@ -35,7 +35,7 @@
                 android:orientation="horizontal">
 
                 <!-- Widget 가로 배치 -->
-                <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                <TableLayout
                     android:id="@+id/Information_table"
                     android:layout_width="390dp"
                     android:layout_height="100dp"
@@ -47,29 +47,24 @@
 
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
                             android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
+                            android:layout_marginBottom="5dp"
                             android:text="공지사항"
                             android:textSize="18sp"
                             android:textStyle="bold" />
                     </TableRow>
 
-                    <TextView
-                        android:id="@+id/main_item_notice_title"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/notice_content_main_recyclerview"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:textColor="@android:color/black"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:text="TITLE" />
+                        android:layout_height="match_parent"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
                 </TableLayout>
 
                 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -92,22 +87,17 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
                             android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
+                            android:layout_marginBottom="5dp"
                             android:text="정보 게시판"
                             android:textSize="18sp"
                             android:textStyle="bold" />
                     </TableRow>
 
-                    <TextView
-                        android:id="@+id/item_post_title"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/post_content_main_recyclerview"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:textColor="@android:color/black"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:text="TITLE" />
+                        android:layout_height="match_parent"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
                 </TableLayout>
 
                 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -130,22 +120,17 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
                             android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
+                            android:layout_marginBottom="5dp"
                             android:text="연구실 논문"
                             android:textSize="18sp"
                             android:textStyle="bold" />
                     </TableRow>
 
-                    <TextView
-                        android:id="@+id/item_article_title"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/treatise_content_main_recyclerview"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:textColor="@android:color/black"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:text="TITLE" />
+                        android:layout_height="match_parent"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
                 </TableLayout>
 
             </RelativeLayout>

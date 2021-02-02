@@ -21,6 +21,6 @@ public class RetrofitID {
     public static String notice_title = "n_title";
     public static String notice_contents = "n_content";
 
-    public static String question_title = "title";
-    public static String question_content = "content";
+    public static String question_title = "q_title";
+    public static String question_content = "q_content";
 }

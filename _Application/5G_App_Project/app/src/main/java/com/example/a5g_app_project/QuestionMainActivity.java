@@ -128,6 +128,6 @@ public class QuestionMainActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        startActivity(new Intent(this, NoticeActivity.class));
+        startActivity(new Intent(this, QuestionActivity.class));
     }
 }
