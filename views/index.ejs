@@ -34,22 +34,20 @@
                 <div class="col-md">
                     <table class="table table-hover" style="table-layout: fixed;">
                         <thead class="align-middle">
-                            <th>공지사항</th>
-                            <th><a href="/board/notice/1"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
+                            <th width="20%">공지사항</th>
+                            <th width="80%"><a href="/board/notice/1"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
                         </thead>
                         <tbody class="align-middle">
-                            <tr scope="row">
-                                <th>12</th>
-                                <td>hi</td>
-                            </tr></a>
-                            <tr>
-                                <th>1</th>
-                                <td>hi</td>
-                            </tr>
-                            <tr>
-                                <th>1</th>
-                                <td>hi</td>
-                            </tr>
+                            <% for(let i=0; i<3; i++){ %>
+                                <tr>
+                                    <td>
+                                        <img src="/images/5g.png" style="width: 100px; height: 100px;">
+                                    </td>
+                                    <td>
+                                        <%=n_result[i].n_title%>
+                                    </td>
+                                </tr>
+                            <%}%>
                         </tbody>
                     </table>
                 </div>
@@ -66,7 +64,7 @@
                                         <img src="/images/report.svg" style="width: 100px; height: 100px;">
                                     </td>
                                     <td>
-                                        <%=results[i].research_name_ko%>
+                                        <%=r_result[i].research_name_ko%>
                                     </td>
                                 </tr>
                             <%}%>
@@ -80,18 +78,20 @@
                 <div class="col-md">
                     <table class="table text-middle">
                         <thead class="align-middle">
-                            <th>게시판</th>
-                            <th><a href="/board/1"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
+                            <th width="20%">게시판</th>
+                            <th width="80%"><a href="/board/1"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
                         </thead>
                         <tbody class="align-middle">
-                            <tr>
-                                <th>1</th>
-                                <td>hi</td>
-                            </tr>
-                            <tr>
-                                <th>1</th>
-                                <td>hi</td>
-                            </tr>
+                            <% for(let i=0; i<3; i++){ %>
+                                <tr>
+                                    <td>
+                                        <img src="/images/report.svg" style="width: 100px; height: 100px;">
+                                    </td>
+                                    <td>
+                                        <%=p_result[i].p_title%>
+                                    </td>
+                                </tr>
+                            <%}%>
                         </tbody>
                     </table>
                 </div>
@@ -105,10 +105,10 @@
                             <% for(let i=0; i<3; i++){ %>
                                 <tr>
                                     <td>
-                                        <img src="/images/<%=result[i].g_img%>" style="width: 100px; height: 100px;">
+                                        <img src="/images/<%=g_result[i].g_img%>" style="width: 100px; height: 100px;">
                                     </td>
                                     <td>
-                                        <%=result[i].g_title%>
+                                        <%=g_result[i].g_title%>
                                     </td>
                                 </tr>
                             <%}%>

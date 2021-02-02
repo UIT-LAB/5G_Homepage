@@ -39,15 +39,17 @@
                 </div>
                 <table class="table table-hover text-center text-middle">
                     <thead class="align-middle">
-                        <th>논문명</th>
-                        <th>게재지(권, 쪽)</th>
-                        <th>저자명</th>
-                        <th>게재<br>연도</th>
+                        <th width="5%">번호</th>
+                        <th width="50%">논문명</th>
+                        <th width="20%">게재지(권, 쪽)</th>
+                        <th width="20%">저자명</th>
+                        <th width="5%">게재<br>연도</th>
                     </thead>
                     <tbody class="align-middle">
                         <% for(var i=0; i<10; i++){%>
                             <tr onclick="location.href='/research/research_detail'">
-                                <td><%=i%>번글 서해 실해역에서 CSS 기반 저전력 수중 통신 시스템의 성능 분석에 대한 연구</td>
+                                <td><%=i%></td>
+                                <td>서해 실해역에서 CSS 기반 저전력 수중 통신 시스템의 성능 분석에 대한 연구</td>
                                 <td>한국통신학회논문지(제45권 2호, pp.344-354)</td>
                                 <td>이태석. 김준호, 고학림, 조용호</td>
                                 <td>2020</td>
