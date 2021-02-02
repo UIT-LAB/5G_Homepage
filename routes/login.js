@@ -14,9 +14,8 @@ router.post('/', function(req, res, next) {
     var body = req.body;
     var id = body.inputid;
     var pw = body.inputpw;
-    var s = crypto.createHash('sha1');
-    s.update(pw);
-    var output = s.digest('hex');
+    
+    var output = crypto.createHash('sha512').update(pw).digest('base64')
     var datas = [id, output];
 
     var select_Gallery = `select g_title, g_img from Gallery ORDER BY g_write_date DESC LIMIT 3`;
@@ -110,13 +109,12 @@ router.post('/changePw', function(req, res){
 
 router.post('/pwCheck', function(req, res){
     var body = req.body;
-    var u_email = body.input_email;
+    var u_id = body.input_id;
     var changepw = body.changepw;
-    var s = crypto.createHash('sha1');
-    s.update(changepw);
-    var output = s.digest('hex');
-    var datas = [output, u_email]    
-    db.query(`Select EXISTS (Select * from UserInfo where u_email = ?) as isChk`,[req.body.input_email],function (error, result) {
+    
+    var output = crypto.createHash('sha512').update(changepw).digest('base64')
+    var datas = [output, u_id]    
+    db.query(`Select EXISTS (Select * from UserInfo where u_id = ?) as isChk`,[req.body.input_id],function (error, result) {
         if(error) {
             throw error;
         }    
@@ -126,7 +124,7 @@ router.post('/pwCheck', function(req, res){
                 console.log(req.body.input_email);
             }
             else if(result[0].isChk == 1){
-                db.query(`Update UserInfo set u_pw = ? where u_email = ?`,datas,function (error, result) {
+                db.query(`Update UserInfo set u_pw = ? where u_id = ?`,datas,function (error, result) {
                     if(error){
                         throw error;
                     }
@@ -152,10 +150,8 @@ router.post('/signup_data', function(req, res, next){
     var email = body.signup_Email;
     var datetime = date.format('YYYY-MM-DD HH:mm:ss');
     
-    var s = crypto.createHash('sha1');
-    s.update(pw);
-    var output = s.digest('hex');
     
+    var output = crypto.createHash('sha512').update(pw).digest('base64')
 
     var sql = {u_id:id, u_pw: output , u_name:name, u_email:email, u_date:datetime};
  

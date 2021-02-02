@@ -15,16 +15,16 @@
     </style>
   </head>
 <body>
-  <div style="margin-top:60px; margin-bottom: 30px" id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+  <header>
+    <% include ../include/header %>
+  </header>
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" data-interval="2000">
             <img src="/images/gall.jpg" class="d-block w-100" alt="0" style="height: 40vh;">
         </div>
     </div>
 </div>
-<header>
-  <% include ../nav %>
-</header>
     <div class="boardnav row mt-5 mb-5 fs-4">
        <div class="col-md-1 mt-5">
         <table class="table table-hover table-bordered text-center border-dark">
@@ -56,11 +56,17 @@
           <tr><td class="text-left mt-5 fs-1 p-5"colspan="4"><input type="text" name="post_content" style="width:100%; height:400px"placeholder="내용"></td></tr>
           </tbody>
           </table>
-         <div class="text-right mr-5 fs-2">
+         <div class="float-end mr-5 fs-2">
           <input type ="submit" value="저장">
          </div>
         </form>
       </div>
+      </div>
+      
+    </div>
+     <footer>
+      <%include ../include/footer %>
+    </footer>
   </body>
  
 
