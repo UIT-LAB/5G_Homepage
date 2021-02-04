@@ -32,14 +32,14 @@
         <div class="container mt-3">
             <div class="row gx-5">
                 <div class="col-md">
-                    <table class="table table-hover" style="table-layout: fixed;">
+                    <table class="table table-hover"">
                         <thead class="align-middle">
                             <th width="20%">공지사항</th>
                             <th width="80%"><a href="/board/notice/1"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
                         </thead>
                         <tbody class="align-middle">
                             <% for(let i=0; i<3; i++){ %>
-                                <tr>
+                                <tr onclick="location.href='/board/notice/detail/<%=n_result[i].nid%>'">
                                     <td>
                                         <img src="/images/5g.png" style="width: 100px; height: 100px;">
                                     </td>
@@ -83,7 +83,7 @@
                         </thead>
                         <tbody class="align-middle">
                             <% for(let i=0; i<3; i++){ %>
-                                <tr>
+                                <tr onclick="location.href='/board/post/detail/<%=p_result[i].pid%>'">
                                     <td>
                                         <img src="/images/report.svg" style="width: 100px; height: 100px;">
                                     </td>
@@ -118,6 +118,7 @@
             </div>
         </div>
     </section>
+    <i class="bi bi-alarm-fill"></i>
     <footer>
         <% include ./include/footer %>
     </footer>
