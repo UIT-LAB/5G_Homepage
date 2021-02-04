@@ -19,7 +19,7 @@ router.get('/notice/detail/:num', function(req, res, next) {
   db.query('select * from Notice_Board where nid = ?', req.params.num, function (error, result) {
     if (error) {
       throw error;
-    }    
+    }   
     else {
       db.query(`update Notice_Board set n_view = n_view+1 where nid = ?`,req.params.num , function (error, n_view) {
         if(error){
