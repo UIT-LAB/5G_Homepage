@@ -41,6 +41,11 @@
     <string name="question_detail_delete_button">삭제</string>
     <string name="post_detail_title_main">정보 게시판</string>
 
+    <string name="treatise_title">연구소 논문</string>
+    <string name="treatise_write_save_button">저장</string>
+    <string name="treatise_detail_delete_button">삭제</string>
+    <string name="treatise_detail_title_main">논문</string>
+
 
     <string name="register">Sign Up</string>
     <string name="login_email_hint">Email</string>
