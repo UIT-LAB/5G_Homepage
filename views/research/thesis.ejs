@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://cdn.discordapp.com/attachments/751431280519807068/800629207469785128/5g.png" rel="shortcut icon" type="images/x-icon">
+
+    <style>
+        .table-hover tbody tr{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <% include ../include/header %>
+    </header>
+    <div class="container">
+        <div class="row mt-5 mb-5">
+            <div class="col-md-2">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li style="cursor: pointer;" class="breadcrumb-item" onclick="location.href='/research'">연구</li>
+                        <li class="breadcrumb-item active" aria-current="page">학술논문</li>
+                    </ol>
+                </nav>
+                <table class="table table-hover table-bordered text-center">
+                    <tbody>
+                        <tr onclick="location.href='/research'">
+                            <td>연구과제</td>
+                        </tr>
+                        <tr onclick="location.href='/research/thesis'">
+                            <td>학술논문</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-10">
+                <div class="text-center m-5">
+                    <h1>학술논문</h1>
+                    발표한 논문 게시판
+                </div>
+                <table class="table table-hover text-center text-middle">
+                    <thead class="align-middle">
+                        <th width="5%">번호</th>
+                        <th width="50%">논문명</th>
+                        <th width="20%">게재지(권, 쪽)</th>
+                        <th width="20%">저자명</th>
+                        <th width="5%">게재<br>연도</th>
+                    </thead>
+                    <tbody class="align-middle">
+                        <% for(var i=0; i<10; i++){%>
+                            <tr onclick="location.href='/research/thesis_detail'">
+                                <td><%=i%></td>
+                                <td>서해 실해역에서 CSS 기반 저전력 수중 통신 시스템의 성능 분석에 대한 연구</td>
+                                <td>한국통신학회논문지(제45권 2호, pp.344-354)</td>
+                                <td>이태석. 김준호, 고학림, 조용호</td>
+                                <td>2020</td>
+                            </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <input type="button" class="btn" value="<">
+                    <% for(var i=0;i<5; i++){%>
+                        <input type="button" class="btn" value="<%=i+1%>">
+                    <%}%>
+                    <input type="button" class="btn" value=">">
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <% include ../include/footer %>
+    </footer>
+</body>
+</html>

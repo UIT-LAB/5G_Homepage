@@ -19,6 +19,14 @@ router.get('/detail/:num', function(req, res, next) {
     res.render('research/research_detail',{name:req.session.u_name});
 });
 
+router.get('/thesis', function(req, res, next) {
+    res.render('research/thesis',{name:req.session.u_name});
+});
+
+router.get('/thesis_detail', function(req, res, next) {
+    res.render('research/thesis_detail',{name:req.session.u_name});
+});
+
 router.get('/field', function(req, res, next) {
     res.render('index');
 });

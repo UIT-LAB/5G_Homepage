@@ -18,15 +18,15 @@
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li style="cursor: pointer;" class="breadcrumb-item" onclick="location.href='/research'">연구</li>
-                        <li class="breadcrumb-item active" aria-current="page">학술논문</li>
+                        <li class="breadcrumb-item active" aria-current="page">연구과제</li>
                     </ol>
                 </nav>
                 <table class="table table-hover table-bordered text-center">
                     <tbody>
-                        <tr onclick="location.href='#'">
+                        <tr onclick="location.href='/research'">
                             <td>연구과제</td>
                         </tr>
-                        <tr onclick="location.href='/research'">
+                        <tr onclick="location.href='/research/thesis'">
                             <td>학술논문</td>
                         </tr>
                     </tbody>
@@ -34,15 +34,15 @@
             </div>
             <div class="col-md-10">
                 <div class="text-center m-5">
-                    <h1>학술논문</h1>
-                    발표한 논문 게시판
+                    <h1>연구과제</h1>
+                    5G 사업단 연구 과제
                 </div>
                 <table class="table table-hover text-center text-middle">
                     <thead class="align-middle">
-                        <th>논문명</th>
-                        <th>게재지(권, 쪽)</th>
-                        <th>저자명</th>
-                        <th>게재<br>연도</th>
+                        <th width="5%">번호</th>
+                        <th width="55%">연구과제명</th>
+                        <th width="25%">기간</th>
+                        <th width="15%">상태</th>
                     </thead>
                     <tbody class="align-middle">
                         <% for(var i = (r_num - 1) * max_value; i < r_num * max_value; i++){ %>

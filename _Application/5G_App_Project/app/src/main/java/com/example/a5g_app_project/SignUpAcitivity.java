@@ -48,7 +48,7 @@ public class SignUpAcitivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.20:3000/")
+                .baseUrl("http://192.168.0.20:3001/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
