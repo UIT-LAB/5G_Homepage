@@ -42,14 +42,20 @@
                 </div>
                 <div>
                     <nav>
-                      <ul class="pagination justify-content-center">
-                        <li class="page-item"><a class="page-link" style="color: black;" href="#">이전</a></li>
-                        <% for(var i = 1; i<= Math.ceil(result.length / max_value); i++){ %>
-                        <li class="page-item"><a class="page-link" style="color: black;" href="/gallery/<%= i %>"><%= i %></a>
-                        <% } %>
-                        <li class="page-item"><a class="page-link"style="color: black;" href="#">다음</a></li>
-                      </ul>
-                    </nav>
+                        <ul class="pagination justify-content-center mt-5">
+                          <% if(g_num == 1) { %>
+                              <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/gallery/<%=Number(g_num)-1%>">">이전</a></li>
+                          <% } else if (g_num > 1) { %>
+                              <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/gallery/<%=Number(g_num)-1%>">이전</a></li>
+                          <% } %>
+                          <% for(var j = 1; j<= Math.ceil(result.length / max_value); j++){ %>
+                          <li class="page-item"><a class="page-link" style="color: black;" href="/research/<%= j %>"><%= j %></a>
+                          <% } if(g_num == Math.ceil(result.length / max_value)) { %>
+                              <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/gallery/<%=Number(g_num)+1%>">다음</a></li>
+                          <% } else if (g_num < Math.ceil(result.length / max_value)) { %>
+                              <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/gallery/<%=Number(g_num)+1%>">다음</a></li>
+                          <% } %></ul>
+                      </nav>
                   </div>
             </div>
         </div>
