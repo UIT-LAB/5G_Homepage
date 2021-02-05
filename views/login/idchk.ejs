@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
@@ -16,7 +17,6 @@
     <style>
         .title{
             margin-top: 25px;
-            margin-bottom: 25px;
             text-align: center;
             font-size: 28px;
             font-weight: 900;
@@ -25,13 +25,11 @@
             text-align: center;
             font-size: 18px;
         }    
-        .form-pwcheck .form-control{
-            margin: 5px;
+        .form-signin input[type=text]{
             width: 70%;
             border-radius: 10px;
         }
         .btn{
-            margin-top: 50px;
             width: 90px;
             height: 70px;
             font-size: 25px;
@@ -39,22 +37,18 @@
     </style>
 </head>
 <body>
-    <div class="title">비밀번호 변경</div>
-    <p class="subtitle">당신의 새로운 비밀번호를 입력해주세요.</p><br>
-    <form action="./pwCheck" method="POST" class="form-pwcheck">
+    <form action="./idcheck" method="POST" class="form-signin">
+        <p class="title">ID 중복확인</p>
+        <p class="subtitle">사용할 아이디를 입력하여 주세요</p>
         <div align="center">
-            <input type="text" name="input_id" class="form-control" placeholder="ID">
-            <input type="password" name="changepw" class="form-control" placeholder="PW">
-            <input type="password" name="changepw_check" class="form-control" placeholder="PWCHECK">    
+            <input type="text" name="input_id" class="form-control" placeholder="id">
         </div>
-        <div class="text-center">
-            <button class="btn btn-dark btn-block" type="submit" ">변경</button>
+        <br>
+        <hr style="border: solid 1px lightgray">
+
+        <div align="center">
+            <button class="btn btn-dark btn-block" type="submit">검색</button>
         </div>
-    </form>
-   
+    </form>   
 </body>
 </html>
-
-<script>
-   
-</script>

@@ -7,7 +7,7 @@ var crypto = require('crypto');
 
 
 router.get('/', function (req, res, next) {
-    res.render('login/login');
+    res.render('login/login',{name:req.session.u_name});
 });
 
 router.post('/', function (req, res, next) {
@@ -151,7 +151,7 @@ router.post('/pwCheck', function (req, res) {
                         throw error;
                     }
                     else {
-                        res.render('login/pwCheck_Success.ejs', { result: result });
+                        res.send('<script>alert(`성공적으로 변경되었습니다.`); window.close(); </script>')
                     }
                 });
             }
@@ -160,7 +160,7 @@ router.post('/pwCheck', function (req, res) {
 })
 //----------- signUp
 router.get('/signUp', function (req, res, next) {
-    res.render('login/signUp');
+    res.render('login/signUp',{name:req.session.u_name});
 });
 
 router.post('/signup_data', function (req, res, next) {
@@ -188,6 +188,11 @@ router.post('/signup_data', function (req, res, next) {
     });
 })
 
+
+router.get('/idchk', function (req, res, next) {
+    res.render('login/idchk');
+});
+
 router.post('/idcheck', function (req, res, next) {
     var body = req.body;
     var chk_id = body.signup_Id;
@@ -199,10 +204,10 @@ router.post('/idcheck', function (req, res, next) {
         }
         else {
             if (result[0].isChk == 0) {
-                res.send('<script>alert(`사용 가능한 아이디 입니다.`); location.href=`/login/signUp`</script>')
+                res.send('<script>alert(`사용 가능한 아이디 입니다.`); window.close(); </script>')
             }
             else if (result[0].isChk == 1) {
-                res.send('<script>alert(`중복된 아이디 입니다.`); location.href=`/login/signUp` </script>')
+                res.send('<script>alert(`중복된 아이디 입니다.`); history.back(); </script>')
             }
         };
     });

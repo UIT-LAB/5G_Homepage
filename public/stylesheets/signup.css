@@ -4,83 +4,24 @@
     font-weight: 700;
     src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
     src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
-   }
-body{
+}
+.hello{
     font-family: 'NanumBarunGothic';
+    background-image: url('../images/gall.jpg');
     background-size: cover;
-    background-color: #2c2c2c;
+    background-repeat: no-repeat;
 }
-.main1{
-    display: flex;
-    height: 100%;
-    margin-top: 10px;
-    align-items: center;
-}
-.main2{
-    width: 100%;
-    max-width: 50%;
-    height: 100%;
-    color: white;
-}
-.main3{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    padding: 16%;
-    align-items: center;
-    left: 0;
-    top: 0;
-}
-.main4{
-    display: none;
-    background-image:url("/images/nl.jpg");
-    background-size: cover;
-    height: 100%;
-    position: fixed;
-    right: 0;
-    top: 0;
-}
-.icon{
-    padding-top: 35px;
-}
-.modal-body{
-    color: black;
-}
-
-
-/* table css*/
-table{
-    padding :10px;
-}
-thead{
-    text-align:left;
-}
-thead #main{
-    font-size:50px;
-}
-td{
-    width:500px;
+.loginform{
+    background-color: rgba(255,255,255,0.8);
+    text-align: center;
+    width: 520px;
+    position: relative;
+    min-height: 100vh;
 }
 .wow{
-    color: white;
-    padding-top: 25px;
-    text-align: center;
+    padding: 20px;
+    width: 330px;
 }
-.btnwow{
-    padding-top: 25px;
-    text-align: center;
-}
-.btnwow #join-submit{
-    width: 100%;
-}
-.holy{
-    color: white;
-    padding-top: 4px;
-}
-
-
-.icon{
-    position: fixed;
-    bottom: 0; 
+.title{
+    font-size: 35px;
 }
