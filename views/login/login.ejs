@@ -4,51 +4,83 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
     
-    <link href="./stylesheets/style.css" rel="stylesheet">
+    <link href="../stylesheets/style.css" rel="stylesheet">
 
 </head>
 
 <body>
-    <div class="main1">
-        <div class="main2">
-            <div class="main3">
-                    <h3>5G login</h3>
-                <form class="form-signin" method="POST">
-                    <input type="text" name="inputid" class="form-control mt-3 mb-1" placeholder="ID">
-                    <input type="password" name="inputpw" class="form-control" placeholder="PW">
-                    <br>
-                    <div class="find">
-                        혹시 계정을 잊어버리셨나요? <span><a href="/login/findId">아이디 찾기</a></span> <br>
-                        비밀번호를 잊어버리셨나요?  <span><a href="/login/findPw">비밀번호 변경하기</a></span><br>
-                        계정이 없으신가요? <span><a href="/login/signUp">회원가입</a></span>
-                    </div>
-                    <hr style="border: solid 1px lightgray">
-                    <div class="loginbtn">
-                        <div class="login"><button class="btn btn-dark btn-block" type="submit" onclick="javascript: form.action='/login'">로그인</button></div>
-                    </div>
-                    <div class="icon">
-                        <img class="mb-4" src="/images/5g.png" alt="" width="72" height="72">
-                    </div>
-                </form>
-                <div class="main4 d-lg-block col-lg-6"></div>
+    <div class="hello">
+        <div align="right">
+            <div class="loginform">
+                <table class="wow" align="center">
+                    <thead class="mt-4">
+                        <tr>
+                            <th><p class="title mt-5">5G login</p></th>
+                        </tr>
+                        <tr>
+                            <th><p class="subtitle mb-4">Welcome to 5G!</p></th>
+                        </tr>
+                    </thead>
+                    <form class="form-signin" method="POST">
+                    <tbody>
+                        <tr>
+                            <th>
+                                <input type="text" name="inputid" class="form-control mb-2" placeholder="ID">
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="password" name="inputpw" class="form-control mb-5" placeholder="PW">
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <button class="btn btn-primary w-100 mb-5" type="submit" onclick="javascript: form.action='/login'">로그인</button>
+                            </th>
+                        </tr>
+                    </tbody>
+                    </form>
+                    <tfoot>
+                        <tr>
+                            <th>
+                                <div align="left">
+                                    아이디를 잊어버리셨나요? <span><a href="#" onclick="openid()">아이디 찾기</a></span> <br>
+                                    비밀번호를 잊어버리셨나요?  <span><a href="#" onclick="openpw()">비밀번호 변경하기</a></span><br>
+                                    계정이 없으신가요? <span><a href="/login/signUp">회원가입</a></span>
+                                </div>    
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
         </div>
     </div>
+    
 </body>
 
 </html>
 <script>
-    function gofindId() {
-        location.href="login/findId";
+    function openid(){
+        var popup=window.open('/login/findId', '아이디 찾기', 'width=500px, height=500px, scrollbars=no, toolbar=no, resizeable=no, top=0, left=50');
     }
-    function gofindPw() {
-        location.href="login/findPw";
+
+    function openpw(){
+        var popup=window.open('/login/findPw', '비밀번호 찾기', 'width=500px, height=500px, scrollbars=no, toolbar=no, resizeable=no, top=0, left=50');
     }
+
     function itrclogin(){
         location.href="index.ejs";
     }
@@ -59,8 +91,8 @@
         var re1 = /^[a-zA-Z0-9]{4,12}$/;
         var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
 
-        var itrcid = document.getElementById("inputid");
-        var itrcpw = document.getElementById("inputpw");
+        var itrcid = document.getElementByName("inputid");
+        var itrcpw = document.getElementByName("inputpw");
 
         if ((itrcid.value) == ""){
             alert("아이디를 입력하지 않았습니다.");

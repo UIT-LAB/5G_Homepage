@@ -4,49 +4,55 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
     
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-            crossorigin="anonymous"></script>
-    
-        <link href="/stylesheets/style.css" rel="stylesheet">
-    
+        <style>
+            .title{
+                margin-top: 25px;
+                text-align: center;
+                font-size: 28px;
+                font-weight: 900;
+            }
+            .subtitle{
+                text-align: center;
+                font-size: 18px;
+            }    
+            .form-signin input[type=text]{
+                width: 70%;
+                border-radius: 10px;
+            }
+            .form-signin input[type=email]{
+                width: 70%;
+                border-radius: 10px;
+            }
+            .btn{
+                width: 90px;
+                height: 70px;
+                font-size: 25px;
+            }
+        </style>
     </head>
     <body>
-        <div class="main1">
-            <div class="main2">
-                <div class="main3">
-                    <form action="./findId" method="POST" class="form-signin">
-                        <h3>ID찾기</h3>
-                        <p>아이디를 검색 하기 위해 사용자 이메일을 입력하시오</p>
-                        <input type="text" name="input_email" class="form-control" placeholder="email">
-                        <br>
-                        <div class="find">
-                            혹시 계정을 찾으셨나요? <span><a href="/login">로그인 하기</a></span><br>
-                            비밀번호를 잊어버리셨나요?  <span><a href="/login/findPw">비밀번호 변경하기</a></span>
-                        </div>
-                        <hr style="border: solid 1px lightgray">
-
-                        <div class="loginbtn">
-                            <div class="login"><button class="btn btn-dark btn-block" type="submit">검색</button></div>
-                        </div>
-                        
-                        <div class="icon">
-                            <img class="mb-4" src="/images/5g.png" alt="" width="72" height="72">
-                        </div>
-                    </form>  
-                    <div class="main4 d-lg-block col-lg-6"></div>      
-                </div>
+        <form action="./findId" method="POST" class="form-signin">
+            <p class="title">ID찾기</p>
+            <p class="subtitle">아이디를 검색 하기 위해 <br> 사용자 이메일을 입력하시오</p>
+            <div align="center">
+                <input type="email" name="input_email" class="form-control" placeholder="email">
             </div>
-        </div>
+            <br>
+            <hr style="border: solid 1px lightgray">
+
+            <div align="center">
+                <button class="btn btn-dark btn-block" type="submit">검색</button>
+            </div>
+        </form>   
     </body>
     
 </html>
