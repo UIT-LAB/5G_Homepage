@@ -57,7 +57,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.20:3000/")
+                .baseUrl("http://192.168.0.20:3001/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -76,7 +76,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                             //정상적으로 통신이 성공한 경우
                             HashMap<String, String> a = response.body();
                             Log.d("Question", a.get("result"));
-                            Log.d("Question", "Success");
+                            Log.d("Question", "Success!!");
                             finish();
                         }else{
                             Log.d("Question", "Fail!");

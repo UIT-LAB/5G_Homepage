@@ -74,19 +74,43 @@
                     <%= data_value.p_view %>
                   </td>
                 </tr>
+</thead>
+              <tbody>
+                <% for(var i = (p_num - 1) * max_value; i < p_num * max_value; i++){ %>
+                  <% var data_value = result[i];
+                      if(data_value === undefined){
+                          continue;
+                      }
+                  %>
+                <tr onclick="location.href='/board/post/detail/<%= data_value.pid %>'" >
+                  <th class ="text-center" scope="row"><%= i+1 %></th>
+                  <td><%= data_value.p_title %></td>
+                  <td class ="text-center"><%= data_value.p_writer %></td>
+                  <td class ="text-center"><%= dayjs(data_value.p_writer_date).format('YYYY.MM.DD');%></td>
+                  <td class ="text-center"><%= data_value.p_view %></td>
+                </tr>
                 <% } %>
-          </tbody>
-        </table>
-        <div class="text-center">
-          <%if(name != null){%>
-            <button class="btn btn-outline-dark float-end" onclick="location.href='/board/notice_write'">작성</button><br>
-          <%}%>
-          <input type="button" class="btn" onclick="location.href='/board/post/1'" value="<">
-          <% for(var i=1; i<=Math.ceil(result.length / max_value); i++){ %>
-            <input onclick="location.href='/board/post/<%=i%>'" type="button" class="btn" value="<%=i%>">
-            <%}%>
-              <input type="button" class="btn"
-                onclick="location.href='/board/post/<%=Math.ceil(result.length / max_value)%>'" value=">">
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <nav>
+              <ul class="pagination justify-content-center mt-5">
+                <% if(p_num == 1) { %>
+                    <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/post/<%=Number(p_num)-1%>">">이전</a></li>
+                <% } else if (p_num > 1) { %>
+                    <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/post/<%=Number(p_num)-1%>">이전</a></li>
+                <% } %>
+                <% for(var j = 1; j<= Math.ceil(result.length / max_value); j++){ %>
+                <li class="page-item"><a class="page-link" style="color: black;" href="/research/<%= j %>"><%= j %></a>
+                <% } if(p_num == Math.ceil(result.length / max_value)) { %>
+                    <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/post/<%=Number(p_num)+1%>">다음</a></li>
+                <% } else if (p_num < Math.ceil(result.length / max_value)) { %>
+                    <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/post/<%=Number(p_num)+1%>">다음</a></li>
+                <% } %></ul>
+            </nav>
+          </div>
         </div>
       </div>
     </div>

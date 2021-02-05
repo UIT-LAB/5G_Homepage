@@ -74,17 +74,26 @@
                   </td>
                 </tr>
                 <% } %>
-          </tbody>
-        </table>
-        <div class="text-center">
-          <%if(name != null){%>
-            <button class="btn btn-outline-dark float-end" onclick="location.href='/board/notice_write'">작성</button><br>
-          <%}%>
-          <input type="button" class="btn" onclick="location.href='/board/notice/1'" value="<">
-            <% for(var i = 1; i<= Math.ceil(result.length / max_value); i++){ %>
-              <input onclick="location.href='/board/notice/<%=i%>'" type="button" class="btn" value="<%=i%>">
-            <%}%>
-            <input type="button" class="btn" onclick="location.href='/board/notice/<%=Math.ceil(result.length / max_value)%>'" value=">">
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <nav>
+              <ul class="pagination justify-content-center mt-5">
+                <% if(n_num == 1) { %>
+                    <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/notice/<%=Number(n_num)-1%>">">이전</a></li>
+                <% } else if (n_num > 1) { %>
+                    <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/notice/<%=Number(n_num)-1%>">이전</a></li>
+                <% } %>
+                <% for(var j = 1; j<= Math.ceil(result.length / max_value); j++){ %>
+                <li class="page-item"><a class="page-link" style="color: black;" href="/research/<%= j %>"><%= j %></a>
+                <% } if(n_num == Math.ceil(result.length / max_value)) { %>
+                    <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/notice/<%=Number(n_num)+1%>">다음</a></li>
+                <% } else if (n_num < Math.ceil(result.length / max_value)) { %>
+                    <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/notice/<%=Number(n_num)+1%>">다음</a></li>
+                <% } %></ul>
+            </nav>
+          </div>
         </div>
       </div>
     </div>

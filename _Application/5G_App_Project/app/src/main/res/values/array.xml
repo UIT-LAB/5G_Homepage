@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="논문">
+        <item>논문</item>
+        <item>특허</item>
+        <item>발표</item>
+        <item>저서</item>
+    </string-array>
+</resources>

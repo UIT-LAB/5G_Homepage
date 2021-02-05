@@ -14,11 +14,11 @@ public class QuestionMainDTO {
     @SerializedName("user_id")
     private String user_id;
 
-    @SerializedName("title")
-    private String title;
+    @SerializedName("q_title")
+    private String q_title;
 
-    @SerializedName("content")
-    private String content;
+    @SerializedName("q_content")
+    private String q_content;
 
     @SerializedName("write_date")
     private String writer_date;
@@ -29,10 +29,10 @@ public class QuestionMainDTO {
     @SerializedName("admin_date")
     private String admin_date;
 
-    public QuestionMainDTO(String qid, String title, String content, String writer_date, String admin_comment, String admin_date) {
+    public QuestionMainDTO(String qid, String q_title, String q_content, String writer_date, String admin_comment, String admin_date) {
         this.qid = qid;
-        this.title = title;
-        this.content = content;
+        this.q_title = q_title;
+        this.q_content = q_content;
         this.writer_date = writer_date;
         this.admin_comment = admin_comment;
         this.admin_date = admin_date;
@@ -40,8 +40,8 @@ public class QuestionMainDTO {
     }
 
     public String getQid() {return qid;}
-    public String getQ_title() {return title;}
-    public String getQ_content() {return content;}
+    public String getQ_title() {return q_title;}
+    public String getQ_content() {return q_content;}
     public String getQ_writer_date() {return writer_date;}
     public String getQ_admin_comment() {return admin_comment;}
     public String getQ_admin_date() {return admin_date;}
@@ -52,8 +52,8 @@ public class QuestionMainDTO {
         return "QuestionMainDTO{" +
                 "qid='" + qid + '\'' +
                 ", user_id='" + user_id + '\'' +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
+                ", title='" + q_title + '\'' +
+                ", content='" + q_content + '\'' +
                 ", writer_date='" + writer_date + '\'' +
                 ", admin_comment='" + admin_comment + '\'' +
                 ", admin_date='" + admin_date + '\'' +
