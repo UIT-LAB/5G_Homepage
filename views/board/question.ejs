@@ -10,9 +10,6 @@
     }
   </style>
 
-  <style>
-    @import url(/stylesheets/board.css);
-  </style>
 </head>
 
 <body>
@@ -67,7 +64,7 @@
                     <%= data_value.q_title %>
                   </td>
                   <td class="text-center">
-                    <%= data_value.user_id %>
+                    <%= data_value.q_writer %>
                   </td>
                   <td class="text-center">
                     <%= dayjs(data_value.write_date).format('YYYY.MM.DD');%>
@@ -85,6 +82,9 @@
           </tbody>
         </table>
         <div class="text-center">
+          <%if(name != null){%>
+            <button class="btn btn-outline-dark float-end" onclick="location.href='/board/notice_write'">작성</button><br>
+          <%}%>
           <input type="button" class="btn" onclick="location.href='/board/question/1'" value="<">
           <% for(var i=1; i<=Math.ceil(result.length / max_value); i++){ %>
             <input onclick="location.href='/board/question/<%=i%>'" type="button" class="btn" value="<%=i%>">

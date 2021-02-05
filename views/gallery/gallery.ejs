@@ -47,7 +47,7 @@
                         <% for(var i = 1; i<= Math.ceil(result.length / max_value); i++){ %>
                         <li class="page-item"><a class="page-link" style="color: black;" href="/gallery/<%= i %>"><%= i %></a>
                         <% } %>
-                        <li class="page-item"><a class="page-link"style="color: black;" href="#">다음</a></li>
+                        <li class="page-item"><a class="page-link"style="color: black;" href="/gallery/<%=Number(g_num)+1%>">다음</a></li>
                       </ul>
                     </nav>
                   </div>
