@@ -58,7 +58,7 @@
               <% var data_value=result[i]; if(data_value===undefined){ continue; } %>
                 <tr onclick="location.href='/board/question/detail/<%= data_value.qid %>'">
                   <th class="text-center">
-                    <%= i+1 %>
+                    <%= result.length-i %>
                   </th>
                   <td class="text-start">
                     <%= data_value.q_title %>
@@ -81,34 +81,25 @@
                 <% } %>
           </tbody>
         </table>
-        <div class="text-center">
-          <%if(name != null){%>
-            <button class="btn btn-outline-dark float-end" onclick="location.href='/board/notice_write'">작성</button><br>
-          <%}%>
-          <input type="button" class="btn" onclick="location.href='/board/question/1'" value="<">
-          <% for(var i=1; i<=Math.ceil(result.length / max_value); i++){ %>
-            <input onclick="location.href='/board/question/<%=i%>'" type="button" class="btn" value="<%=i%>">
-            <%}%>
-              <input type="button" class="btn"
-                onclick="location.href='/board/question/<%=Math.ceil(result.length / max_value)%>'" value=">">
-        </div>
           <div>
             <nav>
               <ul class="pagination justify-content-center mt-5">
                 <% if(q_num == 1) { %>
-                    <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/question/<%=Number(q_num)-1%>">">이전</a></li>
+                    <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/board/question/<%=Number(q_num)-1%>">">이전</a></li>
                 <% } else if (q_num > 1) { %>
-                    <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/question/<%=Number(q_num)-1%>">이전</a></li>
+                    <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/board/question/<%=Number(q_num)-1%>">이전</a></li>
                 <% } %>
                 <% for(var j = 1; j<= Math.ceil(result.length / max_value); j++){ %>
-                <li class="page-item"><a class="page-link" style="color: black;" href="/research/<%= j %>"><%= j %></a>
+                <li class="page-item"><a class="page-link" style="color: black;" href="/board/question/<%= j %>"><%= j %></a>
                 <% } if(q_num == Math.ceil(result.length / max_value)) { %>
-                    <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/question/<%=Number(q_num)+1%>">다음</a></li>
+                    <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/board/question/<%=Number(q_num)+1%>">다음</a></li>
                 <% } else if (q_num < Math.ceil(result.length / max_value)) { %>
-                    <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/question/<%=Number(q_num)+1%>">다음</a></li>
+                    <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/board/question/<%=Number(q_num)+1%>">다음</a></li>
                 <% } %></ul>
             </nav>
           </div>
+        </div>
+        </div>
         </div>
         <footer>
           <%include ../include/footer %>

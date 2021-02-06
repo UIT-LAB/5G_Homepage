@@ -6,7 +6,6 @@
         .table-hover tbody tr{
             cursor: pointer;
         }
-      
     </style>
 </head>
 <body>
@@ -16,46 +15,40 @@
     <div class="container">
         <div class="row mt-5 mb-5">
             <div class="col-md-4">
-                <div class="border border-2 p-5 ">
+                <div class="border border-2 p-3">
                     <h4>개인정보</h4>
                     <div class="row mt-4">
                         <div class="col">
-                            <table class="table table-bordered border-dark">
+                            <form method="POST" name="form">
+                            <table class="table table-bordered border-dark" style="text-align:center">
                                 <div class="mb-2 float-end pr-2" style="cursor: pointer;"</div>
                                 <tr>
                                     <td>이름</td>
-                                    <td><%= result[0].u_name %></td>
-                                </tr>
-                                <tr>
-                                    <td>아이디</td>
-                                    <td><%=result[0].u_id%></td>
+                                    <td><input type="text" name="profile_name"style="width:80%;" placeholder="이름" value="<%= result[0].u_name %>"></td>
                                 </tr>
                                 <tr>
                                     <td>전화번호</td>
-                                    <td><%=result[0].u_phone%></td>
+                                    <td><input type="text" name="profile_phone"style="width:80%;" placeholder="전화번호" value="<%= result[0].u_phone %>"></td>
                                 </tr>
                                 <tr>
                                     <td>이메일</td>
-                                    <td><%=result[0].u_email%></td>
+                                    <td><input type="text" name="profile_email"style="width:80%;" placeholder="이메일" value="<%= result[0].u_email %>"></td>
                                 </tr>
-                                <tr>
-                                    <td>가입날짜</td>
-                                    <td><%=dayjs(result[0].u_date).format('YYYY.MM.DD');%></td>
-                                </tr>
-                            </form>
                                 <tr style="text-align:right">
-                                    <td colspan="2"><input type ="button" value="수정" onclick="location.href='/profile_update'"/>
-                                        <input type ="button" value="비밀번호 수정" onclick="location.href='/profile_password'"/></td>
+                                    <td colspan="2"><input type ="submit" value="수정 완료" onclick="form.action='/profile_update'"/></td>
+                                <input type="hidden" name="namex" value="<%= result[0].u_name%>"/>
+                                <input type="hidden" name="idx" value="<%= result[0].u_id%>"/>
+                                <input type="hidden" name="phonex" value="<%= result[0].u_phone%>"/>
+                                <input type="hidden" name="emailx" value="<%= result[0].u_email%>"/>
                                 </tr>
                             </table>
+                        </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <footer>
-        <% include ../include/footer %>
-    </footer>
+  
 </body>
 </html>

@@ -47,7 +47,7 @@
                         <a class="nav-link" href="/member/1">멤버</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/research">연구</a>
+                        <a class="nav-link" href="/research/1">연구</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/gallery/1">갤러리</a>
@@ -59,13 +59,14 @@
                 <form class="d-flex">
                     <%if(name){ %>
                         <span class="text-white p-2 align-middle"><%= name %>님 환영합니다!</span>
+                        <span class="text-white align-middle"><a class="nav-link" href="/profile">개인 정보</a></span>
                         <a href="/login/logout"><input class="btn form-control btn-outline-light" type="button" value="Logout"></a>
                     <%}
                     else{%>
                         <a href="/login"><input class="btn form-control btn-outline-light" type="button" value="Login"></a>
                     <%}%>
-                    
                 </form>
+                
             </div>
         </div>
     </nav>

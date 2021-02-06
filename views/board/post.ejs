@@ -59,7 +59,7 @@
               <% var data_value=result[i]; if(data_value===undefined){ continue; } %>
                 <tr onclick="location.href='/board/post/detail/<%= data_value.pid %>'">
                   <th class="text-center">
-                    <%= i+1 %>
+                    <%=result.length-i %>
                   </th>
                   <td class="text-start">
                     <%= data_value.p_title %>
@@ -74,40 +74,23 @@
                     <%= data_value.p_view %>
                   </td>
                 </tr>
-</thead>
-              <tbody>
-                <% for(var i = (p_num - 1) * max_value; i < p_num * max_value; i++){ %>
-                  <% var data_value = result[i];
-                      if(data_value === undefined){
-                          continue;
-                      }
-                  %>
-                <tr onclick="location.href='/board/post/detail/<%= data_value.pid %>'" >
-                  <th class ="text-center" scope="row"><%= i+1 %></th>
-                  <td><%= data_value.p_title %></td>
-                  <td class ="text-center"><%= data_value.p_writer %></td>
-                  <td class ="text-center"><%= dayjs(data_value.p_writer_date).format('YYYY.MM.DD');%></td>
-                  <td class ="text-center"><%= data_value.p_view %></td>
-                </tr>
                 <% } %>
               </tbody>
             </table>
-          </div>
-
           <div>
             <nav>
               <ul class="pagination justify-content-center mt-5">
                 <% if(p_num == 1) { %>
-                    <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/post/<%=Number(p_num)-1%>">">이전</a></li>
+                    <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/board/post/<%=Number(p_num)-1%>">">이전</a></li>
                 <% } else if (p_num > 1) { %>
-                    <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/post/<%=Number(p_num)-1%>">이전</a></li>
+                    <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/board/post/<%=Number(p_num)-1%>">이전</a></li>
                 <% } %>
                 <% for(var j = 1; j<= Math.ceil(result.length / max_value); j++){ %>
-                <li class="page-item"><a class="page-link" style="color: black;" href="/research/<%= j %>"><%= j %></a>
+                <li class="page-item"><a class="page-link" style="color: black;" href="/board/post/<%= j %>"><%= j %></a>
                 <% } if(p_num == Math.ceil(result.length / max_value)) { %>
-                    <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/post/<%=Number(p_num)+1%>">다음</a></li>
+                    <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/board/post/<%=Number(p_num)+1%>">다음</a></li>
                 <% } else if (p_num < Math.ceil(result.length / max_value)) { %>
-                    <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/post/<%=Number(p_num)+1%>">다음</a></li>
+                    <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/board/post/<%=Number(p_num)+1%>">다음</a></li>
                 <% } %></ul>
             </nav>
           </div>
