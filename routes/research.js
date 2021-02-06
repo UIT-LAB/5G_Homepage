@@ -6,24 +6,31 @@ var dayjs =  require('dayjs')
 
 router.get('/:num', function(req, res, next) {
     db.query('select * from Research_results', function (error, result) {
-        if (error) {
-          throw error;
-        }    
-        else {
-            res.render('research/research',{result : result, r_num :req.params.num , max_value: 15, dayjs, name:req.session.u_name});
-        };
-      });
+     if (error) {
+        throw error;
+     }    
+     else {
+        res.render('research/research',{result : result, r_num :req.params.num , max_value: 15, dayjs, name:req.session.u_name});
+     };
+    });
 });
 
 router.get('/detail/:num', function(req, res, next) {
     res.render('research/research_detail',{name:req.session.u_name});
 });
 
-router.get('/thesis', function(req, res, next) {
-    res.render('research/thesis',{name:req.session.u_name});
+router.get('/thesis/:num', function(req, res, next) {
+    db.query('select * from Research_Fields', function (error, result) {
+        if (error) {
+          throw error;
+        }    
+        else {
+            res.render('research/thesis',{result : result, t_num :req.params.num , max_value: 15, dayjs, name:req.session.u_name});
+        };
+      });
 });
 
-router.get('/thesis_detail', function(req, res, next) {
+router.get('/thesis/detail/:num', function(req, res, next) {
     res.render('research/thesis_detail',{name:req.session.u_name});
 });
 

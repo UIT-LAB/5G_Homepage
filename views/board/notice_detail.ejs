@@ -68,6 +68,7 @@
                         <button class="btn btn-outline-dark" onclick="location.href='/board/notice/update/<%=n_num%>'">수정</button>
                         <form method="POST" name="form" class="d-inline">
                             <button type="submit" class="btn btn-outline-dark" onclick="form.action='/board/notice/delete'">삭제</button>
+                            <input type="hidden" name="nidx" value="<%= result[0].nid%>"/>
                             <input type="hidden" name="titlex" value="<%= result[0].n_title%>"/>
                             <input type="hidden" name="writerx" value="<%= result[0].n_writer%>"/>
                             <input type="hidden" name="contentx" value="<%= result[0].n_content%>"/>

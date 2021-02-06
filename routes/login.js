@@ -7,7 +7,7 @@ var crypto = require('crypto');
 
 
 router.get('/', function (req, res, next) {
-    res.render('login/login',{name:req.session.u_name});
+    res.render('login/login');
 });
 
 router.post('/', function (req, res, next) {
@@ -26,6 +26,7 @@ router.post('/', function (req, res, next) {
     db.query('select * from UserInfo where u_id=? and u_pw=?', datas, function (err, result) {
         if (err) throw err;
         if (result[0] !== undefined) {
+            req.session.u_id = result[0].u_id;
             req.session.u_name = result[0].u_name;
             req.session.isLogined = true;
             db.query(select_Gallery, function (error, result) {
@@ -65,7 +66,10 @@ router.post('/', function (req, res, next) {
                   });
                 }
               });
-        };
+        }
+        else{
+            res.send('<script>alert(`정보가 일치하지 않습니다.`); location.href=`/login`</script>')
+        }
     });
 });
 //------------------logout
@@ -151,7 +155,7 @@ router.post('/pwCheck', function (req, res) {
                         throw error;
                     }
                     else {
-                        res.send('<script>alert(`성공적으로 변경되었습니다.`); window.close(); </script>')
+                        res.render('login/pwCheck_Success.ejs', { result: result });
                     }
                 });
             }
@@ -160,7 +164,7 @@ router.post('/pwCheck', function (req, res) {
 })
 //----------- signUp
 router.get('/signUp', function (req, res, next) {
-    res.render('login/signUp',{name:req.session.u_name});
+    res.render('login/signUp');
 });
 
 router.post('/signup_data', function (req, res, next) {
@@ -188,14 +192,13 @@ router.post('/signup_data', function (req, res, next) {
     });
 })
 
-
-router.get('/idchk', function (req, res, next) {
+router.get('/idcheck', function (req, res, next) {
     res.render('login/idchk');
 });
 
 router.post('/idcheck', function (req, res, next) {
     var body = req.body;
-    var chk_id = body.signup_Id;
+    var chk_id = body.input_id;
     var datas = [chk_id];
 
     db.query(`Select EXISTS (Select * from UserInfo where u_id=?) as isChk`, datas, function (error, result) {
@@ -204,10 +207,10 @@ router.post('/idcheck', function (req, res, next) {
         }
         else {
             if (result[0].isChk == 0) {
-                res.send('<script>alert(`사용 가능한 아이디 입니다.`); window.close(); </script>')
+                res.send('<script>alert(`사용 가능한 아이디 입니다.`);</script>')
             }
             else if (result[0].isChk == 1) {
-                res.send('<script>alert(`중복된 아이디 입니다.`); history.back(); </script>')
+                res.send('<script>alert(`중복된 아이디 입니다.`);</script>')
             }
         };
     });

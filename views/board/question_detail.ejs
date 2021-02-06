@@ -64,7 +64,6 @@
                     </table>
                     <%= result[0].q_content %>
                 </div>
-
                 <%if(result[0].admin_comment !=null){%>
                     <div class="border border-2 p-4 mt-3">
                         <h4>관리자 답변</h4>
@@ -90,6 +89,8 @@
                                 <form method="POST" name="form" class="d-inline">
                                     <button type="submit" class="btn btn-outline-dark"
                                         onclick="form.action='/board/question/delete'">삭제</button>
+                                        
+                                    <input type="hidden" name="nidx" value="<%= result[0].qid%>"/>
                                     <input type="hidden" name="titlex" value="<%= result[0].q_title%>" />
                                     <input type="hidden" name="writerx" value="<%= result[0].q_writer%>" />
                                     <input type="hidden" name="contentx" value="<%= result[0].q_content%>" />
