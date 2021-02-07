@@ -23,6 +23,13 @@ public class UserDTO {
     @SerializedName("phone")
     private String u_phone;
 
+
+    public UserDTO(String u_id){
+        this.u_id = u_id;
+    }
+
+    public String getU_id() {return u_id;}
+
     @Override
     public String toString() {
         return "UserDTO{" +

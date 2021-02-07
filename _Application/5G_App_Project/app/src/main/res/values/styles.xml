@@ -3,7 +3,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         //툴바 배경색 바꾸기
-        <item name="colorPrimary">#ffffff</item>
+        <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/ic_home_background</item>
         //Navigation drawer icon 색변경 적용
@@ -60,7 +60,7 @@
 
     <style name="modifiedEditText" parent="parent">
         <item name="android:textSize">@dimen/newsMoreTextSize</item>
-        <item name="android:backgroundTint">@color/primaryTextColor</item>
+        <item name="android:backgroundTint" tools:targetApi="lollipop">@color/primaryTextColor</item>
     </style>
 
     <style name="viewParent">
@@ -74,6 +74,23 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+
+
+
+    <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@android:color/holo_blue_bright</item>
+    </style>
+
+    <style name="Theme.MyApp" parent="Theme.MaterialComponents"/>
+
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light">
+
+        <item name="colorControlNormal">#03A9F4</item>
+
+    </style>
 
 
 
