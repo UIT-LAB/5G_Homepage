@@ -11,7 +11,7 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".Splash"
             android:launchMode="singleTask"
             android:label="5G App"
             android:theme="@style/AppTheme.NoActionBar">
@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".MainActivity" />
         <activity android:name=".IntroduceActivity"/>
         <activity android:name=".BusinessActivity"/>
         <activity android:name=".SearchActivity"/>
@@ -44,6 +45,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -39,6 +39,8 @@ public class QuestionMainDTO {
 
     }
 
+
+
     public String getQid() {return qid;}
     public String getQ_title() {return q_title;}
     public String getQ_content() {return q_content;}
