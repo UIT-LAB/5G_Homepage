@@ -119,6 +119,7 @@
         var chkbox = document.getElementsByName("agree");
         var chk=false;
 
+        var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
         
         if (uitid.value == ""){
             alert("아이디를 입력하지 않았습니다.");
@@ -129,11 +130,15 @@
             return false;
         }
         if (uitpwcheck.value == ""){
-            alert("비밀번호를 입력해 주세요");
+            alert("비밀번호를 다시한번 확인해 주세요");
             return false;
         }
         if ((uitpw.value)!=(uitpwcheck.value)) {
             alert("비밀번호가 일치 하지 않습니다.");
+            return false;
+        }
+        if (!pwdCheck.test(uitpw.value)){
+            alert("비밀번호는 영문+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
             return false;
         }
         if ((uitname.value)=="") {

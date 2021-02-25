@@ -83,7 +83,7 @@ router.post('/profile_update', function(req, res, next) {
          throw error;
        }    
      else {
-      res.send('<script>alert(`정보가 수정되었습니다.`); location.href=`/`</script>')
+      res.send('<script>alert(`정보가 수정되었습니다.`); location.href=`/profile`</script>')
      };
  });
 });
@@ -113,7 +113,7 @@ router.post('/profile_password', function (req, res) {
                       throw error;
                   }
                   else {
-                    res.redirect('/');
+                    res.redirect('/profile');
                   }
               });
           }

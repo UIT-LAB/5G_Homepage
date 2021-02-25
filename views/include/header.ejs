@@ -59,7 +59,7 @@
                 <form class="d-flex">
                     <%if(name){ %>
                         <span class="text-white p-2 align-middle"><%= name %>님 환영합니다!</span>
-                        <span class="text-white align-middle"><a class="nav-link" href="/profile">개인 정보</a></span>
+                        <span class="text-white align-middle"><a class="nav-link" href="#" onclick="wow()">개인 정보</a></span>
                         <a href="/login/logout"><input class="btn form-control btn-outline-light" type="button" value="Logout"></a>
                     <%}
                     else{%>
@@ -72,3 +72,8 @@
     </nav>
 </body>
 </html>
+<script>
+    function wow() {
+        var popup=window.open('/profile', '개인 정보', 'width=600px, height=700px, scrollbars=no, toolbar=no, resizeable=no, top=0, left=50');
+    }
+</script>
