@@ -36,7 +36,7 @@
             <th>
               <ul>
                 <h3 align="left"><%=result[i].m_name%></h3>
-                <li><p>소속 : <%=result[i].m_group%></p></li>
+                <li><p><%=result[i].m_univ%></p></li>
                 <li><p>이메일 : <%=result[i].m_email%></p></li>
                 <li><p>연락처 : <%=result[i].m_phone%></p></li>
               </ul>
@@ -47,7 +47,7 @@
             <td class="detailbtn" colspan="2">
               <button type="button" id="membtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uitmodal"
               data-name="<%=result[i].m_name%>" data-photo="<%=result[i].m_image%>" data-group="<%=result[i].m_group%>" data-email="<%=result[i].m_email%>"
-              data-position="<%=result[i].m_position%>" data-phone="<%=result[i].m_phone%>">더 보기</button>
+              data-position="<%=result[i].m_position%>" data-phone="<%=result[i].m_phone%>" data-univ="<%=result[i].m_univ%>">더 보기</button>
             </td>
           </tr>
         </table>
@@ -66,11 +66,15 @@
         <div class="modal-body">
           <table id="imtable">
             <tr>
-              <th rowspan="3">
+              <th rowspan="4">
                 <img src="/images/member/고학림.jpg" id="imgmodal">
               </th>
               <td>&#149;</td>
               <th id="namemodal"></th>
+            </tr>
+            <tr>
+              <td>&#149;</td>
+              <th id="univmodal"></th>
             </tr>
             <tr>
               <td>&#149;</td>
@@ -125,6 +129,7 @@
 <script>
  $('#uitmodal').on('show.bs.modal', function (event){
     var button = $(event.relatedTarget);
+    var univ = button.data('univ');
     var name = button.data('name');
     var photo = button.data('photo');
     var group = button.data('group');
@@ -134,6 +139,7 @@
 
     var modal=$(this)
     modal.find('.modal-title').text("상세보기");
+    modal.find('.modal-body #imtable #univmodal').text(univ);
     modal.find('.modal-body #imtable #namemodal').text("이름 : "+name);
     modal.find('.modal-body #imtable #groupmodal').text("소속 : "+group);
     modal.find('.modal-body #comtable #emailmodal').text(email);

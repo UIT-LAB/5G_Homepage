@@ -90,9 +90,20 @@ body{
 }
 
 /*media query*/
+@media (max-width: 575.98px){
+    .container .row .membertable{
+        width: 330px;
+    }
+    .container .row .membertable ul li{
+        font-size: 13px;
+    }
+    .title p{
+        font-size: 40px;
+    }
+}
 @media (min-width: 576px){
     .container .row .membertable{
-        width: 430px;
+        width: 330px;
     }
 }
 @media (min-width: 768px){
