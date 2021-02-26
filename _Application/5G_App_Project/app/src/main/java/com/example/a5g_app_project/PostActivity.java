@@ -57,7 +57,7 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.20:3001/")
+                .baseUrl("http://192.168.187.1:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

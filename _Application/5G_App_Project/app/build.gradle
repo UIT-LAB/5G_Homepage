@@ -49,6 +49,10 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
+    //jwt
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.squareup.okhttp3:okhttp:4.8.1'
+
 
     testImplementation 'junit:junit:4.12'
     compileOnly 'org.projectlombok:lombok:1.18.12'
