@@ -45,7 +45,7 @@ public class NoticeMainActivity extends AppCompatActivity implements View.OnClic
 
         findViewById(R.id.main_notice_edit).setOnClickListener(this);
         ImageButton notice_back_btn = findViewById(R.id.notice_back_button);
-        ImageButton notice_search_btn = findViewById(R.id.notice_search_button);
+        // ImageButton notice_search_btn = findViewById(R.id.notice_search_button);
 
         notice_back_btn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -53,13 +53,13 @@ public class NoticeMainActivity extends AppCompatActivity implements View.OnClic
                 finish();
             }
         });
-        notice_search_btn.setOnClickListener(new View.OnClickListener(){
+        /*notice_search_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent search_intent = new Intent(view.getContext(), SearchActivity.class);
                 startActivity(search_intent);
             }
-        });
+        });*/
 
     }
 
@@ -69,7 +69,7 @@ public class NoticeMainActivity extends AppCompatActivity implements View.OnClic
         mDatas = new ArrayList<NoticeMainDTO>();
         super.onStart();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.20:3001/")
+                .baseUrl("http://192.168.187.1:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

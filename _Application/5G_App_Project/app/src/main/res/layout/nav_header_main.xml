@@ -21,7 +21,7 @@
         android:textSize="25dp"
         android:textColor="#3F51B5"
         android:gravity="center"
-        android:text="Ocean IT LAB">
+        android:text="호서대학교 ITRC">
     </TextView>
 
     <TextView

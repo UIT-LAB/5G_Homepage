@@ -42,7 +42,7 @@ public class PostMainActivity extends AppCompatActivity implements View.OnClickL
 
         findViewById(R.id.main_post_edit).setOnClickListener(this);
         ImageButton post_back_btn = findViewById(R.id.post_back_button);
-        ImageButton post_search_btn = findViewById(R.id.post_search_button);
+        //ImageButton post_search_btn = findViewById(R.id.post_search_button);
 
         post_back_btn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -50,13 +50,13 @@ public class PostMainActivity extends AppCompatActivity implements View.OnClickL
                 finish();
             }
         });
-        post_search_btn.setOnClickListener(new View.OnClickListener(){
+        /*post_search_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent search_intent = new Intent(view.getContext(), SearchActivity.class);
                 startActivity(search_intent);
             }
-        });
+        });*/
 
     }
 
@@ -66,7 +66,7 @@ public class PostMainActivity extends AppCompatActivity implements View.OnClickL
         mDatas = new ArrayList<PostMainDTO>();
         super.onStart();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.20:3001/")
+                .baseUrl("http://192.168.187.1:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

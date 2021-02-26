@@ -24,15 +24,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ocean IT"
-                    android:layout_marginLeft="80dp"
+                    android:text="Hoseo ITRC"
+                    android:layout_marginLeft="65dp"
                     android:textSize="25sp"
                     android:textStyle="bold"
                     android:textColor="#1E95F4"
-                    android:drawableRight="@drawable/ic_baseline_eco_24"/>
+                    android:drawableRight="@drawable/ic_baseline_eco_24"/>-->
 
 
 

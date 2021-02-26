@@ -158,11 +158,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 drawer.openDrawer(GravityCompat.START);
                 return true;
             }
-            case R.id.menu_search: {
+            /*case R.id.menu_search: {
                 Intent search_intent = new Intent(this, SearchActivity.class);
                 startActivity(search_intent);
                 return true;
-            }
+            }*/
             case R.id.menu_login: {
                 Intent login_intent = new Intent(this, LoginActivity.class);
                 startActivity(login_intent);
@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         super.onStart();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.20:3001/")
+                .baseUrl("http://192.168.187.1:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

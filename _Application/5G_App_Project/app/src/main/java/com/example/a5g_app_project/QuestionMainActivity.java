@@ -49,7 +49,7 @@ public class QuestionMainActivity extends AppCompatActivity implements View.OnCl
 
         findViewById(R.id.main_question_edit).setOnClickListener(this);
         ImageButton question_back_btn = findViewById(R.id.question_back_button);
-        ImageButton question_search_btn = findViewById(R.id.question_search_button);
+        //ImageButton question_search_btn = findViewById(R.id.question_search_button);
 
         question_back_btn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -57,13 +57,13 @@ public class QuestionMainActivity extends AppCompatActivity implements View.OnCl
                 finish();
             }
         });
-        question_search_btn.setOnClickListener(new View.OnClickListener(){
+        /*question_search_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent search_intent = new Intent(view.getContext(), SearchActivity.class);
                 startActivity(search_intent);
             }
-        });
+        });*/
 
     }
 
@@ -73,7 +73,7 @@ public class QuestionMainActivity extends AppCompatActivity implements View.OnCl
         mDatas = new ArrayList<QuestionMainDTO>();
         super.onStart();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.20:3001/")
+                .baseUrl("http://192.168.187.1:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

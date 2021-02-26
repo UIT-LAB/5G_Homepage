@@ -127,7 +127,7 @@ public class SignUpAcitivity extends AppCompatActivity implements View.OnClickLi
             case R.id.id_check_button:{
                 HashMap<String, String> userinfo = new HashMap<>();
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://192.168.0.20:3001/")
+                        .baseUrl("http://192.168.187.1:3000/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 
@@ -143,7 +143,7 @@ public class SignUpAcitivity extends AppCompatActivity implements View.OnClickLi
                             HashMap<String, String> a = response.body();
 
                             if(mID.getText().toString().equals("")){
-                                Toast.makeText(getApplicationContext(), "아이디가 빈칸 입니다.", Toast.LENGTH_SHORT).show();
+                                NullidDialog();
                             }else if(a.get("checkid").equals("success")){
                                 CheckidsDialog();
                             }else  if(a.get("checkid").equals("fail")){
@@ -184,6 +184,21 @@ public class SignUpAcitivity extends AppCompatActivity implements View.OnClickLi
         android.app.AlertDialog.Builder networkstatusBuilder = new android.app.AlertDialog.Builder(SignUpAcitivity.this, R.style.MyDialogTheme)
                 .setTitle("아이디 사용 가능")
                 .setMessage("\n사용 가능한 아이디 입니다.")
+                .setPositiveButton("예", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+
+        android.app.AlertDialog msDlg = networkstatusBuilder.create();
+        msDlg.show();
+    }
+
+    void NullidDialog() {
+        android.app.AlertDialog.Builder networkstatusBuilder = new android.app.AlertDialog.Builder(SignUpAcitivity.this, R.style.MyDialogTheme)
+                .setTitle("아이디가 빈칸 입니다.")
+                .setMessage("\n아이디를 입력해 주시기 바랍니다.")
                 .setPositiveButton("예", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
