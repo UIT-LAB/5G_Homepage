@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 
 <head>
-    <style>
-       @import url(/stylesheets/album.css);
-    </style>
 </head>
 
 <body>
@@ -30,12 +27,13 @@
                         %>
                         <div class="col-md-4" style="margin-bottom: 30px;">
                             <div class="card" style="border: solid 1px black;">
-                                <a href="#" onclick="show()">
+                                <a href="/gallery/detail/<%=data_value.gid%>">
                                     <img src="/images/<%= data_value.g_img%>" alt="" width="100%" height="300">
                                     <div class="card-body">
                                         <p class="card-text" style="color: black;"><%=data_value.g_title%></p><hr>
                                         <p class="card-text" style="color: black; text-align: right;"><%= dayjs(data_value.g_write_date).format('YYYY.MM'); %></p>
-                                    </div></a>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     <% } %>
@@ -61,31 +59,9 @@
         </div>
     </main>
 
-    <div class="pop" id="modal">
-        <div class="view">
-            <a href="#" onclick="hide()"><img src="/images/exit.png" alt="" class="prev"></a>
-            <img src="/images/gall.jpg" alt="" class="picture">
-            <div class="text_box">
-                제목<br>
-                내용<br>
-                게시일<br>
-                작성자<br>
-                </div>
-        </div>
-    </div>
     <footer>
         <% include ../include/footer %>
     </footer>
 </body>
 
 </html>
-
-<script type="text/javascript">
-    function show(){
-        document.getElementById('modal').style.display='block';
-    }
-
-    function hide(){
-        document.getElementById('modal').style.display='none';
-    }
-</script>

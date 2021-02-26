@@ -77,6 +77,11 @@
               </tbody>
             </table>
           <div>
+            <div class="text-center">
+              <%if(name != null){%>
+                <button class="btn btn-outline-dark float-end" onclick="location.href='/board/notice_write'">작성</button><br>
+              <%}%>
+            </div>
             <nav>
               <ul class="pagination justify-content-center mt-5">
                 <% if(n_num == 1) { %>

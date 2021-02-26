@@ -6,6 +6,12 @@
         .table-hover tbody tr{
             cursor: pointer;
         }
+
+        /*@media screen and (max-width: 768px){
+            #hide{
+                display: none;
+            }
+        }*/
     </style>
 </head>
 <body>
@@ -14,7 +20,7 @@
     </header>
     <div class="container">
         <div class="row mt-5 mb-5">
-            <div class="col-md-2">
+            <div class="col-md-2" id="hide">
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li style="cursor: pointer;" class="breadcrumb-item" onclick="location.href='/research'">연구</li>
