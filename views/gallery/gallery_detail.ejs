@@ -1,14 +1,61 @@
 <!DOCTYPE html>
-<html>
+
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <link href="https://cdn.discordapp.com/attachments/751431280519807068/800629207469785128/5g.png" rel="shortcut icon"
+        type="images/x-icon">
+
+    <style>
+        .table-hover tbody tr {
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
-    갤러리 디테일
+    <header>
+        <% include ../include/header %>
+    </header>
+    <div class="container">
+        <div class="row mt-5 mb-5">
+            <div class="col-md-12">
+                <div class="text-center m-5">
+                    <h1>갤러리</h1>
+                    5G 사업단 활동 사진
+                </div>
+                <div class="border border-2 p-4">
+                    <h4><%= result[0].g_title %></h4>
+                    <table class="table mt-2">
+                        <tbody class="align-middle">
+                            <tr>
+                                <td>
+                                   번호 : <%= result[0].gid %>
+                                </td>
+                                <td>
+                                    <span class="float-end">작성일자 : <%= dayjs(result[0].g_write_date).format('YY.MM.DD'); %></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center">
+                        <img src="/images/<%= result[0].g_img %>" alt="" style="width: 90%;" class="img-fluid img-thumbnail mt-3 mb-3">
+                    </div>
+                    <hr>
+                    <div class="m-3">
+                        <%= result[0].g_content %>
+                    </div>
+                </div>
+                
+                <div class="float-end mt-3">
+                    <button class="btn btn-outline-dark" onclick="location.href='/gallery/1'">목록</button>
+                    <!--<button class="btn btn-outline-dark" onclick="">수정</button>
+                    <button type="submit" class="btn btn-outline-dark" onclick="">삭제</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <% include ../include/footer %>
+    </footer>
 </body>
+
 </html>
