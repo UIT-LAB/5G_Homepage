@@ -38,5 +38,15 @@ router.get('/field', function(req, res, next) {
     res.render('index');
 });
 
+router.get('/license/:num', function(req, res, next){
+    db.query('select * from license', function (error, result) {
+        if (error) {
+          throw error;
+        }    
+        else {
+            res.render('research/license',{result : result, l_num :req.params.num , max_value: 15, dayjs, name:req.session.u_name});
+        };
+      });
+})
 
 module.exports = router;
