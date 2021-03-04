@@ -207,10 +207,10 @@ router.post('/idcheck', function (req, res, next) {
         }
         else {
             if (result[0].isChk == 0) {
-                res.send('<script>alert(`사용 가능한 아이디 입니다.`);</script>')
+                res.send('<script>alert(`사용 가능한 아이디 입니다.`); window.close(); </script>')
             }
             else if (result[0].isChk == 1) {
-                res.send('<script>alert(`중복된 아이디 입니다.`);</script>')
+                res.send('<script>alert(`중복된 아이디 입니다.`); history.back(); </script>')
             }
         };
     });

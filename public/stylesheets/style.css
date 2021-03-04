@@ -5,10 +5,12 @@
     src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
     src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
    }
-.hello{
+body{
     font-family: 'NanumBarunGothic';
     background-image: url('../images/555.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 .now{
     display: flex;
@@ -38,40 +40,34 @@
     font-size: 20px;
 }
 
+
+/*meida query*/
 @media (min-width: 576px){
-
-}
-
-@media (min-width: 768px){
-    .now{
-        display: flex;
-        align-items: flex-end;
-    }
     .loginform{
         background-color: rgba(255,255,255,0.8);
         text-align: center;
-        width: 520px;
+        width: 100%;
     }
+    
+    .now{
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
+
+@media (min-width: 768px){
 }
 
 @media (min-width: 992px){
-    .loginform{
-        width: 420px;
-    }
-    .wow{
-        width: 230px;
-    }
-    .link{
-        font-size: 11px;
-    }
 }
 
 @media (min-width: 1200px){
-    .wow{
-        width: 330px;
-    }
     .loginform{
         width: 520px;
+    }
+    .wow{
+        width: 330px;
     }
     .link{
         font-size: 16px;

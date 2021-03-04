@@ -41,14 +41,24 @@
         <p class="title">ID 중복확인</p>
         <p class="subtitle">사용할 아이디를 입력하여 주세요</p>
         <div align="center">
-            <input type="text" name="input_id" class="form-control" placeholder="id">
+            <input type="text" name="input_id" id="input_id" class="form-control" placeholder="id">
         </div>
         <br>
         <hr style="border: solid 1px lightgray">
 
         <div align="center">
-            <button class="btn btn-dark btn-block" type="submit">검색</button>
+            <button class="btn btn-dark btn-block" type="submit" onclick="send()">중복 확인</button>
         </div>
     </form>   
 </body>
 </html>
+
+<script type="text/javascript">
+    opener.parent.hello();
+
+    function send(){
+        var txt = document.getElementById("input_id").value
+        opener.document.getElementById("signup_Id").value = txt;
+    }
+    
+</script>
