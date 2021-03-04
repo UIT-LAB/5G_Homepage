@@ -14,36 +14,16 @@
     </header>
     <div class="container">
         <div class="row mt-5 mb-5">
-            <div class="col-md-2">
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li style="cursor: pointer;" class="breadcrumb-item" onclick="location.href='/research'">연구</li>
-                        <li class="breadcrumb-item active" aria-current="page">학술논문</li>
-                    </ol>
-                </nav>
-                <table class="table table-hover table-bordered text-center">
-                    <tbody>
-                        <tr onclick="location.href='/research/1'">
-                            <td>연구과제</td>
-                        </tr>
-                        <tr onclick="location.href='/research/thesis/1'">
-                            <td>학술논문</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <% include ../include/research_nav %>
             <div class="col-md-10">
-                <div class="text-center m-5">
-                    <h1>학술논문</h1>
-                    발표한 논문 게시판
-                </div>
+                <% include ../include/research_label %>
                 <table class="table table-hover text-center text-middle">
                     <thead class="align-middle">
                         <th width="5%">번호</th>
-                        <th width="40%">과제명</th>
-                        <th width="20%">연구책임자</th>
-                        <th width="20%">참여기관</th>
-                        <th width="15%">날짜</th>
+                        <th width="10%">SCI(E)<br>구분</th>
+                        <th width="50%">논문명</th>
+                        <th width="10%">주저자명</th>
+                        <th width="20%">공동저자명</th>
                     </thead>
                     <tbody class="align-middle">
                         <% for(var i = (t_num - 1) * max_value; i < t_num * max_value; i++){ %>
@@ -51,12 +31,12 @@
                             if(data_value === undefined){
                             continue;
                         }%>
-                    <tr onclick="location.href='/research/thesis/detail/1'">
-                      <td><%= data_value.rfid%></td>
-                      <td><%= data_value.research_name_ko%></td>
-                      <td><%= data_value.research_manager_ko%></td>
-                      <td><%= data_value.participation_agency_ko%></td>
-                      <td><%= dayjs(data_value.date_start).format('YYYY.MM.');%>~<%= dayjs(data_value.date_end).format('YYYY.MM.');%></td>
+                    <tr onclick="location.href='/research/thesis/detail/<%=data_value.tid%>'">
+                      <td><%= data_value.tid%></td>
+                      <td><%= data_value.SCI_division.slice(3,data_value.SCI_division.langth)%></td>
+                      <td><div class="text-start"><%= data_value.thesis_name%></div></td>
+                      <td><%= data_value.lead_author_name%></td>
+                      <td><%= data_value.co_author_name%></td>
                     </tr>
                     <%}%>
                     </tbody>
@@ -69,7 +49,11 @@
                           <% } else if (t_num > 1) { %>
                               <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/research/thesis/<%=Number(t_num)-1%>">이전</a></li>
                           <% } for(var j = 1; j<= Math.ceil(result.length / max_value); j++){ %>
-                          <li class="page-item"><a class="page-link" style="color: black;" href="/research/thesis/<%= j %>"><%= j %></a>
+                            <%if(j != t_num){%>
+                                <li class="page-item"><a class="page-link" style="color: black;" href="/research/thesis/<%= j %>"><%= j %></a>
+                            <%}else{%>
+                                <li class="page-item"><a class="page-link" style="color: black; background-color: #c8c8c8;" href="/research/thesis/<%= j %>"><%= j %></a>
+                            <%}%>
                           <% } if(t_num == Math.ceil(result.length / max_value)) { %>
                               <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/research/thesis/<%=Number(t_num)+1%>">다음</a></li>
                           <% } else if (t_num < Math.ceil(result.length / max_value)) { %>

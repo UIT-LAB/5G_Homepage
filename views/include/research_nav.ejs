@@ -1,0 +1,38 @@
+<div class="col-md-2" id="hide">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li style="cursor: pointer;" class="breadcrumb-item" onclick="location.href='/research'">연구성과</li>
+            <li class="breadcrumb-item active" aria-current="page" id="category"></li>
+            <script>
+                var path = location.pathname
+                var research_path = path.split('/')
+                var category = document.getElementById("category")
+
+                switch(research_path[2]){
+                    case "thesis": category.innerHTML="논문";  break;
+
+                    case "license": category.innerHTML="특허"; break;
+                }
+            </script>
+        </ol>
+    </nav>
+    <table class="table table-hover table-bordered text-center">
+        <tbody>
+            <tr onclick="location.href='/research/thesis/1'">
+                <td>논문</td>
+            </tr>
+            <tr onclick="location.href='/research/license/1'">
+                <td>특허</td>
+            </tr>
+            <tr onclick="location.href='#'">
+                <td>SW 및 콘텐츠</td>
+            </tr>
+            <tr onclick="location.href='#'">
+                <td>표준화</td>
+            </tr>
+            <tr onclick="location.href='#'">
+                <td>기술이전</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
