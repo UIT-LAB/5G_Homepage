@@ -56,7 +56,7 @@
                             if(data_value == undefined || data_value.standard_license_status == undefined){
                             continue;
                             }%>
-                    <tr onclick="location.href='/research/detail/1'">
+                    <tr onclick="location.href='/research/license/detail/<%=data_value.lid%>'">
                       <td><%= data_value.lid%></td>
                       <td><div class="float-start"><%= data_value.invention_name%></div></td>
                       <td><%= data_value.business_year%></td>

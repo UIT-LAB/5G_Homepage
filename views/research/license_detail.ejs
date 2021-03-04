@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://cdn.discordapp.com/attachments/751431280519807068/800629207469785128/5g.png" rel="shortcut icon" type="images/x-icon">
+
+    <style>
+        .table-hover tbody tr{
+            cursor: pointer;
+        }
+
+        tbody th{
+            background-color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <% include ../include/header %>
+
+    </header>
+    <div class="container">
+        <div class="row mt-5 mb-5">
+            <div class="col-md-2">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li style="cursor: pointer;" class="breadcrumb-item" onclick="location.href='/research'">연구</li>
+                        <li class="breadcrumb-item active" aria-current="page">연구과제</li>
+                    </ol>
+                </nav>
+                <table class="table table-hover table-bordered text-center">
+                    <tbody>
+                        <tr>
+                            <td onclick="location.href='/research/1'">연구과제</td>
+                        </tr>
+                        <tr>
+                            <td onclick="location.href='/research/thesis/1'">학술논문</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-10">
+                <div class="text-center m-5">
+                    <h1>특허</h1>
+                    5G 사업단 출원 특허
+                </div>
+                <div class="border border-2 p-4">
+                    <h4><%=result[0].invention_name%></h4>
+                    <table class="table mt-2">
+                        <tbody class="align-middle">
+                            <tr>
+                                <td>
+                                   번호 : <%= l_num %>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row mt-4">
+                        <div class="col text-center">
+                            <img class="img-fluid img-thumbnail mx-auto d-block m-3" width="80%" src="/images/license/<%=result[0].application_number%>.jpg" title="논문 첫 이미지"><br>
+                            <table class="table mx-auto table-bordered" style="width: 80%;">
+                                <tbody>
+                                    <tr>
+                                        <th>사업연도</th>
+                                        <td><%=result[0].business_year%>년</td>
+                                        <th>국내외구분</th>
+                                        <td><%=result[0].domestic_division.slice(3,result[0].domestic_division.langth)%></td>
+                                        <th>출원국</th>
+                                        <td><%=result[0].country_application%></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">출원구분</th>
+                                        <td><%=result[0].application_category.slice(3,result[0].application_category.langth)%></td>
+                                        <th>출원번호</th>
+                                        <td colspan="3"><%=result[0].application_number%></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">출원등록기관</th>
+                                        <td colspan="5"><%=result[0].application_registration_period%></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">출원기관<br>사업자등록번호</th>
+                                        <td class="align-middle" colspan="5"><%=result[0].company_registration_number%></td>
+                                    </tr>
+                                    <tr>
+                                        <th>출원일</th>
+                                        <td><%=dayjs(result[0].application_date).format('YYYY.MM.DD');%></td>
+                                        <th>공개여부</th>
+                                        <td><%=result[0].public_not.slice(3,result[0].public_not.langth)%></td>
+                                        <th>기여율</th>
+                                        <td><%=result[0].contribution_rate%>%</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">발명자</th>
+                                        <td colspan="2"><%=result[0].inventor%></td>
+                                        <th>소유기관</th>
+                                        <td colspan="2"><%=result[0].owning_institution.slice(3,result[0].owning_institution.langth)%></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">활용형태</th>
+                                        <td colspan="2"><%=result[0].application_form.slice(3,result[0].application_form.langth)%></td>
+                                        <th>표준특허여부</th>
+                                        <td><%=result[0].standard_license_status.slice(3,result[0].standard_license_status.langth)%></td>
+                                        <td>+</td>
+                                    </tr>
+                                </tbody>
+                                
+                                <!--<tr>
+                                    <td>사업연도</td>
+                                    <td><%=result[0].business_year%>년</td>
+                                </tr>
+                                <tr>
+                                    <td>국내외구분</td>
+                                    <td><%=result[0].domestic_division.slice(3,result[0].domestic_division.langth)%></td>
+                                </tr>
+                                <tr>
+                                    <td>출원국</td>
+                                    <td><%=result[0].country_application%> (kr = 한국?)</td>
+                                </tr>
+                                <tr>
+                                    <td>출원구분</td>
+                                    <td><%=result[0].application_category.slice(3,result[0].application_category.langth)%></td>
+                                </tr>
+                                <tr>
+                                    <td>출원번호</td>
+                                    <td><%=result[0].application_number%> </td>
+                                </tr>
+                                <tr>
+                                    <td>출원등록기관</td>
+                                    <td><%=result[0].application_registration_period%></td>
+                                </tr>
+                                <tr>
+                                    <td>출원기관<br>사업자등록번호</td>
+                                    <td class="align-middle"><%=result[0].company_registration_number%></td>
+                                </tr>
+                                <tr>
+                                    <td>출원일</td>
+                                    <td><%=dayjs(result[0].application_date).format('YYYY.MM.DD');%></td>
+                                </tr>
+                                <tr>
+                                    <td>공개유무</td>
+                                    <td><%=result[0].public_not.slice(3,result[0].public_not.langth)%></td>
+                                </tr>
+                                <tr>
+                                    <td>기여율</td>
+                                    <td><%=result[0].contribution_rate%>%</td>
+                                </tr>
+                                <tr>
+                                    <td>발명자</td>
+                                    <td><%=result[0].inventor%></td>
+                                </tr>
+                                <tr>
+                                    <td>소유기관</td>
+                                    <td><%=result[0].owning_institution.slice(3,result[0].owning_institution.langth)%></td>
+                                </tr>
+                                <tr>
+                                    <td>활용형태</td>
+                                    <td><%=result[0].application_form.slice(3,result[0].application_form.langth)%></td>
+                                </tr>
+                                <tr>
+                                    <td>표준특허여부</td>
+                                    <td><%=result[0].standard_license_status.slice(3,result[0].standard_license_status.langth)%></td>
+                                </tr>
+                                <tr>
+                                    <td>특허 링크</td>
+                                    <td>)</td>
+                                </tr>-->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <% include ../include/footer %>
+    </footer>
+</body>
+</html>
+<script >
+    $('th').addClass('bg-secondary');
+ </script>

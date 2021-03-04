@@ -49,4 +49,15 @@ router.get('/license/:num', function(req, res, next){
       });
 })
 
+router.get('/license/detail/:num', function(req, res, next){
+    db.query('select * from license where lid = ?', req.params.num, function (error, result) {
+        if (error) {
+          throw error;
+        }    
+        else {
+            res.render('research/license_detail',{result : result, l_num :req.params.num , max_value: 15, dayjs, name:req.session.u_name});
+        };
+      });
+})
+
 module.exports = router;
