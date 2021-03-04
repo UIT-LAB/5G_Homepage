@@ -22,53 +22,50 @@
 </head>
 
 <body>
-    <div class="hello">
-        <div class="now">
-            <div class="loginform">
-                <table class="wow" align="center">
-                    <thead class="mt-4">
-                        <tr>
-                            <th><p class="title mt-5">5G login</p></th>
-                        </tr>
-                        <tr>
-                            <th><p class="subtitle mb-4">Welcome to 5G!</p></th>
-                        </tr>
-                    </thead>
-                    <form class="form-signin" method="POST">
-                    <tbody>
-                        <tr>
-                            <th>
-                                <input type="text" name="inputid" class="form-control mb-2" placeholder="ID">
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="password" name="inputpw" class="form-control mb-5" placeholder="PW">
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>
-                                <button class="btn btn-primary w-100 mb-5" type="submit" onclick="javascript: form.action='/login'">로그인</button>
-                            </th>
-                        </tr>
-                    </tbody>
-                    </form>
-                    <tfoot>
-                        <tr>
-                            <th>
-                                <div class="link" align="left">
-                                    아이디를 잊어버리셨나요? <span><a href="#" onclick="openid()">아이디 찾기</a></span> <br>
-                                    비밀번호를 잊어버리셨나요?  <span><a href="#" onclick="openpw()">비밀번호 변경하기</a></span><br>
-                                    계정이 없으신가요? <span><a href="/login/signUp">회원가입</a></span>
-                                </div>    
-                            </th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
+    <div class="text-end">
+        <div class="loginform">
+            <table class="wow" align="center">
+                <thead class="mt-4">
+                    <tr>
+                        <th><p class="title mt-5">5G login</p></th>
+                    </tr>
+                    <tr>
+                        <th><p class="subtitle mb-4">Welcome to 5G!</p></th>
+                    </tr>
+                </thead>
+                <form class="form-signin" method="POST">
+                <tbody>
+                    <tr>
+                        <th>
+                            <input type="text" name="inputid" class="form-control mb-2" placeholder="ID">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="password" name="inputpw" class="form-control mb-5" placeholder="PW">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <button class="btn btn-primary w-100 mb-5" type="submit" onclick="javascript: form.action='/login'">로그인</button>
+                        </th>
+                    </tr>
+                </tbody>
+                </form>
+                <tfoot>
+                    <tr>
+                        <th>
+                            <div class="link" align="left">
+                                아이디를 잊어버리셨나요? <span><a href="#" onclick="openid()">아이디 찾기</a></span> <br>
+                                비밀번호를 잊어버리셨나요?  <span><a href="#" onclick="openpw()">비밀번호 변경하기</a></span><br>
+                                계정이 없으신가요? <span><a href="/login/signUp">회원가입</a></span>
+                            </div>    
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
     </div>
-    
 </body>
 
 </html>
@@ -81,12 +78,6 @@
         var popup=window.open('/login/findPw', '비밀번호 찾기', 'width=500px, height=500px, scrollbars=no, toolbar=no, resizeable=no, top=0, left=50');
     }
 
-    function itrclogin(){
-        location.href="index.ejs";
-    }
-    function gosignup(){
-        location.href="login/signUp";
-    }
     function checking(){
         var re1 = /^[a-zA-Z0-9]{4,12}$/;
         var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
