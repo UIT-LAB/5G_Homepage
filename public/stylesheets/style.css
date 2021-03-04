@@ -4,7 +4,7 @@
     font-weight: 700;
     src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
     src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
-   }
+}
 body{
     font-family: 'NanumBarunGothic';
     background-image: url('../images/555.jpg');
@@ -12,14 +12,10 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-.now{
-    display: flex;
-    justify-content: flex-end;
-}
 .loginform{
     background-color: rgba(255,255,255,0.8);
     text-align: center;
-    width: 520px;
+    width: 550px;
     min-height: 100vh;
 }
 
@@ -42,29 +38,60 @@ body{
 
 
 /*meida query*/
+@media (min-width: 0px){
+    .loginform{
+        width: 100%;
+        min-height: 100vh;
+    }
+    .wow{
+        width: 330px;
+    }
+    .link{
+        font-size: 16px;
+    }
+}
 @media (min-width: 576px){
     .loginform{
-        background-color: rgba(255,255,255,0.8);
-        text-align: center;
         width: 100%;
+        min-height: 100vh;
     }
-    
-    .now{
-        display: flex;
-        flex-direction: column;
+    .wow{
+        width: 330px;
     }
-    
+    .link{
+        font-size: 16px;
+    }
 }
 
 @media (min-width: 768px){
+    .loginform{
+        width: 400px;
+        min-height: 100vh;
+    }
+    .wow{
+        width: 330px;
+    }
+    .link{
+        font-size: 16px;
+    }
 }
-
 @media (min-width: 992px){
+    .loginform{
+        width: 450px;
+        min-height: 100vh;
+    }
+    .wow{
+        width: 330px;
+    }
+    .link{
+        font-size: 16px;
+    }
 }
 
 @media (min-width: 1200px){
     .loginform{
-        width: 520px;
+        width: 550px;
+        min-height: 100vh;
     }
     .wow{
         width: 330px;

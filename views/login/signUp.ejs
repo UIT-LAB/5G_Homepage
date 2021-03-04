@@ -26,9 +26,8 @@
                                     <div class="input-group">
                                         <input type="text" name ="signup_Id" class="form-control" id="signup_Id" placeholder="아이디" style="width : 60%">
                                         <span class="input-group-btn">
-                                            <input type="button" class="btn btn-primary" id="checkbtn" value="중복 확인" onclick="opencheck()">
+                                            <input type="button" class="btn btn-primary" id="idchkbtn" value="중복 확인" onclick="opencheck()">
                                         </span>
-                                        <div class="check_font" id="id_check"></div>
                                     </div>
                                 </td>
                             </tr>
@@ -124,6 +123,7 @@
         var uitpwcheck = document.getElementById("singup_chk");
         var uitemail = document.getElementById("signup_Email");
         var chkbox = document.getElementsByName("agree");
+        var idchkbtn = documetn.getElementById("idchkbtn");
         var chk=false;
 
         var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
@@ -172,5 +172,6 @@
             alert("약관에 동의해 주세요");
             return false;
         }
+
     }
 </script>
