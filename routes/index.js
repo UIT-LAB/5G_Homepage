@@ -7,9 +7,9 @@ var crypto = require('crypto');
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   var select_Gallery = `select gid, g_title, g_img from Gallery ORDER BY g_write_date DESC LIMIT 3`;
-  var select_Research = `select rfid, research_name_ko from Research_Fields ORDER BY rfid DESC LIMIT 3`;
+  var select_Research = `select tid, thesis_name from thesis ORDER BY tid DESC LIMIT 3`;
   var select_Notice = `select nid, n_title from Notice_Board ORDER BY nid DESC LIMIT 3`;
-  var select_Post = `select pid, p_title from Post_Board ORDER BY pid DESC LIMIT 3`;
+  var select_license = `select lid, invention_name from license ORDER BY lid DESC LIMIT 3`;
 
   db.query(select_Gallery, function (error, result) {
     if (error) {
@@ -32,7 +32,7 @@ router.get('/', function (req, res, next) {
             else {
               n_result = result;
               console.log(result);
-              db.query(select_Post, function (error, result) {
+              db.query(select_license, function (error, result) {
                 if (error) {
                   throw error;
                 }

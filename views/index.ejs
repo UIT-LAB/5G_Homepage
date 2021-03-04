@@ -47,7 +47,7 @@
                             <% for(let i=0; i<3; i++){ %>
                                 <tr onclick="location.href='/board/notice/detail/<%=n_result[i].nid%>'">
                                     <td>
-                                        <img src="/images/5g.png" style="width: 100px; height: 100px;">
+                                        <img src="/images/loud-speaker.png" style="width: 100px; height: 100px;">
                                     </td>
                                     <td>
                                         <%=n_result[i].n_title%>
@@ -60,17 +60,17 @@
                 <div class="col-lg">
                     <table class="table table-hover">
                         <thead class="align-middle">
-                            <th width="20%">학위논문</th>
+                            <th width="20%">논문</th>
                             <th width="80%"><a href="/research/thesis/1"><input type="button" class="btn btn-outline-dark  float-end" value="+"></a></th>
                         </thead>
                         <tbody class="align-middle">
                             <% for(let i=0; i<3; i++){ %>
-                                <tr onclick="location.href='/research/thesis/detail/<%=r_result[i].rfid%>'">
+                                <tr onclick="location.href='/research/thesis/detail/<%=r_result[i].tid%>'">
                                     <td>
-                                        <img src="/images/report.svg" style="width: 100px; height: 100px;">
+                                        <img src="/images/thesis.png" style="width: 100px; height: 100px;">
                                     </td>
                                     <td>
-                                        <%=r_result[i].research_name_ko%>
+                                        <%=r_result[i].thesis_name%>
                                     </td>
                                 </tr>
                             <%}%>
@@ -84,17 +84,17 @@
                 <div class="col-lg">
                     <table class="table table-hover">
                         <thead class="align-middle">
-                            <th width="20%">정보 게시판</th>
+                            <th width="20%">특허</th>
                             <th width="80%"><a href="/board/post/1"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
                         </thead>
                         <tbody class="align-middle">
                             <% for(let i=0; i<3; i++){ %>
-                                <tr onclick="location.href='/board/post/detail/<%=p_result[i].pid%>'">
+                                <tr onclick="location.href='/board/post/detail/<%=p_result[i].lid%>'">
                                     <td>
-                                        <img src="/images/report.svg" style="width: 100px; height: 100px;">
+                                        <img src="/images/license.png" style="width: 100px; height: 100px;">
                                     </td>
                                     <td>
-                                        <%=p_result[i].p_title%>
+                                        <%=p_result[i].invention_name%>
                                     </td>
                                 </tr>
                             <%}%>
@@ -111,7 +111,7 @@
                             <% for(let i=0; i<3; i++){ %>
                                 <tr onclick="location.href='/gallery/detail/<%=g_result[i].gid%>'">
                                     <td>
-                                        <img src="/images/<%=g_result[i].g_img%>" style="width: 100px; height: 100px;">
+                                        <img class="rounded" src="/images/<%=g_result[i].g_img%>" style="width: 100px; height: 100px;">
                                     </td>
                                     <td>
                                         <%=g_result[i].g_title%>

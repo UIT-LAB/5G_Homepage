@@ -20,33 +20,13 @@
     </header>
     <div class="container">
         <div class="row mt-5 mb-5">
-            <div class="col-md-2" id="hide">
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li style="cursor: pointer;" class="breadcrumb-item" onclick="location.href='/research'">연구</li>
-                        <li class="breadcrumb-item active" aria-current="page">연구과제</li>
-                    </ol>
-                </nav>
-                <table class="table table-hover table-bordered text-center">
-                    <tbody>
-                        <tr onclick="location.href='/research/1'">
-                            <td>연구과제</td>
-                        </tr>
-                        <tr onclick="location.href='/research/thesis/1'">
-                            <td>학술논문</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <% include ../include/research_nav %>
             <div class="col-md-10">
-                <div class="text-center m-5">
-                    <h1>연구과제</h1>
-                    5G 사업단 연구 과제
-                </div>
+                <% include ../include/research_label %>
                 <table class="table table-hover text-center text-middle">
                     <thead class="align-middle">
                         <th width="5%">번호</th>
-                        <th width="75%" style="height: 50px;">발명의 명칭</th>
+                        <th width="75%">발명의 명칭</th>
                         <th width="10%">사업연도</th>
                         <th width="10%">표준특허<br>여부</th>
                     </thead>
@@ -58,7 +38,7 @@
                             }%>
                     <tr onclick="location.href='/research/license/detail/<%=data_value.lid%>'">
                       <td><%= data_value.lid%></td>
-                      <td><div class="float-start"><%= data_value.invention_name%></div></td>
+                      <td><div class="text-start"><%= data_value.invention_name%></div></td>
                       <td><%= data_value.business_year%></td>
                       <%var check = Number(data_value.standard_license_status.slice(0,2))%>
                       <%if(check == 2){%>

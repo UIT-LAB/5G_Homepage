@@ -1,0 +1,16 @@
+<div class="text-center m-5">
+    <h1 id="label"></h1>
+    <div id="detail"></div>
+</div>
+<script>
+    var path = location.pathname
+    var research_path = path.split('/')
+    var label = document.getElementById("label")
+    var detail = document.getElementById("detail")
+
+    switch(research_path[2]){
+        case "thesis": label.innerHTML="논문"; detail.innerHTML="사업단에서 발표한 논문"; break;
+
+        case "license": label.innerHTML="특허"; detail.innerHTML="사업단에서 발표한 특허"; break;
+    }
+</script>

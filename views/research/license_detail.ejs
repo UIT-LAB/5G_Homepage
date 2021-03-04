@@ -20,29 +20,9 @@
     </header>
     <div class="container">
         <div class="row mt-5 mb-5">
-            <div class="col-md-2">
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li style="cursor: pointer;" class="breadcrumb-item" onclick="location.href='/research'">연구</li>
-                        <li class="breadcrumb-item active" aria-current="page">연구과제</li>
-                    </ol>
-                </nav>
-                <table class="table table-hover table-bordered text-center">
-                    <tbody>
-                        <tr>
-                            <td onclick="location.href='/research/1'">연구과제</td>
-                        </tr>
-                        <tr>
-                            <td onclick="location.href='/research/thesis/1'">학술논문</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <% include ../include/research_nav %>
             <div class="col-md-10">
-                <div class="text-center m-5">
-                    <h1>특허</h1>
-                    5G 사업단 출원 특허
-                </div>
+                <% include ../include/research_label %>
                 <div class="border border-2 p-4">
                     <h4><%=result[0].invention_name%></h4>
                     <table class="table mt-2">

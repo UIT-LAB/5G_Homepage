@@ -20,7 +20,7 @@ router.get('/detail/:num', function(req, res, next) {
 });
 
 router.get('/thesis/:num', function(req, res, next) {
-    db.query('select * from Research_Fields', function (error, result) {
+    db.query('select * from thesis ORDER BY tid DESC', function (error, result) {
         if (error) {
           throw error;
         }    
@@ -31,7 +31,14 @@ router.get('/thesis/:num', function(req, res, next) {
 });
 
 router.get('/thesis/detail/:num', function(req, res, next) {
-    res.render('research/thesis_detail',{name:req.session.u_name});
+    db.query('select * from thesis where tid = ?', req.params.num, function (error, result) {
+        if (error) {
+          throw error;
+        }    
+        else {
+            res.render('research/thesis_detail',{result : result, t_num :req.params.num , max_value: 15, dayjs, name:req.session.u_name});
+        };
+      });
 });
 
 router.get('/field', function(req, res, next) {
@@ -39,7 +46,7 @@ router.get('/field', function(req, res, next) {
 });
 
 router.get('/license/:num', function(req, res, next){
-    db.query('select * from license', function (error, result) {
+    db.query('select * from license ORDER BY lid DESC', function (error, result) {
         if (error) {
           throw error;
         }    
