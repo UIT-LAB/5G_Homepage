@@ -19,6 +19,15 @@
                 <% include ../include/research_label %>
                 <div class="border border-2 p-4">
                     <h4><%=result[0].thesis_name%></h4>
+                    <table class="table mt-2">
+                        <tbody class="align-middle">
+                            <tr>
+                                <td>
+                                   번호 : <%= t_num %>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <div class="row mt-4">
                         <div class="col text-center">
                             <img class="img-fluid img-thumbnail mx-auto d-block" width="400px" src="https://www.dbpia.co.kr/img_cover/is_Cover/is_419428b.jpg" title="논문 첫 이미지"><br>
@@ -27,20 +36,76 @@
                             <table class="table">
                                 <div class="mb-4 float-end pr-5" style="cursor: pointer;" onclick="location.href='https://www.dbpia.co.kr/Journal/articleDetail?nodeId=NODE09303090'">move ></div>
                                 <tr>
-                                    <td>구분</td>
-                                    <td>비SCI</td>
+                                    <td>사업연도</td>
+                                    <td><%=result[0].business_year%></td>
                                 </tr>
                                 <tr>
-                                    <td>게재지(권, 쪽)</td>
-                                    <td>한국통신학회논문지(제45권 2호, pp.344-354)</td>
+                                    <td>대학명</td>
+                                    <td><%=result[0].univ_name%></td>
                                 </tr>
                                 <tr>
-                                    <td>저자명</td>
-                                    <td>이태석. 김준호, 고학림, 조용호</td>
+                                    <td>학과</td>
+                                    <td><%=result[0].department%></td>
                                 </tr>
                                 <tr>
-                                    <td>게재연도</td>
-                                    <td>2020</td>
+                                    <td>SCI(E)<br>구분</td>
+                                    <td><%=result[0].SCI_division%></td>
+                                </tr>
+                                <tr>
+                                    <td>논문구분</td>
+                                    <td><%=result[0].thesis_division%></td>
+                                </tr>
+                                <tr>
+                                    <td>주저자명</td>
+                                    <td><%=result[0].lead_author_name%></td>
+                                </tr>
+                                <tr>
+                                    <td>공동저자명</td>
+                                    <td><%=result[0].co_author_name%></td>
+                                </tr>
+                                <tr>
+                                    <td>학술지명</td>
+                                    <td><%=result[0].journal_name%></td>
+                                </tr>
+                                <tr>
+                                    <td>볼륨번호</td>
+                                    <td><%=result[0].volume_num%></td>
+                                </tr>
+                                <tr>
+                                    <td>학술지<br>출판일</td>
+                                    <td><%=result[0].journal_date%></td>
+                                </tr>
+                                <tr>
+                                    <td>학술지<br>임팩트펙터</td>
+                                    <td><%=result[0].journal_impact_factor%></td>
+                                </tr>
+                                <tr>
+                                    <td>기여율</td>
+                                    <td><%=result[0].contribution_rate%>%</td>
+                                </tr>
+                                <tr>
+                                    <td>ISBN<br>또는 ISSN</td>
+                                    <td><%=result[0].isbn%></td>
+                                </tr>
+                                <tr>
+                                    <td>피인용 견수</td>
+                                    <td><%=result[0].citation%></td>
+                                </tr>
+                                <tr>
+                                    <td>ACK 개수</td>
+                                    <td><%=result[0].ack%></td>
+                                </tr>
+                                <tr>
+                                    <td>학술대회명</td>
+                                    <td><%=result[0].conference_name%></td>
+                                </tr>
+                                <tr>
+                                    <td>학술대회<br>발표일</td>
+                                    <td><%=result[0].conference_date%></td>
+                                </tr>
+                                <tr>
+                                    <td>학술대회<br>개최국</td>
+                                    <td><%=result[0].conference_country%></td>
                                 </tr>
                             </table>
                         </div>

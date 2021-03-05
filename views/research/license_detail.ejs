@@ -36,7 +36,13 @@
                     </table>
                     <div class="row mt-4">
                         <div class="col text-center">
-                            <img class="img-fluid img-thumbnail mx-auto d-block m-3" width="80%" src="/images/license/<%=result[0].application_number%>.jpg" title="논문 첫 이미지"><br>
+                            <%var str_split = result[0].application_number.split('-');%>
+                            <%var img_src = ""%>
+                            <%for(var i=0; i<str_split.length; i++){
+                                    img_src=img_src+str_split[i];
+                                    console.log(img_src + " " + i);
+                            }%>
+                            <img class="img-fluid img-thumbnail mx-auto d-block m-3" width="80%" src="/images/license/<%=img_src%>.jpg" title="이미지를 찾을 수 없습니다."><br>
                             <table class="table mx-auto table-bordered" style="width: 80%;">
                                 <tbody>
                                     <tr>
@@ -75,12 +81,12 @@
                                         <th>소유기관</th>
                                         <td colspan="2"><%=result[0].owning_institution.slice(3,result[0].owning_institution.langth)%></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="align-middle">
                                         <th scope="row">활용형태</th>
                                         <td colspan="2"><%=result[0].application_form.slice(3,result[0].application_form.langth)%></td>
                                         <th>표준특허여부</th>
                                         <td><%=result[0].standard_license_status.slice(3,result[0].standard_license_status.langth)%></td>
-                                        <td>+</td>
+                                        <td><a href="https://doi.org/10.8080/<%=img_src%>" target="_blank"><button class="btn btn-outline-secondary">+</button></a></td>
                                     </tr>
                                 </tbody>
                                 
