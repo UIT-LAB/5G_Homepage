@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://cdn.discordapp.com/attachments/751431280519807068/800629207469785128/5g.png" rel="shortcut icon" type="images/x-icon">
+
+    <style>
+        .table-hover tbody tr{
+            cursor: pointer;
+        }
+
+        /*@media screen and (max-width: 768px){
+            #hide{
+                display: none;
+            }
+        }*/
+    </style>
+</head>
+<body>
+    <header>
+        <% include ../include/header %>
+    </header>
+    <div class="container">
+        <div class="row mt-5 mb-5">
+            <% include ../include/research_nav %>
+            <div class="col-md-10">
+                <% include ../include/research_label %>
+                <table class="table table-hover text-center text-middle">
+                    <thead class="align-middle">
+                        <th width="5%">번호</th>
+                        <th width="20%">등록 번호</th>
+                        <th width="50%">등록 명칭</th>
+                        <th width="25%">등록 일자</th>
+                    </thead>
+                    <tbody class="align-middle">
+                        <% for(var i = (s_num - 1) * max_value; i < s_num * max_value; i++){ %>
+                            <% var data_value = result[i];
+                            if(data_value == undefined){
+                            continue;
+                            }%>
+                    <tr onclick="location.href='/research/software/detail/<%=data_value.sid%>'">
+                      <td><%= data_value.sid%></td>
+                      <td><%= data_value.registration_num%></td>
+                      <td><div class="text-start"><%= data_value.registration_name%></div></td>
+                      <td><%=dayjs(data_value.registration_date).format('YYYY.MM.DD');%></td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+                <div>
+                    <nav>
+                      <ul class="pagination justify-content-center mt-5">
+                        <% if(s_num == 1) { %>
+                            <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/research/license/<%=Number(s_num)-1%>">">이전</a></li>
+                        <% } else if (s_num > 1) { %>
+                            <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/research/license/<%=Number(s_num)-1%>">이전</a></li>
+                        <% } %>
+                        <% for(var j = 1; j<= Math.ceil(result.length / max_value); j++){ %>
+                            <%if(j != s_num){%>
+                                    <li class="page-item"><a class="page-link" style="color: black;" href="/research/software/<%= j %>"><%= j %></a>
+                                <%}else{%>
+                                    <li class="page-item"><a class="page-link" style="color: black; background-color: #c8c8c8;" href="/research/software/<%= j %>"><%= j %></a>
+                                <%}%>
+                        <% } if(s_num == Math.ceil(result.length / max_value)) { %>
+                            <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/research/license/<%=Number(s_num)+1%>">다음</a></li>
+                        <% } else if (s_num < Math.ceil(result.length / max_value)) { %>
+                            <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/research/license/<%=Number(s_num)+1%>">다음</a></li>
+                        <% } %></ul>
+                    </nav>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <% include ../include/footer %>
+    </footer>
+</body>
+
+</html>

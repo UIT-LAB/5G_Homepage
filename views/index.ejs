@@ -45,6 +45,11 @@
                         </thead>
                         <tbody class="align-middle">
                             <% for(let i=0; i<3; i++){ %>
+                                <%if(n_result[i] == undefined){%>
+                                    <tr style="height: 117px;">
+                                        <td colspan="2" class="text-center">다른 공지사항이 없습니다.</td>
+                                    </tr>
+                                    <%}else{%>
                                 <tr onclick="location.href='/board/notice/detail/<%=n_result[i].nid%>'">
                                     <td>
                                         <img src="/images/loud-speaker.png" style="width: 100px; height: 100px;">
@@ -53,6 +58,7 @@
                                         <%=n_result[i].n_title%>
                                     </td>
                                 </tr>
+                                <%}%>
                             <%}%>
                         </tbody>
                     </table>
