@@ -65,7 +65,7 @@
                                         <th>출원일</th>
                                         <td><%=dayjs(result[0].application_date).format('YYYY.MM.DD');%></td>
                                         <th>공개여부</th>
-                                        <td><%=result[0].public_not.slice(3,result[0].public_not.langth)%></td>
+                                        <td><%=result[0].public_not.slice(2,result[0].public_not.langth)%></td>
                                         <th>기여율</th>
                                         <td><%=result[0].contribution_rate%>%</td>
                                     </tr>
