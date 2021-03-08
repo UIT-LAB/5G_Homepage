@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-      <title>5G member</title>
+      <title>ITRC member</title>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -21,38 +21,36 @@
   </section> 
      
   <div class="title" align="center">
-    <p>introduce 5G member</p>
+    <p>Introduce ITRC member</p>
   </div>
   <hr>
   
-   <div class="container">
-    <div class="row row-cols-4" align="center">
+   <div align="center">
+    <table class="membertable" align="center">
       <% for(let i= 0; i< result.length; i++){ %>
-        <table class="membertable" align="center">
           <tr>
             <td>
-              <img src="/images/member/<%=result[i].m_image%>" alt="사진" width="150" height="150">
+              <img src="/images/member/noimg.jpg" width="150" height="150">
             </td>
             <th>
               <ul>
                 <h3 align="left"><%=result[i].m_name%></h3>
+                <li><p><%=result[i].m_division%></p></li>
                 <li><p><%=result[i].m_univ%></p></li>
-                <li><p>이메일 : <%=result[i].m_email%></p></li>
-                <li><p>연락처 : <%=result[i].m_phone%></p></li>
+                <li><p>소속 : <%=result[i].m_group%></p></li>
+                <li><p>직위 : <%=result[i].m_position%></p></li>
               </ul>
+              <div align="center">
+                <button type="button" id="membtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uitmodal"
+                data-name="<%=result[i].m_name%>" data-photo="<%=result[i].m_image%>" data-group="<%=result[i].m_group%>"
+                data-division="<%=result[i].m_division%>" data-univ="<%=result[i].m_univ%>" data-partdivision="<%=result[i].m_partdivision%>"
+                data-position="<%=result[i].m_position%>" data-finalyear="<%=result[i].m_finalyear%>" data-finalmajor="<%=result[i].m_finalmajor%>"
+                data-partperiod="<%=result[i].m_participationPeriod%>" data-partrate="<%=result[i].m_participationRate%>">더 보기</button>
+              </div>
             </th>
           </tr>
-  
-          <tr>
-            <td class="detailbtn" colspan="2">
-              <button type="button" id="membtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uitmodal"
-              data-name="<%=result[i].m_name%>" data-photo="<%=result[i].m_image%>" data-group="<%=result[i].m_group%>" data-email="<%=result[i].m_email%>"
-              data-position="<%=result[i].m_position%>" data-phone="<%=result[i].m_phone%>" data-univ="<%=result[i].m_univ%>">더 보기</button>
-            </td>
-          </tr>
-        </table>
-      <% } %>
-      </div>
+        <% } %>
+    </table>
    </div>
  
   
@@ -60,57 +58,43 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title"></h5>
+          <h2 class="modal-title"></h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" align="center">
+
           <table id="imtable">
             <tr>
               <th rowspan="4">
-                <img src="/images/member/고학림.jpg" id="imgmodal">
+                <img src="/images/member/noimg.jpg" alt="없음" id="imgmodal">
               </th>
-              <td>&#149;</td>
-              <th id="namemodal"></th>
             </tr>
             <tr>
-              <td>&#149;</td>
               <th id="univmodal"></th>
             </tr>
             <tr>
-              <td>&#149;</td>
               <th id="groupmodal"></th>
             </tr>
             <tr>
-              <td>&#149;</td>
               <th id="positionmodal"></th>
             </tr>
           </table>
 
-          <table id="comtable">
+          <table id="careertable">
             <tr>
-              <th colspan="2">연락 수단</th>
-            </tr>
-            <tr id="hello">
-              <td>이메일</td>
-              <td id="emailmodal"></td>
-            </tr>
-            <tr id="world">
-              <td>연락처</td>
-              <td id="phonemodal"></td>
-            </tr>
-          </table>
-
-          <table id="cartable">
+              <td>최종학위 년도</td>
+              <th id="yearmodal"></th>
             <tr>
-              <th colspan="2">학력</th>
+              <td>최종학위 전공</td>
+              <th id="majormodal"></th>
             </tr>
-            <tr id="holy">
-              <td id="now">1</td>
-              <td>2</td>
+            <tr>
+              <td>참여기간</td>
+              <th id="periodmodal"></th>
             </tr>
-            <tr id="moly">
-              <td id="wow">1</td>
-              <td>2</td>
+            <tr>
+              <td>참여율</td>
+              <th id="ratemodal"></th>
             </tr>
           </table>
         </div>
@@ -131,21 +115,26 @@
     var button = $(event.relatedTarget);
     var univ = button.data('univ');
     var name = button.data('name');
-    var photo = button.data('photo');
     var group = button.data('group');
-    var email = button.data('email');
+    var division = button.data('division');
+    var partdivision = button.data('partdivision');
+
     var position = button.data('position');
-    var phone = button.data('phone');
+    var finalyear = button.data('finalyear');
+    var finalmajor = button.data('finalmajor');
+    var partperiod = button.data('partperiod');
+    var partrate = button.data('partrate');
 
     var modal=$(this)
-    modal.find('.modal-title').text("상세보기");
+    modal.find('.modal-title').text(division+" "+partdivision+" "+name);
     modal.find('.modal-body #imtable #univmodal').text(univ);
-    modal.find('.modal-body #imtable #namemodal').text("이름 : "+name);
-    modal.find('.modal-body #imtable #groupmodal').text("소속 : "+group);
-    modal.find('.modal-body #comtable #emailmodal').text(email);
-    modal.find('.modal-body #imtable #positionmodal').text("직급 : "+position);
-    modal.find('.modal-body #comtable #phonemodal').text(phone);
+    modal.find('.modal-body #imtable #groupmodal').text(group);
+    modal.find('.modal-body #imtable #positionmodal').text(position);
 
-    document.getElementById('imgmodal').src = ("/images/member/"+photo);
+    modal.find('.modal-body #careertable #yearmodal').text(finalyear+"년");
+    modal.find('.modal-body #careertable #majormodal').text(finalmajor);
+    modal.find('.modal-body #careertable #periodmodal').text(partperiod+"년");
+    modal.find('.modal-body #careertable #ratemodal').text(partrate+"%");
+    //document.getElementById('imgmodal').src = ("/images/member/"+photo);
   });
 </script>
