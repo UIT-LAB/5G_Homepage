@@ -4,7 +4,8 @@ var db = require('../config/db')
 var dayjs =  require('dayjs')
 
 router.get('/:num', function(req, res, next){
-   db.query('select * from Member', function (error, result) {
+  var student = "참여학생"
+   db.query(`select * from Member join Member_career on Member.mid = Member_career.mid where not Member.m_partdivision='${student}'`, function (error, result) {
       let date = new dayjs();
       if (error) {
           throw error;
@@ -15,15 +16,4 @@ router.get('/:num', function(req, res, next){
   });
 })
 
-router.get('/detail', function(req,res,next){
-   db.query('select * from Member', function (error, result) {
-     if (error) {
-       throw error;
-     }    
-     else {
-       res.render('member', {result : result,name:req.session.u_name});
-       console.log(result);
-     };
-  });
-})
 module.exports = router;

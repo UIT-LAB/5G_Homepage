@@ -61,7 +61,7 @@
                 <form class="d-flex">
                     <%if(name){ %>
                         <span class="text-white m-2 align-middle"><%= name %>님 환영합니다!</span>
-                        <a class="nav-link" href="#" onclick="wow()" onmouseover="mouse_over()" onmouseout="mouse_out()"><img src="/images/user.png" alt="" width="30" id="user_info"></a>
+                        <a class="nav-link" href="#" onclick="profileopen()" onmouseover="mouse_over()" onmouseout="mouse_out()"><img src="/images/user.png" alt="" width="30" id="user_info"></a>
                         <a href="/login/logout"><input class="btn form-control btn-outline-light" type="button" value="Logout"></a>
                     <%}
                     else{%>
@@ -75,8 +75,8 @@
 </body>
 </html>
 <script>
-    function wow() {
-        var popup=window.open('/profile', '개인 정보', 'width=600px, height=600px, scrollbars=no, toolbar=no, resizeable=no, top=0, left=50');
+    function profileopen() {
+        var popup=window.open('/profile', '개인 정보', 'width=600px, height=600px, scrollbars=no, toolbar=no, location = no, resizable=no, top=0, left=50');
     }
 
     function mouse_over(){

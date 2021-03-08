@@ -17,19 +17,18 @@ body{
 
 .membertable{
     border-top: 1px solid black;
+    margin: 0%;
 }
 .membertable ul{
     text-align: left;
 }
 .membertable th{
     padding-top: 10px;
-    padding-left: 10px;
     padding-right: 10px;
     width: 300px;
 }
 .membertable td{
     padding-top: 10px;
-    padding-left: 10px;
     padding-right: 10px;
     width: 180px;
 }
@@ -41,52 +40,32 @@ body{
 /*modal*/
 #imgmodal{
     width: 200px;
-    height: 250px;
+    height: 200px;
 }
-#imtable td{
-    width: 30px;
-    text-align: right;
-}
-#comtable{
-    margin-top: 20px;
+#imtable th{
     text-align: center;
-    width: 450px;
-    border-top: 2px solid black;
-    border-bottom: 1px solid black;
+    width: 200px;
 }
-#comtable #hello{
-    border-top: 2px solid black;
+#univmodal{
+    border-bottom:1px solid lightgray;
 }
-#comtable #world{
-    border-top: 1px solid black;
+#groupmodal{
+    border-bottom:1px solid lightgray;
 }
-#comtable #emailmodal{
-    border-left: 1px solid black;
+#careertable{
+    width: 400px;
+    border-collapse: separate;
 }
-#comtable #phonemodal{
-    border-left: 1px solid black;
-}
-
-#cartable{
-    margin-top: 20px;
+#careertable td{
+    padding: 15px;
+    width: 200px;
     text-align: center;
-    width: 450px;
-    border-top: 2px solid black;
-    border-bottom: 1px solid black;
+    background-color: rgba(220, 220, 220);
+    color: black;
 }
-#cartable #holy{
-    border-top: 2px solid black;
-}
-#cartable #moly{
-    border-top: 1px solid black;
-}
-#cartable #now{
-    width: 110px;
-    border-right: 1px solid black;
-}
-#cartable #wow{
-    width: 110px;
-    border-right: 1px solid black;
+#careertable th{
+    padding: 15px;
+    text-align: center;
 }
 
 /*media query*/

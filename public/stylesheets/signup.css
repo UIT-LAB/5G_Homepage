@@ -25,3 +25,67 @@
 .title{
     font-size: 35px;
 }
+
+/*meida query*/
+@media (min-width: 0px){
+    .loginform{
+        width: 100%;
+        min-height: 100vh;
+    }
+    .wow{
+        width: 330px;
+    }
+    .link{
+        font-size: 16px;
+    }
+}
+@media (min-width: 576px){
+    .loginform{
+        width: 100%;
+        min-height: 100vh;
+    }
+    .wow{
+        width: 330px;
+    }
+    .link{
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 768px){
+    .loginform{
+        width: 400px;
+        min-height: 100vh;
+    }
+    .wow{
+        width: 330px;
+    }
+    .link{
+        font-size: 16px;
+    }
+}
+@media (min-width: 992px){
+    .loginform{
+        width: 450px;
+        min-height: 100vh;
+    }
+    .wow{
+        width: 330px;
+    }
+    .link{
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1200px){
+    .loginform{
+        width: 550px;
+        min-height: 100vh;
+    }
+    .wow{
+        width: 330px;
+    }
+    .link{
+        font-size: 16px;
+    }
+}
