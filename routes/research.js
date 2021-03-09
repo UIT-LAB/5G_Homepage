@@ -70,4 +70,26 @@ router.get('/software/detail/:num', function(req, res, next){
     });
 })
 
+router.get('/standard/:num', function(req, res, next){
+  db.query('select * from standard ORDER BY stid DESC', function (error, result) {
+      if (error) {
+        throw error;
+      }    
+      else {
+          res.render('research/standard',{result : result, st_num :req.params.num , max_value: 15, dayjs, name:req.session.u_name});
+      };
+    });
+})
+
+router.get('/software/detail/:num', function(req, res, next){
+  db.query('select * from software where sid = ?', req.params.num, function (error, result) {
+      if (error) {
+        throw error;
+      }    
+      else {
+          res.render('research/software_detail',{result : result, s_num :req.params.num , max_value: 15, dayjs, name:req.session.u_name});
+      };
+    });
+})
+
 module.exports = router;

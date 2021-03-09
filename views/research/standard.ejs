@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://cdn.discordapp.com/attachments/751431280519807068/800629207469785128/5g.png" rel="shortcut icon" type="images/x-icon">
+
+    <style>
+        .table-hover tbody tr{
+            cursor: pointer;
+        }
+
+        /*@media screen and (max-width: 768px){
+            #hide{
+                display: none;
+            }
+        }*/
+    </style>
+</head>
+<body>
+    <header>
+        <% include ../include/header %>
+    </header>
+    <div class="container">
+        <div class="row mt-5 mb-5">
+            <% include ../include/research_nav %>
+            <div class="col-md-10">
+                <% include ../include/research_label %>
+                <table class="table table-hover text-center text-middle">
+                    <thead class="align-middle">
+                        <th width="5%">번호</th>
+                        <th width="50%">문서명</th>
+                        <th width="20%">승인번호</th>
+                        <th width="25%">승인일자</th>
+                    </thead>
+                    <tbody class="align-middle">
+                        <% for(var i = (st_num - 1) * max_value; i < st_num * max_value; i++){ %>
+                            <% var data_value = result[i];
+                            if(data_value == undefined){
+                            continue;
+                            }%>
+                    <tr onclick="location.href='/research/standard/detail/<%=data_value.stid%>'">
+                      <td><%= data_value.stid%></td>
+                      <td><div class="text-start"><%= data_value.document%></div></td>
+                      <td><%= data_value.approval_num%></td>
+                      <td><%=dayjs(data_value.approval_date).format('YYYY.MM.DD');%></td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+                <div>
+                    <nav>
+                      <ul class="pagination justify-content-center mt-5">
+                        <% if(st_num == 1) { %>
+                            <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/research/standard/<%=Number(st_num)-1%>">">이전</a></li>
+                        <% } else if (st_num > 1) { %>
+                            <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/research/standard/<%=Number(st_num)-1%>">이전</a></li>
+                        <% } %>
+                        <% for(var j = 1; j<= Math.ceil(result.length / max_value); j++){ %>
+                            <%if(j != st_num){%>
+                                    <li class="page-item"><a class="page-link" style="color: black;" href="/research/standard/<%= j %>"><%= j %></a>
+                                <%}else{%>
+                                    <li class="page-item"><a class="page-link" style="color: black; background-color: #c8c8c8;" href="/research/standard/<%= j %>"><%= j %></a>
+                                <%}%>
+                        <% } if(st_num == Math.ceil(result.length / max_value)) { %>
+                            <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/research/standard/<%=Number(st_num)+1%>">다음</a></li>
+                        <% } else if (st_num < Math.ceil(result.length / max_value)) { %>
+                            <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/research/standard/<%=Number(st_num)+1%>">다음</a></li>
+                        <% } %></ul>
+                    </nav>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <% include ../include/footer %>
+    </footer>
+</body>
+
+</html>

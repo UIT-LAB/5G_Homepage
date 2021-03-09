@@ -49,9 +49,9 @@
                     <nav>
                       <ul class="pagination justify-content-center mt-5">
                         <% if(s_num == 1) { %>
-                            <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/research/license/<%=Number(s_num)-1%>">">이전</a></li>
+                            <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/research/software/<%=Number(s_num)-1%>">">이전</a></li>
                         <% } else if (s_num > 1) { %>
-                            <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/research/license/<%=Number(s_num)-1%>">이전</a></li>
+                            <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/research/software/<%=Number(s_num)-1%>">이전</a></li>
                         <% } %>
                         <% for(var j = 1; j<= Math.ceil(result.length / max_value); j++){ %>
                             <%if(j != s_num){%>
@@ -60,9 +60,9 @@
                                     <li class="page-item"><a class="page-link" style="color: black; background-color: #c8c8c8;" href="/research/software/<%= j %>"><%= j %></a>
                                 <%}%>
                         <% } if(s_num == Math.ceil(result.length / max_value)) { %>
-                            <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/research/license/<%=Number(s_num)+1%>">다음</a></li>
+                            <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/research/software/<%=Number(s_num)+1%>">다음</a></li>
                         <% } else if (s_num < Math.ceil(result.length / max_value)) { %>
-                            <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/research/license/<%=Number(s_num)+1%>">다음</a></li>
+                            <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/research/software/<%=Number(s_num)+1%>">다음</a></li>
                         <% } %></ul>
                     </nav>
                   </div>
