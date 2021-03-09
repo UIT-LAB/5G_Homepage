@@ -91,7 +91,11 @@
                     <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/board/post/<%=Number(p_num)-1%>">이전</a></li>
                 <% } %>
                 <% for(var j = 1; j<= Math.ceil(result.length / max_value); j++){ %>
-                <li class="page-item"><a class="page-link" style="color: black;" href="/board/post/<%= j %>"><%= j %></a>
+                  <%if(j != p_num){%>
+                    <li class="page-item"><a class="page-link" style="color: black;" href="/board/post/<%= j %>"><%= j %></a>
+                  <%}else{%>
+                    <li class="page-item"><a class="page-link" style="color: black; background-color: #c8c8c8;" href="/board/post/<%= j %>"><%= j %></a>
+                  <%}%>
                 <% } if(p_num == Math.ceil(result.length / max_value)) { %>
                     <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/board/post/<%=Number(p_num)+1%>">다음</a></li>
                 <% } else if (p_num < Math.ceil(result.length / max_value)) { %>
