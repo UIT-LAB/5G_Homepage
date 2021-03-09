@@ -204,7 +204,7 @@ router.post('/post/delete', function(req, res, next) {
 
 //------------------------------question
 router.get('/question/:num', function(req, res, next) {
-  db.query('select * from Question_Board', function (error, result) {
+  db.query('select * from Question_Board ORDER BY qid DESC', function (error, result) {
       if (error) {
         throw error;
       }    
