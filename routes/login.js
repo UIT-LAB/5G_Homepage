@@ -3,82 +3,107 @@ var router = express.Router();
 var bodyParser = require('body-parser')
 var db = require('../config/db')
 var dayjs = require('dayjs')
+const jwt = require('jsonwebtoken');
+const key = require("./auth/key");
 var crypto = require('crypto');
+const { decode } = require('punycode');
 
 
 router.get('/', function (req, res, next) {
     res.render('login/login');
 });
 
-router.post('/', function (req, res, next) {
+router.post('/', (req, res) => {
     var body = req.body;
     var id = body.inputid;
     var pw = body.inputpw;
-
     var output = crypto.createHash('sha512').update(pw).digest('base64')
-    var datas = [id, output];
-
+    
     var select_Gallery = `select gid, g_title, g_img from Gallery ORDER BY g_write_date DESC LIMIT 3`;
-  var select_Research = `select tid, thesis_name from thesis ORDER BY tid DESC LIMIT 3`;
-  var select_Notice = `select nid, n_title from Notice_Board ORDER BY nid DESC LIMIT 3`;
-  var select_license = `select lid, invention_name from license ORDER BY lid DESC LIMIT 3`;
+    var select_Research = `select tid, thesis_name from thesis ORDER BY tid DESC LIMIT 3`;
+    var select_Notice = `select nid, n_title from Notice_Board ORDER BY nid DESC LIMIT 3`;
+    var select_license = `select lid, invention_name from license ORDER BY lid DESC LIMIT 3`;
 
-    db.query('select * from UserInfo where u_id=? and u_pw=?', datas, function (err, result) {
+    var jwtname;
+    let token_value;
+    let token;
+            
+    db.query(`select * from UserInfo where u_id='${id}' and u_pw= '${output}'`, async function (err, result) {
         if (err) throw err;
         if (result[0] !== undefined) {
-            req.session.u_id = result[0].u_id;
-            req.session.u_name = result[0].u_name;
-            req.session.isLogined = true;
-            db.query(select_Gallery, function (error, result) {
+            const user = {
+                id: result[0].u_id,
+                name: result[0].u_name,
+            }
+            await jwt.sign({user:user},key,{expiresIn:'1h'},(error, token) => {
+                if(error) {
+                    throw error;
+                }
+                res.cookie("user",token);
+                token_value = token;
+            });
+            
+            await jwt.verify(token_value, key, (err, decode)=>{
+              if(err){
+                throw err;
+              }
+              else {
+                jwtname = decode.user.name
+              }
+            })
+
+            await db.query(`Update UserInfo set token = '${token_value}' where u_id = '${result[0].u_id}'`, function(error, result){
                 if (error) {
-                  throw error;
+                 throw error;
                 }
                 else {
-                  g_result = result;
-                  console.log(result);
-                  db.query(select_Research, function (error, result) {
+                    console.log(token_value)
+                db.query(select_Gallery, function (error, result) {
                     if (error) {
                       throw error;
                     }
                     else {
-                      r_result = result;
-                      console.log(result);
-                      db.query(select_Notice, function (error, result) {
+                      g_result = result;
+                      db.query(select_Research, function (error, result) {
                         if (error) {
                           throw error;
                         }
                         else {
-                          n_result = result;
-                          console.log(result);
-                          db.query(select_license, function (error, result) {
+                          r_result = result;
+                          db.query(select_Notice, function (error, result) {
                             if (error) {
                               throw error;
                             }
                             else {
-                              p_result = result;
-                              console.log(result);
-                              res.render('index', { 'g_result': g_result, 'r_result': r_result, 'n_result': n_result, dayjs, 'name': req.session.u_name });
-                            }
-                          });
-                        }
-                      });
-                    }
-                  });
-                }
-              });
-        }
-        else{
+                              n_result = result;
+                              db.query(select_license, function (error, result) {
+                                if (error) {
+                                  throw error;
+                                }
+                                else {
+                                  p_result = result;
+                                  res.render('index', { 'g_result': g_result, 'r_result': r_result, 'n_result': n_result, 'p_result':p_result, dayjs, name:jwtname});
+                              }
+                            });
+                          }
+                        });
+                      }
+                    });
+                  }
+                });
+            }                  
+        });
+    }
+    else{
             res.send('<script>alert(`정보가 일치하지 않습니다.`); location.href=`/login`</script>')
         }
     });
 });
 //------------------logout
 router.get('/logout', function (req, res) {
-    req.session.destroy(function () {
-        req.session;
-    });
+    res.clearCookie('user');
     res.redirect('/');
-})
+  })
 //----------- findID
 router.get('/findId', function (req, res, next) {
     res.render('login/findId');
