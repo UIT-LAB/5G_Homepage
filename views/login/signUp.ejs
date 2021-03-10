@@ -15,7 +15,7 @@
                 <form method="POST" name="signupform" onsubmit='return checking();'>
                     <table align="center" class="wow">
                         <thead>
-                            <th><p class="title mt-5">5G 회원가입</p></th>
+                            <th><p class="title mt-5">ITRC 회원가입</p></th>
                         </thead>
                         <tbody>
                             <tr> 
@@ -53,6 +53,14 @@
                             <tr>
                                 <td>
                                     <input type="text" name ="signup_Name" class="form-control" id="signup_Name" placeholder="이름">
+                                </td>
+                            </tr>
+                            <tr> 
+                                <th><p align="left">번호</p></th> 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="tel" name ="signup_Tel" class="form-control" id="signup_Tel" placeholder="번호">
                                 </td>
                             </tr>
                             <tr> 
@@ -108,7 +116,7 @@
 <script type="text/javascript">
     var child;
     function opencheck(){
-        var setting = 'width=500px, height=500px, scrollbars=no, toolbar=no, resizeable=no, top=0, left=50';
+        var setting = 'width=500px, height=500px, scrollbars=no, toolbar=no, resizeable=no, top=150, left=650';
         child = window.open('/login/idcheck', 'idchk', setting);
     }
 
@@ -122,6 +130,7 @@
         var uitpw = document.getElementById("signup_Pw");
         var uitpwcheck = document.getElementById("singup_chk");
         var uitemail = document.getElementById("signup_Email");
+        var uittel = document.getElementById("signup_Tel");
         var chkbox = document.getElementsByName("agree");
         var idchkbtn = documetn.getElementById("idchkbtn");
         var chk=false;
@@ -148,11 +157,15 @@
             alert("비밀번호는 영문+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
             return false;
         }
-        if ((uitname.value)=="") {
+        if (uitname.value=="") {
             alert("이름을 입력해 주세요");
             return false;
         }
-        if ((uitemail.value)=="") {
+        if (uittel.value=""){
+            alert("번호를 입력해 주세요");
+            return false;
+        }
+        if (uitemail.value=="") {
             alert("이메일을 입력해 주세요");
             return false;
         }
