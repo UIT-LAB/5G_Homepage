@@ -321,9 +321,6 @@ router.post('/post/delete', function(req, res, next) {
 
 //------------------------------question
 router.get('/question/:num', function(req, res, next) {
-<<<<<<< HEAD
-  db.query('select * from Question_Board ORDER BY qid DESC', function (error, result) {
-=======
   if(req.cookies.user != undefined){
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
@@ -337,7 +334,6 @@ router.get('/question/:num', function(req, res, next) {
     })
   }
   db.query('select * from Question_Board', function (error, result) {
->>>>>>> 4cc13dd69d470428ab164f4d6f4c85ce8c3940bb
       if (error) {
         throw error;
       }    
@@ -407,7 +403,7 @@ router.post('/question/insert_write', function(req, res, next) {
       }
     })
   }
-  var sql = {q_title:title, q_content : content, user_id : jwtname, write_date : datetime};
+  var sql = {q_title:title, q_content : content, q_writer : jwtname, q_writer_date : datetime};
 
   db.query('INSERT INTO Question_Board SET ?', sql , function (error, result) {
       if(error) {
