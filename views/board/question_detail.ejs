@@ -79,7 +79,24 @@
                         </table>
                         <%= result[0].admin_comment %>
                     </div>
-                    <%}%>
+                <%}%>
+                <%if(result[0].admin_comment == null && name == "관리자"){%>
+                    <div class="border border-2 p-4 mt-3">
+                        <h4>관리자 답변</h4>
+                        <table class="table mt-2">
+                            <tbody class="align-middle">
+                                <tr>
+                                    <td>
+                                        <span class="float-end">작성일자 : <%=
+                                                dayjs().format('YY.MM.DD'); %></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <textarea type="text" style="height: 200px; resize: none;" name="ques_comment"
+              class="form-control"></textarea>
+                    </div>
+                <%}%>
 
                         <div class="float-end mt-3">
                             <button class="btn btn-outline-dark" onclick="location.href='/board/question/1'">목록</button>

@@ -403,7 +403,7 @@ router.post('/question/insert_write', function(req, res, next) {
       }
     })
   }
-  var sql = {q_title:title, q_content : content, user_id : jwtname, write_date : datetime};
+  var sql = {q_title:title, q_content : content, q_writer : jwtname, q_writer_date : datetime};
 
   db.query('INSERT INTO Question_Board SET ?', sql , function (error, result) {
       if(error) {

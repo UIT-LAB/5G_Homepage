@@ -67,7 +67,7 @@
                     <%= data_value.q_writer %>
                   </td>
                   <td class="text-center">
-                    <%= dayjs(data_value.write_date).format('YYYY.MM.DD');%>
+                    <%= dayjs(data_value.q_writer_date).format('YYYY.MM.DD');%>
                   </td>
                   <td class="text-center">
                     <% if(data_value.admin_comment != null){
@@ -83,7 +83,7 @@
         </table>
         <div class="text-center">
           <%if(name != null){%>
-            <button class="btn btn-outline-dark float-end" onclick="location.href='/board/notice_write'">작성</button><br>
+            <button class="btn btn-outline-dark float-end" onclick="location.href='/board/question_write'">작성</button><br>
           <%}%>
         </div>
           <div>
