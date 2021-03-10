@@ -2,16 +2,29 @@ var express = require('express');
 var router = express.Router();
 var db = require('../config/db')
 var dayjs =  require('dayjs')
+const jwt = require('jsonwebtoken');
+const key = require("./auth/key");
+let jwtname, jwtid;
 
 router.get('/:num', function(req, res, next){
+  if(req.cookies.user != undefined){
+    let token = req.cookies.user;
+    jwt.verify(token, key, (err, decode)=>{
+      if(err){
+        throw err;
+      }
+      else {
+        jwtname = decode.user.name
+      }
+    })
+  }
   var student = "참여학생"
    db.query(`select * from Member join Member_career on Member.mid = Member_career.mid where not Member.m_partdivision='${student}'`, function (error, result) {
-      let date = new dayjs();
       if (error) {
           throw error;
         }    
       else {
-          res.render('member/member', {result : result, m_num : req.params.num, max_value:12,name:req.session.u_name});
+          res.render('member/member', {result : result, m_num : req.params.num, max_value:12,name:jwtname});
       };
   });
 })
