@@ -187,7 +187,7 @@ router.post('/signup_data', function (req, res, next) {
         }
         else {
             console.log("회원가입을 축하합니다.");
-            res.redirect("/");
+            res.redirect("/login");
         };
     });
 })

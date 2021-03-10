@@ -24,6 +24,13 @@
         body{
             font-family: 'NanumBarunGothic';
         }
+        table{
+            border: 1px solid black;
+        }
+        #hello{
+            font-size: 30px;
+            height: 85px;
+        }
         .table-hover tbody tr{
             cursor: pointer;
         }
@@ -33,39 +40,26 @@
     <div class="container">
         <div class="row mt-5 mb-5">
             <div class="col-md-4">
-                <div class="border border-2 p-5 ">
+                <div class="border border-2 p-5">
                     <h4>개인정보</h4>
-                    <div class="row mt-4">
-                        <div class="col">
-                            <table class="table table-bordered border-dark">
-                                <div class="mb-2 float-end pr-2" style="cursor: pointer;"</div>
-                                <tr>
-                                    <td>이름</td>
-                                    <td><%= result[0].u_name %></td>
-                                </tr>
-                                <tr>
-                                    <td>아이디</td>
-                                    <td><%=result[0].u_id%></td>
-                                </tr>
-                                <tr>
-                                    <td>전화번호</td>
-                                    <td><%=result[0].u_phone%></td>
-                                </tr>
-                                <tr>
-                                    <td>이메일</td>
-                                    <td><%=result[0].u_email%></td>
-                                </tr>
-                                <tr>
-                                    <td>가입날짜</td>
-                                    <td><%=dayjs(result[0].u_date).format('YYYY.MM.DD');%></td>
-                                </tr>
-                            </form>
-                            </table>
-                            <div class="float-end">
-                                <input type ="button" value="수정" onclick="location.href='/profile_update'"/>
-                                <input type ="button" value="비밀번호 수정" onclick="location.href='/profile_password'"/>
-                            </div>
-                        </div>
+                    <div class="text-center">
+                        <table class="table table-borderless">
+                            <tr>
+                                <td colspan="2" id="hello"><%= result[0].u_name %></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    ID : <%=result[0].u_id%> <br> 
+                                    TEL :<%=result[0].u_phone%> <br>
+                                    E-mail : <%=result[0].u_email%> <br>
+                                    Join Day : <%=dayjs(result[0].u_date).format('YYYY.MM.DD');%> <br>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="text-end">
+                        <input type ="button" class="btn btn-secondary" value="수정" onclick="location.href='/profile_update'"/>
+                        <input type ="button" class="btn btn-secondary" value="비밀번호 수정" onclick="location.href='/profile_password'"/>
                     </div>
                 </div>
             </div>

@@ -53,13 +53,16 @@
                                     <td><input type="text" name="profile_email"style="width:80%;" placeholder="이메일" value="<%= result[0].u_email %>"></td>
                                 </tr>
                                 <tr style="text-align:right">
-                                    <td colspan="2"><input type ="submit" value="수정 완료" onclick="form.action='/profile_update'"/></td>
                                 <input type="hidden" name="namex" value="<%= result[0].u_name%>"/>
                                 <input type="hidden" name="idx" value="<%= result[0].u_id%>"/>
                                 <input type="hidden" name="phonex" value="<%= result[0].u_phone%>"/>
                                 <input type="hidden" name="emailx" value="<%= result[0].u_email%>"/>
                                 </tr>
                             </table>
+                            <div align="right">
+                                <input type ="submit" class="btn btn-secondary" value="수정 완료" onclick="form.action='/profile_update'"/>
+                                <button type="button" class="btn btn-secondary" onclick="history.back()">돌아가기</button>
+                            </div>
                         </form>
                         </div>
                     </div>
