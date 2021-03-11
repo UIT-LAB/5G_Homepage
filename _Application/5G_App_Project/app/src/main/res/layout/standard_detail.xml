@@ -11,18 +11,18 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <Button
-            android:id="@+id/treatise_detail_exit_button"
+            android:id="@+id/standard_detail_exit_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="6dp"
             android:background="@drawable/ic_exit" />
 
         <TextView
-            android:id="@+id/treatise_detail_subtitle"
+            android:id="@+id/standard_detail_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:layout_toRightOf="@id/treatise_detail_exit_button"
+            android:layout_toRightOf="@id/standard_detail_exit_button"
             android:layout_marginLeft="155dp"
             android:layout_marginTop="7dp"
             android:textSize="20dp"
@@ -31,7 +31,7 @@
 
 
         <TableLayout
-            android:id="@+id/treatise_detail_background"
+            android:id="@+id/standard_detail_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
@@ -39,42 +39,42 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/border_round"
-            android:layout_below="@id/treatise_detail_subtitle"
+            android:layout_below="@id/standard_detail_subtitle"
             app:layout_constraintTop_toTopOf="parent">
 
             <RelativeLayout>
                 <TextView
-                    android:id="@+id/treatise_detail_number"
+                    android:id="@+id/standard_detail_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="제 1 호"
                     android:textStyle="bold"/>
                 <TextView
-                    android:id="@+id/treatise_detail_division"
+                    android:id="@+id/standard_detail_division"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/treatise_detail_division_name"
-                    android:text="논문 구분 : "
+                    android:layout_toLeftOf="@id/standard_detail_division_name"
+                    android:text="구분 : "
                     android:textStyle="bold"
                     />
                 <TextView
-                    android:id="@+id/treatise_detail_division_name"
+                    android:id="@+id/standard_detail_division_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
-                    android:text="논문"
+                    android:text="SW"
                     android:layout_alignParentEnd="true"
                     android:textStyle="bold"/>
                 <TextView
-                    android:id="@+id/treatise_detail_title"
+                    android:id="@+id/standard_detail_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="30dp"
-                    android:layout_below="@id/treatise_detail_division_name"
+                    android:layout_below="@id/standard_detail_division_name"
                     android:layout_centerHorizontal="true"
-                    android:text="논문"
+                    android:text="표준화"
                     android:textSize="25dp"
                     android:textStyle="bold"
                     />
@@ -107,7 +107,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="1dp"
-                            android:text="대학명"
+                            android:text="제안기관"
                             android:background="#FFFFFF"
                             android:textSize="12sp"
                             android:gravity="center_horizontal"
@@ -115,7 +115,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="학과"
+                            android:text="승인번호"
                             android:background="#FFFFFF"
                             android:textSize="12sp"
                             android:gravity="center_horizontal"
@@ -129,9 +129,9 @@
                         android:padding="1dp"
                         >
                         <TextView
-                            android:id="@+id/treatise_detail_date"
+                            android:id="@+id/standard_detail_date"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_marginRight="1dp"
                             android:text="Android"
                             android:background="#ffffff"
@@ -139,9 +139,9 @@
                             android:gravity="center_horizontal"
                             />
                         <TextView
-                            android:id="@+id/treatise_detail_univ_name"
+                            android:id="@+id/standard_detail_univ_name"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_marginRight="1dp"
                             android:text="해양 IT 연구소"
                             android:background="#ffffff"
@@ -149,7 +149,7 @@
                             android:gravity="center_horizontal"
                             />
                         <TextView
-                            android:id="@+id/treatise_detail_department"
+                            android:id="@+id/standard_detail_department"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="UIT LAB"
@@ -162,7 +162,7 @@
                 </TableLayout>
 
                 <TableLayout
-                    android:id="@+id/treatise_detail_paper"
+                    android:id="@+id/standard_detail_paper"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="80dp"
@@ -181,13 +181,13 @@
                             android:paddingTop="15dp"
                             android:paddingBottom="15dp"
                             android:layout_marginRight="1dp"
-                            android:text="논문명"
+                            android:text="문서명"
                             android:background="#FFFFFF"
                             android:textSize="12sp"
                             android:gravity="center_horizontal"
                             />
                         <TextView
-                            android:id="@+id/treatise_detail_thesis_name"
+                            android:id="@+id/standard_detail_thesis_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="15dp"
@@ -214,13 +214,13 @@
                             android:paddingTop="70dp"
                             android:paddingBottom="70dp"
                             android:layout_marginRight="1dp"
-                            android:text="학술지명"
+                            android:text="기술요약"
                             android:background="#ffffff"
                             android:textSize="12sp"
                             android:gravity="center_horizontal"
                             />
                         <TextView
-                            android:id="@+id/treatise_detail_journal_name"
+                            android:id="@+id/standard_detail_journal_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="70dp"
@@ -247,13 +247,13 @@
                             android:layout_marginRight="1dp"
                             android:paddingTop="30dp"
                             android:paddingBottom="30dp"
-                            android:text="학술대회명"
+                            android:text="활용분야"
                             android:background="#ffffff"
                             android:textSize="12sp"
                             android:gravity="center_horizontal"
                             />
                         <TextView
-                            android:id="@+id/treatise_detail_conference_name"
+                            android:id="@+id/standard_detail_conference_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="30dp"
@@ -267,6 +267,39 @@
                             />
                     </TableRow>
                     <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#000000"
+                    android:padding="1dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1dp"
+                        android:background="#ffffff"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="표준화기구명"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/standard_detail_standardization_organization"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:layout_span="5"
+                        android:layout_marginRight="1dp"
+                        android:text="2020-02-02"
+                        android:background="#ffffff"
+                        android:textSize="12sp"
+                        android:gravity="center_horizontal"
+                        />
+
+                </TableRow>
+                    <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#000000"
@@ -281,11 +314,11 @@
                             android:gravity="center_horizontal"
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
-                            android:text="학술지 출판일"
+                            android:text="표준화기구"
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/treatise_detail_journal_date"
+                            android:id="@+id/standard_detail_standardization_organization_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
@@ -297,6 +330,7 @@
                             android:textSize="12sp"
                             android:gravity="center_horizontal"
                             />
+
                     </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
@@ -304,19 +338,20 @@
                         android:background="#000000"
                         android:padding="1dp"
                         >
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginRight="1dp"
+                            android:background="#ffffff"
+                            android:gravity="center_horizontal"
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
-                            android:layout_marginRight="1dp"
-                            android:text="학술대회발표일"
-                            android:background="#ffffff"
-                            android:textSize="12sp"
-                            android:gravity="center_horizontal"
-                            />
+                            android:text="세부표준화단계"
+                            android:textSize="12sp" />
+
                         <TextView
-                            android:id="@+id/treatise_detail_conference_date"
+                            android:id="@+id/standard_detail_standardization_steps_detail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
@@ -328,6 +363,7 @@
                             android:textSize="12sp"
                             android:gravity="center_horizontal"
                             />
+
                     </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
@@ -335,43 +371,46 @@
                         android:background="#000000"
                         android:padding="1dp"
                         >
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginRight="1dp"
+                            android:background="#ffffff"
+                            android:gravity="center_horizontal"
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
+                            android:text="표준화회의명"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/standard_detail_standardization_meeting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:layout_span="5"
                             android:layout_marginRight="1dp"
-                            android:text="학술대회개최국"
+                            android:text="2020-02-02"
                             android:background="#ffffff"
                             android:textSize="12sp"
                             android:gravity="center_horizontal"
                             />
 
-                        <TextView
-                            android:id="@+id/treatise_detail_conference_country"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="1dp"
-                            android:layout_span="5"
-                            android:background="#ffffff"
-                            android:gravity="center_horizontal"
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
-                            android:text="KOREA"
-                            android:textSize="12sp" />
                     </TableRow>
+
                     <RelativeLayout>
 
                         <TextView
-                            android:id="@+id/treatise_detail_manager_title"
+                            android:id="@+id/standard_detail_manager_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
-                            android:layout_toLeftOf="@id/treatise_detail_manager"
-                            android:text="주 저자명 : "
+                            android:layout_toLeftOf="@id/standard_detail_manager"
+                            android:text="제안자 : "
                             android:textSize="12sp"/>
                         <TextView
-                            android:id="@+id/treatise_detail_manager"
+                            android:id="@+id/standard_detail_manager"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="5dp"

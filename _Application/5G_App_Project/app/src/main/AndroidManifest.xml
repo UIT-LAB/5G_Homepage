@@ -40,6 +40,10 @@
         <activity android:name=".QuestionDetailActivity" />
         <activity android:name=".TreatiseMainActivity" />
         <activity android:name=".TreatiseDetailActivity" />
+        <activity android:name=".licenseDetailActivity" />
+        <activity android:name=".SoftwareDetailActivity" />
+        <activity android:name=".StandardDetailActivity" />
+        <activity android:name=".TechnologyDetailActivity" />
 
     </application>
 

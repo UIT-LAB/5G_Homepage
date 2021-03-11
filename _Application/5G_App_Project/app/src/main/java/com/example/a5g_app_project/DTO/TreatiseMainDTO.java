@@ -7,125 +7,131 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TreatiseMainDTO {
-    @SerializedName("rfid")
-    private String rfid;
+    @SerializedName("tid")
+    private String tid;
 
-    @SerializedName("research_name_ko")
-    private String research_name_ko;
+    @SerializedName("buisness_year")
+    private String buisness_year;
 
-    @SerializedName("business_name_ko")
-    private String business_name_ko;
+    @SerializedName("univ_name")
+    private String univ_name;
 
-    @SerializedName("department_name_ko")
-    private String department_name_ko;
+    @SerializedName("department")
+    private String department;
 
-    @SerializedName("subjectivity_agency_ko")
-    private String subjectivity_agency_ko;
+    @SerializedName("SCI_division")
+    private String SCI_division;
 
-    @SerializedName("support_agency_ko")
-    private String support_agency_ko;
+    @SerializedName("thesis_division")
+    private String thesis_division;
 
-    @SerializedName("participation_agency_ko")
-    private String participation_agency_ko;
+    @SerializedName("thesis_name")
+    private String thesis_name;
 
-    @SerializedName("research_goal_ko")
-    private String research_goal_ko;
+    @SerializedName("lead_author_name")
+    private String lead_author_name;
 
-    @SerializedName("research_content_ko")
-    private String research_content_ko;
+    @SerializedName("co_author_name")
+    private String co_author_name;
 
-    @SerializedName("expectation_result_ko")
-    private String expectation_result_ko;
+    @SerializedName("journal_name")
+    private String journal_name;
 
-    @SerializedName("research_manager_ko")
-    private String research_manager_ko;
+    @SerializedName("volume_num")
+    private String volume_num;
 
-    @SerializedName("research_belong_ko")
-    private String research_belong_ko;
+    @SerializedName("journal_date")
+    private String journal_date;
 
-    @SerializedName("date_start")
-    private String date_start;
+    @SerializedName("journal_impact_factor")
+    private String journal_impact_factor;
 
-    @SerializedName("date_end")
-    private String date_end;
+    @SerializedName("contribution_rate")
+    private String contribution_rate;
+
+    @SerializedName("isbn")
+    private String isbn;
+
+    @SerializedName("doi")
+    private String doi;
+
+    @SerializedName("citation")
+    private String citation;
+
+    @SerializedName("ack")
+    private String ack;
+
+    @SerializedName("conference_name")
+    private String conference_name;
+
+    @SerializedName("conference_date")
+    private String conference_date;
+
+    @SerializedName("conference_country")
+    private String conference_country;
+
+    @SerializedName("abstracts")
+    private String abstracts;
 
 
 
-    public TreatiseMainDTO(String rfid, String research_name_ko, String business_name_ko, String department_name_ko, String subjectivity_agency_ko, String support_agency_ko, String participation_agency_ko, String  research_goal_ko, String research_content_ko, String expectation_result_ko, String research_manager_ko, String research_belong_ko, String date_start, String date_end) {
-        this.rfid = rfid;
-        this.research_name_ko = research_name_ko;
-        this.business_name_ko = business_name_ko;
-        this.department_name_ko = department_name_ko;
-        this.subjectivity_agency_ko = subjectivity_agency_ko;
-        this.support_agency_ko = support_agency_ko;
-        this.participation_agency_ko = participation_agency_ko;
-        this.research_goal_ko = research_goal_ko;
-        this.research_content_ko = research_content_ko;
-        this.expectation_result_ko = expectation_result_ko;
-        this.research_manager_ko = research_manager_ko;
-        this.research_belong_ko = research_belong_ko;
-        this.date_start = date_start;
-        this.date_end = date_end;
+    public TreatiseMainDTO(String tid, String buisness_year, String univ_name, String department, String thesis_division, String thesis_name, String lead_author_name, String journal_date, String journal_name, String conference_name, String conference_date, String conference_country) {
+        this.tid = tid;
+        this.buisness_year =buisness_year;
+        this.univ_name = univ_name;
+        this.department = department;
+        this.thesis_division = thesis_division;
+        this.thesis_name = thesis_name;
+        this.lead_author_name = lead_author_name;
+
+        this.journal_date = journal_date;
+        this.journal_name = journal_name;
+
+        this.conference_name = conference_name;
+        this.conference_date = conference_date;
+        this.conference_country = conference_country;
+
     }
 
-    public String getRfid() {return rfid;}
-    public String getResearch_name_ko() {
-        return research_name_ko;
-    }
-    public String getBusiness_name_ko() {
-        return business_name_ko;
-    }
-    public String getDepartment_name_ko() {
-        return department_name_ko;
-    }
-    public String getSubjectivity_agency_ko() {
-        return subjectivity_agency_ko;
-    }
-    public String getSupport_agency_ko() {
-        return support_agency_ko;
-    }
-    public String getParticipation_agency_ko() {
-        return participation_agency_ko;
-    }
-    public String getResearch_goal_ko() {
-        return research_goal_ko;
-    }
-    public String getResearch_content_ko() {
-        return research_content_ko;
-    }
-    public String getResearch_manager_ko() {
-        return research_manager_ko;
-    }
-    public String getResearch_belong_ko() {
-        return research_belong_ko;
-    }
-    public String getExpectation_result_ko() {
-        return expectation_result_ko;
-    }
-    public String getDate_start() {
-        return date_start;
-    }
-    public String getDate_end() {
-        return date_end;
-    }
+
+    public String getTid() {return tid;}
+    public String getBuisness_year() {return buisness_year;}
+    public String getUniv_name() {return univ_name;}
+    public String getDepartment() {return department;}
+    public String getThesis_division() {return thesis_division;}
+    public String getThesis_name() {return thesis_name;}
+    public String getLead_author_name() {return lead_author_name;}
+    public String getJournal_name() {return journal_name;}
+    public String getJournal_date() {return journal_date;}
+    public String getConference_name() {return conference_name;}
+    public String getConference_date() {return conference_date;}
+    public String getConference_country() {return conference_country;}
 
     @Override
     public String toString() {
         return "TreatiseMainDTO{" +
-                "rfid='" + rfid + '\'' +
-                ", research_name_ko='" + research_name_ko + '\'' +
-                ", business_name_ko='" + business_name_ko + '\'' +
-                ", department_name_ko='" + department_name_ko + '\'' +
-                ", subjectivity_agency_ko='" + subjectivity_agency_ko + '\'' +
-                ", support_agency_ko='" + support_agency_ko + '\'' +
-                ", participation_agency_ko='" + participation_agency_ko + '\'' +
-                ", research_goal_ko='" + research_goal_ko + '\'' +
-                ", research_content_ko='" + research_content_ko + '\'' +
-                ", expectation_result_ko='" + expectation_result_ko + '\'' +
-                ", research_manager_ko='" + research_manager_ko + '\'' +
-                ", research_belong_ko='" + research_belong_ko + '\'' +
-                ", date_start='" + date_start + '\'' +
-                ", date_end='" + date_end + '\'' +
+                "tid='" + tid + '\'' +
+                ", buisness_year='" + buisness_year + '\'' +
+                ", univ_name='" + univ_name + '\'' +
+                ", department='" + department + '\'' +
+                ", SCI_division='" + SCI_division + '\'' +
+                ", thesis_division='" + thesis_division + '\'' +
+                ", thesis_name='" + thesis_name + '\'' +
+                ", lead_author_name='" + lead_author_name + '\'' +
+                ", co_author_name='" + co_author_name + '\'' +
+                ", journal_name='" + journal_name + '\'' +
+                ", volume_num='" + volume_num + '\'' +
+                ", journal_date='" + journal_date + '\'' +
+                ", journal_impact_factor='" + journal_impact_factor + '\'' +
+                ", contribution_rate='" + contribution_rate + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", doi='" + doi + '\'' +
+                ", citation='" + citation + '\'' +
+                ", ack='" + ack + '\'' +
+                ", conference_name='" + conference_name + '\'' +
+                ", conference_date='" + conference_date + '\'' +
+                ", conference_country='" + conference_country + '\'' +
+                ", abstracts='" + abstracts + '\'' +
                 '}';
     }
 }

@@ -9,7 +9,7 @@
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/Information_table"
         android:layout_width="390dp"
-        android:layout_height="135dp"
+        android:layout_height="150dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -21,7 +21,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/item_treatise_number"
+                android:id="@+id/item_standard_number"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -31,26 +31,26 @@
                 tools:text="제 1호"/>
 
             <TextView
-                android:id="@+id/item_treatise_division"
+                android:id="@+id/item_standard_division"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="8dp"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
-                tools:text="구분 : 논문" />
+                tools:text="구분 : 특허" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/item_treatise_title"
+            android:id="@+id/item_standard_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="8dp"
 
             android:textColor="@android:color/tertiary_text_dark"
-            android:textSize="21sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
@@ -59,12 +59,13 @@
 
 
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/item_treatise_date"
+                android:id="@+id/item_standard_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -74,7 +75,7 @@
                 tools:text="개제 연도 : 2021"/>
 
             <TextView
-                android:id="@+id/item_treatise_name"
+                android:id="@+id/item_standard_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
