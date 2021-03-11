@@ -201,7 +201,6 @@ router.post('/signup_data', function (req, res, next) {
     var email = body.signup_Email;
     var datetime = date.format('YYYY-MM-DD HH:mm:ss');
 
-
     var output = crypto.createHash('sha512').update(pw).digest('base64')
 
     var sql = { u_id: id, u_pw: output, u_name: name, u_email: email, u_date: datetime };
@@ -212,7 +211,7 @@ router.post('/signup_data', function (req, res, next) {
         }
         else {
             console.log("회원가입을 축하합니다.");
-            res.redirect("/");
+            res.redirect("/login");
         };
     });
 })
