@@ -26,7 +26,7 @@
                                     <div class="input-group">
                                         <input type="text" name ="signup_Id" class="form-control" id="signup_Id" placeholder="아이디" style="width : 60%">
                                         <span class="input-group-btn">
-                                            <input type="button" class="btn btn-primary" id="idchkbtn" value="중복 확인" onclick="opencheck()">
+                                            <input type="button" class="btn btn-primary" id="idchkbtn" value="check" onclick="opencheck()">
                                         </span>
                                     </div>
                                 </td>
@@ -104,6 +104,7 @@
                             회원가입
                         </button>
                     </div>
+                    <input type="hidden" id="hihi" value="wow">
                 </form><br>
                 <div style="margin-top: 220px;">
                     계정이 있으신가요? <span><a href="/login">로그인</a></span>
@@ -115,6 +116,8 @@
 </html>
 <script type="text/javascript">
     var child;
+    var main;
+
     function opencheck(){
         var setting = 'width=500px, height=500px, scrollbars=no, toolbar=no, resizeable=no, top=150, left=650';
         child = window.open('/login/idcheck', 'idchk', setting);
@@ -124,6 +127,25 @@
         child.document.getElementById("input_id").value = document.getElementById("signup_Id").value;
     }
 
+    $(function(){
+        
+        $("#idchkbtn").click(function(){
+            main = true;
+            console.log(main);
+        });
+
+        $("#join-submit").click(function(){
+            if(!main){
+                alert('중복확인을 해주세요');
+                console.log('버튼 눌러라');
+                return false;
+            }
+            else{
+                console.log('회원가입 성공');
+            }
+        });
+    })
+
     function checking(){
         var uitid = document.getElementById("signup_Id");
         var uitname = document.getElementById("signup_Name");
@@ -132,8 +154,7 @@
         var uitemail = document.getElementById("signup_Email");
         var uittel = document.getElementById("signup_Tel");
         var chkbox = document.getElementsByName("agree");
-        var idchkbtn = documetn.getElementById("idchkbtn");
-        var chk=false;
+        var chk = false;
 
         var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
         
@@ -171,10 +192,10 @@
         }
         for(var i=0; i<chkbox.length;i++){
             if(chkbox[i].checked){
-                chk=true;
+                chk = true;
             }
             else{
-                chk=false;
+                chk = false;
             }
         }
 
