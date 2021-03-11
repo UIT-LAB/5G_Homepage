@@ -2,8 +2,10 @@ package com.example.a5g_app_project;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +26,7 @@ public class QuestionDetailActivity extends AppCompatActivity {
         });
 
         TextView q_number, q_writer, q_title, q_date, q_content, q_admin_comment, q_admin_date;
+        TableLayout admin_window;
 
 
         q_number = findViewById(R.id.question_detail_number);
@@ -32,6 +35,8 @@ public class QuestionDetailActivity extends AppCompatActivity {
         q_title = findViewById(R.id.question_detail_title);
         q_date = findViewById(R.id.question_detail_date);
         q_content = findViewById(R.id.question_detail_content);
+
+        admin_window = findViewById(R.id.question_detail_table2);
 
         Intent intent = getIntent();
         String q_data_title = intent.getStringExtra("q_title");
@@ -47,6 +52,15 @@ public class QuestionDetailActivity extends AppCompatActivity {
         q_number.setText("No. "+q_data_number);
         q_admin_comment.setText(q_data_admin_comment);
         q_admin_date.setText(q_data_admin_date);
+
+
+        if( q_data_admin_comment.equals("null")){
+            admin_window.setVisibility(View.INVISIBLE);
+        }
+        else{
+            admin_window.setVisibility(View.VISIBLE);
+
+        }
 
 
 

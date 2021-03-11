@@ -3,7 +3,8 @@
     <string-array name="논문">
         <item>논문</item>
         <item>특허</item>
-        <item>발표</item>
-        <item>저서</item>
+        <item>SW 및 콘텐츠</item>
+        <item>표준화</item>
+        <item>기술이전</item>
     </string-array>
 </resources>

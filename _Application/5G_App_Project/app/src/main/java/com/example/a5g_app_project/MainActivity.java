@@ -298,23 +298,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //정상적으로 통신이 성공한 경우
                     List<TreatiseMainDTO> TreatiseMainDTOS = response.body();
                     for (int i = 0; i < TreatiseMainDTOS.size(); i++) {
-                        String t_number = String.valueOf(TreatiseMainDTOS.get(i).getRfid());
-                        String t_title = String.valueOf(TreatiseMainDTOS.get(i).getResearch_name_ko());
-                        String t_bname = String.valueOf(TreatiseMainDTOS.get(i).getBusiness_name_ko());
-                        String t_dname = String.valueOf(TreatiseMainDTOS.get(i).getDepartment_name_ko());
-                        String t_sbagency = String.valueOf(TreatiseMainDTOS.get(i).getSubjectivity_agency_ko());
-                        String t_spagency = String.valueOf(TreatiseMainDTOS.get(i).getSupport_agency_ko());
-                        String t_pagency = String.valueOf(TreatiseMainDTOS.get(i).getParticipation_agency_ko());
-                        String t_rgoal = String.valueOf(TreatiseMainDTOS.get(i).getResearch_goal_ko());
-                        String t_rcontent = String.valueOf(TreatiseMainDTOS.get(i).getResearch_content_ko());
-                        String t_exresult = String.valueOf(TreatiseMainDTOS.get(i).getExpectation_result_ko());
-                        String t_rmanager = String.valueOf(TreatiseMainDTOS.get(i).getResearch_manager_ko());
-                        String t_rbelong = String.valueOf(TreatiseMainDTOS.get(i).getResearch_belong_ko());
-                        String t_dstart = String.valueOf(TreatiseMainDTOS.get(i).getDate_start());
-                        String t_dend = String.valueOf(TreatiseMainDTOS.get(i).getDate_end());
 
-                        TreatiseMainDTO data = new TreatiseMainDTO(t_number, t_title, t_bname, t_dname, t_sbagency, t_spagency, t_pagency, t_rgoal, t_rcontent, t_exresult, t_rmanager, t_rbelong, t_dstart, t_dend);
-                        tDatas.add(data);
                     }
                     tAdapter = new MainTreatiseAdapter(tDatas);
                     mTreatiesRecyclerView.setAdapter(tAdapter);

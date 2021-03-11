@@ -3,20 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item android:icon="@drawable/ic_horizontal_rule_black_24dp" android:title="연구소">
+    <item android:icon="@drawable/ic_horizontal_rule_black_24dp" android:title="호서대학교 ITRC">
         <menu>
             <item
                 android:id="@+id/drawer_info"
                 android:icon="@drawable/ic_arrow_right_black_24dp"
-                android:title="연구소 소개" />
+                android:title="HCIC 소개" />
             <item
                 android:id="@+id/drawer_paper"
                 android:icon="@drawable/ic_arrow_right_black_24dp"
-                android:title="연구소 논문" />
+                android:title="HCIC 논문" />
             <item
                 android:id="@+id/drawer_member"
                 android:icon="@drawable/ic_arrow_right_black_24dp"
-                android:title="연구원 소개" />
+                android:title="HCIC 회원 소개" />
         </menu>
     </item>
 
@@ -42,11 +42,11 @@
             <item
                 android:id="@+id/drawer_homepage"
                 android:icon="@drawable/ic_arrow_right_black_24dp"
-                android:title="연구실 홈페이지" />
+                android:title="HCIC 홈페이지" />
             <item
                 android:id="@+id/drawer_map"
                 android:icon="@drawable/ic_arrow_right_black_24dp"
-                android:title="연구실 오시는 길" />
+                android:title="호서대학교 오시는 길" />
         </menu>
     </item>
 </menu>

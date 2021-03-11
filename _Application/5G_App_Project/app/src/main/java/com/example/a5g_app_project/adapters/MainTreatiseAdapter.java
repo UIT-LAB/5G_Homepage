@@ -31,7 +31,7 @@ public class MainTreatiseAdapter extends RecyclerView.Adapter<MainTreatiseAdapte
     @Override
     public void onBindViewHolder(@NonNull MainTreatiseViewHolder MainTreatiseViewHolder, int position) {
         TreatiseMainDTO data = datas.get(position);
-        MainTreatiseViewHolder.title.setText(data.getResearch_name_ko());
+        MainTreatiseViewHolder.title.setText(data.getThesis_name());
 
     }
 
@@ -57,7 +57,7 @@ public class MainTreatiseAdapter extends RecyclerView.Adapter<MainTreatiseAdapte
         }
 
         public void setItem(TreatiseMainDTO item){
-            title.setText(item.getResearch_name_ko());
+            title.setText(item.getThesis_name());
         }
     }
 }

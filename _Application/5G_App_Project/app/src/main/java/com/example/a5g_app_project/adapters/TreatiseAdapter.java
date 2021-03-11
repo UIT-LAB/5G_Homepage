@@ -33,11 +33,11 @@ public class TreatiseAdapter extends RecyclerView.Adapter<TreatiseAdapter.Treati
     @Override
     public void onBindViewHolder(@NonNull TreatiseViewHolder TreatiseViewholder, int position) {
         TreatiseMainDTO data = datas.get(position);
-        TreatiseViewholder.t_number.setText("제 " + data.getRfid() + " 호");
-        TreatiseViewholder.t_division.setText("구분 : " + data.getDepartment_name_ko());
-        TreatiseViewholder.t_title.setText(data.getResearch_name_ko());
-        TreatiseViewholder.t_dend.setText("게재 연도 : " + data.getDate_end());
-        TreatiseViewholder.t_rmanager.setText("저자 : " + data.getResearch_manager_ko());
+        TreatiseViewholder.t_number.setText("제 " + data.getTid() + " 호");
+        TreatiseViewholder.t_division.setText("구분 : " + data.getThesis_division());
+        TreatiseViewholder.t_title.setText(data.getThesis_name());
+        TreatiseViewholder.t_dend.setText("출판 일자 : " + data.getJournal_date());
+        TreatiseViewholder.t_rmanager.setText("주 저자 : " + data.getLead_author_name());
 
     }
 
@@ -93,11 +93,11 @@ public class TreatiseAdapter extends RecyclerView.Adapter<TreatiseAdapter.Treati
         }
 
         public void setItem(TreatiseMainDTO item){
-            t_number.setText(item.getRfid());
-            t_division.setText(item.getDepartment_name_ko());
-            t_title.setText(item.getResearch_name_ko());
-            t_dend.setText(item.getDate_end());
-            t_rmanager.setText(item.getResearch_manager_ko());
+            t_number.setText(item.getTid());
+            t_division.setText(item.getThesis_division());
+            t_title.setText(item.getJournal_name());
+            t_dend.setText(item.getJournal_date());
+            t_rmanager.setText(item.getLead_author_name());
         }
     }
 }

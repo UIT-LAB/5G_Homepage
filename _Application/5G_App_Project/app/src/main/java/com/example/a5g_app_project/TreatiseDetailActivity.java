@@ -23,46 +23,48 @@ public class TreatiseDetailActivity extends AppCompatActivity {
             }
         });
 
-        TextView t_number, t_title, t_dname, t_sbagency, t_spagency, t_rgoal, t_rcontent, t_exresult, t_rmanager, t_rbelong, t_dend;
+        TextView t_tid, t_business_year, t_univ_name, t_department, t_thesis_division, t_thesis_name, t_lead_author_name, t_journal_name, t_journal_date, t_conference_name, t_conference_date, t_conference_country;
 
+        t_tid = findViewById(R.id.treatise_detail_number);
+        t_business_year = findViewById(R.id.treatise_detail_date);
+        t_univ_name = findViewById(R.id.treatise_detail_univ_name);
+        t_department = findViewById(R.id.treatise_detail_department);
+        t_thesis_division = findViewById(R.id.treatise_detail_division_name);
+        t_thesis_name = findViewById(R.id.treatise_detail_thesis_name);
+        t_journal_name = findViewById(R.id.treatise_detail_journal_name);
+        t_conference_name = findViewById(R.id.treatise_detail_conference_name);
+        t_journal_date = findViewById(R.id.treatise_detail_journal_date);
+        t_conference_date = findViewById(R.id.treatise_detail_conference_date);
+        t_conference_country = findViewById(R.id.treatise_detail_conference_country);
+        t_lead_author_name = findViewById(R.id.treatise_detail_manager);
 
-        t_number = findViewById(R.id.treatise_detail_number);
-        t_title = findViewById(R.id.treatise_detail_title);
-        t_dname = findViewById(R.id.treatise_detail_department);
-        t_sbagency = findViewById(R.id.treatise_detail_Subjectivity_agency);
-        t_spagency = findViewById(R.id.treatise_detail_Support_agency);
-        t_rgoal = findViewById(R.id.treatise_detail_Research_goal);
-        t_rcontent = findViewById(R.id.treatise_detail_Research_content);
-        t_exresult = findViewById(R.id.treatise_detail_Expectation_result);
-        t_rmanager = findViewById(R.id.treatise_detail_manager);
-        t_rbelong = findViewById(R.id.treatise_detail_belong);
-        t_dend = findViewById(R.id.treatise_detail_enddate);
 
         Intent intent = getIntent();
-        String t_data_number = intent.getStringExtra("t_number");
-        String t_data_title = intent.getStringExtra("t_title");
-        String t_data_dname = intent.getStringExtra("t_dname");
-        String t_data_sbagency = intent.getStringExtra("t_sbagency");
-        String t_data_spagency = intent.getStringExtra("t_spagency");
-        String t_data_rgoal = intent.getStringExtra("t_rgoal");
-        String t_data_rcontent = intent.getStringExtra("t_rcontent");
-        String t_data_exresult = intent.getStringExtra("t_exresult");
-        String t_data_rmanager = intent.getStringExtra("t_rmanager");
-        String t_data_rbelong = intent.getStringExtra("t_rbelong");
-        String t_data_tdend = intent.getStringExtra("t_dend");
+        String t_data_tid = intent.getStringExtra("t_tid");
+        String t_data_business_year = intent.getStringExtra("t_business_year");
+        String t_data_univ_name = intent.getStringExtra("t_univ_name");
+        String t_data_department = intent.getStringExtra("t_department");
+        String t_data_thesis_division = intent.getStringExtra("t_thesis_division");
+        String t_data_thesis_name = intent.getStringExtra("t_thesis_name");
+        String t_data_journal_name = intent.getStringExtra("t_journal_name");
+        String t_data_conference_name = intent.getStringExtra("t_conference_name");
+        String t_data_journal_date = intent.getStringExtra("t_journal_date");
+        String t_data_conference_date = intent.getStringExtra("t_conference_date");
+        String t_data_conference_country = intent.getStringExtra("t_conference_country");
+        String t_data_lead_author_name = intent.getStringExtra("t_lead_author_name");
 
-
-        t_number.setText("제 "+t_data_number+" 호");
-        t_title.setText(t_data_title);
-        t_dname.setText(t_data_dname);
-        t_sbagency.setText(t_data_sbagency);
-        t_spagency.setText(t_data_spagency);
-        t_rgoal.setText(t_data_rgoal);
-        t_rcontent.setText(t_data_rcontent);
-        t_exresult.setText(t_data_exresult);
-        t_rmanager.setText(t_data_rmanager);
-        t_rbelong.setText(t_data_rbelong);
-        t_dend.setText(t_data_tdend);
+        t_tid.setText("제 "+t_data_tid+" 호");
+        t_business_year.setText(t_data_business_year);
+        t_univ_name.setText(t_data_univ_name);
+        t_department.setText(t_data_department);
+        t_thesis_division.setText(t_data_thesis_division);
+        t_thesis_name.setText(t_data_thesis_name);
+        t_journal_name.setText(t_data_journal_date);
+        t_conference_name.setText(t_data_conference_country);
+        t_journal_date.setText((t_data_journal_name));
+        t_conference_date.setText(t_data_conference_date);
+        t_conference_country.setText(t_data_conference_name);
+        t_lead_author_name.setText(t_data_lead_author_name);
 
 
     }

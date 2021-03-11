@@ -155,7 +155,7 @@
 
                 <Button
                     android:id="@+id/fuction_button1"
-                    android:text="연구실 소개"
+                    android:text="HCIC 소개"
                     android:textStyle="bold"
                     android:drawableTop="@drawable/ic_company"
                     android:layout_weight="1"
@@ -165,7 +165,7 @@
                     android:background="@null"/>
                 <Button
                     android:id="@+id/fuction_button2"
-                    android:text="연구원 소개"
+                    android:text="HCIC 회원 소개"
                     android:textStyle="bold"
                     android:drawableTop="@drawable/ic_person"
                     android:layout_weight="1"
@@ -175,7 +175,7 @@
                     android:background="@null"/>
                 <Button
                     android:id="@+id/fuction_button3"
-                    android:text="연구실 논문"
+                    android:text="HCIC 논문"
                     android:textStyle="bold"
                     android:drawableTop="@drawable/ic_article"
                     android:layout_weight="1"
