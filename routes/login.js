@@ -199,11 +199,11 @@ router.post('/signup_data', function (req, res, next) {
     var pw = body.signup_Pw;
     var name = body.signup_Name;
     var email = body.signup_Email;
+    var phone = body.singup_Phone;
     var datetime = date.format('YYYY-MM-DD HH:mm:ss');
-
     var output = crypto.createHash('sha512').update(pw).digest('base64')
 
-    var sql = { u_id: id, u_pw: output, u_name: name, u_email: email, u_date: datetime };
+    var sql = { u_id: id, u_pw: output, u_name: name, u_email: email, u_phone : phone, u_date: datetime };
 
     db.query('INSERT INTO UserInfo SET ?', sql, function (error, result) {
         if (error) {
@@ -211,7 +211,7 @@ router.post('/signup_data', function (req, res, next) {
         }
         else {
             console.log("회원가입을 축하합니다.");
-            res.redirect("/login");
+            res.redirect("/");
         };
     });
 })
