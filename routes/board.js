@@ -21,7 +21,7 @@ router.get('/notice/:num', function(req, res, next) {
       }
     })
   }
-  db.query('select * from Notice_Board ORDER BY n_writer_date DESC ', function (error, result) {
+  db.query('select nid, n_title, n_writer, n_writer_date, n_view  from Notice_Board ORDER BY n_writer_date DESC ', function (error, result) {
     if (error) {
       throw error;
     }    
@@ -181,7 +181,7 @@ router.get('/post/:num', function(req, res, next) {
     })
   }
 
-  db.query('select * from Post_Board ORDER BY p_writer_date DESC', function (error, result) {
+  db.query('select pid, p_title, p_writer, p_writer_date, p_view from Post_Board ORDER BY p_writer_date DESC', function (error, result) {
     if (error) {
           throw error;
         }    
@@ -333,7 +333,7 @@ router.get('/question/:num', function(req, res, next) {
       }
     })
   }
-  db.query('select * from Question_Board', function (error, result) {
+  db.query('select qid, q_title, q_writer, q_writer_date, admin_comment from Question_Board', function (error, result) {
       if (error) {
         throw error;
       }    
