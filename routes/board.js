@@ -67,6 +67,7 @@ router.get('/notice/detail/:num', function(req, res, next) {
     }
   });
 });
+
 router.get('/notice_write', function(req, res, next) {
   if(req.cookies.user != undefined){
     let token = req.cookies.user;
@@ -82,32 +83,33 @@ router.get('/notice_write', function(req, res, next) {
   }
   res.render('board/notice_write',{name:jwtname});
 });
+
 router.post('/notice/insert_write', function(req, res, next) {
-var date = new dayjs();
-var body = req.body;
-var title = body.noti_title;
-var content = body.noti_content;
-var datetime = date.format('YYYY-MM-DD HH:mm:ss');
-if(req.cookies.user != undefined){
-  let token = req.cookies.user;
-  jwt.verify(token, key, (err, decode)=>{
-    if(err){
-      throw err;
-    }
-    else {
-      jwtname = decode.user.name
-      jwtid = decode.user.id
-    }
-  })
-}
-var sql = {n_title:title, n_content : content, n_writer: jwtname, n_writer_date : datetime, n_view : 0};
-  db.query('INSERT INTO Notice_Board SET ?', sql , function (error, result) {
-    if(error) {
-      throw error;
-    }    
-    else {
-      res.redirect("/board/notice/1");
-    };
+  var date = new dayjs();
+  var body = req.body;
+  var title = body.noti_title;
+  var content = body.noti_content;
+  var datetime = date.format('YYYY-MM-DD HH:mm:ss');
+  if(req.cookies.user != undefined){
+    let token = req.cookies.user;
+    jwt.verify(token, key, (err, decode)=>{
+      if(err){
+        throw err;
+      }
+      else {
+        jwtname = decode.user.name
+        jwtid = decode.user.id
+      }
+    })
+  }
+  var sql = {n_title:title, n_content : content, n_writer: jwtname, n_writer_date : datetime, n_view : 0};
+    db.query('INSERT INTO Notice_Board SET ?', sql , function (error, result) {
+      if(error) {
+        throw error;
+      }    
+      else {
+        res.redirect("/board/notice/1");
+       };
   });
 });
 

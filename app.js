@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
-var session = require('express-session');
+var winston = require('./config/winston')
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
@@ -14,31 +14,17 @@ var galleryRouter = require('./routes/gallery');
 var memberRouter = require('./routes/member');
 var researchRouter = require('./routes/research');
 var helmet = require('helmet')
-var FileStore = require('session-file-store')(session);   
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(morgan('dev'));
+app.use(morgan('dev', {stream: winston.stream}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-//로그인 세션
-app.use(session({
-  name: 'sessionID',
-  secret: 'asdhgasdsdgaasdg',
-  resave: false,
-  saveUninitialized: true,
-  store: new FileStore(),
-  cookie: {
-    maxAge: 24000 * 60 * 60 // 쿠키 유효기간 24시간
-  }
-}));
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
@@ -72,5 +58,5 @@ app.use(function(err, req, res, next) {
 
 app.use(helmet());
 
-app.listen(3000);
+app.listen(3000, () => winston.info(`server start`));
 module.exports = app;
