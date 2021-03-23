@@ -73,7 +73,7 @@
                         <form method="POST" name="form" class="d-inline">
                             <button type="submit" class="btn btn-outline-dark"
                                 onclick="form.action='/board/post/delete'">삭제</button>
-                            <input type="hidden" name="nidx" value="<%= result[0].pid%>"/>
+                            <input type="hidden" name="pidx" value="<%= result[0].pid%>"/>
                             <input type="hidden" name="titlex" value="<%= result[0].p_title%>" />
                             <input type="hidden" name="writerx" value="<%= result[0].p_writer%>" />
                             <input type="hidden" name="contentx" value="<%= result[0].p_content%>" />
