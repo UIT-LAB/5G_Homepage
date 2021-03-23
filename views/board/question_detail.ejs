@@ -71,8 +71,7 @@
                             <tbody class="align-middle">
                                 <tr>
                                     <td>
-                                        <span class="float-end">작성일자 : <%=
-                                                dayjs(result[0].q_admin_date).format('YY.MM.DD'); %></span>
+                                        <span class="float-end">작성일자 : <%=dayjs(result[0].admin_date).format('YY.MM.DD'); %></span>
                                     </td>
                                 </tr>
                             </tbody>
@@ -80,6 +79,7 @@
                         <%= result[0].admin_comment %>
                     </div>
                 <%}%>
+                <form method="POST" name="form" class="d-inline">
                 <%if(result[0].admin_comment == null && name == "관리자"){%>
                     <div class="border border-2 p-4 mt-3">
                         <h4>관리자 답변</h4>
@@ -87,34 +87,29 @@
                             <tbody class="align-middle">
                                 <tr>
                                     <td>
-                                        <span class="float-end">작성일자 : <%=
-                                                dayjs().format('YY.MM.DD'); %></span>
+                                        <span class="float-end">작성일자 : <%=dayjs().format('YY.MM.DD'); %></span>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <textarea type="text" style="height: 200px; resize: none;" name="ques_comment"
-              class="form-control"></textarea>
+                         <textarea type="text" style="height: 200px; resize: none;" name="ques_comment" class="form-control"></textarea>
                     </div>
                 <%}%>
-
-                        <div class="float-end mt-3">
-                            <button class="btn btn-outline-dark" onclick="location.href='/board/question/1'">목록</button>
-                            <%if(name == result[0].q_writer){%>
-                                <button class="btn btn-outline-dark"
-                                    onclick="location.href='/board/question/update/<%=q_num%>'">수정</button>
-                                <form method="POST" name="form" class="d-inline">
-                                    <button type="submit" class="btn btn-outline-dark"
-                                        onclick="form.action='/board/question/delete'">삭제</button>
-                                        
-                                    <input type="hidden" name="nidx" value="<%= result[0].qid%>"/>
-                                    <input type="hidden" name="titlex" value="<%= result[0].q_title%>" />
-                                    <input type="hidden" name="writerx" value="<%= result[0].q_writer%>" />
-                                    <input type="hidden" name="contentx" value="<%= result[0].q_content%>" />
-                                </form>
-                                <%}%>
-
-                        </div>
+                 <input type="hidden" name="qidx" value="<%= result[0].qid%>"/>
+                 <input type="hidden" name="titlex" value="<%= result[0].q_title%>" />
+                 <input type="hidden" name="writerx" value="<%= result[0].q_writer%>" />
+                 <input type="hidden" name="contentx" value="<%= result[0].q_content%>" />
+                 <button type="submit" class="btn btn-outline-dark" onclick="form.action='/board/question/delete'">삭제</button>
+                 <%if(result[0].admin_comment == null && name == "관리자"){%>
+                     <button type="submit" class="btn btn-outline-dark" onclick="form.action='/board/question/admin_comment'">작성</button>
+                 <%}%>
+                </form>
+              <div class="float-end mt-3">
+                <button class="btn btn-outline-dark" onclick="location='/board/question/1'">목록</button>
+                <%if(name == result[0].q_writer){%>
+                    <button class="btn btn-outline-dark" onclick="location='/board/question/update/<%=q_num%>'">수정</button>
+                <%}%>
+              </div>
             </div>
         </div>
     </div>

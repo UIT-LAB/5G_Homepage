@@ -321,6 +321,7 @@ router.post('/post/delete', function(req, res, next) {
   });
 });
 
+
 //------------------------------question
 router.get('/question/:num', function(req, res, next) {
   if(req.cookies.user != undefined){
@@ -335,7 +336,7 @@ router.get('/question/:num', function(req, res, next) {
       }
     })
   }
-  db.query('select * from Question_Board', function (error, result) {
+  db.query('select * from Question_Board ORDER BY q_writer_date DESC', function (error, result) {
       if (error) {
         throw error;
       }    
@@ -449,6 +450,23 @@ router.post('/question/update_data', function(req, res, next) {
   var datas = [title, content,titlex, contentx];
 
   db.query(`Update Question_Board set q_title = '${title}' , q_content= '${content}' where q_title='${titlex}' and q_content='${contentx}'`, datas , function (error, result) {
+      if(error) {
+          throw error;
+      }    
+      else {
+        res.redirect("/board/question/1");
+      };
+  });
+});
+
+router.post('/question/admin_comment', function(req, res, next) {
+  var body = req.body;
+  var titlex = body.titlex;
+  var contentx = body.contentx;
+  var adminx = body.ques_comment;
+  var admindatex = dayjs().format('YY.MM.DD');
+  
+  db.query(`Update Question_Board set admin_comment = '${adminx}' , admin_date = '${admindatex}' where q_title='${titlex}' and q_content='${contentx}'`, function (error, result) {
       if(error) {
           throw error;
       }    
