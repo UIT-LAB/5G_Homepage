@@ -20,7 +20,7 @@ router.get('/thesis/:num', function(req, res, next) {
       }
     })
   }  
-  db.query('select * from thesis ORDER BY tid DESC', function (error, result) {
+  db.query('select tid, SCI_division, thesis_name, lead_author_name, co_author_name from thesis ORDER BY tid DESC', function (error, result) {
     if (error) {
      throw error;
     }    
@@ -64,7 +64,7 @@ router.get('/license/:num', function(req, res, next){
       }
     })
   }
-  db.query('select * from license ORDER BY lid DESC', function (error, result) {
+  db.query('select lid, invention_name, business_year, standard_license_status from license ORDER BY lid DESC', function (error, result) {
     if (error) {
       throw error;
     }    
@@ -108,7 +108,7 @@ router.get('/software/:num', function(req, res, next){
       }
     })
   }
-  db.query('select * from software ORDER BY sid DESC', function (error, result) {
+  db.query('select sid, registration_num, registration_name, registration_date from software ORDER BY sid DESC', function (error, result) {
       if (error) {
         throw error;
       }    
@@ -152,7 +152,7 @@ router.get('/standard/:num', function(req, res, next){
       }
     })
   }
-  db.query(`select * from standard ORDER BY stid DESC`, function (error, result) {
+  db.query(`select stid, document, approval_num, approval_date from standard ORDER BY stid DESC`, function (error, result) {
       if (error) {
         throw error;
       }    
