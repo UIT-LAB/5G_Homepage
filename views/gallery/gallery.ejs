@@ -24,11 +24,14 @@
                             if(data_value === undefined){
                                 continue;
                             }
+                            var jbString = result[i].g_img;
+                            var jbSplit = jbString.split(',');
                         %>
+                        
                         <div class="col-md-4" style="margin-bottom: 30px;">
                             <div class="card" style="border: solid 1px black;">
                                 <a href="/gallery/detail/<%=data_value.gid%>">
-                                    <img src="/images/<%= data_value.g_img%>" alt="" width="100%" height="300">
+                                    <img src="/images/gallery/<%=jbSplit[0]%>" alt="" width="100%" height="300">
                                     <div class="card-body">
                                         <p class="card-text" style="color: black;"><%=data_value.g_title%></p><hr>
                                         <p class="card-text" style="color: black; text-align: right;"><%= dayjs(data_value.g_write_date).format('YYYY.MM'); %></p>
