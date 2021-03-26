@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <% include ./include/header %>
+        <%- include('./include/header') %>
     </header>
     <section>
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -114,11 +114,17 @@
                             <th width="80%"><a href="/gallery/1"><input type="button" class="btn btn-outline-dark float-end" value="+"></a></th>
                         </thead>
                         <tbody class="align-middle">
-                            <% for(let i=0; i<3; i++){ %>
+                            <% for(let i=0; i< 3; i++){ %>
                                 <tr onclick="location.href='/gallery/detail/<%=g_result[i].gid%>'">
-                                    <td>
-                                        <img class="rounded" src="/images/<%=g_result[i].g_img%>" style="width: 100px; height: 100px;">
-                                    </td>
+                                    
+                                    <%for(var j=0; j< g_result.length; j++) {%>
+                                        <%
+                                            var jbString = g_result[j].g_img
+                                            var jbSplit = jbString.split(',');
+                                    } %>
+                                        <td>
+                                            <img class="rounded" src="/images/gallery/<%=jbSplit[0]%>" style="width: 100px; height: 100px;">
+                                        </td>
                                     <td>
                                         <%=g_result[i].g_title%>
                                     </td>

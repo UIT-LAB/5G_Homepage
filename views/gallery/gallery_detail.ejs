@@ -37,7 +37,14 @@
                         </tbody>
                     </table>
                     <div class="text-center">
-                        <img src="/images/<%= result[0].g_img %>" alt="" style="width: 90%;" class="img-fluid img-thumbnail mt-3 mb-3">
+                        <%for(var i=0; i< result.length; i++){%>
+                            <%
+                                var jbString = result[i].g_img
+                                var jbSplit = jbString.split(',');
+                        }%>
+                        <%for(var j=0; j< jbSplit.length; j++){%>
+                            <img src="/images/gallery/<%= jbSplit[j]%>" alt="" style="width: 90%;" class="img-fluid img-thumbnail mt-3 mb-3">
+                        <%}%>
                     </div>
                     <hr>
                     <div class="m-3">
