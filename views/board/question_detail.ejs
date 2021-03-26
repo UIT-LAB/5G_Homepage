@@ -64,6 +64,7 @@
                     </table>
                     <%= result[0].q_content %>
                 </div>
+                <form method="POST" name="form" class="d-inline">
                 <%if(result[0].admin_comment !=null){%>
                     <div class="border border-2 p-4 mt-3">
                         <h4>관리자 답변</h4>
@@ -78,8 +79,8 @@
                         </table>
                         <%= result[0].admin_comment %>
                     </div>
+                    <button type="submit" class="btn btn-outline-dark" onclick="form.action='/board/question/admin_comment_delete'"> 코멘트 삭제</button>
                 <%}%>
-                <form method="POST" name="form" class="d-inline">
                 <%if(result[0].admin_comment == null && name == "관리자"){%>
                     <div class="border border-2 p-4 mt-3">
                         <h4>관리자 답변</h4>
