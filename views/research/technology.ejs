@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://cdn.discordapp.com/attachments/751431280519807068/800629207469785128/5g.png" rel="shortcut icon" type="images/x-icon">
+
+    <style>
+        .table-hover tbody tr{
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 768px){
+            #hide{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <% include ../include/header %>
+    </header>
+    <div class="container">
+        <div class="row mt-5 mb-5">
+            <% include ../include/research_nav %>
+            <div class="col-md-10">
+                <% include ../include/research_label %>
+                <table class="table table-hover text-center text-middle">
+                    <thead class="align-middle">
+                        <th width="5%">번호</th>
+                        <th width="65%">기술실시계약명</th>
+                        <th width="10%">사업연도</th>
+                        <th width="20%">기술실시<br>대상기관명</th>
+                    </thead>
+                    <tbody class="align-middle">
+                        <% for(var i = (t_num - 1) * max_value; i < t_num * max_value; i++){ %>
+                            <% var data_value = result[i];
+                            if(data_value == undefined){
+                            continue;
+                            }%>
+                    <tr onclick="location.href='/research/technology/detail/<%=data_value.tid%>'">
+                      <td><%= data_value.tid%></td>
+                      <td><div class="text-start"><%= data_value.tech_name%></div></td>
+                      <td><%= data_value.business_year%></td>
+                      <td><%= data_value.TIinstitution_name%></td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+                <div>
+                    <nav>
+                      <ul class="pagination justify-content-center mt-5">
+                        <% if(t_num == 1) { %>
+                            <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/research/technology/<%=Number(t_num)-1%>">">이전</a></li>
+                        <% } else if (t_num > 1) { %>
+                            <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/research/technology/<%=Number(t_num)-1%>">이전</a></li>
+                        <% } %>
+                        <% for(var j = 1; j<= Math.ceil(result.length / max_value); j++){ %>
+                            <%if(j != t_num){%>
+                                    <li class="page-item"><a class="page-link" style="color: black;" href="/research/technology/<%= j %>"><%= j %></a>
+                                <%}else{%>
+                                    <li class="page-item"><a class="page-link" style="color: black; background-color: #c8c8c8;" href="/research/technology/<%= j %>"><%= j %></a>
+                                <%}%>
+                        <% } if(t_num == Math.ceil(result.length / max_value)) { %>
+                            <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/research/technology/<%=Number(t_num)+1%>">다음</a></li>
+                        <% } else if (t_num < Math.ceil(result.length / max_value)) { %>
+                            <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/research/technology/<%=Number(t_num)+1%>">다음</a></li>
+                        <% } %></ul>
+                    </nav>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <% include ../include/footer %>
+    </footer>
+</body>
+
+</html>

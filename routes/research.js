@@ -179,7 +179,29 @@ router.get('/software/detail/:num', function(req, res, next){
         throw error;
       }    
       else {
-          res.render('research/software_detail',{result : result, s_num :req.params.num , max_value: 15, dayjs, name:jwtname});
+          res.render('research/standard_detail',{result : result, s_num :req.params.num , max_value: 15, dayjs, name:jwtname});
+      };
+    });
+})
+
+router.get('/technology/:num', function(req, res, next){
+  if(req.cookies.user != undefined){
+    let token = req.cookies.user;
+    jwt.verify(token, key, (err, decode)=>{
+      if(err){
+        throw err;
+      }
+      else {
+        jwtname = decode.user.name
+      }
+    })
+  }
+  db.query(`select tid, business_year, tech_name, TIinstitution_name from technology ORDER BY tid DESC`, function (error, result) {
+      if (error) {
+        throw error;
+      }    
+      else {
+          res.render('research/technology',{result : result, t_num :req.params.num , max_value: 15, dayjs, name:jwtname});
       };
     });
 })
