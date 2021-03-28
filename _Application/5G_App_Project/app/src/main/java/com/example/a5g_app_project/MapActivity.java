@@ -34,7 +34,7 @@ public class MapActivity extends AppCompatActivity {
             }
         });
 
-        MapView.loadUrl("https://www.naver.com");
+        MapView.loadUrl("http://www.hoseo.ac.kr/Home/Contents.mbz?action=MAPP_1708220056");
     }
 
 

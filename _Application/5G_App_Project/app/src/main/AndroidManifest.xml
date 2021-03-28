@@ -4,8 +4,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/lunchar_icon"
+        android:label="HCIC"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
@@ -13,7 +13,7 @@
         <activity
             android:name=".Splash"
             android:launchMode="singleTask"
-            android:label="5G App"
+            android:label="HCIC"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

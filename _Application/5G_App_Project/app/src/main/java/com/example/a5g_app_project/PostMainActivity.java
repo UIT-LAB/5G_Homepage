@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.a5g_app_project.DTO.PostMainDTO;
 import com.example.a5g_app_project.Interface.PostMainInterface;
@@ -27,6 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class PostMainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private RecyclerView mPostRecyclerView;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     private PostAdapter mAdapter;
     private List<PostMainDTO> mDatas;
@@ -39,6 +41,7 @@ public class PostMainActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.post);
 
         mPostRecyclerView = findViewById(R.id.main_recyclerview);
+        mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.postSwipe);
 
         findViewById(R.id.main_post_edit).setOnClickListener(this);
         ImageButton post_back_btn = findViewById(R.id.post_back_button);
@@ -57,6 +60,18 @@ public class PostMainActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(search_intent);
             }
         });*/
+
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorOrange);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // 동글동글 도는거 사라짐
+                mSwipeRefreshLayout.setRefreshing(false);
+
+                // TODO : input your code
+                onStart();
+            }
+        });
 
     }
 
