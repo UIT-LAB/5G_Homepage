@@ -212,7 +212,7 @@ router.post('/signup_data', function (req, res, next) {
         }
         else {
             console.log("회원가입을 축하합니다.");
-            res.redirect("/");
+            res.redirect("/login");
         };
     });
 })
@@ -232,7 +232,7 @@ router.post('/idcheck', function (req, res, next) {
         }
         else {
             if (result[0].isChk == 0) {
-                res.send('<script>alert(`사용 가능한 아이디 입니다.`); window.close(); </script>')
+                res.send('<script>alert(`사용 가능한 아이디 입니다.`); history.back(); </script>')
             }
             else if (result[0].isChk == 1) {
                 res.send('<script>alert(`중복된 아이디 입니다.`); history.back(); </script>')

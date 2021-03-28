@@ -16,41 +16,43 @@
 </header>
   <section>
     <div>
-      <img src="/images/555.jpg" alt="0" class="memberimg">
+      <img src="/images/555.jpg" alt="0" id="memberbanner">
     </div>
   </section> 
      
-  <div class="title" align="center">
+  <div id="title" align="center">
     <p>Introduce ITRC member</p>
   </div>
   <hr>
-  
-   <div align="center">
-    <table class="membertable" align="center">
+
+   <div class="container">
+    <div class="row row-cols-2">
       <% for(let i= 0; i< result.length; i++){ %>
-          <tr>
-            <td>
-              <img src="/images/member/<%=result[i].m_photo%>" width="150" height="150">
-            </td>
-            <th>
-              <ul>
-                <h3 align="left"><%=result[i].m_name%></h3>
-                <li><p><%=result[i].m_division%></p></li>
-                <li><p><%=result[i].m_univ%></p></li>
-                <li><p>소속 : <%=result[i].m_group%></p></li>
-                <li><p>직위 : <%=result[i].m_position%></p></li>
-              </ul>
-              <div align="center">
-                <button type="button" id="membtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uitmodal"
-                data-name="<%=result[i].m_name%>" data-photo="<%=result[i].m_image%>" data-group="<%=result[i].m_group%>"
-                data-division="<%=result[i].m_division%>" data-univ="<%=result[i].m_univ%>" data-partdivision="<%=result[i].m_partdivision%>"
-                data-position="<%=result[i].m_position%>" data-finalyear="<%=result[i].m_finalyear%>" data-finalmajor="<%=result[i].m_finalmajor%>"
-                data-partperiod="<%=result[i].m_participationPeriod%>" data-partrate="<%=result[i].m_participationRate%>">더 보기</button>
-              </div>
-            </th>
-          </tr>
-        <% } %>
-    </table>
+      <table class="border border-1">
+            <tr>
+              <td>
+                <img src="/images/member/<%=result[i].m_photo%>" width="200" height="200">
+              </td>
+              <th>
+                <ul>
+                  <h3 align="left"><%=result[i].m_name%></h3>
+                  <li><p><%=result[i].m_division%></p></li>
+                  <li><p><%=result[i].m_univ%></p></li>
+                  <li><p>소속 : <%=result[i].m_group%></p></li>
+                  <li><p>직위 : <%=result[i].m_position%></p></li>
+                </ul>
+                <div align="left">
+                  <button type="button" id="membtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uitmodal"
+                  data-name="<%=result[i].m_name%>" data-photo="<%=result[i].m_photo%>" data-group="<%=result[i].m_group%>"
+                  data-division="<%=result[i].m_division%>" data-univ="<%=result[i].m_univ%>" data-partdivision="<%=result[i].m_partdivision%>"
+                  data-position="<%=result[i].m_position%>" data-finalyear="<%=result[i].m_finalyear%>" data-finalmajor="<%=result[i].m_finalmajor%>"
+                  data-partperiod="<%=result[i].m_participationPeriod%>" data-partrate="<%=result[i].m_participationRate%>">더 보기</button>
+                </div>
+              </th>
+            </tr>
+      </table>
+      <% } %>
+    </div>
    </div>
  
   
@@ -62,39 +64,38 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" align="center">
-
           <table id="imtable">
             <tr>
               <th rowspan="4">
-                <img src="/images/member/noimg.jpg" alt="없음" id="imgmodal">
+                <img src="/images/member/noimg.jpg" alt="없음" id="imgmodal" width="200" height="200">
               </th>
             </tr>
             <tr>
-              <th id="univmodal"></th>
+              <th id="univmodal" class="border border-1"></th>
             </tr>
             <tr>
-              <th id="groupmodal"></th>
+              <th id="groupmodal" class="border border-1"></th>
             </tr>
             <tr>
-              <th id="positionmodal"></th>
+              <th id="positionmodal" class="border border-1"></th>
             </tr>
           </table>
 
-          <table id="careertable">
+          <table id="careertable" class="pt-3">
             <tr>
               <td>최종학위 년도</td>
-              <th id="yearmodal"></th>
+              <th id="yearmodal" class="border border-1"></th>
             <tr>
               <td>최종학위 전공</td>
-              <th id="majormodal"></th>
+              <th id="majormodal" class="border border-1"></th>
             </tr>
             <tr>
               <td>참여기간</td>
-              <th id="periodmodal"></th>
+              <th id="periodmodal" class="border border-1"></th>
             </tr>
             <tr>
               <td>참여율</td>
-              <th id="ratemodal"></th>
+              <th id="ratemodal" class="border border-1"></th>
             </tr>
           </table>
         </div>
@@ -113,6 +114,7 @@
 <script>
  $('#uitmodal').on('show.bs.modal', function (event){
     var button = $(event.relatedTarget);
+    var photo = button.data('photo');
     var univ = button.data('univ');
     var name = button.data('name');
     var group = button.data('group');
@@ -135,6 +137,6 @@
     modal.find('.modal-body #careertable #majormodal').text(finalmajor);
     modal.find('.modal-body #careertable #periodmodal').text(partperiod+"년");
     modal.find('.modal-body #careertable #ratemodal').text(partrate+"%");
-    //document.getElementById('imgmodal').src = ("/images/member/"+photo);
+    document.getElementById('imgmodal').src = ("/images/member/"+photo);
   });
 </script>

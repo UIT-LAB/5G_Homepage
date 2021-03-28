@@ -19,7 +19,8 @@ router.get('/:num', function(req, res, next){
     })
   }
   var student = "참여학생"
-   db.query(`select * from Member join Member_career on Member.mid = Member_career.mid where not Member.m_partdivision='${student}'`, function (error, result) {
+  var enterprise = "기업체"
+   db.query(`select * from Member join Member_career on Member.mid = Member_career.mid where not Member.m_partdivision in ('${student}', '${enterprise}')`, function (error, result) {
       if (error) {
           throw error;
         }    

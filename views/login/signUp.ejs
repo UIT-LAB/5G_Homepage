@@ -26,7 +26,7 @@
                                     <div class="input-group">
                                         <input type="text" name ="signup_Id" class="form-control" id="signup_Id" placeholder="아이디" style="width : 60%">
                                         <span class="input-group-btn">
-                                            <input type="button" class="btn btn-primary" id="idchkbtn" value="중복 확인" onclick="opencheck()">
+                                            <input type="button" class="btn btn-primary" id="idchkbtn" value="중복 확인">
                                         </span>
                                     </div>
                                 </td>
@@ -118,10 +118,9 @@
     var child;
     var main;
 
-    function opencheck(){
-        var setting = 'width=500px, height=500px, scrollbars=no, toolbar=no, resizeable=no, top=150, left=650';
-        child = window.open('/login/idcheck', 'idchk', setting);
-    }
+    $(document).on('click','#idchkbtn' , function(){
+        child = window.open('/login/idcheck', 'idchk', 'top=150, left=650, width=500px, height=500px');
+    });
 
     function hello(){
         child.document.getElementById("input_id").value = document.getElementById("signup_Id").value;
@@ -147,65 +146,111 @@
     })
 
     function checking(){
-        var uitid = document.getElementById("signup_Id");
-        var uitname = document.getElementById("signup_Name");
-        var uitpw = document.getElementById("signup_Pw");
-        var uitpwcheck = document.getElementById("singup_chk");
-        var uitemail = document.getElementById("signup_Email");
-        var uittel = document.getElementById("signup_Tel");
-        var chkbox = document.getElementsByName("agree");
+        var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+        var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);
+        var getName= RegExp(/^[가-힣]+$/);
         var chk = false;
 
-        var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+        //blank id
+        if($("#signup_Id").val() == ""){
+            alert("아이디 입력해주세요");
+            $("#signup_Id").focus();
+            return false;
+        }
+
+        //check id
+        if(!getCheck.test($("#signup_Id").val())){
+            alert("아이디를 다시 입력해주세요");
+            $("#signup_Id").val("");
+            $("#signup_Id").focus();
+            return false;
+        }
+
+        //blank name
+        if($("#signup_Name").val() == ""){
+            alert("이름 입력해주세요");
+            $("#signup_Name").focus();
+            return false;
+        }
         
-        if (uitid.value == ""){
-            alert("아이디를 입력하지 않았습니다.");
-            return false;
-        }
-        if (uitpw.value == ""){
-            alert("비밀번호를 입력해 주세요");
-            return false;
-        }
-        if (uitpwcheck.value == ""){
-            alert("비밀번호를 다시한번 확인해 주세요");
-            return false;
-        }
-        if ((uitpw.value)!=(uitpwcheck.value)) {
-            alert("비밀번호가 일치 하지 않습니다.");
-            return false;
-        }
-        if (!pwdCheck.test(uitpw.value)){
-            alert("비밀번호는 영문+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
-            return false;
-        }
-        if (uitname.value=="") {
-            alert("이름을 입력해 주세요");
-            return false;
-        }
-        if (uittel.value=""){
-            alert("번호를 입력해 주세요");
-            return false;
-        }
-        if (uitemail.value=="") {
-            alert("이메일을 입력해 주세요");
-            return false;
-        }
-        for(var i=0; i<chkbox.length;i++){
-            if(chkbox[i].checked){
-                chk = true;
-            }
-            else{
-                chk = false;
-            }
-        }
-
-        if(chk){
-            console.log('약관 동의 함');
-        } 
-        else {
-            alert("약관에 동의해 주세요");
+        //check name
+        if (!getName.test($("#signup_Name").val())) {
+            alert("올바른 이름을 입력해주세요");
+            $("#signup_Name").val("");
+            $("#signup_Name").focus();
             return false;
         }
 
+        //blank pw
+        if($("#signup_Pw").val() == ""){
+            alert("비밀번호 입력해주세요");
+            $("#signup_Pw").focus();
+            return false;
+        }
+
+        //blank pwchk
+        if($("#singup_chk").val() == ""){
+            alert("비밀번호 확인 입력해주세요");
+            $("#singup_chk").focus();
+            return false;
+        }
+
+        //check pw
+        if(!getCheck.test($("#signup_Pw").val())) {
+            alert("올바른 비밀번호를 입력해주세요");
+            $("#signup_Pw").val("");
+            $("#signup_Pw").focus();
+            return false;
+        }
+        
+        //same id and pw
+        if ($("#signup_Id").val()==($("#signup_Pw").val())) {
+            alert("비밀번호와 아이디가 같습니다.");
+            $("#signup_Pw").val("");
+            $("#signup_Pw").focus();
+        }
+        
+        //don't same pw and pwchk
+        if($("#signup_Pw").val() != ($("#singup_chk").val())){ 
+            alert("비밀번호가 일치하지 않습니다.");
+            $("#signup_Pw").val("");
+            $("#singup_chk").val("");
+            $("#signup_Pw").focus();
+            return false;
+        }
+
+        //blank email
+        if($("#signup_Email").val() == ""){
+            alert("이메일 입력해주세요");
+            $("#signup_Email").focus();
+            return false;
+        }
+
+        //check email
+        if(!getMail.test($("#signup_Email").val())){
+            alert("이메일형식에 맞게 입력해주세요")
+            $("#signup_Email").val("");
+            $("#signup_Email").focus();
+            return false;
+        }
+
+        if($("#signup_Tel").val() == ""){
+            alert("번호 입력해주세요");
+            $("#signup_Tel").focus();
+            return false;
+        }
+
+        for(var i=0;i<$('[name="agree"]').length;i++){
+        if($('input:checkbox[name="agree"]').eq(i).is(":checked") == true) {
+            console.log('확인')
+            chk= true;
+            break;
+            }
+        }
+ 
+        if(!chk){
+            alert("동의해라");
+            return false;
+        }
     }
 </script>
