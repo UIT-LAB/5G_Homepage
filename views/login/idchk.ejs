@@ -30,7 +30,7 @@
             border-radius: 10px;
         }
         .btn{
-            width: 90px;
+            width: 150px;
             height: 70px;
             font-size: 25px;
         }
@@ -47,7 +47,8 @@
         <hr style="border: solid 1px lightgray">
 
         <div align="center">
-            <button class="btn btn-dark btn-block" type="submit" onclick="send()">중복 확인</button>
+            <button class="btn btn-dark btn-block" type="submit">중복 확인</button>
+            <button class="btn btn-dark btn-block" type="button" onclick="send()">닫기</button>
         </div>
     </form>   
 </body>
@@ -59,6 +60,8 @@
     function send(){
         var txt = document.getElementById("input_id").value
         opener.document.getElementById("signup_Id").value = txt;
+
+        window.close();
     }
     
 </script>

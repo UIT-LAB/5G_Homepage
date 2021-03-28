@@ -4,53 +4,20 @@ body{
     font-family: 'Nanum Gothic', sans-serif;
 }
 /*table*/
-.memberimg{
+#memberbanner{
     width: 100%;
     height: 50vh;
 }
-.membertable .hello{
-    text-align: center;
-}
-.title p{
+#title p{
     font-size: 50px;
 }
-
-.membertable{
-    border-top: 1px solid black;
-    margin: 0%;
-}
-.membertable ul{
-    text-align: left;
-}
-.membertable th{
-    padding-top: 10px;
-    padding-right: 10px;
+.container table td{
     width: 300px;
 }
-.membertable td{
-    padding-top: 10px;
-    padding-right: 10px;
-    width: 180px;
-}
-.detailbtn{
-    text-align: center;
-    padding-bottom: 10px;
-}
-
 /*modal*/
-#imgmodal{
-    width: 200px;
-    height: 200px;
-}
 #imtable th{
     text-align: center;
     width: 200px;
-}
-#univmodal{
-    border-bottom:1px solid lightgray;
-}
-#groupmodal{
-    border-bottom:1px solid lightgray;
 }
 #careertable{
     width: 400px;
@@ -70,38 +37,16 @@ body{
 
 /*media query*/
 @media (max-width: 575.98px){
-    .container .row .membertable{
-        width: 330px;
-    }
-    .container .row .membertable ul li{
-        font-size: 13px;
-    }
-    .title p{
-        font-size: 40px;
-    }
+
 }
 @media (min-width: 576px){
-    .container .row .membertable{
-        width: 330px;
-    }
 }
 @media (min-width: 768px){
-    .container .row .membertable{
-        width: 430px;
-    }
 }
 @media (min-width: 992px){
-    .container .row .membertable{
-        width: 630px;
-    }
 }
-@media (min-width: 1200px){
-    .container .row .membertable{
-        width: 500px;
-    }
-}
-@media (min-width: 1400px){
-    .container .row .membertable{
-        width: 630px;
+@media (min-width: 1200px){   
+    .container table td{
+        width: 230px;
     }
 }
