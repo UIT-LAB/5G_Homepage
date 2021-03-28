@@ -10,7 +10,7 @@
         android:layout_height="210dp"
         android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/search_logo"
+        android:src="@drawable/login_logo"
         android:scaleType="centerCrop"/>
 
     <EditText
