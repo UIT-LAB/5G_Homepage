@@ -1,4 +1,4 @@
-const appRoot = require('app-root-path');    // app root 경로를 가져오는 lib
+const appRoot = require('app-root-path');  // app root 경로를 가져오는 lib
 const winston = require('winston');            // winston lib
 const process = require('process');
  

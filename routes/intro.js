@@ -60,7 +60,7 @@ router.get('/organization', function(req, res, next) {
         }
       })
     }
-    res.render('Intro/intro',{name:jwtname});
+    res.render('Intro/organization',{name:jwtname});
 });
 
 module.exports = router;
