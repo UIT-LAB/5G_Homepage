@@ -1,63 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/questionSwipe"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_vertical"
-    android:orientation="vertical"
-    tools:context=".LoginActivity"
-    android:background="#fff">
+    android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/question_back_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@android:color/white"
-        android:src="@drawable/ic_baseline_keyboard_backspace_24" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/question_back_button"
-        android:text="@string/question_title"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
-
-    <!-- <ImageButton
-        android:id="@+id/question_search_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@android:color/white"
-        android:src="@drawable/ic_search_black_24dp"
-        android:layout_alignParentEnd="true"/> -->
-
-    <ImageButton
-        android:id="@+id/question_refresh_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@android:color/white"
-        android:src="@drawable/ic_refres"
-        android:layout_alignParentEnd="true"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/question_main_recyclerview"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/question_back_button"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        tools:context=".LoginActivity"
+        android:background="#fff">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/main_question_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_edit"/>
+        <ImageButton
+            android:id="@+id/question_back_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:src="@drawable/ic_baseline_keyboard_backspace_24" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/question_back_button"
+            android:text="@string/question_title"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <!-- <ImageButton
+            android:id="@+id/question_search_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:src="@drawable/ic_search_black_24dp"
+            android:layout_alignParentEnd="true"/> -->
+
+        <ImageButton
+            android:id="@+id/question_refresh_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:src="@drawable/ic_refres"
+            android:layout_alignParentEnd="true"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/question_main_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/question_back_button"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/main_question_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_edit"/>
 
 
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

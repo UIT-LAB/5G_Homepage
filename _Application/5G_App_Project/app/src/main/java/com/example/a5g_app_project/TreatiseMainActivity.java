@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.a5g_app_project.DTO.SoftwareMainDTO;
 import com.example.a5g_app_project.DTO.StandardMainDTO;
@@ -48,6 +49,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class TreatiseMainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private RecyclerView mTreatiseRecyclerView;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
 
     private TreatiseAdapter mAdapter;
@@ -70,6 +72,7 @@ public class TreatiseMainActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.treatise);
 
         mTreatiseRecyclerView = findViewById(R.id.treatise_main_recyclerview);
+        mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.treatiseSwipe);
         Spinner spinner = (Spinner)findViewById(R.id.teatise_spinner);
 
         ImageButton treatise_back_btn = findViewById(R.id.treatise_back_button);
@@ -89,8 +92,19 @@ public class TreatiseMainActivity extends AppCompatActivity implements View.OnCl
             }
         });
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorBlue);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // 동글동글 도는거 사라짐
+                mSwipeRefreshLayout.setRefreshing(false);
 
+                // TODO : input your code
+
+            }
+        });
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int postion, long id) {
                 if(postion == 0){
@@ -464,10 +478,8 @@ public class TreatiseMainActivity extends AppCompatActivity implements View.OnCl
 
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 

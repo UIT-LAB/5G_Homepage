@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.a5g_app_project.DTO.NoticeMainDTO;
 import com.example.a5g_app_project.DTO.PostMainDTO;
@@ -34,6 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class QuestionMainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private RecyclerView mQuestionRecyclerView;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     private QuestionAdapter mAdapter;
     private List<QuestionMainDTO> mDatas;
@@ -46,6 +48,7 @@ public class QuestionMainActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.question);
 
         mQuestionRecyclerView = findViewById(R.id.question_main_recyclerview);
+        mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.questionSwipe);
 
         findViewById(R.id.main_question_edit).setOnClickListener(this);
         ImageButton question_back_btn = findViewById(R.id.question_back_button);
@@ -64,6 +67,18 @@ public class QuestionMainActivity extends AppCompatActivity implements View.OnCl
                 startActivity(search_intent);
             }
         });*/
+
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorGreen);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // 동글동글 도는거 사라짐
+                mSwipeRefreshLayout.setRefreshing(false);
+
+                // TODO : input your code
+                onStart();
+            }
+        });
 
     }
 

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.a5g_app_project.DTO.NoticeMainDTO;
 
@@ -30,6 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NoticeMainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private RecyclerView mNoticeRecyclerView;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     private NoticeAdapter mAdapter;
     private List<NoticeMainDTO> mDatas;
@@ -42,6 +44,7 @@ public class NoticeMainActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.notice);
 
         mNoticeRecyclerView = findViewById(R.id.notice_main_recyclerview);
+        mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.noticeSwipe);
 
         findViewById(R.id.main_notice_edit).setOnClickListener(this);
         ImageButton notice_back_btn = findViewById(R.id.notice_back_button);
@@ -61,7 +64,19 @@ public class NoticeMainActivity extends AppCompatActivity implements View.OnClic
             }
         });*/
 
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorBlue);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // 동글동글 도는거 사라짐
+                mSwipeRefreshLayout.setRefreshing(false);
+
+                // TODO : input your code
+                onStart();
+            }
+        });
     }
+
 
     @Override
     protected void onStart() {

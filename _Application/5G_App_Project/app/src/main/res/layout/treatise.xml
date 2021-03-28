@@ -1,75 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/treatiseSwipe"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_vertical"
-    android:orientation="vertical"
-    android:background="#fff"
-    tools:context=".LoginActivity">
+    android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/treatise_back_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@android:color/white"
-        android:src="@drawable/ic_baseline_keyboard_backspace_24" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/treatise_back_button"
-        android:text="@string/treatise_title"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
-
-    <ImageButton
-        android:id="@+id/treatise_search_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@android:color/white"
-        android:src="@drawable/ic_search_black_24dp"
-        android:layout_alignParentEnd="true"/>
-
-    <ImageButton
-        android:id="@+id/treatise_refresh_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@android:color/white"
-        android:src="@drawable/ic_refres"
-        android:layout_toLeftOf="@id/treatise_search_button"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:layout_below="@id/treatise_refresh_button"
-        android:layout_toLeftOf="@id/teatise_spinner"
-        android:text="구분 : "
-        android:textSize="14dp"
-        android:textStyle="bold"/>
-
-    <Spinner
-        android:id="@+id/teatise_spinner"
-        android:entries="@array/논문"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/treatise_refresh_button"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/treatise_main_recyclerview"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/teatise_spinner"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:background="#fff"
+        tools:context=".LoginActivity">
+
+        <ImageButton
+            android:id="@+id/treatise_back_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:src="@drawable/ic_baseline_keyboard_backspace_24" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/treatise_back_button"
+            android:text="@string/treatise_title"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <ImageButton
+            android:id="@+id/treatise_search_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:src="@drawable/ic_search_black_24dp"
+            android:layout_alignParentEnd="true"/>
+
+        <ImageButton
+            android:id="@+id/treatise_refresh_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:src="@drawable/ic_refres"
+            android:layout_toLeftOf="@id/treatise_search_button"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_below="@id/treatise_refresh_button"
+            android:layout_toLeftOf="@id/teatise_spinner"
+            android:text="구분 : "
+            android:textSize="14dp"
+            android:textStyle="bold"/>
+
+        <Spinner
+            android:id="@+id/teatise_spinner"
+            android:entries="@array/논문"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/treatise_refresh_button"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/treatise_main_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/teatise_spinner"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
