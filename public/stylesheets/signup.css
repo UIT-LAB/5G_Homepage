@@ -19,11 +19,7 @@
     min-height: 100vh;
 }
 .wow{
-    padding: 20px;
     width: 330px;
-}
-.title{
-    font-size: 35px;
 }
 
 /*meida query*/
@@ -35,20 +31,11 @@
     .wow{
         width: 330px;
     }
-    .link{
-        font-size: 16px;
-    }
 }
 @media (min-width: 576px){
     .loginform{
         width: 100%;
         min-height: 100vh;
-    }
-    .wow{
-        width: 330px;
-    }
-    .link{
-        font-size: 16px;
     }
 }
 
@@ -60,9 +47,6 @@
     .wow{
         width: 330px;
     }
-    .link{
-        font-size: 16px;
-    }
 }
 @media (min-width: 992px){
     .loginform{
@@ -71,9 +55,6 @@
     }
     .wow{
         width: 330px;
-    }
-    .link{
-        font-size: 16px;
     }
 }
 
@@ -84,8 +65,5 @@
     }
     .wow{
         width: 330px;
-    }
-    .link{
-        font-size: 16px;
     }
 }

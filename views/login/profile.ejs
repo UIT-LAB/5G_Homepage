@@ -27,12 +27,11 @@
         body{
             font-family: 'NanumBarunGothic';
         }
-        table{
-            border: 1px solid black;
-        }
-        #hello{
-            font-size: 45px;
-            height: 75px;
+        .con{
+            position: fixed;
+            width: 600px;
+            top: 10px;
+            left: 50px;
         }
         .table-hover tbody tr{
             cursor: pointer;
@@ -40,15 +39,15 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row mt-5 mb-5">
-            <div class="col-md-4">
+    <div class="con">
+        <div class="row pt-5">
+            <div class="col">
                 <div class="border border-2 p-5">
                     <h4>개인정보</h4>
                     <div class="text-center">
-                        <table class="table table-borderless">
+                        <table class="table table-borderless border border-2">
                             <tr>
-                                <td colspan="2" id="hello"><%= result[0].u_name %></td>
+                                <td colspan="2" class="fs-1"><%= result[0].u_name %></td>
                             </tr>
                             <tr>
                                 <td colspan="2">
@@ -70,6 +69,3 @@
     </div>
 </body>
 </html>
-
-<script>\
-</script>

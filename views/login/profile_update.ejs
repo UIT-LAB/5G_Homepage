@@ -42,12 +42,18 @@
             border-radius: 10px;
             border-color: lightgray;
         }
+        .con{
+            position: fixed;
+            width: 600px;
+            top: 10px;
+            left: 50px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row mt-5 mb-5">
-            <div class="col-md-4">
+    <div class="con">
+        <div class="row pt-5">
+            <div class="col">
                 <div class="border border-2 p-3">
                     <h3>개인정보</h3>
                     <form method="POST" name="form" class="form-profile" onsubmit="return update();">
