@@ -9,11 +9,10 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 
-import com.example.a5g_app_project.DTO.StoreDTO;
+import com.example.a5g_app_project.DTO.UserDTO;
 import com.example.a5g_app_project.Interface.LoginInterface;
-import com.example.a5g_app_project.Interface.PostInterface;
-import com.example.a5g_app_project.Interface.StoreService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,6 +27,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private EditText mID, mPW;
 
+    private List<UserDTO> uDatas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,12 +36,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         mID = findViewById(R.id.emailInput);
         mPW = findViewById(R.id.passwordInput);
+        findViewById(R.id.login_Button).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.187.1:3000/")
+                .baseUrl("http://192.168.187.1:9928/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -71,6 +73,42 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Log.d("Faild", t.getMessage());
                     }
                 });
+
+                super.onStart();
+                uDatas = new ArrayList<UserDTO>();
+                super.onStart();
+                Retrofit retrofit2 = new Retrofit.Builder()
+                        .baseUrl("http://192.168.187.1:3000/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                LoginInterface service2 = retrofit.create(LoginInterface.class);
+
+                service2.getQuestions().enqueue(new Callback<List<UserDTO>>() {
+                    @Override
+                    public void onResponse(Call<List<UserDTO>> call, Response<List<UserDTO>> response) {
+                        if (response.isSuccessful()) {
+                            //정상적으로 통신이 성공한 경우
+                            List<UserDTO> UserDTOS = response.body();
+                            for (int i = 0; i < UserDTOS.size(); i++) {
+                                String token = String.valueOf(UserDTOS.get(i).getToken());
+                                UserDTO data = new UserDTO(token);
+                                uDatas.add(data);
+                            }
+
+                        } else {
+                            Log.d("UserToken", uDatas.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<UserDTO>> call, Throwable t) {
+                        Log.d("Faild", t.getMessage());
+                    }
+                });
+
+
+
             }
         }
     }
