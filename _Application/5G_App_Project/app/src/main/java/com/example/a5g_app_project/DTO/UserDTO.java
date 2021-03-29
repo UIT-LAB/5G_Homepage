@@ -27,13 +27,8 @@ public class UserDTO {
     private String token;
 
 
-    public UserDTO(String uid, String u_id, String u_pw, String u_name, String u_email, String u_phone, String token){
-        this.uid = uid;
-        this.u_id = u_id;
-        this.u_pw = u_pw;
-        this.u_name = u_name;
-        this.u_email = u_email;
-        this.u_phone = u_phone;
+    public UserDTO(String token){
+
         this.token = token;
     }
 

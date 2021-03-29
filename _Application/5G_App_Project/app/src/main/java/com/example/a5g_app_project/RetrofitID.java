@@ -7,8 +7,8 @@ public class RetrofitID {
     public static String question = "question";
 
     public static String documentId = "documentId";
-    public static String id = "u_id";
-    public static String password = "u_pw";
+    public static String id = "inputid";
+    public static String password = "inputpw";
     public static String date = "u_date";
     public static String name = "u_name";
     public static String phone = "u_phone";

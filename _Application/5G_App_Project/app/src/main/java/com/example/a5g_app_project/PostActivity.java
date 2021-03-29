@@ -43,6 +43,7 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
         mTitle = findViewById(R.id.post_title_edit);
         mContents = findViewById(R.id.post_contents_edit);
 
+
         findViewById(R.id.post_save_button).setOnClickListener(this);
         Button post_write_back_btn = findViewById(R.id.post_exit_button);
 
