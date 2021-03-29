@@ -10,7 +10,6 @@ const { decode } = require('punycode');
 
 
 router.get('/', function (req, res, next) {
-    res.clearCookie('user');
     res.render('login/login');
 });
 
