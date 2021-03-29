@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 public class UserDTO {
     @SerializedName("uid")
-    private int uid;
+    private String uid;
 
     @SerializedName("id")
     private String u_id;
@@ -23,12 +23,28 @@ public class UserDTO {
     @SerializedName("phone")
     private String u_phone;
 
+    @SerializedName("token")
+    private String token;
 
-    public UserDTO(String u_id){
+
+    public UserDTO(String uid, String u_id, String u_pw, String u_name, String u_email, String u_phone, String token){
+        this.uid = uid;
         this.u_id = u_id;
+        this.u_pw = u_pw;
+        this.u_name = u_name;
+        this.u_email = u_email;
+        this.u_phone = u_phone;
+        this.token = token;
     }
 
+    public String getUid() {return uid;}
     public String getU_id() {return u_id;}
+    public String getU_pw() {return u_pw;}
+    public String getU_name() {return u_name;}
+    public String getU_email() {return u_email;}
+    public String getU_phone() {return u_phone;}
+    public String getToken() {return token;}
+
 
     @Override
     public String toString() {
