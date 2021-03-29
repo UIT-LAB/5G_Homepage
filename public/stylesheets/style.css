@@ -20,20 +20,7 @@ body{
 }
 
 .wow{
-    padding: 20px;
     width: 330px;
-}
-.title{
-    font-size: 35px;
-}
-.subtitle{
-    font-size: 25px;
-}
-.link{
-    font-size: 16px;
-}
-.btn{
-    font-size: 20px;
 }
 
 
@@ -46,9 +33,6 @@ body{
     .wow{
         width: 330px;
     }
-    .link{
-        font-size: 16px;
-    }
 }
 @media (min-width: 576px){
     .loginform{
@@ -57,9 +41,6 @@ body{
     }
     .wow{
         width: 330px;
-    }
-    .link{
-        font-size: 16px;
     }
 }
 
@@ -71,9 +52,6 @@ body{
     .wow{
         width: 330px;
     }
-    .link{
-        font-size: 16px;
-    }
 }
 @media (min-width: 992px){
     .loginform{
@@ -82,9 +60,6 @@ body{
     }
     .wow{
         width: 330px;
-    }
-    .link{
-        font-size: 16px;
     }
 }
 
@@ -95,8 +70,5 @@ body{
     }
     .wow{
         width: 330px;
-    }
-    .link{
-        font-size: 16px;
     }
 }
