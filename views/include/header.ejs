@@ -41,7 +41,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="top">
         <div class="container-fluid container">
             <a class="navbar-brand" href="/">
-                <img src="/images/5g.png" width="30" height="30">
+                <img src="/images/hcic_logo.png" width="80" height="30">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -53,6 +53,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/intro">· 대표말</a></li>
                             <li><a class="dropdown-item" href="/intro/business">· 사업소개</a></li>
+                            <li><a class="dropdown-item" href="/intro/organization">· 조직도</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -82,9 +83,9 @@
                 </ul>
                 <form class="d-flex">
                     <%if(name){ %>
-                        <span class="text-white m-2 align-middle"><%= name %>님 환영합니다!</span>
-                        <a class="nav-link" href="#" onclick="profileopen()" onmouseover="mouse_over()" onmouseout="mouse_out()"><img src="/images/user.png" alt="" width="30" id="user_info"></a>
-                        <a href="/login/logout"><input class="btn form-control btn-outline-light" type="button" value="Logout"></a>
+                        <span class="text-white m-2 p-1 align-middle"><%= name %>님 환영합니다!</span>
+                        <a class="nav-link m-1" href="#" onclick="profileopen()" onmouseover="mouse_over()" onmouseout="mouse_out()"><img src="/images/user.png" alt="" width="30" id="user_info"></a>
+                        <a href="/login/logout"><input class="m-2 btn form-control btn-outline-light" type="button" value="Logout"></a>
                     <%} else {%>
                         <a href="/login"><input class="m-2 btn form-control btn-outline-light" type="button" value="Login"></a>
                     <%}%>
