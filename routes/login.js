@@ -82,7 +82,7 @@ router.post('/', (req, res) => {
                                 }
                                 else {
                                   p_result = result;
-                                  res.send(token_value)
+                                  res.render('index',{g_result : g_result, r_result:r_result, n_result : n_result, p_result : p_result, dayjs, name : jwtname});
                                  
                               }
                             });

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
 <head>
-    <link href="https://cdn.discordapp.com/attachments/751431280519807068/800629207469785128/5g.png" rel="shortcut icon"
-        type="images/x-icon">
+    <link href="https://cdn.discordapp.com/attachments/751421619578208398/826283972229070849/hcic_logo.png"
+        rel="shortcut icon" type="images/x-icon">
 
     <style>
         .table-hover tbody tr {
             cursor: pointer;
         }
 
-        .col-md-5 img:hover{
+        .col-md-5 img:hover {
             transform: rotate(-1deg);
             cursor: pointer;
         }
@@ -57,7 +57,7 @@
                         </p>
                     </div>
                     <div class="col-md-5 order-md-1">
-                        <img src="/images/business1.jpg" alt="" width="100%">
+                        <img class="shadow img-fluid" type="button" src="/images/business1.jpg" alt="" width="100%" data-bs-toggle="modal" data-bs-target="#img-modal" data-bs-name="business1.jpg">
                     </div>
                 </div>
                 <hr>
@@ -69,7 +69,7 @@
                         </p>
                     </div>
                     <div class="col-md-5 order-md-2">
-                        <img src="/images/business2.jpg" alt="" width="100%">
+                        <img class="shadow img-fluid" type="button" src="/images/business2.jpg" alt="" width="100%" data-bs-toggle="modal" data-bs-target="#img-modal" data-bs-name="business2.jpg">
                     </div>
                 </div>
                 <hr>
@@ -81,7 +81,7 @@
                         </p>
                     </div>
                     <div class="col-md-5 order-md-1">
-                        <img src="/images/business3.jpg" alt="" width="100%">
+                        <img class="shadow img-fluid" type="button" src="/images/business3.jpg" alt="" width="100%" data-bs-toggle="modal" data-bs-target="#img-modal" data-bs-name="business3.jpg">
                     </div>
                 </div>
                 <hr>
@@ -93,7 +93,7 @@
                         </p>
                     </div>
                     <div class="col-md-5 order-md-2">
-                        <img src="/images/business4.jpg" alt="" width="100%">
+                        <img class="shadow img-fluid" type="button" src="/images/business4.jpg" alt="" width="100%" data-bs-toggle="modal" data-bs-target="#img-modal" data-bs-name="business4.jpg">
                     </div>
                 </div>
                 <hr>
@@ -106,14 +106,36 @@
                         </p>
                     </div>
                     <div class="col-md-5 order-md-1">
-                        <img src="/images/business5.jpg" alt="" width="100%">
+                        <img class="shadow img-fluid" type="button" src="/images/business5.jpg" alt="" width="100%" data-bs-toggle="modal" data-bs-target="#img-modal" data-bs-name="business5.jpg">
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    
+    <div class="modal fade" id="img-modal">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="text-center p-5">
+                <img class="img-fluid" src="/images/member/noimg.jpg" id="modal_img" alt="" width="100%">
+            </div> 
+        </div>
+      </div>
     </div>
     <footer>
         <% include ../include/footer %>
     </footer>
 </body>
 </html>
+<script>
+    var img_modal = document.getElementById('img-modal')
+    img_modal.addEventListener('show.bs.modal', function (event) {
+  
+    var click_img = event.relatedTarget
+  
+    var img_src = click_img.getAttribute('data-bs-name')
+  
+    document.getElementById('modal_img').src = ("/images/"+img_src);
+
+})
+</script>
