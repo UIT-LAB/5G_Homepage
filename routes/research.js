@@ -162,7 +162,7 @@ router.get('/standard/:num', function(req, res, next){
     });
 })
 
-router.get('/software/detail/:num', function(req, res, next){
+router.get('/standard/detail/:num', function(req, res, next){
   if(req.cookies.user != undefined){
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
@@ -202,6 +202,28 @@ router.get('/technology/:num', function(req, res, next){
       }    
       else {
           res.render('research/technology',{result : result, t_num :req.params.num , max_value: 15, dayjs, name:jwtname});
+      };
+    });
+})
+
+router.get('/technology/detail/:num', function(req, res, next){
+  if(req.cookies.user != undefined){
+    let token = req.cookies.user;
+    jwt.verify(token, key, (err, decode)=>{
+      if(err){
+        throw err;
+      }
+      else {
+        jwtname = decode.user.name
+      }
+    })
+  }
+  db.query(`select * from software where sid =  '${req.params.num}'`, function (error, result) {
+      if (error) {
+        throw error;
+      }    
+      else {
+          res.render('research/standard_detail',{result : result, s_num :req.params.num , max_value: 15, dayjs, name:jwtname});
       };
     });
 })
