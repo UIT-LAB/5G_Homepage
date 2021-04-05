@@ -1,5 +1,6 @@
 package com.example.a5g_app_project;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,8 +23,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NoticeActivity extends AppCompatActivity implements View.OnClickListener{
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     private EditText mTitle, mContents;
 
     private String name;
@@ -49,17 +48,21 @@ public class NoticeActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.187.1:3000/")
+                .baseUrl("http://192.168.187.1:9928/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
        NoticeInterface service = retrofit.create(NoticeInterface.class);
+
+        SharedPreferences test = getSharedPreferences("test", MODE_PRIVATE);
+        String Data = test.getString("user", "");
 
         switch (v.getId()){
             case R.id.notice_save_button:{
                 HashMap<String, String> notice = new HashMap<>();
                 notice.put(RetrofitID.notice_title, mTitle.getText().toString());
                 notice.put(RetrofitID.notice_contents, mContents.getText().toString());
+                notice.put(RetrofitID.notice_writer, Data);
 
                 service.setQuestion(notice).enqueue(new Callback<HashMap<String, String>>(){
                     @Override

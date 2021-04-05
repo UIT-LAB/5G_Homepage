@@ -13,6 +13,7 @@ var introRouter = require('./routes/intro');
 var galleryRouter = require('./routes/gallery');
 var memberRouter = require('./routes/member');
 var researchRouter = require('./routes/research');
+var androidRouter = require('./routes/android');
 var helmet = require('helmet')
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/gallery', galleryRouter);
 app.use('/intro', introRouter);
 app.use('/member', memberRouter);
 app.use('/research', researchRouter);
+app.use('/android', androidRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

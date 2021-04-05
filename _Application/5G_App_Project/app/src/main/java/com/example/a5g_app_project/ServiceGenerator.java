@@ -13,7 +13,7 @@ public class ServiceGenerator {
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
-                    .baseUrl("http://124.57.152.119:3000/")
+                    .baseUrl("http://192.168.187.1:9928/")
                     .addConverterFactory(GsonConverterFactory.create());
 
     private static Retrofit retrofit = builder.build();

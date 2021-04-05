@@ -34,6 +34,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
     @Override
     public void onBindViewHolder(@NonNull QuestionAdapter.QuestionViewHolder QuestionViewholder, int position) {
         QuestionMainDTO data = datas.get(position);
+        QuestionViewholder.nicname.setText("작성자 : " + data.getQ_writer());
         QuestionViewholder.title.setText(data.getQ_title());
         QuestionViewholder.timestamp.setText(data.getQ_writer_date());
 
@@ -87,6 +88,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
         }
 
         public void setItem(QuestionMainDTO item){
+            nicname.setText(item.getQ_writer());
             title.setText(item.getQ_title());
             timestamp.setText(item.getQ_writer_date());
         }

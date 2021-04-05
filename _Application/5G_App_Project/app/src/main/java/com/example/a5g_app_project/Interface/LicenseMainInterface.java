@@ -10,7 +10,7 @@ import retrofit2.http.GET;
 
 public interface LicenseMainInterface {
 
-    @GET("/test/License")
+    @GET("/android/License")
     Call<List<LincenseMainDTO>> getQuestions();
 
 }

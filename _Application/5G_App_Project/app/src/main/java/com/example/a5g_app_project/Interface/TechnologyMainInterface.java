@@ -9,6 +9,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface TechnologyMainInterface {
-    @GET("/test/Technology")
+    @GET("/android/Technology")
     Call<List<TechnologyMainDTO>> getQuestions();
 }

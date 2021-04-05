@@ -12,9 +12,10 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface LoginInterface {
-    @POST("/Login/")
-    Call<HashMap<String, String>> setQuestion(@Body HashMap<String, String> user);
+    @POST("/android/login")
+    Call<UserDTO> setQuestion(@Body HashMap<String, String> user);
 
-    @GET("/Login/")
-    Call<List<UserDTO>> getQuestions();
+
+    @GET("/android/")
+    Call<UserDTO> getQuestions();
 }

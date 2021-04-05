@@ -14,12 +14,16 @@ public class NoticeDTO {
     @SerializedName("n_content")
     private int n_content;
 
+    @SerializedName("n_writer")
+    private int n_writer;
+
     @Override
     public String toString() {
         return "NoticeDTO{" +
                 "nid=" + nid +
                 ", n_title=" + n_title +
                 ", n_content=" + n_content +
+                ", n_writer=" + n_writer +
                 '}';
     }
 }

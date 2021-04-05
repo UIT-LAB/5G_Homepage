@@ -110,7 +110,7 @@ public class TreatiseMainActivity extends AppCompatActivity implements View.OnCl
                 if(postion == 0){
                     mDatas = new ArrayList<TreatiseMainDTO>();
                     Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl("http://192.168.187.1:3000/")
+                            .baseUrl("http://192.168.187.1:9928/")
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
 
