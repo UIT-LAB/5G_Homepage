@@ -19,14 +19,8 @@ router.post('/', (req, res) => {
     var pw = body.inputpw;
     var output = crypto.createHash('sha512').update(pw).digest('base64')
     
-    var select_Gallery = `select gid, g_title, g_img from Gallery ORDER BY g_write_date DESC LIMIT 3`;
-    var select_Research = `select tid, thesis_name from thesis ORDER BY tid DESC LIMIT 3`;
-    var select_Notice = `select nid, n_title from Notice_Board ORDER BY nid DESC LIMIT 3`;
-    var select_license = `select lid, invention_name from license ORDER BY lid DESC LIMIT 3`;
-
     var jwtname;
     let token_value;
-    let token;
             
     db.query(`select * from UserInfo where u_id='${id}' and u_pw= '${output}'`, async function (err, result) {
         if (err) throw err;
@@ -39,7 +33,7 @@ router.post('/', (req, res) => {
                 if(error) {
                     throw error;
                 }
-                res.cookie("user",token);
+                res.cookie("user",token);                  
                 token_value = token;
             });
             
@@ -51,51 +45,17 @@ router.post('/', (req, res) => {
                 jwtname = decode.user.name
               }
             })
-
             await db.query(`Update UserInfo set token = '${token_value}' where u_id = '${result[0].u_id}'`, function(error, result){
                 if (error) {
                  throw error;
                 }
                 else {
                     console.log(token_value)
-                db.query(select_Gallery, function (error, result) {
-                    if (error) {
-                      throw error;
-                    }
-                    else {
-                      g_result = result;
-                      db.query(select_Research, function (error, result) {
-                        if (error) {
-                          throw error;
-                        }
-                        else {
-                          r_result = result;
-                          db.query(select_Notice, function (error, result) {
-                            if (error) {
-                              throw error;
-                            }
-                            else {
-                              n_result = result;
-                              db.query(select_license, function (error, result) {
-                                if (error) {
-                                  throw error;
-                                }
-                                else {
-                                  p_result = result;
-                                  res.render('index',{g_result : g_result, r_result:r_result, n_result : n_result, p_result : p_result, dayjs, name : jwtname});
-                                 
-                              }
-                            });
-                          }
-                        });
-                      }
-                    });
-                  }
-                });
-            }                  
-        });
-    }
-    else{
+                    res.redirect('/')
+                }
+            });
+        }
+        else{
             res.send('<script>alert(`정보가 일치하지 않습니다.`); location.href=`/login`</script>')
         }
     });

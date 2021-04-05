@@ -25,7 +25,7 @@ router.get('/:num', function(req, res, next) {
             throw error;
           }    
         else {
-            res.render('gallery/gallery', {result : result, g_num : req.params.num, max_value:9, dayjs,name:jwtname });
+            res.render('gallery/gallery', {result : result, g_num : req.params.num, max_value:9, dayjs,name:jwtname,cookie: req.cookies.user });
             console.log(result);
         };
     });
@@ -49,7 +49,7 @@ router.get('/detail/:num', function(req, res, next) {
             throw error;
           }    
         else {
-            res.render('gallery/gallery_detail', {result : result, g_num : req.params.num, max_value:9, dayjs,name:jwtname });
+            res.render('gallery/gallery_detail', {result : result, g_num : req.params.num, max_value:9, dayjs,name:jwtname,cookie: req.cookies.user });
         };
     });
 });

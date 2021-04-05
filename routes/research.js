@@ -25,7 +25,7 @@ router.get('/thesis/:num', function(req, res, next) {
      throw error;
     }    
     else {
-      res.render('research/thesis',{result : result, t_num :req.params.num , max_value: 15, dayjs, name:jwtname});
+      res.render('research/thesis',{result : result, t_num :req.params.num , max_value: 15, dayjs, name:jwtname,cookie: req.cookies.user});
     };
   });
 });
@@ -47,7 +47,7 @@ router.get('/thesis/detail/:num', function(req, res, next) {
      throw error;
    }    
    else {
-     res.render('research/thesis_detail',{result : result, t_num :req.params.num , max_value: 15, dayjs, name: jwtname});
+     res.render('research/thesis_detail',{result : result, t_num :req.params.num , max_value: 15, dayjs, name: jwtname,cookie: req.cookies.user});
    };
   });
 });
@@ -69,7 +69,7 @@ router.get('/license/:num', function(req, res, next){
       throw error;
     }    
     else {
-      res.render('research/license',{result : result, l_num :req.params.num , max_value: 15, dayjs, name:jwtname});
+      res.render('research/license',{result : result, l_num :req.params.num , max_value: 15, dayjs, name:jwtname,cookie: req.cookies.user});
     };
   });
 })
@@ -91,7 +91,7 @@ router.get('/license/detail/:num', function(req, res, next){
       throw error;
     }    
     else {
-      res.render('research/license_detail',{result : result, l_num :req.params.num , max_value: 15, dayjs, name:jwtname});
+      res.render('research/license_detail',{result : result, l_num :req.params.num , max_value: 15, dayjs, name:jwtname,cookie: req.cookies.user});
     };
   });
 })
@@ -113,7 +113,7 @@ router.get('/software/:num', function(req, res, next){
         throw error;
       }    
       else {
-          res.render('research/software',{result : result, s_num :req.params.num , max_value: 15, dayjs, name:jwtname});
+          res.render('research/software',{result : result, s_num :req.params.num , max_value: 15, dayjs, name:jwtname,cookie: req.cookies.user});
       };
     });
 })
@@ -135,7 +135,7 @@ router.get('/software/detail/:num', function(req, res, next){
         throw error;
       }    
       else {
-          res.render('research/software_detail',{result : result, s_num :req.params.num , max_value: 15, dayjs, name:jwtname});
+          res.render('research/software_detail',{result : result, s_num :req.params.num , max_value: 15, dayjs, name:jwtname,cookie: req.cookies.user});
       };
     });
 })
@@ -157,7 +157,7 @@ router.get('/standard/:num', function(req, res, next){
         throw error;
       }    
       else {
-          res.render('research/standard',{result : result, st_num :req.params.num , max_value: 15, dayjs, name:jwtname});
+          res.render('research/standard',{result : result, st_num :req.params.num , max_value: 15, dayjs, name:jwtname,cookie: req.cookies.user});
       };
     });
 })
@@ -179,7 +179,7 @@ router.get('/standard/detail/:num', function(req, res, next){
         throw error;
       }    
       else {
-          res.render('research/standard_detail',{result : result, s_num :req.params.num , max_value: 15, dayjs, name:jwtname});
+          res.render('research/standard_detail',{result : result, s_num :req.params.num , max_value: 15, dayjs, name:jwtname,cookie: req.cookies.user});
       };
     });
 })
@@ -201,7 +201,7 @@ router.get('/technology/:num', function(req, res, next){
         throw error;
       }    
       else {
-          res.render('research/technology',{result : result, t_num :req.params.num , max_value: 15, dayjs, name:jwtname});
+          res.render('research/technology',{result : result, t_num :req.params.num , max_value: 15, dayjs, name:jwtname,cookie: req.cookies.user});
       };
     });
 })
@@ -223,7 +223,7 @@ router.get('/technology/detail/:num', function(req, res, next){
         throw error;
       }    
       else {
-          res.render('research/standard_detail',{result : result, s_num :req.params.num , max_value: 15, dayjs, name:jwtname});
+          res.render('research/standard_detail',{result : result, s_num :req.params.num , max_value: 15, dayjs, name:jwtname,cookie: req.cookies.user});
       };
     });
 })
