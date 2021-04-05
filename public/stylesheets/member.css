@@ -11,11 +11,14 @@ body{
 #title p{
     font-size: 50px;
 }
-#wow{
+#hcicmember{
     width: 600px;
 }
 .hcictable ul{
     list-style: none;
+}
+#hcicmember span{
+    font-size: 30px;
 }
 
 /*modal*/
