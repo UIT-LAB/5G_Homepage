@@ -44,6 +44,7 @@
         <activity android:name=".SoftwareDetailActivity" />
         <activity android:name=".StandardDetailActivity" />
         <activity android:name=".TechnologyDetailActivity" />
+        <activity android:name=".MemberActivity" />
 
     </application>
 

@@ -143,7 +143,7 @@ router.post('/register', (req, res)=>{
 
 router.post('/checkid', (req, res)=>{ 
   var data = {
-    u_id :req.body.u_id,
+    u_id :req.body.u_id
  }
 
   db.query('select u_id from UserInfo WHERE ?', data, function(err, fields){
@@ -151,6 +151,7 @@ router.post('/checkid', (req, res)=>{
       throw err;
     }else if(fields==""){
       console.log("아이디 사용 가능");
+      console.log(data);
       res.send('{"checkid":"success"}');
     }else{
       console.log("아이디 사용 불가능");
@@ -159,11 +160,14 @@ router.post('/checkid', (req, res)=>{
   })
 });
 
-router.post('/notice', (req, res)=>{ 
+router.post('/notice', (req, res)=>{
+  var date = dayjs();
   var data = {
     n_title :req.body.n_title,
     n_content: req.body.n_content,
-    n_writer: req.body.n_writer
+    n_writer: req.body.n_writer,
+    n_writer_date : dayjs(date).format("YYYY-MM-DD")
+
  }
 
   db.query('INSERT INTO Notice_Board set ?', data, function(err, fields){
@@ -176,10 +180,12 @@ router.post('/notice', (req, res)=>{
 });
 
 router.post('/post', (req, res)=>{ 
+  var date = dayjs();
   var data = {
     p_title :req.body.p_title,
     p_content: req.body.p_content,
-    p_writer: req.body.p_writer
+    p_writer: req.body.p_writer,
+    p_writer_date : dayjs(date).format("YYYY-MM-DD")
  }
 
   db.query('INSERT INTO Post_Board set ?', data, function(err, fields){
@@ -192,11 +198,13 @@ router.post('/post', (req, res)=>{
 });
 
 router.post('/question', (req, res)=>{ 
+  var date = dayjs();
   var data = {
     q_title :req.body.q_title,
     q_content: req.body.q_content,
-    q_writer: req.body.q_writer
- }
+    q_writer: req.body.q_writer,
+    q_writer_date : dayjs(date).format("YYYY-MM-DD")
+  }
 
   db.query('INSERT INTO Question_Board set ?', data, function(err, fields){
     if(err){
@@ -209,8 +217,8 @@ router.post('/question', (req, res)=>{
 
 router.post('/login', (req, res) => {
     var body = req.body;
-    var id = body.inputid;
-    var pw = body.inputpw;
+    var id = body.u_id;
+    var pw = body.u_pw;
 
     var output = crypto.createHash('sha512').update(pw).digest('base64')
    
@@ -220,17 +228,14 @@ router.post('/login', (req, res) => {
     db.query(`select * from UserInfo where u_id='${id}' and u_pw= '${output}'`, async function (err, result) {
         if (err) throw err;
         if (result[0] !== undefined) {
-            /*const user = {
-                id: result[0].u_id,
-                name: result[0].u_name,
-            }*/
-            
-            await jwt.sign({name : result[0].u_name},key,{expiresIn:'1h'},(error, token) => {
+           
+            await jwt.sign({name : result[0].u_name, id : result[0].u_id, email : result[0].u_email, phone : result[0].u_phone, date : result[0].u_date },key,{expiresIn:'1h'},(error, token) => {
                 if(error) {
                     throw error;
                 }
                 res.cookie("user",token);
                 token_value = token;
+                console.log(token_value);
             });
             
             await jwt.verify(token_value, key, (err, decode)=>{
