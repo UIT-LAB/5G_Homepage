@@ -88,7 +88,7 @@ public class QuestionMainActivity extends AppCompatActivity implements View.OnCl
         mDatas = new ArrayList<QuestionMainDTO>();
         super.onStart();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.187.1:3000/")
+                .baseUrl("http://192.168.187.1:9928/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -102,12 +102,13 @@ public class QuestionMainActivity extends AppCompatActivity implements View.OnCl
                     List<QuestionMainDTO> QuestionMainDTOS = response.body();
                     for (int i = 0; i < QuestionMainDTOS.size(); i++) {
                         String q_number = String.valueOf(QuestionMainDTOS.get(i).getQid());
+                        String q_writer = String.valueOf(QuestionMainDTOS.get(i).getQ_writer());
                         String q_title = String.valueOf(QuestionMainDTOS.get(i).getQ_title());
                         String q_content = String.valueOf(QuestionMainDTOS.get(i).getQ_content());
                         String q_writer_date = String.valueOf(QuestionMainDTOS.get(i).getQ_writer_date());
                         String q_admin_comment = String.valueOf(QuestionMainDTOS.get(i).getQ_admin_comment());
                         String q_admin_date = String.valueOf(QuestionMainDTOS.get(i).getQ_admin_date());
-                        QuestionMainDTO data = new QuestionMainDTO(q_number, q_title, q_content, q_writer_date, q_admin_comment, q_admin_date);
+                        QuestionMainDTO data = new QuestionMainDTO(q_number, q_writer, q_title, q_content, q_writer_date, q_admin_comment, q_admin_date);
                         mDatas.add(data);
                     }
                     mAdapter = new QuestionAdapter(mDatas);
@@ -118,6 +119,7 @@ public class QuestionMainActivity extends AppCompatActivity implements View.OnCl
                         public void onItemClick(QuestionAdapter.QuestionViewHolder holder, View view, int position) {
                             QuestionMainDTO item = mAdapter.getItem(position);
                             Intent Question_detail_intent = new Intent(context, QuestionDetailActivity.class);
+                            Question_detail_intent.putExtra("q_writer", item.getQ_writer());
                             Question_detail_intent.putExtra("q_title", item.getQ_title());
                             Question_detail_intent.putExtra("q_content", item.getQ_content());
                             Question_detail_intent.putExtra("q_number", item.getQid());

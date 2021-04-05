@@ -1,6 +1,7 @@
 package com.example.a5g_app_project;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +25,6 @@ public class NoticeDetailActivity extends AppCompatActivity {
         });
 
         TextView n_number, n_writer, n_title, n_date, n_content;
-
 
         n_number = findViewById(R.id.notice_detail_number);
         n_writer = findViewById(R.id.notice_detail_writer);

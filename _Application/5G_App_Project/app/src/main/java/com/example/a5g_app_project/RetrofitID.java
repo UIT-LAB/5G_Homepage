@@ -16,12 +16,15 @@ public class RetrofitID {
 
     public static String post_title = "p_title";
     public static String post_content = "p_content";
+    public static String post_writer = "p_writer";
     public static String timestamp = "timestamp";
 
     public static String notice_title = "n_title";
     public static String notice_contents = "n_content";
+    public static String notice_writer = "n_writer";
 
     public static String question_title = "q_title";
     public static String question_content = "q_content";
+    public static String question_writer = "q_writer";
 
 }

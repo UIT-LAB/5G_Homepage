@@ -44,12 +44,13 @@ public class UserDTO {
     @Override
     public String toString() {
         return "UserDTO{" +
-                "uid=" + uid +
+                "uid='" + uid + '\'' +
                 ", u_id='" + u_id + '\'' +
                 ", u_pw='" + u_pw + '\'' +
                 ", u_name='" + u_name + '\'' +
                 ", u_email='" + u_email + '\'' +
                 ", u_phone='" + u_phone + '\'' +
+                ", token='" + token + '\'' +
                 '}';
     }
 }

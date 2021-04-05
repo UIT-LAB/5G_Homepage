@@ -1,5 +1,6 @@
 package com.example.a5g_app_project;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -55,20 +56,26 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+
+
     @Override
     public void onClick(View v){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.187.1:3000/")
+                .baseUrl("http://192.168.187.1:9928/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         PostInterface service = retrofit.create(PostInterface.class);
+
+        SharedPreferences test = getSharedPreferences("test", MODE_PRIVATE);
+        String Data = test.getString("user", "");
 
         switch (v.getId()){
             case R.id.post_save_button:{
                 HashMap<String, String> post = new HashMap<>();
                 post.put(RetrofitID.post_title, mTitle.getText().toString());
                 post.put(RetrofitID.post_content, mContents.getText().toString());
+                post.put(RetrofitID.post_writer, Data);
 
                 service.setQuestion(post).enqueue(new Callback<HashMap<String, String>>(){
                     @Override

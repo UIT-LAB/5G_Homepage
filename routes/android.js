@@ -1,6 +1,12 @@
 var express = require('express');
-const db = require('../config/db');
 var router = express.Router();
+var bodyParser = require('body-parser')
+var db = require('../config/db')
+var dayjs = require('dayjs')
+const jwt = require('jsonwebtoken');
+const key = require("./auth/key");
+var crypto = require('crypto');
+const { decode } = require('punycode');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -21,7 +27,7 @@ router.get('/multiQustion', (req, res)=>{
       throw err;
     }else{
       res.send(fields);
-      console.log(fields);
+     
     }
   })
 });
@@ -32,7 +38,7 @@ router.get('/License', (req, res)=>{
       throw err;
     }else{
       res.send(fields);
-      console.log(fields);
+     
     }
   })
 });
@@ -43,7 +49,7 @@ router.get('/Software', (req, res)=>{
       throw err;
     }else{
       res.send(fields);
-      console.log(fields);
+     
     }
   })
 });
@@ -54,7 +60,7 @@ router.get('/Technology', (req, res)=>{
       throw err;
     }else{
       res.send(fields);
-      console.log(fields);
+    
     }
   })
 });
@@ -65,7 +71,7 @@ router.get('/Standard', (req, res)=>{
       throw err;
     }else{
       res.send(fields);
-      console.log(fields);
+      
     }
   })
 });
@@ -76,7 +82,7 @@ router.get('/Notice', (req, res)=>{
       throw err;
     }else{
       res.send(fields);
-      console.log(fields);
+     
     }
   })
 });
@@ -88,7 +94,7 @@ router.get('/Treatise', (req, res)=>{
     }else{
 
       res.send(fields);
-      console.log(fields);
+     
     }
   })
 });
@@ -99,11 +105,10 @@ router.get('/Question', (req, res)=>{
       throw err;
     }else{
       res.send(fields);
-      console.log(fields);
+    
     }
   })
 });
-
 
 
 router.get('/Post', (req, res)=>{
@@ -112,7 +117,7 @@ router.get('/Post', (req, res)=>{
       throw err;
     }else{
       res.send(fields);
-      console.log(fields);
+     
     }
   })
 });
@@ -157,7 +162,8 @@ router.post('/checkid', (req, res)=>{
 router.post('/notice', (req, res)=>{ 
   var data = {
     n_title :req.body.n_title,
-    n_content: req.body.n_content
+    n_content: req.body.n_content,
+    n_writer: req.body.n_writer
  }
 
   db.query('INSERT INTO Notice_Board set ?', data, function(err, fields){
@@ -172,7 +178,8 @@ router.post('/notice', (req, res)=>{
 router.post('/post', (req, res)=>{ 
   var data = {
     p_title :req.body.p_title,
-    p_content: req.body.p_content
+    p_content: req.body.p_content,
+    p_writer: req.body.p_writer
  }
 
   db.query('INSERT INTO Post_Board set ?', data, function(err, fields){
@@ -186,8 +193,9 @@ router.post('/post', (req, res)=>{
 
 router.post('/question', (req, res)=>{ 
   var data = {
-    title :req.body.title,
-    content: req.body.content
+    q_title :req.body.q_title,
+    q_content: req.body.q_content,
+    q_writer: req.body.q_writer
  }
 
   db.query('INSERT INTO Question_Board set ?', data, function(err, fields){
@@ -199,10 +207,11 @@ router.post('/question', (req, res)=>{
   })
 });
 
-router.post('/', (req, res) => {
+router.post('/login', (req, res) => {
     var body = req.body;
     var id = body.inputid;
     var pw = body.inputpw;
+
     var output = crypto.createHash('sha512').update(pw).digest('base64')
    
     var jwtname;
@@ -211,11 +220,12 @@ router.post('/', (req, res) => {
     db.query(`select * from UserInfo where u_id='${id}' and u_pw= '${output}'`, async function (err, result) {
         if (err) throw err;
         if (result[0] !== undefined) {
-            const user = {
+            /*const user = {
                 id: result[0].u_id,
                 name: result[0].u_name,
-            }
-            await jwt.sign({user:user},key,{expiresIn:'1h'},(error, token) => {
+            }*/
+            
+            await jwt.sign({name : result[0].u_name},key,{expiresIn:'1h'},(error, token) => {
                 if(error) {
                     throw error;
                 }
@@ -228,7 +238,7 @@ router.post('/', (req, res) => {
                 throw err;
               }
               else {
-                jwtname = decode.user.name
+                jwtname = decode.name
               }
             })
 
@@ -237,10 +247,13 @@ router.post('/', (req, res) => {
                  throw error;
                 }
                 else {
-                  res.send(token_value);
+                    res.send(`{"token": ${token_value}}`);
                 }                  
             });
-        }
+    }
+    else{
+            res.send('<script>alert(`정보가 일치하지 않습니다.`); location.href=`/login`</script>')
+    }
     
     });
 });

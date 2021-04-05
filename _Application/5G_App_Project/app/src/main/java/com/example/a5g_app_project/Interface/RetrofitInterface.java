@@ -7,7 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface RetrofitInterface {
-    @POST("/test/register")
+    @POST("/android/register")
     Call<HashMap<String, String>> setQuestion(@Body HashMap<String, String> user);
 
 

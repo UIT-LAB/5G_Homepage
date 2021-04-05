@@ -9,6 +9,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface TreatiseMainInterface {
-    @GET("/test/Treatise")
+    @GET("/android/Treatise")
     Call<List<TreatiseMainDTO>> getQuestions();
 }

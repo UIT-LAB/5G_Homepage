@@ -10,6 +10,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface PostInterface {
-    @POST("/test/post")
+    @POST("/android/post")
     Call<HashMap<String, String>> setQuestion(@Body HashMap<String, String> user);
 }

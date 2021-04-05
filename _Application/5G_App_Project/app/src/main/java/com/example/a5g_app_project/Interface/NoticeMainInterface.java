@@ -8,6 +8,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface NoticeMainInterface {
-    @GET("/test/Notice")
+    @GET("/android/Notice")
     Call<List<NoticeMainDTO>> getQuestions();
 }

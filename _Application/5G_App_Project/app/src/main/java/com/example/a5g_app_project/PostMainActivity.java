@@ -81,7 +81,7 @@ public class PostMainActivity extends AppCompatActivity implements View.OnClickL
         mDatas = new ArrayList<PostMainDTO>();
         super.onStart();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.187.1:3000/")
+                .baseUrl("http://192.168.187.1:9928/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

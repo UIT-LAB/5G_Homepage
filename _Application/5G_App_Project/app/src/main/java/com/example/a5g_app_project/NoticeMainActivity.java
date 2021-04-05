@@ -84,7 +84,7 @@ public class NoticeMainActivity extends AppCompatActivity implements View.OnClic
         mDatas = new ArrayList<NoticeMainDTO>();
         super.onStart();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.187.1:3000/")
+                .baseUrl("http://192.168.187.1:9928/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

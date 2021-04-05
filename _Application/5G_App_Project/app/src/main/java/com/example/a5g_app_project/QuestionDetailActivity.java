@@ -35,10 +35,12 @@ public class QuestionDetailActivity extends AppCompatActivity {
         q_title = findViewById(R.id.question_detail_title);
         q_date = findViewById(R.id.question_detail_date);
         q_content = findViewById(R.id.question_detail_content);
+        q_writer = findViewById(R.id.question_detail_writer);
 
         admin_window = findViewById(R.id.question_detail_table2);
 
         Intent intent = getIntent();
+        String q_data_writer = intent.getStringExtra("q_writer");
         String q_data_title = intent.getStringExtra("q_title");
         String q_data_content = intent.getStringExtra("q_content");
         String q_data_number = intent.getStringExtra("q_number");
@@ -46,6 +48,7 @@ public class QuestionDetailActivity extends AppCompatActivity {
         String q_data_admin_comment = intent.getStringExtra("q_admin_comment");
         String q_data_admin_date = intent.getStringExtra("q_admin_date");
 
+        q_writer.setText(q_data_writer);
         q_title.setText(q_data_title);
         q_content.setText(q_data_content);
         q_date.setText(q_data_date);

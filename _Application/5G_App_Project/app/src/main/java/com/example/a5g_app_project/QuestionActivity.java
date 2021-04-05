@@ -1,5 +1,6 @@
 package com.example.a5g_app_project;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -57,17 +58,21 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.187.1:3000/")
+                .baseUrl("http://192.168.187.1:9928/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         QuestionInterface service = retrofit.create(QuestionInterface.class);
+
+        SharedPreferences test = getSharedPreferences("test", MODE_PRIVATE);
+        String Data = test.getString("user", "");
 
         switch (v.getId()){
             case R.id.question_save_button:{
                 HashMap<String, String> question = new HashMap<>();
                 question.put(RetrofitID.question_title, mTitle.getText().toString());
                 question.put(RetrofitID.question_content, mContents.getText().toString());
+                question.put(RetrofitID.question_writer, Data);
 
                 service.setQuestion(question).enqueue(new Callback<HashMap<String, String>>(){
                     @Override
