@@ -26,7 +26,7 @@ router.get('/notice/:num', function(req, res, next) {
       throw error;
     }    
     else {
-      res.render('board/notice', {result : result, n_num : req.params.num, max_value:15, dayjs ,id:jwtid,name:jwtname });
+      res.render('board/notice', {result : result, n_num : req.params.num, max_value:15, dayjs ,id:jwtid, name:jwtname ,cookie: req.cookies.user});
     };
   });
 });
@@ -55,7 +55,7 @@ router.get('/notice/detail/:num', function(req, res, next) {
         }
         else if (result[0] !== undefined) {
           result[0].n_view++;
-          res.render('board/notice_detail', {result : result, n_num : req.params.num, max_value:15, dayjs, id:jwtid,name : jwtname});
+          res.render('board/notice_detail', {result : result, n_num : req.params.num, max_value:15, dayjs, id:jwtid,name : jwtname, cookie: req.cookies.user});
         }
         else {
           res.render('error');
@@ -81,7 +81,7 @@ router.get('/notice_write', function(req, res, next) {
       }
     })
   }
-  res.render('board/notice_write',{name:jwtname});
+  res.render('board/notice_write',{name:jwtname, cookie: req.cookies.user});
 });
 
 router.post('/notice/insert_write', function(req, res, next) {
@@ -131,7 +131,7 @@ router.get('/notice/update/:num', function(req, res, next) {
         throw error;
     }    
     else {
-      res.render('board/notice_update', {result:result, n_num : req.params.num, max_value:15, dayjs,name:jwtname});
+      res.render('board/notice_update', {result:result, n_num : req.params.num, max_value:15, dayjs,name:jwtname, cookie: req.cookies.user });
     };
   });
 });
@@ -188,7 +188,7 @@ router.get('/post/:num', function(req, res, next) {
           throw error;
         }    
         else {
-          res.render('board/post', {result : result, p_num : req.params.num, max_value:15, dayjs,name: jwtname  });
+          res.render('board/post', {result : result, p_num : req.params.num, max_value:15, dayjs,name: jwtname, cookie: req.cookies.user  });
         };
       });
 });
@@ -217,7 +217,7 @@ router.get('/post/detail/:num', function(req, res, next) {
         }
         else if (result[0] !== undefined) {
           result[0].p_view++;
-          res.render('board/post_detail', {result : result, p_num : req.params.num, max_value:15, dayjs, id:jwtid,name : jwtname});
+          res.render('board/post_detail', {result : result, p_num : req.params.num, max_value:15, dayjs, id:jwtid,name : jwtname, cookie: req.cookies.user});
         }
         else {
           res.render('error');
@@ -243,7 +243,7 @@ router.get('/post_write', function(req, res, next) {
       }
     })
   }
-  res.render('board/post_write',{name:jwtname});
+  res.render('board/post_write',{name:jwtname, cookie: req.cookies.user});
 });
 
 router.post('/post/insert_write', function(req, res, next) {
@@ -282,7 +282,7 @@ router.get('/post/update/:num', function(req, res, next) {
         throw error;
     }    
     else if (result[0] !== undefined) {
-      res.render('board/post_update', {result:result, p_num : req.params.num, max_value:15, dayjs,name:jwtname});
+      res.render('board/post_update', {result:result, p_num : req.params.num, max_value:15, dayjs,name:jwtname, cookie: req.cookies.user});
     }
     else {
       res.render('error')
@@ -341,7 +341,7 @@ router.get('/question/:num', function(req, res, next) {
         throw error;
       }    
       else {
-        res.render('board/question', {result : result, q_num : req.params.num, max_value:15, dayjs,name:jwtname});
+        res.render('board/question', {result : result, q_num : req.params.num, max_value:15, dayjs,name:jwtname, cookie: req.cookies.user});
       };
     });
 });
@@ -364,7 +364,7 @@ router.get('/question/detail/:num', function(req, res, next) {
         throw error;
       }    
       else if (result[0] !== undefined) {
-        res.render('board/question_detail', {result : result, q_num : req.params.num, max_value:15, dayjs, name:jwtname, id: jwtid  });
+        res.render('board/question_detail', {result : result, q_num : req.params.num, max_value:15, dayjs, name:jwtname, cookie: req.cookies.user, id: jwtid  });
       }
       else {
         res.render('error');
@@ -385,7 +385,7 @@ router.get('/question_write', function(req, res, next) {
       }
     })
   }
-  res.render('board/question_write',{name:jwtname});
+  res.render('board/question_write',{name:jwtname, cookie: req.cookies.user});
 });
 
 router.post('/question/insert_write', function(req, res, next) {
@@ -436,7 +436,7 @@ router.get('/question/update/:num', function(req, res, next) {
         throw error;
     }    
     else {
-      res.render('board/question_update', {result:result, q_num : req.params.num, max_value:15, dayjs,name:jwtname});
+      res.render('board/question_update', {result:result, q_num : req.params.num, max_value:15, dayjs,name:jwtname, cookie: req.cookies.user});
     };
   });
 });

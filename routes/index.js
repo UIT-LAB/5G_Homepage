@@ -47,7 +47,7 @@ router.get('/', function (req, res, next) {
                   }
                   else {
                     p_result = result;
-                    res.render('index', { 'g_result': g_result, 'r_result': r_result, 'n_result': n_result, dayjs, 'name': jwtname });
+                    res.render('index', { 'g_result': g_result, 'r_result': r_result, 'n_result': n_result, dayjs, 'name': jwtname ,cookie: req.cookies.user});
                   }
                 });
               }
@@ -76,7 +76,7 @@ router.get('/profile', function(req, res, next) {
            throw error;
       }    
       else {
-        res.render('login/profile',{result: result, name:jwtname, dayjs});
+        res.render('login/profile',{result: result, name:jwtname,cookie: req.cookies.user, dayjs});
       }
    });
  });
@@ -99,7 +99,7 @@ router.get('/profile', function(req, res, next) {
          throw error;
        }    
      else {
-      res.render('login/profile_update',{result: result, name : jwtname, dayjs});
+      res.render('login/profile_update',{result: result, name : jwtname ,cookie: req.cookies.user, dayjs});
     };
  });
 });

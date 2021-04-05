@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
     }
    })
   }
-  res.render('intro/intro',{name:jwtname});
+  res.render('intro/intro',{name:jwtname,cookie: req.cookies.user});
 });
 
 router.get('/business', function(req, res, next) {
@@ -31,7 +31,7 @@ router.get('/business', function(req, res, next) {
       }
     })
   }
-  res.render('intro/business',{name:jwtname});
+  res.render('intro/business',{name:jwtname,cookie: req.cookies.user});
 });
 router.get('/history', function(req, res, next) {
   if(req.cookies.user != undefined){
@@ -45,7 +45,7 @@ router.get('/history', function(req, res, next) {
       }
     })
   }
-  res.render('Intro/intro',{name:jwtname});
+  res.render('Intro/intro',{name:jwtname,cookie: req.cookies.user});
 });
 
 router.get('/organization', function(req, res, next) {
@@ -60,7 +60,7 @@ router.get('/organization', function(req, res, next) {
         }
       })
     }
-    res.render('Intro/organization',{name:jwtname});
+    res.render('Intro/organization',{name:jwtname,cookie: req.cookies.user});
 });
 
 module.exports = router;

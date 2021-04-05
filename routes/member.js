@@ -25,7 +25,7 @@ router.get('/:num', function(req, res, next){
           throw error;
         }    
       else {
-          res.render('member/member', {result : result, m_num : req.params.num, max_value:12,name:jwtname});
+          res.render('member/member', {result : result, m_num : req.params.num, max_value:12,name:jwtname, cookie: req.cookies.user});
       };
   });
 })
