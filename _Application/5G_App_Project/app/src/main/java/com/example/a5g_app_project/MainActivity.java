@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(toolbar);
         mNoticeRecyclerView = findViewById(R.id.notice_content_main_recyclerview);
         mPostRecyclerView = findViewById(R.id.post_content_main_recyclerview);
-        mTreatiesRecyclerView = findViewById(R.id.treatise_content_main_recyclerview);
+
 
         Button introduce_btn, Treatise_btn, Notice_btn, Post_btn, Question_btn, Map_btn, Pc_btn;
         introduce_btn = findViewById(R.id.fuction_button1);
@@ -313,7 +313,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     }
                     tAdapter = new MainTreatiseAdapter(tDatas);
-                    mTreatiesRecyclerView.setAdapter(tAdapter);
+
 
                 } else {
                     Log.d("Treatise", "Fail");
