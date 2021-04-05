@@ -28,7 +28,7 @@
     <div class="row" align="center">
       <% for(let i= 0; i< result.length; i++){ %>
         <div class="col">
-          <table id="wow" class="hcictable border border-3 p-3 table table-hover"  data-bs-toggle="modal" data-bs-target="#uitmodal" data-name="<%=result[i].m_name%>" data-photo="<%=result[i].m_photo%>" data-group="<%=result[i].m_group%>"
+          <table id="hcicmember" class="hcictable border border-3 p-3 table table-hover"  data-bs-toggle="modal" data-bs-target="#uitmodal" data-name="<%=result[i].m_name%>" data-photo="<%=result[i].m_photo%>" data-group="<%=result[i].m_group%>"
             data-division="<%=result[i].m_division%>" data-univ="<%=result[i].m_univ%>" data-partdivision="<%=result[i].m_partdivision%>"
             data-position="<%=result[i].m_position%>" data-finalyear="<%=result[i].m_finalyear%>" data-finalmajor="<%=result[i].m_finalmajor%>"
             data-partperiod="<%=result[i].m_participationPeriod%>" data-partrate="<%=result[i].m_participationRate%>">
@@ -38,7 +38,7 @@
               </td>
               <th>
                 <ul>
-                  <h3 align="left"><%=result[i].m_name%></h3>
+                  <span align="left" class="border-top border-dark"><%=result[i].m_name%></span>
                   <li><p><%=result[i].m_division%></p></li>
                   <li><p><%=result[i].m_univ%></p></li>
                   <li><p><%=result[i].m_group%></p></li>
