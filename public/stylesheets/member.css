@@ -11,9 +11,13 @@ body{
 #title p{
     font-size: 50px;
 }
-.container table td{
-    width: 300px;
+#wow{
+    width: 600px;
 }
+.hcictable ul{
+    list-style: none;
+}
+
 /*modal*/
 #imtable th{
     text-align: center;
@@ -33,20 +37,4 @@ body{
 #careertable th{
     padding: 15px;
     text-align: center;
-}
-
-/*media query*/
-@media (max-width: 575.98px){
-
-}
-@media (min-width: 576px){
-}
-@media (min-width: 768px){
-}
-@media (min-width: 992px){
-}
-@media (min-width: 1200px){   
-    .container table td{
-        width: 230px;
-    }
 }
