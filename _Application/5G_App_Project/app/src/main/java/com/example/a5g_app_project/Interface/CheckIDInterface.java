@@ -7,6 +7,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface CheckIDInterface {
-    @POST("/test/checkid")
+    @POST("/android/checkid")
     Call<HashMap<String, String>> setQuestion(@Body HashMap<String, String> user);
 }

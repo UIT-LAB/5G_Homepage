@@ -2,6 +2,7 @@ package com.example.a5g_app_project;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -153,6 +154,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //상단 액션바 햄버거 기능 구현
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        SharedPreferences test = getSharedPreferences("test", MODE_PRIVATE);
+        String Data = test.getString("user", "");
+
         switch (item.getItemId()) {
             case android.R.id.home: { // 왼쪽 상단 버튼 눌렀을 때
                 drawer.openDrawer(GravityCompat.START);
@@ -164,9 +168,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             }*/
             case R.id.menu_login: {
-                Intent login_intent = new Intent(this, LoginActivity.class);
-                startActivity(login_intent);
-                return true;
+                if(Data.equals("")){
+                    Intent login_intent = new Intent(this, LoginActivity.class);
+                    startActivity(login_intent);
+                    return true;
+                }
+                else{
+                    Intent login_intent = new Intent(this, MemberActivity.class);
+                    startActivity(login_intent);
+                    return true;
+                }
+
             }
         }
         return super.onOptionsItemSelected(item);

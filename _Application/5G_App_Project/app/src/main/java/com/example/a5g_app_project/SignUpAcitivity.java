@@ -127,7 +127,7 @@ public class SignUpAcitivity extends AppCompatActivity implements View.OnClickLi
             case R.id.id_check_button:{
                 HashMap<String, String> userinfo = new HashMap<>();
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://192.168.187.1:3000/")
+                        .baseUrl("http://192.168.187.1:9928/")
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 

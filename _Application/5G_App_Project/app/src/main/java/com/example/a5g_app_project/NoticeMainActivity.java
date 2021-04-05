@@ -2,6 +2,7 @@ package com.example.a5g_app_project;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.example.a5g_app_project.Interface.NoticeMainInterface;
 
 import com.example.a5g_app_project.ItemClickListener.OnNoticeItemClickListener;
 import com.example.a5g_app_project.adapters.NoticeAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,7 @@ public class NoticeMainActivity extends AppCompatActivity implements View.OnClic
 
     private RecyclerView mNoticeRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    private FloatingActionButton noticeedit;
 
     private NoticeAdapter mAdapter;
     private List<NoticeMainDTO> mDatas;
@@ -45,6 +48,8 @@ public class NoticeMainActivity extends AppCompatActivity implements View.OnClic
 
         mNoticeRecyclerView = findViewById(R.id.notice_main_recyclerview);
         mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.noticeSwipe);
+
+        noticeedit = findViewById(R.id.main_notice_edit);
 
         findViewById(R.id.main_notice_edit).setOnClickListener(this);
         ImageButton notice_back_btn = findViewById(R.id.notice_back_button);
@@ -75,6 +80,19 @@ public class NoticeMainActivity extends AppCompatActivity implements View.OnClic
                 onStart();
             }
         });
+
+        SharedPreferences test = getSharedPreferences("test", MODE_PRIVATE);
+        String user_id = test.getString("user_id", "");
+
+        Log.e("check", user_id);
+
+        if(user_id.equals("admin")){
+            Log.e("check", "무야호");
+            noticeedit.setVisibility(View.VISIBLE);
+        }
+        else{
+            noticeedit.setVisibility(View.GONE);
+        }
     }
 
 
@@ -134,6 +152,7 @@ public class NoticeMainActivity extends AppCompatActivity implements View.OnClic
 
 
     }
+
 
     @Override
     public void onClick(View view) {

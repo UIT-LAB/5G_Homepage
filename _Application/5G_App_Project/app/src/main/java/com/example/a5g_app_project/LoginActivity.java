@@ -1,5 +1,6 @@
 package com.example.a5g_app_project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mID = findViewById(R.id.emailInput);
         mPW = findViewById(R.id.passwordInput);
         findViewById(R.id.login_Button).setOnClickListener(this);
+        findViewById(R.id.login_signup_btn).setOnClickListener(this);
     }
 
     @Override
@@ -48,6 +50,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
         switch (v.getId()){
+            case R.id.login_signup_btn:
+                Intent login_intent = new Intent(v.getContext(),SignUpAcitivity.class);
+                startActivity(login_intent);
+                break;
             case R.id.login_Button:{
                 HashMap<String, String> post = new HashMap<>();
                 post.put(RetrofitID.id, mID.getText().toString());
@@ -65,12 +71,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             SharedPreferences name = getSharedPreferences("test", MODE_PRIVATE);
                             SharedPreferences.Editor editor = name.edit();
                             editor.putString("user", j.getClaim("name").asString());
+                            editor.putString("user_id", j.getClaim("id").asString());
+                            editor.putString("user_phone", j.getClaim("phone").asString());
+                            editor.putString("user_date", j.getClaim("date").asString());
+                            editor.putString("user_email", j.getClaim("email").asString());
                             editor.commit();
 
                             SharedPreferences test = getSharedPreferences("test", MODE_PRIVATE);
                             String Data = test.getString("user", "");
 
                             Log.e("token2", Data);
+
+                            finish();
 
 
                         }else{
