@@ -248,12 +248,13 @@ router.post('/login', (req, res) => {
                 }
                 else {
                     res.send(`{"token": ${token_value}}`);
-            }                  
-        });
+                }                  
+            });
     }
     else{
             res.send('<script>alert(`정보가 일치하지 않습니다.`); location.href=`/login`</script>')
-        }
+    }
+    
     });
 });
 
