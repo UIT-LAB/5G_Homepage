@@ -8,9 +8,9 @@ router.get('/', function(req, res, next) {
     if(req.cookies.user != undefined){
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
-      if(err){
-    throw err;
-      }
+    if(err){
+      res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
+    }
     else {
        jwtname = decode.user.name
     }
@@ -24,7 +24,7 @@ router.get('/business', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -38,7 +38,7 @@ router.get('/history', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -53,7 +53,7 @@ router.get('/organization', function(req, res, next) {
         let token = req.cookies.user;
         jwt.verify(token, key, (err, decode)=>{
         if(err){
-          throw err;
+          res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
         }
         else {
           jwtname = decode.user.name

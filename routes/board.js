@@ -13,7 +13,7 @@ router.get('/notice/:num', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -21,6 +21,7 @@ router.get('/notice/:num', function(req, res, next) {
       }
     })
   }
+  
   db.query('select nid, n_title, n_writer, n_writer_date, n_view  from Notice_Board ORDER BY n_writer_date DESC ', function (error, result) {
     if (error) {
       throw error;
@@ -36,7 +37,7 @@ router.get('/notice/detail/:num', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -51,7 +52,7 @@ router.get('/notice/detail/:num', function(req, res, next) {
     else if (result[0] !== undefined) {
       db.query(`update Notice_Board set n_view = n_view+1 where nid = '${req.params.num}'`, function (error, n_view) {
         if(error){
-          res.send('<script>alert(`사용 가능한 아이디 입니다.`); location.href=`/login/signUp `</script>')
+          throw error;
         }
         else if (result[0] !== undefined) {
           result[0].n_view++;
@@ -73,7 +74,7 @@ router.get('/notice_write', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -94,7 +95,7 @@ router.post('/notice/insert_write', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -118,7 +119,7 @@ router.get('/notice/update/:num', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -174,7 +175,7 @@ router.get('/post/:num', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -198,7 +199,7 @@ router.get('/post/detail/:num', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -235,7 +236,7 @@ router.get('/post_write', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -269,8 +270,8 @@ router.get('/post/update/:num', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
-      }
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
+     }
       else {
         jwtname = decode.user.name
         jwtid = decode.user.id
@@ -328,7 +329,7 @@ router.get('/question/:num', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -351,7 +352,7 @@ router.get('/question/detail/:num', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -377,7 +378,7 @@ router.get('/question_write', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -398,7 +399,7 @@ router.post('/question/insert_write', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -423,7 +424,7 @@ router.get('/question/update/:num', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
