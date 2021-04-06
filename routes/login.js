@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
                 id: result[0].u_id,
                 name: result[0].u_name,
             }
-            await jwt.sign({user:user},key,{expiresIn:'1h'},(error, token) => {
+            await jwt.sign({user:user},key,{expiresIn:'30s'},(error, token) => {
                 if(error) {
                     throw error;
                 }
@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
             
             await jwt.verify(token_value, key, (err, decode)=>{
               if(err){
-                throw err;
+                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
               }
               else {
                 jwtname = decode.user.name
