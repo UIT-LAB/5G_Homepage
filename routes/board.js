@@ -104,7 +104,8 @@ router.post('/notice/insert_write', function(req, res, next) {
     })
   }
   var sql = {n_title:title, n_content : content, n_writer: jwtname, n_writer_date : datetime, n_view : 0};
-    db.query('INSERT INTO Notice_Board SET ?', sql , function (error, result) {
+    
+  db.query('INSERT INTO Notice_Board SET ?', sql , function (error, result) {
       if(error) {
         throw error;
       }    

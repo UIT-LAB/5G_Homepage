@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<head>
+  <link href="https://cdn.discordapp.com/attachments/751431280519807068/800629207469785128/5g.png" rel="shortcut icon"
+    type="images/x-icon">
+
+  <style>
+    .table-hover tbody tr {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <% include ../include/header %>
+  </header>
+  <img src="/images/gall.jpg" class="img-fluid" style="width: 100%; height: 350px;" alt="...">
+  <div class="container">
+    <div class="row mt-5 mb-5">
+      <div class="col-md-10">
+        <form method="POST" name="form" class="d-inline" enctype="multipart/form-data" action="/gallery/insert_write">
+          <div class="text-center m-5">
+            <h1>갤러리</h1>
+            ITRC 사업단의 갤러리
+          </div>
+          <div class="border border-2 p-4">
+
+            <h4><input type="text" name="gall_title" class="form-control"></h4>
+            <table class="table mt-2">
+              <tbody class="align-middle">
+                <tr>
+                  <td>
+                    <span class="float-end">작성자 : <%= name %></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <textarea type="text" style="height: 400px; resize: none;" name="gall_content"
+              class="form-control"></textarea>
+          </div>
+          <div>
+            <div class="float mt-3">
+             <input type="file" name="attachments" multiple>
+            </div>
+            <div class="float-end mt-3">
+              <input type="submit" class="btn btn-outline-dark" value="저장">
+              <input type="hidden" name="gall_writer" value="<%= name %>" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <% include ../include/footer %>
+  </footer>
+</body>
+
+</html>

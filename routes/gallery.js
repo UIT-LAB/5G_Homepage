@@ -5,7 +5,72 @@ var db = require('../config/db')
 var dayjs =  require('dayjs')
 const jwt = require('jsonwebtoken');
 const key = require("./auth/key");
+var multer   = require('multer'); // 1
 let jwtname, jwtid;
+var storage  = multer.diskStorage({ // 2
+  destination(req, file, cb) {
+    cb(null, 'public/images/gallery');
+  },
+  filename(req, file, cb) {
+    cb(null, `${file.originalname}`);
+  },
+});
+
+var uploadWithOriginalFilename = multer({ storage: storage }); // 3-2
+
+
+router.get('/write', function(req,res,next) {
+  if(req.cookies.user != undefined){
+    let token = req.cookies.user;
+    jwt.verify(token, key, (err, decode)=>{
+      if(err){
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
+      }
+      else {
+        jwtname = decode.user.name
+        jwtid = decode.user.id
+      }
+    })
+  }
+  res.render('gallery/gallery_write', {dayjs, name:jwtname, cookie: req.cookies.user})
+})
+
+router.post('/insert_write', uploadWithOriginalFilename.array('attachments'), function(req, res, next) {
+  console.log() 
+  if(req.cookies.user != undefined){
+    let token = req.cookies.user;
+    jwt.verify(token, key, (err, decode)=>{
+      if(err){
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
+      }
+      else {
+        jwtname = decode.user.name
+        jwtid = decode.user.id
+      }
+    })
+  }
+  var date = new dayjs();
+  var body = req.body;
+  var title = body.gall_title;
+  var datetime = date.format('YYYY-MM-DD');
+  var files = req.files;
+  var string = "";
+  for (var k in files) {
+    console.log(k + " : " + files[k].filename);
+    string += files[k].filename+",";
+  }
+
+
+  var sql = {g_title:title, g_write_date : datetime, g_img :string};
+    db.query('INSERT INTO Gallery SET ?', sql , function (error, result) {
+      if(error) {
+        throw error;
+      }    
+      else {
+        res.redirect("/gallery/1");
+       };
+  });
+});
 
 router.get('/:num', function(req, res, next) {
     if(req.cookies.user != undefined){
@@ -53,6 +118,8 @@ router.get('/detail/:num', function(req, res, next) {
         };
     });
 });
+
+
 
 
 module.exports = router;
