@@ -22,7 +22,7 @@
             margin-top: 25px;
             margin-bottom: 60px;
             text-align: center;
-            font-size: 28px;
+            font-size: 25px;
             font-weight: 900;
         }    
         .form-pwcheck input[type=password]{
@@ -32,12 +32,12 @@
         .btn{
             width: 130px;
             height: 70px;
-            font-size: 25px;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
-    <form action="/profile_password" method="POST" class="form-pwcheck" onsubmit="return pwfind();">
+    <form action="/profile_password" method="POST" class="form-pwcheck">
         <p class="subtitle">당신의 새로운 비밀번호를 입력해주세요.</p>
         <div align="center">
             <input type="password" name="currentpw" id="currentpw" class="form-control mt-3 mb-1" placeholder="CURRENTPW">
@@ -57,15 +57,5 @@
 </html>
 
 <script>
-    function pwfind(){
-        if($("#input_id").val()==""){
-        alert("아이디를 입력하여 주세요");
-        return false;
-        }
-
-        if($("#input_email").val()==""){
-        alert("이메일을 입력하여 주세요");
-        return false;
-        }
-    }
+    
 </script>

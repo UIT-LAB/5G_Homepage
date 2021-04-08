@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-      <title>ITRC member</title>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>ITRC member</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <style>
       @import url(/stylesheets/member.css);
    </style>
@@ -13,16 +13,12 @@
 <body>
   <header>
     <% include ../include/header %>
-</header>
-  <section>
+  </header>
     <div>
       <img src="/images/555.jpg" alt="0" id="memberbanner">
     </div>
-  </section> 
      
-  <div id="title" align="center">
-    <p>Introduce HCIC member</p>
-  </div>
+  <div class="fs-1 text-center">Introduce HCIC Member</div>
   <hr>
    <div class="container-xxl">
     <div class="row" align="center">
@@ -38,7 +34,7 @@
               </td>
               <th>
                 <ul>
-                  <span align="left" class="border-top border-dark"><%=result[i].m_name%></span>
+                  <span align="left" class="border-top border-dark fs-2"><%=result[i].m_name%></span>
                   <li><p><%=result[i].m_division%></p></li>
                   <li><p><%=result[i].m_univ%></p></li>
                   <li><p><%=result[i].m_group%></p></li>
@@ -54,47 +50,51 @@
  
   
   <div class="modal fade" id="uitmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="modal-title"></h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" align="center">
+
           <table id="imtable">
             <tr>
-              <th rowspan="4">
-                <img src="/images/member/noimg.jpg" alt="없음" id="imgmodal" width="200" height="200">
+              <td rowspan="3" class="phototable"">
+                <img src="/images/member/noimg.jpg" alt="없음" id="imgmodal" class="fs-5" width="200" height="200">
+              </td>
+            </tr>
+            <tr>
+              <th id="namemodal" class="border-bottom border-dark fs-1"></th>
+            </tr>
+            <tr>
+              <th>
+                <ul>
+                  <li id="univmodal" class="p-1"></li>
+                  <li id="groupmodal" class="p-1"></li>
+                  <li id="positionmodal" class="p-1"></li>
+                </ul>
               </th>
             </tr>
-            <tr>
-              <th id="univmodal" class="border border-1"></th>
-            </tr>
-            <tr>
-              <th id="groupmodal" class="border border-1"></th>
-            </tr>
-            <tr>
-              <th id="positionmodal" class="border border-1"></th>
-            </tr>
+          </table>
+          <div id="career" class="fs-2 border-bottom border-dark text-start mb-3 mt-3">학력</div>
+          <table id="careertable" class="table pt-3 text-center">
+            <tbody>
+              <tr>
+                <td class="border-1 table-info">최종학위 년도</td>
+                <th id="yearmodal" class="border-0"></th>
+                <td class="border-1 table-info">최종학위 전공</td>
+                <th id="majormodal" class="border-0"></th>
+              </tr>
+              <tr>
+                <td class="border-1 table-info">참여기간</td>
+                <th id="periodmodal" class="border-0"></th>
+                <td class="border-1 table-info">참여율</td>
+                <th id="ratemodal" class="border-0"></th>
+              </tr>
+            </tbody>
           </table>
 
-          <table id="careertable" class="pt-3">
-            <tr>
-              <td>최종학위 년도</td>
-              <th id="yearmodal" class="border border-1"></th>
-            <tr>
-              <td>최종학위 전공</td>
-              <th id="majormodal" class="border border-1"></th>
-            </tr>
-            <tr>
-              <td>참여기간</td>
-              <th id="periodmodal" class="border border-1"></th>
-            </tr>
-            <tr>
-              <td>참여율</td>
-              <th id="ratemodal" class="border border-1"></th>
-            </tr>
-          </table>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -126,9 +126,10 @@
 
     var modal=$(this)
     modal.find('.modal-title').text(division+" "+partdivision+" "+name);
-    modal.find('.modal-body #imtable #univmodal').text(univ);
-    modal.find('.modal-body #imtable #groupmodal').text(group);
-    modal.find('.modal-body #imtable #positionmodal').text(position);
+    modal.find('.modal-body #imtable #namemodal').text(name);
+    modal.find('.modal-body #imtable #univmodal').text("대학 : "+univ);
+    modal.find('.modal-body #imtable #groupmodal').text("소속 : "+group);
+    modal.find('.modal-body #imtable #positionmodal').text("직위(직급) : "+position);
 
     modal.find('.modal-body #careertable #yearmodal').text(finalyear+"년");
     modal.find('.modal-body #careertable #majormodal').text(finalmajor);
