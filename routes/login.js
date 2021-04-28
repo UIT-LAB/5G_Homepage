@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
                 id: result[0].u_id,
                 name: result[0].u_name,
             }
-            await jwt.sign({user:user},key,{expiresIn:'30s'},(error, token) => {
+            await jwt.sign({user:user},key,{expiresIn:'1h'},(error, token) => {
                 if(error) {
                     throw error;
                 }

@@ -5,7 +5,18 @@ var dayjs = require('dayjs');
 var crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const key = require("./auth/key");
+var multer   = require('multer'); // 1
 let jwtname, jwtid;
+var storage  = multer.diskStorage({ // 2
+  destination(req, file, cb) {
+    cb(null, 'public/images/profile');
+  },
+  filename(req, file, cb) {
+    cb(null, `${file.originalname}`);
+  },
+});
+
+var uploadWithOriginalFilename = multer({ storage: storage }); // 3-2
 /* GET users listing. */
 
 router.get('/', function (req, res, next) {
@@ -104,11 +115,37 @@ router.get('/profile', function(req, res, next) {
     };
  });
 });
-router.post('/profile_update', function(req, res, next) {
+
+router.get('/profile_upload', function(req, res, next) {
+  if(req.cookies.user != undefined){
+    let token = req.cookies.user;
+    jwt.verify(token, key, (err, decode)=>{
+      if(err){
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
+      }
+      else {
+        jwtname = decode.user.name
+        jwtid = decode.user.id
+      }
+    })
+  }
+  db.query(`select * from UserInfo where u_id = '${jwtid}'`, function (error, result) {
+     if (error) {
+         throw error;
+       }    
+     else {
+      res.render('login/profile_update',{result: result, name : jwtname ,cookie: req.cookies.user, dayjs});
+    };
+ });
+});
+
+router.post('/profile_update', uploadWithOriginalFilename.single('attachment'), function(req, res, next) {
   var body = req.body;
   var profile_name = body.profile_name ;
   var profile_phone = body.profile_phone ;
   var profile_email = body.profile_email ;
+  var profile_image = req.file.filename;
+
   if(req.cookies.user != undefined){
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
@@ -122,11 +159,12 @@ router.post('/profile_update', function(req, res, next) {
     })
   }
 
-  db.query(`Update UserInfo set u_name = '${profile_name}', u_phone = '${profile_phone}', u_email = '${profile_email}' where u_id = '${jwtid}'`, function (error, result) {
+  db.query(`Update UserInfo set u_name = '${profile_name}', u_phone = '${profile_phone}', u_email = '${profile_email}', u_image = '${profile_image}' where u_id = '${jwtid}'`, function (error, result) {
      if (error) {
          throw error;
        }    
      else {
+      console.log(profile_image);
       res.send('<script>alert(`정보가 수정되었습니다.`); location.href=`/profile`</script>')
      };
  });
