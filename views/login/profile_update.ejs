@@ -59,7 +59,7 @@
             <div class="col">
                 <div class="border border-2 p-3">
                     <div class="proname">개인정보</div>
-                    <form method="POST" name="form" class="form-profile" onsubmit="return update();">
+                    <form method="POST" name="form" class="form-profile" enctype="multipart/form-data" onsubmit="return update();">
                         <table class="table table-strip text-center">
                             <div class="mb-2 float-end pr-2" style="cursor: pointer;"</div>
                             <tr>
@@ -73,6 +73,10 @@
                             <tr>
                                 <td>이메일</td>
                                 <td><input type="email" name="profile_email" id="profile_email" placeholder="이메일" value="<%= result[0].u_email %>"></td>
+                            </tr>
+                            <tr>
+                                <td>이미지</td>
+                                <td><input type="file" name="attachment"></td>
 
                                 <input type="hidden" name="namex" value="<%= result[0].u_name%>"/>
                                 <input type="hidden" name="idx" value="<%= result[0].u_id%>"/>
