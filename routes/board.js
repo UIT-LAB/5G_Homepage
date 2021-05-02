@@ -4,7 +4,18 @@ var db = require('../config/db')
 var dayjs =  require('dayjs')
 const jwt = require('jsonwebtoken');
 const key = require("./auth/key");
+var multer   = require('multer'); // 1
 let jwtname, jwtid;
+var storage  = multer.diskStorage({ // 2
+  destination(req, file, cb) {
+    cb(null, 'public/images/board');
+  },
+  filename(req, file, cb) {
+    cb(null, `${file.originalname}`);
+  },
+});
+
+var uploadWithOriginalFilename = multer({ storage: storage }); // 3-2
 
 
 //------------------------------------notice
@@ -248,13 +259,19 @@ router.get('/post_write', function(req, res, next) {
   res.render('board/post_write',{name:jwtname, cookie: req.cookies.user});
 });
 
-router.post('/post/insert_write', function(req, res, next) {
+router.post('/post/insert_write', uploadWithOriginalFilename.array('attachments'), function(req, res, next) {
   var date = new dayjs();
   var body = req.body;
   var title = body.post_title;
   var content = body.post_content;
   var datetime = date.format('YYYY-MM-DD HH:mm:ss');
-  var sql = {p_title:title, p_content : content, p_writer:req.session.u_name, p_writer_date : datetime, p_view : 0};
+  var files = req.files;
+  var string = "";
+  for (var k in files) {
+    console.log(k + " : " + files[k].filename);
+    string += files[k].filename+",";
+  }
+  var sql = {p_title : title, p_content : content, p_writer : jwtname, p_writer_date : datetime, p_view : 0, p_file: string};
   
   db.query('INSERT INTO Post_Board SET ?', sql , function (error, result) {
       if(error) {
