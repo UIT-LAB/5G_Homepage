@@ -53,16 +53,10 @@ router.post('/insert_write', uploadWithOriginalFilename.array('attachments'), fu
   var body = req.body;
   var title = body.gall_title;
   var datetime = date.format('YYYY-MM-DD');
-  var files = req.files;
-  var string = "";
-  for (var k in files) {
-    console.log(k + " : " + files[k].filename);
-    string += files[k].filename+",";
-  }
-
-
-  var sql = {g_title:title, g_write_date : datetime, g_img :string};
-    db.query('INSERT INTO Gallery SET ?', sql , function (error, result) {
+ 
+  var sql = {g_title:title, g_write_date : datetime, g_img :req.files[0].filename};
+    console.log(req.files)
+  db.query('INSERT INTO Gallery SET ?', sql , function (error, result) {
       if(error) {
         throw error;
       }    
