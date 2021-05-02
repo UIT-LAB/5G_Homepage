@@ -41,7 +41,7 @@
         </table>
       </div>
       <div class="col-md-10">
-        <form method="POST" name="form" class="d-inline" action="/board/post/insert_write">
+        <form method="POST" name="form" class="d-inline" enctype="multipart/form-data" action="/board/post/insert_write">
           <div class="text-center m-5">
             <h1>정보 게시판</h1>
             5G 사업단 다양한 정보 게시판
@@ -58,10 +58,10 @@
                 </tr>
               </tbody>
             </table>
-            <textarea type="text" style="height: 400px; resize: none;" name="post_content"
-              class="form-control"></textarea>
+            <textarea type="text" style="height: 400px; resize: none;" name="post_content" class="form-control"></textarea>
+            <br>
+            <input type="file" name="attachments" multiple>
           </div>
-
           <div class="float-end mt-3">
             <input type="submit" class="btn btn-outline-dark" value="저장">
             <input type="hidden" name="post_write" value="<%= name %>" />

@@ -71,8 +71,7 @@
                         <button class="btn btn-outline-dark"
                             onclick="location.href='/board/post/update/<%=p_num%>'">수정</button>
                         <form method="POST" name="form" class="d-inline">
-                            <button type="submit" class="btn btn-outline-dark"
-                                onclick="form.action='/board/post/delete'">삭제</button>
+                            <button type="submit" class="btn btn-outline-dark" onclick="form.action='/board/post/delete'">삭제</button>
                             <input type="hidden" name="pidx" value="<%= result[0].pid%>"/>
                             <input type="hidden" name="titlex" value="<%= result[0].p_title%>" />
                             <input type="hidden" name="writerx" value="<%= result[0].p_writer%>" />
