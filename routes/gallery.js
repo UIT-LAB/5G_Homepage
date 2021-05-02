@@ -66,6 +66,20 @@ router.post('/insert_write', uploadWithOriginalFilename.array('attachments'), fu
   });
 });
 
+router.post('/delete', function(req, res, next) {
+  var body = req.body;
+  var gid = body.gidx;
+  
+  db.query(`Delete from Gallery where gid='${gid}'`, function (error, result) {
+      if(error) {
+          throw error;
+      }    
+      else {
+          res.redirect("/gallery/1");
+      };
+  });
+});
+
 router.get('/:num', function(req, res, next) {
     if(req.cookies.user != undefined){
       let token = req.cookies.user;
@@ -112,7 +126,6 @@ router.get('/detail/:num', function(req, res, next) {
         };
     });
 });
-
 
 
 
