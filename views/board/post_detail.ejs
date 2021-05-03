@@ -56,14 +56,18 @@
                                     번호 : <%= p_num %>
                                 </td>
                                 <td>
-                                    <span class="float-end">작성자 : <%= result[0].p_writer %> &nbsp; 작성일자 : <%=
-                                                dayjs(result[0].p_writer_date).format('YY.MM.DD'); %></span>
+                                    <span class="float-end">작성자 : <%= result[0].p_writer %> &nbsp; 작성일자 : <%=                        dayjs(result[0].p_writer_date).format('YY.MM.DD'); %></span>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <%= result[0].p_content %>
-                </div>
+                    <div class="float-end">
+                      첨부파일 : 
+                    </div>
+                    <div class="mt-5">
+                      <%= result[0].p_content %>
+                    </div>
+                  </div>
 
                 <div class="float-end mt-3">
                     <button class="btn btn-outline-dark" onclick="location.href='/board/post/1'">목록</button>
