@@ -69,9 +69,10 @@
               </tbody>
             </table>
             <textarea type="text" style="height: 400px; resize: none;" name="post_content" class="form-control"><%= result[0].p_content%></textarea>
+            <br>
+            <input type="file" name="attachments" multiple>
           </div>
-
-          <div class="float-end mt-3">
+        <div class="float-end mt-3">
             <input type="submit" class="btn btn-outline-dark" value="저장">
             <input type="hidden" name="titlex" value="<%= result[0].p_title%>" />
             <input type="hidden" name="writerx" value="<%= result[0].p_writer%>" />
