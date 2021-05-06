@@ -79,7 +79,7 @@
                         </table>
                         <%= result[0].admin_comment %>
                     </div>
-                    <button type="submit" class="btn btn-outline-dark" onclick="form.action='/board/question/admin_comment_delete'"> 코멘트 삭제</button>
+                    <button type="submit" class="btn btn-outline-dark" onclick="form.action='/board/question/admin_comment_delete'"> 답변 삭제</button>
                 <%}%>
                 <%if(result[0].admin_comment == null && name == "관리자"){%>
                     <div class="border border-2 p-4 mt-3">
@@ -100,7 +100,7 @@
                  <input type="hidden" name="titlex" value="<%= result[0].q_title%>" />
                  <input type="hidden" name="writerx" value="<%= result[0].q_writer%>" />
                  <input type="hidden" name="contentx" value="<%= result[0].q_content%>" />
-                 <button type="submit" class="btn btn-outline-dark" onclick="form.action='/board/question/delete'">삭제</button>
+                 <button type="submit" class="btn btn-outline-dark" onclick="form.action='/board/question/delete'">글 삭제</button>
                  <%if(result[0].admin_comment == null && name == "관리자"){%>
                      <button type="submit" class="btn btn-outline-dark" onclick="form.action='/board/question/admin_comment'">작성</button>
                  <%}%>
