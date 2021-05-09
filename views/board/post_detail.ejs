@@ -62,8 +62,16 @@
                         </tbody>
                     </table>
                     <div class="float-end">
-                      첨부파일 : 
-                    </div>
+                        <%for(var i=0; i< result.length; i++){%>
+                            <%
+                                var fileimage = result[i].p_file
+                                var fileimageSplit = fileimage.split(',');
+                        }%>
+                        첨부파일 :
+                        <%for(var j=0; j< fileimageSplit.length; j++){%>
+                            <a href="/images/board/<%=fileimageSplit[j]%>" download><%= fileimageSplit[j] %><br></a>
+                        <%}%>
+                       </div>
                     <div class="mt-5">
                       <%= result[0].p_content %>
                     </div>
