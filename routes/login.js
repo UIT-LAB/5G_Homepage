@@ -164,7 +164,7 @@ router.post('/signup_data', function (req, res, next) {
     var datetime = date.format('YYYY-MM-DD HH:mm:ss');
     var output = crypto.createHash('sha512').update(pw).digest('base64')
 
-    var sql = { u_id: id, u_pw: output, u_name: name, u_email: email, u_phone : phone, u_date: datetime };
+    var sql = { u_id: id, u_pw: output, u_name: name, u_email: email, u_phone : phone, u_date: datetime};
 
     db.query('INSERT INTO UserInfo SET ?', sql, function (error, result) {
         if (error) {
