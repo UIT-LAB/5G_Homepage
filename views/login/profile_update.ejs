@@ -52,7 +52,7 @@
                     <form method="POST" name="form" class="form-profile" enctype="multipart/form-data" onsubmit="return update();">
                         <table class="table table-strip text-center">
                             <tr>
-                                <td>이름</td>
+                                <td class="w-25">이름</td>
                                 <td><input type="text" name="profile_name" id="profile_name" placeholder="이름" value="<%= result[0].u_name %>"></td>
                             </tr>
                             <tr>
@@ -67,8 +67,10 @@
                                 <td>이미지</td>
                                 <td>
                                     <div>
-                                        <img style="width: 240px; height: 240px;" id="preview-image"><br><br>
-                                        <input type="file" name="attachment" id="attachimg" accept="image/*" required>
+                                        <img class="img-thumbnail" style="width: 240px; height: 240px;" id="preview-image"><br><br>
+                                        <div class="input-group">
+                                            <input class="form-control" type="file" name="attachment" id="attachimg" accept="image/*" required>
+                                        </div>
                                     </div>
                                 </td>
 
