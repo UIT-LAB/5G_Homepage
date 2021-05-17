@@ -18,15 +18,19 @@
     integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
     
     <style>
-        .subtitle{
+        .title{
             margin-top: 25px;
-            margin-bottom: 60px;
+            margin-bottom: 25px;
             text-align: center;
-            font-size: 25px;
+            font-size: 28px;
             font-weight: 900;
-        }    
+        }
+        .subtitle{
+            text-align: center;
+            font-size: 18px;
+        }   
         .form-pwcheck input[type=password]{
-            width: 70%;
+            width: 60%;
             border-radius: 10px;
         }
         .btn{
@@ -38,7 +42,8 @@
 </head>
 <body>
     <form action="/profile_password" method="POST" class="form-pwcheck">
-        <p class="subtitle">당신의 새로운 비밀번호를 입력해주세요.</p>
+        <div class="title">비밀번호 수정</div>
+        <p class="subtitle">당신의 새로운 비밀번호를 입력해주세요.</p><br>
         <div align="center">
             <input type="password" name="currentpw" id="currentpw" class="form-control mt-3 mb-1" placeholder="CURRENTPW">
             <input type="password" name="changepw" id="changepw" class="form-control mt-3 mb-1" placeholder="PW">
