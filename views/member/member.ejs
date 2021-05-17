@@ -18,10 +18,10 @@
       <img src="/images/member.jpg" style="height: 400px;" alt="0" id="memberbanner">
     </div>
      
-  <div class="fs-1 text-center">Introduce HCIC Member</div>
-  <hr>
    <div class="container-xxl">
-    <div class="row" align="center">
+    <div class="fs-1 ms-3 text-start" style="margin-top: 50px;">연구인력</div>
+    <hr style="height: 6px;">
+    <div class="row row-cols-2" align="center">
       <% for(let i= 0; i< result.length; i++){ %>
         <div class="col">
           <table id="hcicmember" class="hcictable border border-3 p-3 table table-hover"  data-bs-toggle="modal" data-bs-target="#uitmodal" data-name="<%=result[i].m_name%>" data-photo="<%=result[i].m_photo%>" data-group="<%=result[i].m_group%>"
@@ -58,42 +58,47 @@
         </div>
         <div class="modal-body" align="center">
 
-          <table id="imtable">
-            <tr>
-              <td rowspan="3" class="phototable"">
-                <img src="/images/member/noimg.jpg" alt="없음" id="imgmodal" class="fs-5" width="200" height="200">
-              </td>
-            </tr>
-            <tr>
-              <th id="namemodal" class="border-bottom border-dark fs-1"></th>
-            </tr>
-            <tr>
-              <th>
-                <ul>
-                  <li id="univmodal" class="p-1"></li>
-                  <li id="groupmodal" class="p-1"></li>
-                  <li id="positionmodal" class="p-1"></li>
-                </ul>
-              </th>
-            </tr>
-          </table>
-          <div id="career" class="fs-2 border-bottom border-dark text-start mb-3 mt-3">학력</div>
-          <table id="careertable" class="table pt-3 text-center">
-            <tbody>
+          <div>
+            <table id="imtable">
               <tr>
-                <td class="border-1 table-info">최종학위 년도</td>
-                <th id="yearmodal" class="border-0"></th>
-                <td class="border-1 table-info">최종학위 전공</td>
-                <th id="majormodal" class="border-0"></th>
+                <td rowspan="3" class="phototable"">
+                  <img src="/images/member/noimg.jpg" alt="없음" id="imgmodal" class="fs-5" width="200" height="200">
+                </td>
               </tr>
               <tr>
-                <td class="border-1 table-info">참여기간</td>
-                <th id="periodmodal" class="border-0"></th>
-                <td class="border-1 table-info">참여율</td>
-                <th id="ratemodal" class="border-0"></th>
+                <th id="namemodal" class="border-bottom border-dark fs-1"></th>
               </tr>
-            </tbody>
-          </table>
+              <tr>
+                <th>
+                  <ul>
+                    <li id="univmodal" class="p-1"></li>
+                    <li id="groupmodal" class="p-1"></li>
+                    <li id="positionmodal" class="p-1"></li>
+                  </ul>
+                </th>
+              </tr>
+            </table>
+
+            <div id="career" class="fs-2 border-bottom border-dark text-start mb-3 mt-3">학력</div>
+            <table id="careertable" class="table pt-3 text-center">
+              <tbody>
+                <tr>
+                  <td class="border-1 table-info">최종학위 년도</td>
+                  <th id="yearmodal" class="border-0"></th>
+                  <td class="border-1 table-info">최종학위 전공</td>
+                  <th id="majormodal" class="border-0"></th>
+                </tr>
+                <tr>
+                  <td class="border-1 table-info">참여기간</td>
+                  <th id="periodmodal" class="border-0"></th>
+                  <td class="border-1 table-info">참여율</td>
+                  <th id="ratemodal" class="border-0"></th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          
 
         </div>
         <div class="modal-footer">

@@ -3,11 +3,12 @@
 body{
     font-family: 'Nanum Gothic', sans-serif;
 }
-/*table*/
 #memberbanner{
     width: 100%;
     height: 50vh;
 }
+
+/*table*/
 #hcicmember{
     width: 600px;
 }
@@ -22,8 +23,8 @@ body{
     width: 230px;
 }
 #career{
-    width: 450px;
+    width: 578px;
 }
 #careertable{
-    width: 450px;
+    width: 578px;
 }
