@@ -9,9 +9,13 @@
             cursor: pointer;
         }
 
-        .col-md-5 img:hover {
+        .col-lg-5 img:hover {
             transform: rotate(-1deg);
             cursor: pointer;
+        }
+
+        .fs-6 {
+            line-height: 1.8;
         }
     </style>
 </head>
@@ -22,7 +26,7 @@
     </header>
     <div class="container">
         <div class="row mt-5 mb-5">
-            <div class="col-sm-2" id="hide">
+            <div class="col-lg-2" id="hide">
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li style="cursor: pointer;" class="breadcrumb-item" onclick="location.href='/intro'">소개</li>
@@ -43,99 +47,112 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-sm-10">
+            <div class="col-lg-10">
                 <div class="text-center m-5">
                     <h1>사업소개</h1>
                     5G 사업 소개 게시판
                 </div>
 
                 <div class="row p-3">
-                    <div class="col-md-7 order-md-2">
-                        <h2 class="text-primary">사진에서 사업 이름이 안 보여요</h2>
-                        <p class="lead">
-                            내용을 모르겠어요
-                        </p>
+                    <div class="col-lg-7 order-lg-1">
+                        <h2 class="text-primary">5G기반 산업별 빅데이터 센서 개발 및 데이터기반 제어</h2>
+                        <hr>
+                        <p class="fs-6 mb-3">· 스마트팩토리 실시간 빅데이터 수집을 위한 5G 기반 센서 연구</p>
+                        <p class="fs-6 mb-3">· 딥러닝을 위한 저지연, 저비용 5G 통신장비 및 제어기술 개발</p>
                     </div>
-                    <div class="col-md-5 order-md-1">
-                        <img class="shadow img-fluid" type="button" src="/images/business1.jpg" alt="" width="100%" data-bs-toggle="modal" data-bs-target="#img-modal" data-bs-name="business1.jpg">
+                    <div class="col-lg-5 order-lg-2">
+                        <img class="shadow img-fluid" type="button" src="/images/business1.jpg" alt="" style="width: 100%; height: 100%;" 
+                            data-bs-toggle="modal" data-bs-target="#img-modal" data-bs-name="business1.jpg">
                     </div>
                 </div>
                 <hr>
-                <div class="row p-3">
+                <!--<div class="row p-3">
                     <div class="col-md-7 order-md-1">
-                        <h2 class="text-primary">민감 데이터 식별 및 보호를 위한<br>데이터 프라이버시 기술</h2>
-                        <p class="lead">
-                            내용을 모르겠어요
-                        </p>
+                        <h2 class="text-primary">민감 데이터 식별 및 보호를 위한 데이터 프라이버시 기술</h2>
+                        <hr>
+                        <p class="fs-6 mb-3">· Hello World</p>
                     </div>
                     <div class="col-md-5 order-md-2">
-                        <img class="shadow img-fluid" type="button" src="/images/business2.jpg" alt="" width="100%" data-bs-toggle="modal" data-bs-target="#img-modal" data-bs-name="business2.jpg">
+                        <img class="shadow img-fluid" type="button" src="/images/business2.jpg" alt="" style="width: 100%; height: 100%;" 
+                            data-bs-toggle="modal" data-bs-target="#img-modal" data-bs-name="business2.jpg">
                     </div>
                 </div>
-                <hr>
+                <hr>-->
                 <div class="row p-3">
-                    <div class="col-md-7 order-md-2">
+                    <div class="col-lg-7 order-lg-2">
                         <h2 class="text-primary">스마트 양식 위한 빅데이터 및 딥러닝 모델 개발</h2>
-                        <p class="lead">
-                            내용을 모르겠어요
-                        </p>
+                        <hr>
+                        <p class="fs-6 mb-3">· 양식장 수질 관련 시계열 센싱 데이터(수온, DO 값 등) 수집으로 딥러닝 수질 예측 모델 개발</p>
+                        <p class="fs-6 mb-3">· 넙치 및 뱀장어 양식장 수질 데이터를 활용하여 최적 수온 및 DO 값 설정</p>
+                        <p class="fs-6 mb-3">· 급격한 수온 및 DO 값의 변화에 대한 원인 분석 및 예측치 기반 알람 기능의 모바일 앱 개발</p>
+                        <p class="fs-6 mb-3">· 어류의 상태 파악 및 분류 등에 활용하기 위한 딥러닝 기반 어종 인식, 체장 및 상태 파악 모델 개발</p>
                     </div>
-                    <div class="col-md-5 order-md-1">
-                        <img class="shadow img-fluid" type="button" src="/images/business3.jpg" alt="" width="100%" data-bs-toggle="modal" data-bs-target="#img-modal" data-bs-name="business3.jpg">
+                    <div class="col-lg-5 order-lg-1">
+                        <img class="shadow img-fluid" type="button" src="/images/business3.jpg" alt="" style="width: 100%; height: 100%;" 
+                            data-bs-toggle="modal" data-bs-target="#img-modal" data-bs-name="business3.jpg">
                     </div>
                 </div>
                 <hr>
                 <div class="row p-3">
-                    <div class="col-md-7 order-md-1">
+                    <div class="col-lg-7 order-lg-1">
                         <h2 class="text-primary">5G 빅데이터를 이용한 제조지능 서비스</h2>
-                        <p class="lead">
-                            내용을 모르겠어요
-                        </p>
+                        <hr>
+                        <p class="fs-6 mb-3">· 영상분석을 통한 로트 실시간 추적, 상황인지 및 안전관리</p>
+                        <p class="fs-6 mb-3">· 제조 도메인별 지능형 스트리밍 분석을 통한 품질관리 연구</p>
+                        <p class="fs-6 mb-3">· 인공지능을 이용한 제조 지식 검색 시스템 개발 등</p>
                     </div>
-                    <div class="col-md-5 order-md-2">
-                        <img class="shadow img-fluid" type="button" src="/images/business4.jpg" alt="" width="100%" data-bs-toggle="modal" data-bs-target="#img-modal" data-bs-name="business4.jpg">
+                    <div class="col-lg-5 order-lg-2">
+                        <img class="shadow img-fluid" type="button" src="/images/business4.jpg" alt="" style="width: 100%; height: 100%;" 
+                            data-bs-toggle="modal" data-bs-target="#img-modal" data-bs-name="business4.jpg">
                     </div>
                 </div>
                 <hr>
                 <div class="row p-3">
-                    <div class="col-md-7 order-md-2">
-                        <h2 class="text-primary">초연결·고신뢰산업지능센터</h2>
-                        <p class="lead">
-                            첨단 ICT 신기술 연구·교육을 통한<br>
-                            4-IR 시대 고품질 일자리 창출
-                        </p>
+                    <div class="col-lg-7 order-lg-2">
+                        <h2 class="text-primary mb-3">초연결 · 고신뢰산업지능센터</h2>
+                        <hr>
+                        <p class="fs-6 mb-3">· 5G, 빅데이터, 딥러닝으로 대표되는 ICT 융합신기술을 중심으로 기존 산업이 개편되고, 제4차 산업혁명의 도래에 따라
+                            지능정보서비스의 수요가 폭발적으로 증대될 것으로 예상</p>
+                        <p class="fs-6 mb-3">· 초연결ㆍ고신뢰산업지능센터(HCIC, Hyper-Connected & Credible Industrial Intelligence
+                            Center)를 설립하여 5G빅데이터 센서, 보안기반 빅데이터플랫폼 및 산업별 딥러닝 적용 모델을 제공하기 위한 원천 기술을 개발고, 이를 충청권의 주력 산업인
+                            제조분야와 미래 먹거리로 육성중인 해양ㆍ항만 산업분야에 특화시켜 적용</p>
+                        <p class="fs-6 mb-3">· 해양 빅데이터 사이언티스트, 5G기반 지능정보제조솔루션 전문가 등 신산업 인력 수요에 대응한 고급인력을 양성하여 4차 산업혁명
+                            시대에 충남권은 물론 전 국가 산업 발전에 기여</p>
                     </div>
-                    <div class="col-md-5 order-md-1">
-                        <img class="shadow img-fluid" type="button" src="/images/business5.jpg" alt="" width="100%" data-bs-toggle="modal" data-bs-target="#img-modal" data-bs-name="business5.jpg">
+                    <div class="col-lg-5 order-lg-1">
+                        <img class="shadow img-fluid" style="width: 100%; height: 100%;" type="button"
+                            src="/images/business5.jpg" alt="" data-bs-toggle="modal" data-bs-target="#img-modal"
+                            data-bs-name="business5.jpg">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="modal fade" id="img-modal">
-      <div class="modal-dialog modal-xl position-absolute top-50 start-50 translate-middle">
-        <div class="modal-content">
-            <div class="text-center p-5">
-                <img class="img-fluid" src="/images/member/noimg.jpg" id="modal_img" alt="" width="1000px">
-            </div> 
+        <div class="modal-dialog modal-xl position-absolute top-50 start-50 translate-middle">
+            <div class="modal-content">
+                <div class="text-center p-5">
+                    <img class="img-fluid" src="/images/member/noimg.jpg" id="modal_img" alt="" width="1000px">
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <footer>
         <% include ../include/footer %>
     </footer>
 </body>
+
 </html>
 <script>
     var img_modal = document.getElementById('img-modal')
     img_modal.addEventListener('show.bs.modal', function (event) {
-  
-    var click_img = event.relatedTarget
-  
-    var img_src = click_img.getAttribute('data-bs-name')
-  
-    document.getElementById('modal_img').src = ("/images/"+img_src);
 
-})
+        var click_img = event.relatedTarget
+
+        var img_src = click_img.getAttribute('data-bs-name')
+
+        document.getElementById('modal_img').src = ("/images/" + img_src);
+
+    })
 </script>
