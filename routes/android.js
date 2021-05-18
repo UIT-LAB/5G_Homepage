@@ -122,6 +122,30 @@ router.get('/Post', (req, res)=>{
   })
 });
 
+router.get('/Member', (req, res)=>{
+  db.query('select * from Member', function(err, fields){
+    if(err){
+      throw err;
+    }else{
+      res.send(fields);
+    }
+  })
+});
+
+
+router.get('/MemberDetail', (req, res)=>{
+  var data = {
+    mid = req.body.mid
+  }
+  db.query(`select * from Member where mid = '${data.mid}'`, function(err, fields){
+    if(err){
+      throw err;
+    }else{
+      res.send(fields);
+    }
+  })
+});
+
 
 router.post('/register', (req, res)=>{ 
   var pw = req.body.u_pw
