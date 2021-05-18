@@ -309,14 +309,19 @@ router.get('/post/update/:num', function(req, res, next) {
   });
 });
 
-router.post('/post/update_data', function(req, res, next) {
+router.post('/post/update_data', uploadWithOriginalFilename.array('attachments'),function(req, res, next) {
   var body = req.body;
   var title = body.post_title;
   var content = body.post_content;
   var titlex = body.titlex;
-  var writerx = body.writerx; 
   var contentx = body.contentx;
-  db.query(`Update Post_Board set p_title = '${title}' , p_content= '${content}' where p_title='${titlex}' and p_content='${contentx}' and p_writer='${writerx}'`, function (error, result) {
+  var files = req.files;
+  var string = "";
+  for (var k in files) {
+    console.log(k + " : " + files[k].filename);
+    string += files[k].filename+",";
+  }
+  db.query(`Update Post_Board set p_title = '${title}' , p_content= '${content}' , p_file = '${string}' where p_title='${titlex}' and p_content='${contentx}'`, function (error, result) {
     if(error) {
       throw error;
     }    
