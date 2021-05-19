@@ -135,7 +135,7 @@ router.get('/Member', (req, res)=>{
 
 router.get('/MemberDetail', (req, res)=>{
   var data = {
-    mid = req.body.mid
+    mid : req.body.mid
   }
   db.query(`select * from Member where mid = '${data.mid}'`, function(err, fields){
     if(err){

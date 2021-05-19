@@ -27,17 +27,17 @@
         body{
             font-family: 'NanumBarunGothic';
         }
-        .proname{
-            font-size: 35px;
+        .table tr th{
+            width: 110px;
+        }
+        .table tr td{
+            width: 320px;
         }
         .con{
             position: fixed;
-            width: 600px;
+            width: 500px;
             top: 10px;
             left: 50px;
-        }
-        .table-hover tbody tr{
-            cursor: pointer;
         }
     </style>
 </head>
@@ -45,27 +45,44 @@
     <div class="con">
         <div class="row pt-5">
             <div class="col">
-                <div class="border border-2 p-5">
-                    <h4>개인정보</h4>
-                    <div class="text-center">
-                        <table class="table table-borderless border border-2">
+                <div class="border border-2 p-3 rounded-3">
+                    <div class="text-center"><h3>개인 정보</h3></div>
+                    <div class="text-center border border-1 p-3 rounded-3">
+                        <div class="text-start pb-1">기본 정보</div>
+                        <table class="table">
                             <tr>
-                                <td colspan="2"><img src="/images/profile/<%= result[0].u_image%>" width="240" height="240"></td>
+                                <th>사진</th>
+                                <td><img src="/images/profile/<%= result[0].u_image%>" width="240" height="240"></td>
                             </tr>
                             <tr>
-                                <td colspan="2" class="proname"><%= result[0].u_name %></td>
+                                <th>이름</th>
+                                <td><%= result[0].u_name %></td>
                             </tr>
                             <tr>
-                                <td colspan="2">
-                                    ID : <%=result[0].u_id%> <br> 
-                                    TEL :<%=result[0].u_phone%> <br>
-                                    E-mail : <%=result[0].u_email%> <br>
-                                    Join Day : <%=dayjs(result[0].u_date).format('YYYY.MM.DD');%> <br>
-                                </td>
+                                <th>아이디</th>
+                                <td><%=result[0].u_id%></td>
+                            </tr>
+                            <tr>
+                                <th>가입날짜</th>
+                                <td><%=dayjs(result[0].u_date).format('YYYY.MM.DD');%></td>
                             </tr>
                         </table>
                     </div>
-                    <div class="text-end">
+
+                    <div class="text-center border border-1 p-3 mt-3 rounded-3">
+                        <div class="text-start pt-2 pb-1">연락처 정보</div>
+                        <table class="table">
+                            <tr>
+                                <th>이메일</th>
+                                <td><%=result[0].u_email%></td>
+                            </tr>
+                            <tr>
+                                <th>휴대전화</th>
+                                <td><%=result[0].u_phone%></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="text-end mt-3">
                         <input type ="button" class="btn btn-secondary" value="정보 수정" onclick="location.href='/profile_update'"/>
                         <input type ="button" class="btn btn-secondary" value="비밀번호 수정" onclick="location.href='/profile_password'"/>
                     </div>
@@ -75,3 +92,4 @@
     </div>
 </body>
 </html>
+<!--img src="/images/profile/<%= result[0].u_image%>" width="240" height="240">
