@@ -174,7 +174,7 @@ router.get('/standard/detail/:num', function(req, res, next){
       }
     })
   }
-  db.query(`select * from software where sid =  '${req.params.num}'`, function (error, result) {
+  db.query(`select * from standard where stid =  '${req.params.num}'`, function (error, result) {
       if (error) {
         throw error;
       }    
