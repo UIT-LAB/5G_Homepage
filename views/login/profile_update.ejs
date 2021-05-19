@@ -24,20 +24,16 @@
         body{
             font-family: 'NanumBarunGothic';
         }
-        .table-hover tbody tr{
-            cursor: pointer;
-        }
         .form-profile input[type=text], input[type=email], input[type=tel]{
             width: 70%;
             border-radius: 10px;
-            border-color: lightgray;
         }
         .table tr td{
             width: 70px;
         }
         .con{
             position: fixed;
-            width: 600px;
+            width: 500px;
             top: 10px;
             left: 50px;
         }
@@ -48,7 +44,7 @@
         <div class="row pt-5">
             <div class="col">
                 <div class="border border-2 p-3">
-                    <div class="fs-4">개인정보</div>
+                    <div class="fs-4 text-center pb-2">정보 수정</div>
                     <form method="POST" name="form" class="form-profile" enctype="multipart/form-data" onsubmit="return update();">
                         <table class="table table-strip text-center">
                             <tr>
