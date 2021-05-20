@@ -13,7 +13,7 @@ router.get('/thesis/:num', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -35,7 +35,7 @@ router.get('/thesis/detail/:num', function(req, res, next) {
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -57,7 +57,7 @@ router.get('/license/:num', function(req, res, next){
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -79,7 +79,7 @@ router.get('/license/detail/:num', function(req, res, next){
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -101,7 +101,7 @@ router.get('/software/:num', function(req, res, next){
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -123,7 +123,7 @@ router.get('/software/detail/:num', function(req, res, next){
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -145,7 +145,7 @@ router.get('/standard/:num', function(req, res, next){
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -167,14 +167,14 @@ router.get('/standard/detail/:num', function(req, res, next){
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
       }
     })
   }
-  db.query(`select * from software where sid =  '${req.params.num}'`, function (error, result) {
+  db.query(`select * from standard where stid =  '${req.params.num}'`, function (error, result) {
       if (error) {
         throw error;
       }    
@@ -189,7 +189,7 @@ router.get('/technology/:num', function(req, res, next){
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
@@ -211,19 +211,19 @@ router.get('/technology/detail/:num', function(req, res, next){
     let token = req.cookies.user;
     jwt.verify(token, key, (err, decode)=>{
       if(err){
-        throw err;
+        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
       }
       else {
         jwtname = decode.user.name
       }
     })
   }
-  db.query(`select * from software where sid =  '${req.params.num}'`, function (error, result) {
+  db.query(`select * from technology where tid =  '${req.params.num}'`, function (error, result) {
       if (error) {
         throw error;
       }    
       else {
-          res.render('research/standard_detail',{result : result, s_num :req.params.num , max_value: 15, dayjs, name:jwtname,cookie: req.cookies.user});
+          res.render('research/technology_detail',{result : result, s_num :req.params.num , max_value: 15, dayjs, name:jwtname,cookie: req.cookies.user});
       };
     });
 })

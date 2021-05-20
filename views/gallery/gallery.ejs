@@ -11,13 +11,15 @@
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-interval="2000">
-                    <img src="/images/HCIC2.png" class="d-block w-100" alt="0" style="height: 40vh;">
+                    <img src="/images/gallery.jpg" class="d-block w-100" alt="0" style="height: 400px; object-fit: fill;">
                 </div>
             </div>
         </div>
 
-        <div class="album py-5">
+        <div class="album pb-5">
             <div class="container">
+                <div class="fs-1 ms-3 text-start my-4">갤러리</div>
+                <hr style="height: 4px;" class="mb-5">
                 <div class="row">
                     <% for(var i = (g_num - 1) * max_value; i < g_num * max_value; i++){ %>
                         <% var data_value = result[i];
@@ -31,7 +33,7 @@
                         <div class="col-md-4" style="margin-bottom: 30px;">
                             <div class="card shadow">
                                 <a href="/gallery/detail/<%=data_value.gid%>">
-                                    <img src="/images/gallery/<%=jbSplit[0]%>" alt="" width="100%" height="300">
+                                    <img src="/images/gallery/<%=jbSplit[0]%>" alt="" style="width: 100%; height: 300px;">
                                     <div class="card-body">
                                         <p class="card-text" style="color: black;"><%=data_value.g_title%></p><hr>
                                         <p class="card-text" style="color: black; text-align: right;"><%= dayjs(data_value.g_write_date).format('YYYY.MM'); %></p>
@@ -40,6 +42,11 @@
                             </div>
                         </div>
                     <% } %>
+                </div>
+                <div class="text-center">
+                  <%if(name != null){%>
+                    <button class="btn btn-outline-dark float-end" onclick="location.href='/gallery/write'">작성</button><br>
+                  <%}%>
                 </div>
                 <div>
                     <nav>

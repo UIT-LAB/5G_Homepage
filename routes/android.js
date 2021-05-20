@@ -122,11 +122,38 @@ router.get('/Post', (req, res)=>{
   })
 });
 
+router.get('/Member', (req, res)=>{
+  db.query('select * from Member', function(err, fields){
+    if(err){
+      throw err;
+    }else{
+      res.send(fields);
+    }
+  })
+});
+
+
+router.get('/MemberDetail', (req, res)=>{
+  var data = {
+    mid : req.body.mid
+  }
+  db.query(`select * from Member where mid = '${data.mid}'`, function(err, fields){
+    if(err){
+      throw err;
+    }else{
+      res.send(fields);
+    }
+  })
+});
+
 
 router.post('/register', (req, res)=>{ 
+  var pw = req.body.u_pw
+  var output = crypto.createHash('sha512').update(pw).digest('base64')
+   
   var data = {
     u_id :req.body.u_id,
-    u_pw: req.body.u_pw,
+    u_pw: output,
     u_name : req.body.u_name,
     u_email : req.body.u_email,
     u_phone : req.body.u_phone,
@@ -166,8 +193,8 @@ router.post('/notice', (req, res)=>{
     n_title :req.body.n_title,
     n_content: req.body.n_content,
     n_writer: req.body.n_writer,
-    n_writer_date : dayjs(date).format("YYYY-MM-DD")
-
+    n_writer_date : dayjs(date).format("YYYY-MM-DD"),
+    n_view : 0
  }
 
   db.query('INSERT INTO Notice_Board set ?', data, function(err, fields){
@@ -185,8 +212,9 @@ router.post('/post', (req, res)=>{
     p_title :req.body.p_title,
     p_content: req.body.p_content,
     p_writer: req.body.p_writer,
-    p_writer_date : dayjs(date).format("YYYY-MM-DD")
- }
+    p_writer_date : dayjs(date).format("YYYY-MM-DD"),
+    p_view : 0
+  }
 
   db.query('INSERT INTO Post_Board set ?', data, function(err, fields){
     if(err){

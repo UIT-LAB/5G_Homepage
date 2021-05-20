@@ -54,8 +54,12 @@
                 
                 <div class="float-end mt-3">
                     <button class="btn btn-outline-dark" onclick="location.href='/gallery/1'">목록</button>
-                    <!--<button class="btn btn-outline-dark" onclick="">수정</button>
-                    <button type="submit" class="btn btn-outline-dark" onclick="">삭제</button>-->
+                    <button class="btn btn-outline-dark" onclick="location.href='/gallery/update/<%=result[0].gid%>'">수정</button>
+                    <!--<button class="btn btn-outline-dark" onclick="">수정</button>-->
+                    <form action="/gallery/delete"method="POST" name="form" class="d-inline">
+                        <button type="submit" class="btn btn-outline-dark">삭제</button>
+                        <input type="hidden" name="gidx" value="<%= result[0].gid%>"/>                          
+                    </form>
                 </div>
             </div>
         </div>

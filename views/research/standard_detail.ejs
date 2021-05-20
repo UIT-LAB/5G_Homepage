@@ -7,8 +7,8 @@
             cursor: pointer;
         }
 
-        tbody th{
-            background-color: gray;
+        th{
+            background-color: lightgray !important;
         }
     </style>
 </head>
@@ -16,15 +16,17 @@
 <body>
     <header>
         <% include ../include/header %>
-
     </header>
+    <div>
+        <img src="/images/paper.jpg" class="w-100" style="height: 400px;" alt="0">
+    </div>
     <div class="container">
         <div class="row mt-5 mb-5">
             <% include ../include/research_nav %>
-            <div class="col-md-10">
+            <div class="col-lg-12 col-xl-10">
                 <% include ../include/research_label %>
                 <div class="border border-2 p-4">
-                    <h4><%=result[0].registration_name%></h4>
+                    <h4><%=result[0].document%></h4>
                     <table class="table mt-2">
                         <tbody class="align-middle">
                             <tr>
@@ -39,32 +41,89 @@
                             <table class="table mx-auto table-bordered" style="width: 80%;">
                                 <tbody>
                                     <tr>
-                                        <th width="15%">사업연도</th>
-                                        <td width="35%"><%=result[0].business_year%>년</td>
-                                        <th width="15%">구분</th>
-                                        <td width="35%"><%=result[0].division.slice(3,result[0].division.langth)%></td>
+                                        <th class="align-middle">사업연도</th>
+                                        <td class="align-middle"><%=result[0].business_year%>년</td>
+                                        <th>국내/국제<br>구분 및 종류</th>
+                                        <td class="align-middle" colspan="3"><%var check = Number(result[0].domestic_division.slice(0,2))%>
+                                            <%if(check == 4){%>
+                                                국내
+                                                <%var check2 = Number(result[0].division.slice(0,2))%>
+                                                <%if(check2 == 1){%>
+                                                    / 표준화
+                                                    <%var check3 = Number(result[0].division.slice(0,2))%>
+                                                    <%if(check3 == 1){%>
+                                                        / KS
+                                                        <%}else if(check3 == 2){%>
+                                                            / KCS
+                                                        <%}else if(check3 == 3){%>
+                                                            / TTAS
+                                                        <%}else if(check3 == 4){%>
+                                                            / 포럼표준
+                                                        <%}%>
+                                                    <%}else{%>
+                                                        기술인증
+                                                    <%}%>
+                                            <%}else if(check == 2){%>
+                                                국제
+                                            <%}%></td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">등록 기관</th>
-                                        <td colspan="3"><%=result[0].registration.slice(3,result[0].registration.langth)%></td>
+                                        <th>표준화기구명</th>
+                                        <td><%=result[0].standardization_organization%>
+                                            <%if(check == 2){%>
+                                                / <%=result[0].standardization_steps_detail%>
+                                            <%}%>
+                                        </td>
+                                        <th>표준화 회의명</th>
+                                        <td  colspan="3"><%=result[0].standardization_meeting%></td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">등록 번호</th>
-                                        <td colspan="3"><%=result[0].registration_num%></td>
+                                        <th>진행 단계</th>
+                                        <td><%var check4 = Number(result[0].step.slice(0,2))%>
+                                            <%if(check4 == 1){%>
+                                                표준제안서 제출
+                                            <%}else if(check4 == 2){%>
+                                                표준제안서 승인
+                                            <%}else if(check4 == 3){%>
+                                                표준수정제안서 승인
+                                            <%}else if(check4 == 4){%>
+                                                표준 채택
+                                            <%}else if(check4 == 5){%>
+                                                표준 외 결과물
+                                            <%}%></td>
+                                            <th>제개정 구분</th>
+                                            <td><%var check4 = Number(result[0].category_revision.slice(0,2))%>
+                                                <%if(check4 == 1){%>
+                                                    제정
+                                                <%}else if(check4 == 2){%>
+                                                    개정
+                                                <%}else if(check4 == 3){%>
+                                                    기술반영
+                                                <%}else if(check4 == 4){%>
+                                                    정책기고
+                                                <%}%></td>
+                                            <th>제안기관</th>
+                                            <td><%=result[0].proposal_organization%></td>
                                     </tr>
                                     <tr>
-                                        <th>등록인</th>
-                                        <td><%=result[0].registrant%></td>
-                                        <th>등록일자</th>
-                                        <td><%=dayjs(result[0].registration_date).format('YYYY.MM.DD');%></td>
+                                        <th>제안자</th>
+                                        <td><%=result[0].proponent%></td>
+                                        <th>승인번호</th>
+                                        <td><%=result[0].approval_num%></td>
+                                        <th>승인일자</th>
+                                        <td><%=dayjs(result[0].approval_date).format('YYYY.MM.DD');%></td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">소유 여부</th>
-                                        <td colspan="3"><%=result[0].own_not.slice(3,result[0].own_not.langth)%></td>
+                                        <th colspan="6">기술 요약</th>
                                     </tr>
                                     <tr>
-                                        <th scope="row" class="align-middle">특징</th>
-                                        <td colspan="3"><div class="text-start"><%=result[0].feature%></div></td>
+                                        <td colspan="6" class="text-start"><%=result[0].technical_summary%></td>
+                                    </tr>
+                                    <tr>
+                                        <th>활용 분야</th>
+                                        <td colspan="3"><%=result[0].application_field%></td>
+                                        <th>기여율</th>
+                                        <td><%=result[0].contribution_rate%>%</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -79,7 +138,3 @@
     </footer>
 </body>
 </html>
-<script>
-    $('th').addClass('bg-secondary');
-    $('th').addClass('text-white');
- </script>

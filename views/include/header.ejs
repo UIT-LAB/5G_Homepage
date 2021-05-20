@@ -18,6 +18,9 @@
 
     <!-- JQUERY -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!--Lottie-->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     
     <style>
         @font-face {
@@ -25,7 +28,7 @@
             src: url('/font/malgunbd.ttf');
         }
 
-        @media screen and (max-width: 768px){
+        @media screen and (max-width: 1200px){
             #hide{
                 display: none;
             }
@@ -46,7 +49,7 @@
     
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary" id="top">
         <div class="container-fluid container">
             <a class="navbar-brand" href="/">
                 <img src="/images/hcic_logo.png" width="80" height="30">
@@ -107,7 +110,7 @@
 </html>
 <script>
     function profileopen(){
-        var popup = window.open('/profile', '개인 정보', 'resizable=yes, top=100, left=450, width=800, height=700');
+        var popup = window.open('/profile', '개인 정보', 'top=90, left=500, width=750, height=900');
         
     }
 

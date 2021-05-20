@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<head>
+    <link href="https://cdn.discordapp.com/attachments/751431280519807068/800629207469785128/5g.png" rel="shortcut icon" type="images/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+   
+  <style>
+    .table-hover tbody tr {
+      cursor: pointer;
+    }
+    #multiple-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .image {
+      display: block;
+      width: 100%;
+    }
+    .image-label {
+      position: relative;
+      bottom: 22px;
+      left: 5px;
+      color: white;
+      text-shadow: 2px 2px 2px black;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <% include ../include/header %>
+  </header>
+  <img src="/images/gall.jpg" class="img-fluid" style="width: 100%; height: 350px;" alt="...">
+  <div class="container">
+    <div class="row mt-5 mb-5">
+      <div class="col-md-10">
+        <form method="POST" name="form" class="d-inline" enctype="multipart/form-data" action="/gallery/insert_write">
+          <div class="text-center m-5">
+            <h1>갤러리</h1>
+            ITRC 사업단의 갤러리
+          </div>
+          <div class="border border-2 p-4">
+
+            <h4><input type="text" name="gall_title" class="form-control"></h4>
+            <table class="table mt-2">
+              <tbody class="align-middle">
+                <tr>
+                  <td>
+                    <span class="float-end">작성자 : <%= name %></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class = "float mt-3 input_wrap">
+              <a href = "javascript: " onclick="fileUploadAction();" class="my_button"></a>
+              <input type="file" accept="image/*" required name="attachments" required id="input_imgs" multiple/>
+            </div>
+            <div class="imgs_wrap">
+              <img id="img"/>
+          </div>
+          </div>
+          <div>
+            <a href="javascript:" class="my_button" onclick="submitAction();"></a>
+          </div>
+            <div class="float-end">
+              <input type="submit" class="btn btn-outline-dark" value="저장">
+              <input type="hidden" name="gall_writer" value="<%= name %>" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <% include ../include/footer %>
+  </footer>
+</body>
+</html>
+<script type="text/javascript">
+  var sel_files = [];
+
+  $(document).ready(function() {
+    $("#input_imgs").on("change", handleImgFileSelect);
+  });
+
+  function fileUploadAction() {
+    console.log("fileUploadAction");
+    $("#input_imgs").trigger('click');
+  }
+
+  function handleImgFileSelect(e) {
+    sel_files = [];
+    $(".imgs_wrap").empty();
+
+    var files = e.target.files;
+    var fileArr = Array.prototype.slice.call(files);
+
+    var index = 0;
+
+    fileArr.forEach(function(f) {
+      if(!f.type.match("image.*")) {
+        alert("확장자는 이미지 확장자만 가능합니다.");
+        return;
+      }
+
+      sel_files.push(f);
+      var reader = new FileReader();
+        reader.onload = function(e) {
+          var html = "<a href=\"javascript:void(0);\" onclick=\"deleteImgaeAction("+index+")\" id=\"img_id"+index +"\"><img src=\"" + e.target.result +
+             "\" data-file='"+f.anme+"' class='selProductFile' width='200px' height='200px' title='Click to remove'></a>";
+          $(".imgs_wrap").append(html);
+          index++;
+        }
+        reader.readAsDataURL(f);
+      
+    });
+  }
+
+</script>

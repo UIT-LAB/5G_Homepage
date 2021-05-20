@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
             
             await jwt.verify(token_value, key, (err, decode)=>{
               if(err){
-                throw err;
+                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
               }
               else {
                 jwtname = decode.user.name

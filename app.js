@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 var winston = require('./config/winston')
+var fs = require('fs');
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
@@ -45,6 +46,11 @@ app.use(function(req, res, next) {
   res.status(404).render('error');
 });
 
+/// multer
+app.use(function(req,res,next){
+  var dir = './public/images';
+    if(!fs.existsSync(dir)) fs.mkdirSync(dir);
+});
 
 // error handler
 app.use(function(err, req, res, next) {

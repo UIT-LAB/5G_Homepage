@@ -15,7 +15,9 @@
     <header>
         <% include ../include/header %>
     </header>
-    <img src="/images/gall.jpg" class="img-fluid" style="width: 100%; height: 350px;" alt="...">
+    <div>
+        <img src="/images/news.jpg" class="w-100" style="height: 400px;" alt="0">
+      </div>
     <div class="container">
         <div class="row mt-5 mb-5">
             <div class="col-md-2">
@@ -56,14 +58,35 @@
                                     번호 : <%= p_num %>
                                 </td>
                                 <td>
-                                    <span class="float-end">작성자 : <%= result[0].p_writer %> &nbsp; 작성일자 : <%=
-                                                dayjs(result[0].p_writer_date).format('YY.MM.DD'); %></span>
+                                    <span class="float-end">작성자 : <%= result[0].p_writer %> &nbsp; 작성일자 : <%=                        dayjs(result[0].p_writer_date).format('YY.MM.DD'); %></span>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <%= result[0].p_content %>
-                </div>
+                    <div class="float-end">
+                        <%for(var i=0; i< result.length; i++){%>
+                            <%
+                                var fileimage = result[i].p_file
+                                var fileimageSplit = fileimage.split(',');
+                        }%>
+                        <%if(result[0].p_file.toString() != ""){%>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  첨부파일
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <%for(var j=0; j< fileimageSplit.length; j++){%>
+                                        <li><a class="dropdown-item" href="/images/board/<%=fileimageSplit[j]%>" download><%= fileimageSplit[j] %></a></li>
+                                    <%}%>
+                                </ul>
+                              </div>
+                            
+                        <%}%>
+                       </div>
+                    <div class="mt-5">
+                      <%= result[0].p_content %>
+                    </div>
+                  </div>
 
                 <div class="float-end mt-3">
                     <button class="btn btn-outline-dark" onclick="location.href='/board/post/1'">목록</button>
@@ -71,8 +94,7 @@
                         <button class="btn btn-outline-dark"
                             onclick="location.href='/board/post/update/<%=p_num%>'">수정</button>
                         <form method="POST" name="form" class="d-inline">
-                            <button type="submit" class="btn btn-outline-dark"
-                                onclick="form.action='/board/post/delete'">삭제</button>
+                            <button type="submit" class="btn btn-outline-dark" onclick="form.action='/board/post/delete'">삭제</button>
                             <input type="hidden" name="pidx" value="<%= result[0].pid%>"/>
                             <input type="hidden" name="titlex" value="<%= result[0].p_title%>" />
                             <input type="hidden" name="writerx" value="<%= result[0].p_writer%>" />

@@ -16,15 +16,15 @@
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                <!--<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>-->
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="./images/HCIC2.png" class="d-block w-100" style="height: 600px;">
+                <img src="./images/HCIC2.png" class="d-block w-100" style="height: 400px;">
               </div>
-              <div class="carousel-item">
-                <img src="./images/555.jpg" class="d-block w-100" style="height: 600px;">
-              </div>
+              <!--<div class="carousel-item">
+                <img src="./images/555.jpg" class="d-block w-100" style="height: 400px;">
+              </div>-->
             </div>
             <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -52,7 +52,8 @@
                                     <%}else{%>
                                 <tr onclick="location.href='/board/notice/detail/<%=n_result[i].nid%>'">
                                     <td>
-                                        <img src="/images/loud-speaker.png" style="width: 100px; height: 100px;">
+                                        <lottie-player src="/images/lottie/notice.json"  background="transparent"  speed="0.5"  style="width: 100px; height: 100px;" autoplay></lottie-player>
+                                        <!--<img src="/images/ani.gif" style="width: 100px; height: 100px;">-->
                                     </td>
                                     <td>
                                         <%=n_result[i].n_title%>
@@ -73,7 +74,7 @@
                             <% for(let i=0; i<3; i++){ %>
                                 <tr onclick="location.href='/research/thesis/detail/<%=r_result[i].tid%>'">
                                     <td>
-                                        <img src="/images/thesis.png" style="width: 100px; height: 100px;">
+                                        <lottie-player src="/images/lottie/thesis.json"  background="transparent"  speed="0.5"  style="width: 100px; height: 100px;" loop autoplay></lottie-player>
                                     </td>
                                     <td>
                                         <%=r_result[i].thesis_name%>
@@ -97,7 +98,7 @@
                             <% for(let i=0; i<3; i++){ %>
                                 <tr onclick="location.href='/board/post/detail/<%=p_result[i].lid%>'">
                                     <td>
-                                        <img src="/images/license.png" style="width: 100px; height: 100px;">
+                                        <lottie-player src="/images/lottie/license.json"  background="transparent"  speed="0.5"  style="width: 100px; height: 100px;" autoplay></lottie-player>
                                     </td>
                                     <td>
                                         <%=p_result[i].invention_name%>
