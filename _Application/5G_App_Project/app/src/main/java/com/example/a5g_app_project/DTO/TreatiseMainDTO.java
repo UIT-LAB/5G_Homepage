@@ -10,8 +10,8 @@ public class TreatiseMainDTO {
     @SerializedName("tid")
     private String tid;
 
-    @SerializedName("buisness_year")
-    private String buisness_year;
+    @SerializedName("business_year")
+    private String business_year;
 
     @SerializedName("univ_name")
     private String univ_name;
@@ -75,9 +75,9 @@ public class TreatiseMainDTO {
 
 
 
-    public TreatiseMainDTO(String tid, String buisness_year, String univ_name, String department, String thesis_division, String thesis_name, String lead_author_name, String journal_date, String journal_name, String conference_name, String conference_date, String conference_country) {
+    public TreatiseMainDTO(String tid, String business_year, String univ_name, String department, String thesis_division, String thesis_name, String lead_author_name, String journal_date, String journal_name, String conference_name, String conference_date, String conference_country) {
         this.tid = tid;
-        this.buisness_year =buisness_year;
+        this.business_year =business_year;
         this.univ_name = univ_name;
         this.department = department;
         this.thesis_division = thesis_division;
@@ -95,7 +95,7 @@ public class TreatiseMainDTO {
 
 
     public String getTid() {return tid;}
-    public String getBuisness_year() {return buisness_year;}
+    public String getBuisness_year() {return business_year;}
     public String getUniv_name() {return univ_name;}
     public String getDepartment() {return department;}
     public String getThesis_division() {return thesis_division;}
@@ -111,7 +111,7 @@ public class TreatiseMainDTO {
     public String toString() {
         return "TreatiseMainDTO{" +
                 "tid='" + tid + '\'' +
-                ", buisness_year='" + buisness_year + '\'' +
+                ", buisness_year='" + business_year + '\'' +
                 ", univ_name='" + univ_name + '\'' +
                 ", department='" + department + '\'' +
                 ", SCI_division='" + SCI_division + '\'' +
