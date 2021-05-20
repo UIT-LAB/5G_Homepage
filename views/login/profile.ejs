@@ -27,69 +27,69 @@
         body{
             font-family: 'NanumBarunGothic';
         }
-        .table tr th{
-            width: 110px;
-        }
-        .table tr td{
-            width: 320px;
-        }
         .con{
-            position: fixed;
-            width: 500px;
+            width: 600px;
+            height: 400px;
             top: 10px;
             left: 50px;
         }
     </style>
 </head>
 <body>
-    <div class="con">
-        <div class="row pt-5">
-            <div class="col">
-                <div class="border border-2 p-3 rounded-3">
-                    <div class="text-center"><h3>개인 정보</h3></div>
-                    <div class="text-center border border-1 p-3 rounded-3">
-                        <div class="text-start pb-1">기본 정보</div>
-                        <table class="table">
-                            <tr>
-                                <th>사진</th>
-                                <td><img src="/images/profile/<%= result[0].u_image%>" width="240" height="240"></td>
-                            </tr>
-                            <tr>
-                                <th>이름</th>
-                                <td><%= result[0].u_name %></td>
-                            </tr>
-                            <tr>
-                                <th>아이디</th>
-                                <td><%=result[0].u_id%></td>
-                            </tr>
-                            <tr>
-                                <th>가입날짜</th>
-                                <td><%=dayjs(result[0].u_date).format('YYYY.MM.DD');%></td>
-                            </tr>
-                        </table>
-                    </div>
+        <div class="p-5 m-3 con">
+            <div class="text-center pb-3 fs-1">개인 정보</div>
+            <div class="border border-1 shadow p-3 mb-5 bg-body rounded">
+                <table class="table table-borderless" style="margin-bottom: 0rem;">
+                    <tbody>
+                        <tr>
+                            <td rowspan="2" class="bg-info"></td>
+                            <td>
+                                <div class=" border-bottom border-dark fs-1 text-start pt-4 ps-5 pb-4"><%= result[0].u_name %></div>
+                            </td>
+                            <td rowspan="2">
+                                <div class="text-center pt-4">
+                                    <img src="/images/profile/<%= result[0].u_image%>" class="rounded" width="120" height="120">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul class="pt-3" style="list-style: none;">
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                        </svg>
+                                        <%=result[0].u_id%>
+                                    </li>
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                                        </svg>
+                                        <%=dayjs(result[0].u_date).format('YYYY.MM.DD');%>
+                                    </li>
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                                        </svg>
+                                        <%=result[0].u_email%>
+                                    </li>
+                                    <li>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                        </svg>
+                                        <%=result[0].u_phone%>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                    <div class="text-center border border-1 p-3 mt-3 rounded-3">
-                        <div class="text-start pt-2 pb-1">연락처 정보</div>
-                        <table class="table">
-                            <tr>
-                                <th>이메일</th>
-                                <td><%=result[0].u_email%></td>
-                            </tr>
-                            <tr>
-                                <th>휴대전화</th>
-                                <td><%=result[0].u_phone%></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="text-end mt-3">
-                        <input type ="button" class="btn btn-secondary" value="정보 수정" onclick="location.href='/profile_update'"/>
-                        <input type ="button" class="btn btn-secondary" value="비밀번호 수정" onclick="location.href='/profile_password'"/>
-                    </div>
-                </div>
+            <div class="text-end pt-3">
+                <input type ="button" class="btn btn-secondary" value="정보 수정" onclick="location.href='/profile_update'"/>
+                <input type ="button" class="btn btn-secondary" value="비밀번호 수정" onclick="location.href='/profile_password'"/>
             </div>
         </div>
-    </div>
 </body>
 </html>
-<!--img src="/images/profile/<%= result[0].u_image%>" width="240" height="240">
