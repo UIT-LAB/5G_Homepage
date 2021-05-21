@@ -17,6 +17,16 @@
         .fs-6 {
             line-height: 1.8;
         }
+
+        @media screen and (max-width: 1200px){
+            .modal-dialog{
+                max-width: none !important;
+            }
+
+            .modal-content{
+                width: 700px !important;
+            }
+        }
     </style>
 </head>
 
@@ -132,7 +142,7 @@
     <div class="modal fade" id="img-modal">
         <div class="modal-dialog modal-xl position-absolute top-50 start-50 translate-middle">
             <div class="modal-content">
-                <div class="text-center p-5">
+                <div class="text-center p-3">
                     <img class="img-fluid" src="/images/member/noimg.jpg" id="modal_img" alt="" width="1000px">
                 </div>
             </div>
