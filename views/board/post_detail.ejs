@@ -58,7 +58,7 @@
                                     번호 : <%= p_num %>
                                 </td>
                                 <td>
-                                    <span class="float-end">작성자 : <%= result[0].p_writer %> &nbsp; 작성일자 : <%=                        dayjs(result[0].p_writer_date).format('YY.MM.DD'); %></span>
+                                    <span class="float-end">작성자 : <%= result[0].p_writer %> &nbsp; 작성일자 : <%=dayjs(result[0].p_writer_date).format('YY.MM.DD'); %></span>
                                 </td>
                             </tr>
                         </tbody>
@@ -99,6 +99,7 @@
                             <input type="hidden" name="titlex" value="<%= result[0].p_title%>" />
                             <input type="hidden" name="writerx" value="<%= result[0].p_writer%>" />
                             <input type="hidden" name="contentx" value="<%= result[0].p_content%>" />
+                            <input type="hidden" name="filex" value="<%= result[0].p_file%>"/>
                         </form>
                         <%}%>
                 </div>

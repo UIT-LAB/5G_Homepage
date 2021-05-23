@@ -4,6 +4,7 @@ var db = require('../config/db')
 var dayjs =  require('dayjs')
 const jwt = require('jsonwebtoken');
 const key = require("./auth/key");
+var fs = require('fs');
 var multer   = require('multer'); // 1
 let jwtname, jwtid;
 var storage  = multer.diskStorage({ // 2
@@ -334,16 +335,30 @@ router.post('/post/update_data', uploadWithOriginalFilename.array('attachments')
 router.post('/post/delete', function(req, res, next) {
   var body = req.body;
   var pid = body.pidx;
+  var file = body.filex;
+  var fileSplit = file.split(',');
   
+  for(var j=0; j< fileSplit.length; j++){  
+    fs.unlink(__dirname+"/../public/images/board/"+fileSplit[j], function (err) {            
+      if (err) {                                                 
+        console.error(err);                                    
+      }
+      else {                                                          
+      console.log('Delete Success'+j);                           
+      }
+    })
+  }
   db.query(`Delete from Post_Board where pid='${pid}'`, function (error, result) {
       if(error) {
           throw error;
       }    
-      else {;
-          res.redirect("/board/post/1");
-      };
-  });
-});
+      else {
+        res.redirect("/board/post/1");
+      }
+  })
+}); 
+  
+
 
 
 //------------------------------question
