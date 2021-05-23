@@ -24,13 +24,8 @@
         body{
             font-family: 'NanumBarunGothic';
         }
-        .table-hover tbody tr{
-            cursor: pointer;
-        }
         .form-profile input[type=text], input[type=email], input[type=tel]{
             width: 70%;
-            border-radius: 10px;
-            border-color: lightgray;
         }
         .table tr td{
             width: 70px;
@@ -48,11 +43,11 @@
         <div class="row pt-5">
             <div class="col">
                 <div class="border border-2 p-3">
-                    <div class="fs-4">개인정보</div>
+                    <div class="fs-4 text-center pb-2">정보 수정</div>
                     <form method="POST" name="form" class="form-profile" enctype="multipart/form-data" onsubmit="return update();">
                         <table class="table table-strip text-center">
                             <tr>
-                                <td>이름</td>
+                                <td class="w-25">이름</td>
                                 <td><input type="text" name="profile_name" id="profile_name" placeholder="이름" value="<%= result[0].u_name %>"></td>
                             </tr>
                             <tr>
@@ -67,8 +62,10 @@
                                 <td>이미지</td>
                                 <td>
                                     <div>
-                                        <img style="width: 240px; height: 240px;" id="preview-image"><br><br>
-                                        <input type="file" name="attachment" id="attachimg" accept="image/*" required>
+                                        <img class="img-thumbnail" style="width: 240px; height: 240px;" id="preview-image"><br><br>
+                                        <div class="input-group">
+                                            <input class="form-control" type="file" name="attachment" id="attachimg" accept="image/*" required>
+                                        </div>
                                     </div>
                                 </td>
 

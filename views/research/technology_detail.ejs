@@ -7,8 +7,8 @@
             cursor: pointer;
         }
 
-        tbody th{
-            background-color: gray;
+        th{
+            background-color: lightgray !important;
         }
     </style>
 </head>
@@ -23,10 +23,10 @@
     <div class="container">
         <div class="row mt-5 mb-5">
             <% include ../include/research_nav %>
-            <div class="col-md-12 col-lg-10">
+            <div class="col-lg-12 col-xl-10">
                 <% include ../include/research_label %>
                 <div class="border border-2 p-4">
-                    <h4><%=result[0].registration_name%></h4>
+                    <h4><%=result[0].tech_name%></h4>
                     <table class="table mt-2">
                         <tbody class="align-middle">
                             <tr>
@@ -38,35 +38,67 @@
                     </table>
                     <div class="row mt-4">
                         <div class="col text-center">
-                            <table class="table mx-auto table-bordered" style="width: 80%;">
+                            <table class="table mx-auto table-bordered align-middle" style="width: 80%;">
                                 <tbody>
                                     <tr>
-                                        <th width="15%">사업연도</th>
-                                        <td width="35%"><%=result[0].business_year%>년</td>
-                                        <th width="15%">구분</th>
-                                        <td width="35%"><%=result[0].division.slice(3,result[0].division.langth)%></td>
+                                        <th>사업연도</th>
+                                        <td><%=result[0].business_year%>년</td>
+                                        <th>최초 기술실시<br>계약연도</th>
+                                        <td><%=result[0].tech_year%>년</td>
+                                        <th>기술실시<br>대상국가</th>
+                                        <td><%=result[0].tech_country%></td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">등록 기관</th>
-                                        <td colspan="3"><%=result[0].registration.slice(3,result[0].registration.langth)%></td>
+                                        <th>계약 금액</th>
+                                        <td><%=result[0].contract_amount%>원</td>
+                                        <th>당해연도<br>징수액</th>
+                                        <td><%=result[0].collection_amount%>원</td>
+                                        <th>기술료 계약<br>체결일자</th>
+                                        <td><%=result[0].techcontract_date%></td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">등록 번호</th>
-                                        <td colspan="3"><%=result[0].registration_num%></td>
+                                        <th>정부납부<br>기술료</th>
+                                        <td><%=result[0].governmentPaymentTech_amount%></td>
+                                        <th>연구개발성과<br>소유기관명</th>
+                                        <td><%=result[0].RAI_name%></td>
+                                        <th>연구개발성과<br>소유기관유형</th>
+                                        <td><%=result[0].RAI_type.slice(3,result[0].RAI_type.length)%></td>
                                     </tr>
                                     <tr>
-                                        <th>등록인</th>
-                                        <td><%=result[0].registrant%></td>
-                                        <th>등록일자</th>
-                                        <td><%=dayjs(result[0].registration_date).format('YYYY.MM.DD');%></td>
+                                        <th>기술료<br>납부방식</th>
+                                        <td><%=result[0].techFeePay_method.slice(3,result[0].techFeePay_method.length)%></td>
+                                        <th>기술실시 방식</th>
+                                        <td><%=result[0].TI_method.slice(3,result[0].TI_method.length)%></td>
+                                        <th>기술실시<br>대상기관명</th>
+                                        <td><%=result[0].TIinstitution_name%></td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">소유 여부</th>
-                                        <td colspan="3"><%=result[0].own_not.slice(3,result[0].own_not.langth)%></td>
+                                        <th>기술실시 내용</th>
+                                        <td colspan="5"><%=result[0].TI_detail%></td>
                                     </tr>
                                     <tr>
-                                        <th scope="row" class="align-middle">특징</th>
-                                        <td colspan="3"><div class="text-start"><%=result[0].feature%></div></td>
+                                        <th colspan="2">기술실시 대상기관<br>사업자등록번호</th>
+                                        <td colspan="2"><%=result[0].TI_num%></td>
+                                        <th>기술실시<br>대상기관 유형</th>
+                                        <td><%=result[0].TI_type.slice(3,result[0].TI_type.length)%></td>
+                                    </tr>
+                                    <tr>
+                                        <th>총 정부 출연금</th>
+                                        <td colspan="2"><%=result[0].government_contribution%></td>
+                                        <th>총 민간 연구비</th>
+                                        <td colspan="2"><%=result[0].privateResearch_fund%></td>
+                                    </tr>
+                                    <tr>
+                                        <th>기술이전 유형</th>
+                                        <td><%=result[0].techTransfer_type.slice(3,result[0].techTransfer_type.length)%></td>
+                                        <th>기술활용 형태</th>
+                                        <td><%=result[0].techApplication_form.slice(2,result[0].techApplication_form.length)%></td>
+                                        <th>기술이전 형식</th>
+                                        <td><%=result[0].techTransfer_format.slice(3,result[0].techTransfer_format.length)%></td>
+                                    </tr>
+                                    <tr>
+                                        <th>관련 지재권</th>
+                                        <td colspan="5"><%=result[0].intellectualPropertyRights%></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -81,7 +113,3 @@
     </footer>
 </body>
 </html>
-<script>
-    $('th').addClass('bg-secondary');
-    $('th').addClass('text-white');
- </script>

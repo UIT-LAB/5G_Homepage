@@ -15,7 +15,9 @@
   <header>
     <% include ../include/header %>
   </header>
-  <img src="/images/gall.jpg" class="img-fluid" style="width: 100%; height: 350px;" alt="...">
+  <div>
+    <img src="/images/news.jpg" class="w-100" style="height: 400px;" alt="0">
+  </div>
   <div class="container">
     <div class="row mt-5 mb-5">
       <div class="col-md-2">
@@ -60,7 +62,9 @@
             </table>
             <textarea type="text" style="height: 400px; resize: none;" name="post_content" class="form-control"></textarea>
             <br>
-            <input type="file" name="attachments" multiple>
+            <div class="input-group">
+              <input class="form-control" type="file" name="attachments" multiple>
+            </div>
           </div>
           <div class="float-end mt-3">
             <input type="submit" class="btn btn-outline-dark" value="저장">
