@@ -14,47 +14,92 @@
     integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 
     <style>
-        .title{
-            margin-top: 25px;
-            margin-bottom: 25px;
-            text-align: center;
-            font-size: 28px;
-            font-weight: 900;
+        @font-face {
+            font-family: 'NanumBarunGothic';
+            font-style: normal;
+            font-weight: 700;
+            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
+            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
         }
-        .subtitle{
-            text-align: center;
-            font-size: 18px;
-        }    
-        .form-pwcheck .form-control{
-            margin: 5px;
-            width: 60%;
-            border-radius: 10px;
-        }
-        .btn{
-            margin-top: 50px;
-            width: 90px;
-            height: 70px;
-            font-size: 25px;
+        body{
+            font-family: 'NanumBarunGothic';
         }
     </style>
 </head>
 <body>
-    <div class="title">비밀번호 변경</div>
-    <p class="subtitle">당신의 새로운 비밀번호를 입력해주세요.</p><br>
+<div class="container">
     <form action="./pwCheck" method="POST" class="form-pwcheck">
-        <div align="center">
-            <input type="text" name="input_id" class="form-control" placeholder="ID">
-            <input type="password" name="changepw" class="form-control" placeholder="PW">
-            <input type="password" name="changepw_check" class="form-control" placeholder="PWCHECK">    
+        <div class="fs-1 pt-5 mt-5 text-start">비밀번호 수정</div>
+        <hr class="border border-5 border-dark">
+
+        <div class=" pt-5">
+            <table class="table table-borderless"> 
+                <tr>
+                    <td >아이디</td>
+                    <th>
+                        <input type="text" name="input_id" class="form-control shadow-sm" placeholder="ID">
+                    </th>
+                </tr>
+                <tr>
+                    <td>새 비밀번호</td>
+                    <th>
+                        <input type="password" name="changepw" id="changepw" class="form-control shadow-sm" placeholder="PW">
+                    </th>
+                </tr>
+                <tr>
+                    <td>새 비밀번호 확인</td>
+                    <th>
+                        <input type="password" name="changepw_check" id="changepw_check" class="form-control shadow-sm" placeholder="PWCHECK">  
+                    </th>
+                </tr> 
+            </table>
         </div>
-        <div class="text-center">
-            <button class="btn btn-dark btn-block" type="submit" onclick="window.close()">변경</button>
+        <div class="mt-5">
+            <ul>
+                <li>
+                    8~12자의 영문, 숫자, 특수기호를 조합하여 사용합니다.
+                </li>
+                <li>
+                    생년월일, 전화번호 등 개인정보와 관련된 숫자나 연속된 키보드 배열과 같이 쉬운 비밀번호는
+                    타인이 쉽게 알아낼 수 있으니 사용을 자제해 주세요.
+                </li>
+                <li>
+                    이전에 사용한 비밀번호나 타 사이트와 다른 비밀번호를 사용하고 주기적으로 변경해주세요.
+                </li>
+            </ul>
         </div>
-    </form>
-   
+        <div class="text-center mt-5">
+            <button class="btn btn-secondary btn-lg" type="submit">변경</button>
+            <input type ="button" class="btn btn-secondary btn-lg" value="돌아가기" onclick="history.back()"/>
+        </div>
+    </form>   
+</div>
 </body>
 </html>
 
 <script>
-   
+    function chkPW(){
+
+        var pw = $("#changepw").val();
+        var pwCheck = $("#changepw_check").val();
+        var num = pw.search(/[0-9]/g);
+        var eng = pw.search(/[a-z]/ig);
+        var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
+        if(pw.length < 8 || pw.length > 12){
+
+        alert("8자리 ~ 20자리 이내로 입력해주세요.");
+        return false;
+        }else if(pw.search(/\s/) != -1){
+        alert("비밀번호는 공백 없이 입력해주세요.");
+        return false;
+        }else if(num < 0 || eng < 0 || spe < 0 ){
+        alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+        return false;
+        }else {
+        console.log("통과"); 
+        return true;
+        }
+
+    }
 </script>
