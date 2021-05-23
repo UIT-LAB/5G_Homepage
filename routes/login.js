@@ -71,9 +71,9 @@ router.get('/findId', function (req, res, next) {
 });
 
 router.post('/findId', function (req, res) {
+    var name = req.body.input_name;
     var email = req.body.input_email;
-    var datas = [email];
-    db.query(`Select EXISTS (Select * from UserInfo where u_email = ?) as isChk`, datas, function (error, result) {
+    db.query(`Select EXISTS (Select * from UserInfo where u_name = '${name}' and u_email = '${email}') as isChk`, function (error, result) {
         if (error) {
             throw error;
         }
@@ -82,7 +82,7 @@ router.post('/findId', function (req, res) {
                 res.send('<script>alert(`정보가 일치하지 않습니다.`); location.href=`/findId`</script>')
             }
             else if (result[0].isChk == 1) {
-                db.query(`Select * from UserInfo where u_email = ?`, datas, function (error, result) {
+                db.query(`Select * from UserInfo where u_name = '${name}' and u_email = '${email}'`, function (error, result) {
                     if (error) {
                         throw error;
                     }
