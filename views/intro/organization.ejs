@@ -22,33 +22,9 @@
     </header>
     <div class="container">
         <div class="row mt-5 mb-5">
-            <div class="col-sm-2" id="hide">
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li style="cursor: pointer;" class="breadcrumb-item" onclick="location.href='/intro'">소개</li>
-                        <li class="breadcrumb-item active" aria-current="page">조직도</li>
-                    </ol>
-                </nav>
-                <table class="table table-hover table-bordered text-center">
-                    <tbody>
-                        <tr onclick="location.href='/intro'">
-                            <td>대표말</td>
-                        </tr>
-                        <tr onclick="location.href='/intro/business'">
-                            <td>사업소개</td>
-                        </tr>
-                        <tr onclick="location.href='/intro/organization'">
-                            <td>조직도</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-sm-10">
-                <div class="text-center m-5">
-                    <h1>조직도</h1>
-                    초연결 · 고신뢰 산업지능센터
-                </div>
-
+            <% include ../include/intro_nav %>
+            <div class="col-lg-12 col-xl-10">
+                <% include ../include/intro_label %>
                 <div class="row p-3">
                     <div>
                         <img class="img-fluid shadow" src="/images/organization.jpg" alt="" width="100%">
