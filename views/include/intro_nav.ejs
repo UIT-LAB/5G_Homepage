@@ -1,0 +1,34 @@
+<div class="col-lg-0 col-xl-2" id="hide">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li style="cursor: pointer;" class="breadcrumb-item" onclick="location.href='/research/thesis/1'">연구성과</li>
+            <li class="breadcrumb-item active" aria-current="page" id="category"></li>
+            <script>
+                var path = location.pathname
+                var research_path = path.split('/')
+                var category = document.getElementById("category")
+
+                switch(research_path[2]){
+                    case "business": category.innerHTML="사업소개"; break;
+
+                    case "organization": category.innerHTML="조직도"; break;
+                    
+                    default: category.innerHTML="대표말"; break;
+                }
+            </script>
+        </ol>
+    </nav>
+    <table class="table table-hover table-bordered text-center">
+        <tbody>
+            <tr onclick="location.href='/intro'">
+                <td>대표말</td>
+            </tr>
+            <tr onclick="location.href='/intro/business'">
+                <td>사업소개</td>
+            </tr>
+            <tr onclick="location.href='/intro/organization'">
+                <td>조직도</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

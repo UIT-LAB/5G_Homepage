@@ -1,0 +1,18 @@
+<div class="text-center m-5">
+    <h1 id="label"></h1>
+    <div id="detail"></div>
+</div>
+<script>
+    var path = location.pathname
+    var intro_path = path.split('/')
+    var label = document.getElementById("label")
+    var detail = document.getElementById("detail")
+
+    switch(intro_path[2]){
+        case "business": label.innerHTML="사업소개"; detail.innerHTML="ITRC 사업 소개"; break;
+
+        case "organization": label.innerHTML="조직도"; detail.innerHTML="ITRC 사업단 조직도"; break;
+
+        default: label.innerHTML="대표말"; detail.innerHTML="ITRC 사업단장 한 말씀"; break;
+    }
+</script>
