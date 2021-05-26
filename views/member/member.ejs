@@ -2,11 +2,28 @@
 <head>
     <meta charset="UTF-8">
     <title>ITRC member</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
     <style>
       @import url(/stylesheets/member.css);
+
+      @font-face {
+        font-family: 'NanumBarunGothic';
+        font-style: normal;
+        font-weight: 700;
+        src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
+        src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') 
+        format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), 
+        url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
+          }
+      body{
+          font-family: 'NanumBarunGothic';
+      }
    </style>
 </head>
 
@@ -14,27 +31,28 @@
   <header>
     <% include ../include/header %>
   </header>
-    <div>
-      <img src="/images/member.jpg" style="height: 400px;" alt="0" id="memberbanner">
-    </div>
+  <div>
+    <img src="/images/member.jpg" style="width:100%; height: 400px;" alt="...">
+  </div>
      
-   <div class="container-xxl">
+  <div class="container">
     <div class="fs-1 ms-3 text-start my-4">연구인력</div>
     <hr style="height: 4px;" class="mb-5">
-    <div class="row row-cols-2" align="center">
+    <div class="hcicdiv">
       <% for(let i= 0; i< result.length; i++){ %>
-        <div class="col">
-          <table id="hcicmember" class="hcictable border border-3 p-3 table table-hover"  data-bs-toggle="modal" data-bs-target="#uitmodal" data-name="<%=result[i].m_name%>" data-photo="<%=result[i].m_photo%>" data-group="<%=result[i].m_group%>"
+        <table id="hcicmember" class="hcictable border border-3 p-3 table table-hover"  data-bs-toggle="modal" data-bs-target="#uitmodal" 
+            data-name="<%=result[i].m_name%>" data-photo="<%=result[i].m_photo%>" data-group="<%=result[i].m_group%>"
             data-division="<%=result[i].m_division%>" data-univ="<%=result[i].m_univ%>" data-partdivision="<%=result[i].m_partdivision%>"
             data-position="<%=result[i].m_position%>" data-finalyear="<%=result[i].m_finalyear%>" data-finalmajor="<%=result[i].m_finalmajor%>"
-            data-partperiod="<%=result[i].m_participationPeriod%>" data-partrate="<%=result[i].m_participationRate%>">
+            data-partperiod="<%=result[i].m_participationPeriod%>" data-partrate="<%=result[i].m_participationRate%>"
+            style="width: 100%; height: 80%;">
             <tr>
               <td class="p-3" style="width: 250px;">
                 <img src="/images/member/<%=result[i].m_photo%>" width="200" height="200">
               </td>
               <th>
-                <ul>
-                  <span align="left" class="border-top border-dark fs-2"><%=result[i].m_name%></span>
+                <ul style="list-style: none;">
+                  <span class="border-top border-dark fs-2 text-start"><%=result[i].m_name%></span>
                   <li><p><%=result[i].m_division%></p></li>
                   <li><p><%=result[i].m_univ%></p></li>
                   <li><p><%=result[i].m_group%></p></li>
@@ -42,13 +60,11 @@
                 </ul>
               </th>
             </tr>
-          </table>
-        </div>  
+          </table>  
       <% } %>
     </div>
-   </div>
- 
-  
+  </div>
+
   <div class="modal fade" id="uitmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
@@ -57,18 +73,19 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" align="center">
-
           <div>
             <table id="imtable">
               <tr>
-                <td rowspan="3" class="phototable"">
+                <td rowspan="3" class="phototable pe-5">
                   <img src="/images/member/noimg.jpg" alt="없음" id="imgmodal" class="fs-5" width="200" height="200">
                 </td>
               </tr>
+
               <tr>
-                <th id="namemodal" class="border-bottom border-dark fs-1"></th>
+                <th id="namemodal" class="border-bottom border-dark fs-1" style="width: 400px;"></th>
               </tr>
-              <tr>
+
+              <tr style="width: 35%;">
                 <th>
                   <ul>
                     <li id="univmodal" class="p-1"></li>
@@ -79,8 +96,8 @@
               </tr>
             </table>
 
-            <div id="career" class="fs-2 border-bottom border-dark text-start mb-3 mt-3">학력</div>
-            <table id="careertable" class="table pt-3 text-center">
+            <div id="career" class="fs-2 border-bottom border-dark text-start mb-3 mt-3" style="width: 85%;">학력</div>
+            <table id="careertable" class="table pt-3 text-center" style="width: 85%;">
               <tbody>
                 <tr>
                   <td class="border-1 table-info">최종학위 년도</td>
@@ -97,12 +114,6 @@
               </tbody>
             </table>
           </div>
-
-          
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -142,4 +153,17 @@
     modal.find('.modal-body #careertable #ratemodal').text(partrate+"%");
     document.getElementById('imgmodal').src = ("/images/member/"+photo);
   });
+
+  function myFunction(x) {
+    if (x.matches) {
+      console.log("1")
+    } else {
+      console.log("2")
+    }
+  }
+
+  var x = window.matchMedia("(max-width: 980px)")
+  myFunction(x)
+  x.addListener(myFunction)
+
 </script>
