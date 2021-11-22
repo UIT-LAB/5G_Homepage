@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser')
 var db = require('../config/db')
 var dayjs = require('dayjs')
 const jwt = require('jsonwebtoken');
