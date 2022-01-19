@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300&family=Oswald&display=swap');
+* {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    text-decoration-line: none;
+}
+
+.nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+}
+.nav_item{
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+}
+.nav_item li{
+    padding: 0px 30px;
+    color: #141d68;
+    font-size: 1.2vw;
+    font-weight: bold;
+}
+.nav_item li :hover{
+    color: rgb(83, 134, 134);
+}
+.nav_logo {
+    width: 180px;
+    height: 70px;
+}
+.nav_login{
+    list-style-type: none;
+    display: flex;
+    color: #141d68;
+    padding-left: 0;
+    font-size: 1.2vw;
+    font-weight: bold;
+}
+.nav_login li{
+    padding:0px 20px;
+ }
