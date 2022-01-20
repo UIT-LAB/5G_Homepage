@@ -36,7 +36,7 @@
                         <th width="20%">공동저자명</th>
                     </thead>
                     <tbody class="align-middle">
-                        <% for(var i = (t_num - 1) * max_value; i < t_num * max_value; i++){ %>
+                        <% for(var i = 0; i < max_value; i++){ %>
                             <% var data_value = result[i];
                             if(data_value === undefined){
                             continue;
@@ -59,15 +59,15 @@
                                     <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/research/thesis/<%=Number(t_num)-1%>">">이전</a></li>
                                 <% } else if (t_num > 1) { %>
                                     <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/research/thesis/<%=Number(t_num)-1%>">이전</a></li>
-                                <% } for(var j = 1; j<= Math.ceil(result.length / max_value); j++){ %>
+                                <% } for(var j = 1; j<= Math.ceil(data_length / max_value); j++){ %>
                                     <%if(j != t_num){%>
                                         <li class="page-item"><a class="page-link" style="color: black;" href="/research/thesis/<%= j %>"><%= j %></a>
                                     <%}else{%>
                                         <li class="page-item"><a class="page-link" style="color: black; background-color: #c8c8c8;" href="/research/thesis/<%= j %>"><%= j %></a>
                                     <%}%>
-                                <% } if(t_num == Math.ceil(result.length / max_value)) { %>
+                                <% } if(t_num == Math.ceil(data_length / max_value)) { %>
                                     <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/research/thesis/<%=Number(t_num)+1%>">다음</a></li>
-                                <% } else if (t_num < Math.ceil(result.length / max_value)) { %>
+                                <% } else if (t_num < Math.ceil(data_length / max_value)) { %>
                                     <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/research/thesis/<%=Number(t_num)+1%>">다음</a></li>
                                 <% } %></ul>
                               <% } else if(parameters) { %>
@@ -76,15 +76,15 @@
                                         <li class="page-item"><a id="prev" class="page-link" style="color: black; display:none;" href="/research/thesis/<%=Number(t_num)-1%>?search=<%=parameters.search%>">">이전</a></li>
                                     <% } else if (t_num > 1) { %>
                                         <li class="page-item"><a id="prev" class="page-link" style="color: black; display:block;" href="/research/thesis/<%=Number(t_num)-1%>?search=<%=parameters.search%>">이전</a></li>
-                                    <% } for(var j = 1; j<= Math.ceil(result.length / max_value); j++){ %>
+                                    <% } for(var j = 1; j<= Math.ceil(data_length / max_value); j++){ %>
                                         <%if(j != t_num){%>
                                             <li class="page-item"><a class="page-link" style="color: black;" href="/research/thesis/<%= j %>?search=<%=parameters.search%>"><%= j %></a>
                                         <%}else{%>
                                             <li class="page-item"><a class="page-link" style="color: black; background-color: #c8c8c8;" href="/research/thesis/<%= j %>?search=<%=parameters.search%>"><%= j %></a>
                                         <%}%>
-                                    <% } if(t_num == Math.ceil(result.length / max_value)) { %>
+                                    <% } if(t_num == Math.ceil(data_length / max_value)) { %>
                                         <li class="page-item"><a id="next" class="page-link" style="color: black; display:none;" href="/research/thesis/<%=Number(t_num)+1%>?search=<%=parameters.search%>">다음</a></li>
-                                    <% } else if (t_num < Math.ceil(result.length / max_value)) { %>
+                                    <% } else if (t_num < Math.ceil(data_length / max_value)) { %>
                                         <li class="page-item"><a id="next" class="page-link" style="color: black; display:block;" href="/research/thesis/<%=Number(t_num)+1%>?search=<%=parameters.search%>">다음</a></li>
                                     <% } %></ul>
                                 <% } %>

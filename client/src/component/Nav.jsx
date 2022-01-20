@@ -15,14 +15,14 @@ function Nav() {
         <div>
             <nav className='nav'>
                 <div>
-                    <i><img className='nav_logo' src='../image/nav_logo.png'></img></i>
+                    <i><img className='nav_logo' src='../../public/Image/nav_logo.png'></img></i>
                 </div>
                 <ul className='nav_item'>
-                    <li><Link to='/board'>About</Link></li>
-                    <li><Link to='/home'>Home</Link></li>
-                    <li><Link to='/member'>Member</Link></li>
-                    <li><Link to='/research'>Research</Link></li>
-                    <li><Link to='/gallery'>Gallery</Link></li>
+                    <li><Link className="link" to='/'>Home</Link></li>
+                    <li><Link className="link" to='/board'>About</Link></li>
+                    <li>Member</li>
+                    <li>Research</li>
+                    <li>Gallery</li>
                 </ul>
                 <ul className='nav_login'>
                     <li>
@@ -50,8 +50,7 @@ function Nav() {
                     </li>
                 </ul>
             </nav>
-            <hr class="solid" />
-        </div>
+        </div >
     )
 }
 
