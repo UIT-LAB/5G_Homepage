@@ -13,6 +13,7 @@ function Nav() {
                </div>
                <ul className='nav_item'>
                    <li><Link to='/board'>About</Link></li>
+                   <li><Link to='/home'>Home</Link></li>
                    <li>Member</li>
                    <li>Research</li>
                    <li>Gallery</li>
