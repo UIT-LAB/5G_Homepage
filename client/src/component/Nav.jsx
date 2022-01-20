@@ -12,8 +12,8 @@ function Nav() {
                     <i><img className='nav_logo'src='../image/nav_logo.png'></img></i>
                </div>
                <ul className='nav_item'>
-                   <li><Link to='/board'>About</Link></li>
-                   <li><Link to='/home'>Home</Link></li>
+                   <li><Link className="link"to='/board'>About</Link></li>
+                   <li><Link className="link"to='/'>Home</Link></li>
                    <li>Member</li>
                    <li>Research</li>
                    <li>Gallery</li>
@@ -22,7 +22,7 @@ function Nav() {
                    <li>Login</li>
                </ul>
            </nav>
-           <hr class="solid"/>
+        
         </div>
     )
 }
