@@ -14,7 +14,7 @@ const login = (parameters) => {
 
 const insertToken = (parameters) => {
     return new Promise((resolve, reject) => {
-        db.query(`UPDATE UserInfo SET token = '${parameters.token_value}' WHERE u_id = '${parameters.u_id}'`, (err, db_data) => {
+        db.query(`UPDATE UserInfo SET token = '${parameters.refreshToken}' WHERE u_id = '${parameters.u_id}'`, (err, db_data) => {
             if(err) {
                 reject(err);
             } else {
@@ -62,7 +62,7 @@ const pwCheck = (parameters) => {
 
 const signUp = (parameters) => {
     return new Promise((resolve, reject) => {
-        db.query(`INSERT INTO UserInfo SET ? = `, parameters, (err, db_data) => {
+        db.query(`INSERT INTO UserInfo SET ?`, parameters, (err, db_data) => {
             if(err) {
                 reject(err);
             } else {

@@ -1,40 +1,12 @@
-const jwt = require('jsonwebtoken');
-var dayjs = require('dayjs')
-const key = require("../routes/auth/key");
-const db = require('../config/db');
+let dayjs = require('dayjs');
 const galleryDAO = require('../model/galleryDAO');
 
-let jwtname, jwtid;
-
 const getWrite = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
+    let jwtname = req.body.jwtname;
     res.render('gallery/gallery_write', { dayjs, name: jwtname, cookie: req.cookies.user })
 }
 
 const postWrite = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
     let date = new dayjs();
     let title = req.body.gall_title;
     let datetime = date.format('YYYY-MM-DD');
@@ -66,22 +38,10 @@ const postWrite = (req, res) => {
 }
 
 const getUpdate = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
-
     let parameters = {
         num: req.params.num
     }
+    let jwtname = req.body.jwtname;
 
     galleryDAO.updatePage(parameters)
         .then((db_data) => {
@@ -139,18 +99,7 @@ const deleteGallery = (req, res) => {
 }
 
 const galleryPage = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
+    let jwtname = req.body.jwtname;
     galleryDAO.readGalleryPage()
         .then((db_data) => {
             res.render('gallery/gallery', { result: db_data, g_num: req.params.num, max_value: 9, dayjs, name: jwtname, cookie: req.cookies.user });
@@ -161,22 +110,11 @@ const galleryPage = (req, res) => {
 }
 
 const galleryDetail = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
-
     let parameters = {
         gid: req.params.num
     }
+
+    let jwtname = req.body.jwtname;
 
     galleryDAO.readGalleryDetail(parameters)
         .then((db_data) => {

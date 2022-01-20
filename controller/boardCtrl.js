@@ -1,29 +1,13 @@
-const db = require('../config/db');
 const dayjs = require('dayjs');
-const jwt = require('jsonwebtoken');
-const key = require("../routes/auth/key");
 const fs = require('fs');
 const boardDAO = require('../model/boardDAO');
 let jwtname, jwtid;
 
 //------------------------------------notice
 const notice = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
-
     boardDAO.notice_page()
         .then((db_data) => {
-            res.render('board/notice', { result: db_data, n_num: req.params.num, max_value: 15, dayjs, id: jwtid, name: jwtname, cookie: req.cookies.user });
+            res.render('board/notice', { result: db_data, n_num: req.params.num, max_value: 15, dayjs, id: jwtid, name: req.body.jwtname, cookie: req.cookies.user });
         })
         .catch((err) => {
             throw err;
@@ -31,18 +15,6 @@ const notice = (req, res) => {
 }
 
 const noticeDetail = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
     let parameters = {
         nid: req.params.num
     }
@@ -53,7 +25,7 @@ const noticeDetail = (req, res) => {
                 boardDAO.notice_views(parameters)
                     .then(() => {
                         db_data[0].n_view++;
-                        res.render('board/notice_detail', { result: db_data, n_num: req.params.num, max_value: 15, dayjs, id: jwtid, name: jwtname, cookie: req.cookies.user });
+                        res.render('board/notice_detail', { result: db_data, n_num: req.params.num, max_value: 15, dayjs, id: jwtid, name: req.body.jwtname, cookie: req.cookies.user });
                     })
                     .catch((err) => {
                         throw err;
@@ -67,42 +39,18 @@ const noticeDetail = (req, res) => {
 }
 
 const getNoticeWrite = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
-    res.render('board/notice_write', { name: jwtname, cookie: req.cookies.user });
+    res.render('board/notice_write', { name: req.body.jwtname, cookie: req.cookies.user });
 }
 
 const postNoticeWrite = (req, res) => {
-    var date = new dayjs();
-    var title = req.body.noti_title;
-    var content = req.body.noti_content;
-    var datetime = date.format('YYYY-MM-DD HH:mm:ss');
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
+    let date = new dayjs();
+    let title = req.body.noti_title;
+    let content = req.body.noti_content;
+    let datetime = date.format('YYYY-MM-DD HH:mm:ss');
     let parameters = {
         n_title: title,
         n_content: content,
-        n_writer: jwtname,
+        n_writer: req.body.jwtname,
         n_writer_date: datetime,
         n_view: 0
     };
@@ -117,24 +65,12 @@ const postNoticeWrite = (req, res) => {
 }
 
 const getUpdateNotice = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
     let parameters = {
         nid : req.params.num
     }
     boardDAO.get_update_notice(parameters)
     .then((db_data) => {
-        res.render('board/notice_update', { result: db_data, n_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user });
+        res.render('board/notice_update', { result: db_data, n_num: req.params.num, max_value: 15, dayjs, name: req.body.jwtname, cookie: req.cookies.user });
     })
 }
 
@@ -173,22 +109,9 @@ const deleteNotice = (req, res) => {
 
 //------------------------------- post
 const postPage = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
-
     boardDAO.post_page()
         .then((db_data) => {
-            res.render('board/post', { result: db_data, p_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user });
+            res.render('board/post', { result: db_data, p_num: req.params.num, max_value: 15, dayjs, name: req.body.jwtname, cookie: req.cookies.user });
         })
         .catch((err) => {
             throw err;
@@ -196,19 +119,6 @@ const postPage = (req, res) => {
 }
 
 const postDeail = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
-    
     let parameters = {
         pid : req.params.num
     }
@@ -224,7 +134,7 @@ const postDeail = (req, res) => {
                 throw err;
             })
         }
-        res.render('board/post_detail', { result: db_data, p_num: req.params.num, max_value: 15, dayjs, id: jwtid, name: jwtname, cookie: req.cookies.user });
+        res.render('board/post_detail', { result: db_data, p_num: req.params.num, max_value: 15, dayjs, id: jwtid, name: req.body.jwtname, cookie: req.cookies.user });
     })
     .catch((err) => {
         throw err;
@@ -232,19 +142,7 @@ const postDeail = (req, res) => {
 }
 
 const getPostWrite = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
-    res.render('board/post_write', { name: jwtname, cookie: req.cookies.user });
+    res.render('board/post_write', { name: req.body.jwtname, cookie: req.cookies.user });
 }
 
 const postPostWrite = (req, res) => {
@@ -261,7 +159,7 @@ const postPostWrite = (req, res) => {
     let parameters = { 
         p_title: title, 
         p_content: content, 
-        p_writer: jwtname, 
+        p_writer: req.body.jwtname, 
         p_writer_date: datetime, 
         p_view: 0, 
         p_file: string 
@@ -277,25 +175,13 @@ const postPostWrite = (req, res) => {
 }
 
 const getPostUpdate = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
     let parameters = {
         pid : req.params.num
     }
 
     boardDAO.get_update_post(parameters)
     .then((db_data) => {
-        res.render('board/post_update', { result: db_data, p_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user });
+        res.render('board/post_update', { result: db_data, p_num: req.params.num, max_value: 15, dayjs, name: req.body.jwtname, cookie: req.cookies.user });
     })
     .catch((err) => {
         throw err;
@@ -335,7 +221,7 @@ const postDelete = (req, res) => {
     let file = req.body.filex;
     let fileSplit = file.split(',');
 
-    for (var j = 0; j < fileSplit.length; j++) {
+    for (let j = 0; j < fileSplit.length; j++) {
         fs.unlink(__dirname + "/../public/images/board/" + fileSplit[j], function (err) {
             if (err) {
                 console.error(err);
@@ -361,21 +247,9 @@ const postDelete = (req, res) => {
 
 //------------------------------question
 const questionPage = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
     boardDAO.question_page()
     .then((db_data) => {
-        res.render('board/question', {result : db_data, q_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user});
+        res.render('board/question', {result : db_data, q_num: req.params.num, max_value: 15, dayjs, name: req.body.jwtname, cookie: req.cookies.user});
     })
     .catch((err) => {
         throw err;
@@ -383,18 +257,6 @@ const questionPage = (req, res) => {
 }
 
 const questionDetail = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
 
     let parameters = {
         qid : req.params.num
@@ -403,7 +265,7 @@ const questionDetail = (req, res) => {
     boardDAO.question_detail(parameters)
     .then((db_data) => {
         if(db_data[0] !== undefined) {
-            res.render('board/question_detail', { result: db_data, q_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user, id: jwtid });
+            res.render('board/question_detail', { result: db_data, q_num: req.params.num, max_value: 15, dayjs, name: req.body.jwtname, cookie: req.cookies.user, id: jwtid });
         } else {
             res.render('error');
         }
@@ -414,41 +276,17 @@ const questionDetail = (req, res) => {
 }
 
 const getQuestionWrite = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
-    res.render('board/question_write', { name: jwtname, cookie: req.cookies.user });
+    res.render('board/question_write', { name: req.body.jwtname, cookie: req.cookies.user });
 }
 
 const postQuestionWrite = (req, res) => {
     let date = new dayjs();
 
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
 
     let parameters = {
         q_title : req.body.ques_title,
         q_content : req.body.ques_content,
-        q_writer : jwtname,
+        q_writer : req.body.jwtname,
         q_writer_date : date.format('YYYY-MM-DD HH:mm:ss')
     }
 
@@ -462,18 +300,6 @@ const postQuestionWrite = (req, res) => {
 }
 
 const getQuestionUpdate = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-                jwtid = decode.user.id
-            }
-        })
-    }
 
     let parameters = {
         qid : req.params.num
@@ -481,7 +307,7 @@ const getQuestionUpdate = (req, res) => {
 
     boardDAO.get_update_question(parameters)
     .then((db_data) => {
-        res.render('board/question_update', { result: db_data, q_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user });
+        res.render('board/question_update', { result: db_data, q_num: req.params.num, max_value: 15, dayjs, name: req.body.jwtname, cookie: req.cookies.user });
     })
     .catch((err) => {
         throw err;
@@ -573,5 +399,5 @@ module.exports = {
     postQuestionUpdate,
     questionAdminComment,
     questionAdminCommentDelete,
-    questionDelete
+    questionDelete,
 }
