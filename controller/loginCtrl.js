@@ -1,4 +1,3 @@
-const db = require('../config/db');
 let dayjs = require('dayjs');
 const jwt = require('jsonwebtoken');
 const key = require('../routes/auth/key');
@@ -9,66 +8,54 @@ const getLoginPage = (req, res) => {
     res.render('login/login');
 }
 
-const postLoginPage = (req, res, next) => {
+const postLoginPage = async (req, res) => {
+    console.log(req.body.inputid);
+    console.log(req.body.inputpw);
     let parameters = {
         u_id: req.body.inputid,
         u_pw: crypto.createHash('sha512').update(req.body.inputpw).digest('base64')
     }
 
-    var token_value;
+    let accessToken;
+    let refreshToken;
 
-    loginDAO.login(parameters)
-        .then((db_data) => {
-            if (db_data[0] !== undefined) {
-                const user = {
-                    id: db_data[0].u_id,
-                    name: db_data[0].u_name,
-                }
-
-                token_value = jwt.sign({ user: user }, key, { expiresIn: '1h' });
-                res.cookie("user", token_value);
-
-                // jwt.sign({ user: user }, key, { expiresIn: '1h' }, (error, token) => {
-                //     if (error) {
-                //         console.log(error);
-                //         throw error;
-                //     } else {
-                //         res.cookie("user", token);
-                //         token_value = token;
-                //         console.log(token_value);
-                //     }
-                // });
-
-                jwt.verify(token_value, key, (err, decode) => {
-                    if (err) {
-                        console.log(err);
-                        res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-                    }
-                    else {
-                        let parameter = {
-                            token_value: token_value,
-                            u_id: db_data[0].u_id
-                        }
-                        loginDAO.insertToken(parameter)
-                            .then(() => {
-                                res.redirect('/');
-                            })
-                            .catch((err) => {
-                                console.log(err);
-                            });
-                    }
-                })
-
+    try {
+        const db_data = await loginDAO.login(parameters)
+        if(db_data[0] !== undefined) {
+            const user = {
+                id: db_data[0].u_id ,
+                name: db_data[0].u_name,
+                isAd: db_data[0].is_admin
             }
-            else {
-                res.send('<script>alert(`정보가 일치하지 않습니다.`); location.href=`/login`</script>')
+
+            accessToken = jwt.sign({ user: user }, key, { expiresIn: '1h' });
+            refreshToken = jwt.sign({ user: user }, key, { expiresIn: '1d' });
+            res.cookie("user", accessToken, {expires: new Date(Date.now() + 3600000), httpOnly: true});
+            res.cookie("refreshToken", refreshToken, {expires: new Date(Date.now() + (3600000 * 24)), httpOnly: true});
+
+            const parameters = {
+                refreshToken,
+                u_id: db_data[0].u_id
             }
-        })
+
+            try {
+                await loginDAO.insertToken(parameters);
+                res.redirect('/');
+            } catch(err) {
+                console.log(err);
+            }
+        } else {
+            res.send('<script>alert(`정보가 일치하지 않습니다.`); location.href=`/login`</script>')
+        }
+    } catch(err) {
+        console.log(err);
+    }
 }
 
 //------------------logout
 const logout = (req, res) => {
     res.clearCookie('user');
+    res.clearCookie('refreshToken');
     res.redirect('/');
 }
 
@@ -82,9 +69,9 @@ const postFindId = (req, res) => {
     let email = req.body.input_email;
     let parameters = {
         name: name,
-        email: email
+        email
     }
-
+    console.log(parameters);
     loginDAO.findId(parameters)
         .then((db_data) => {
             if (db_data.length == 0) {
@@ -160,6 +147,7 @@ const postSignUp = (req, res) => {
     let email = req.body.signup_Email;
     let phone = req.body.singup_Phone;
     let datetime = date.format('YYYY-MM-DD HH:mm:ss');
+    // let output = bcrypt.hashSync(pw, 10);
     let output = crypto.createHash('sha512').update(pw).digest('base64')
 
     let parameters = {
@@ -168,7 +156,8 @@ const postSignUp = (req, res) => {
         u_name: name,
         u_email: email,
         u_phone: phone,
-        u_date: datetime
+        u_date: datetime,
+        is_admin: 0
     };
 
     loginDAO.signUp(parameters)

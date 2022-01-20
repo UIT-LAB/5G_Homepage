@@ -77,7 +77,7 @@
                                                 <th scope="row">SCI구분</th>
                                                 <td>
                                                     <%var check = Number(result[0].SCI_division.slice(0,2))%>
-                                                    <%if(check == 2){%>
+                                                    <%if(check == 1){%>
                                                         SCI
                                                         <%}else{%>
                                                         비SCI
@@ -175,119 +175,10 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                        <!--<table class="table text-center">
-                                            <a class="mb-4 float-end pr-5" target="_blank"
-                                                href='https://www.dbpia.co.kr/Journal/articleDetail?nodeId=NODE09303090'>move
-                                                ></a>
-                                            <tr>
-                                                <td>사업연도</td>
-                                                <td>
-                                                    <%=result[0].business_year%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>대학명</td>
-                                                <td>
-                                                    <%=result[0].univ_name%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>학과</td>
-                                                <td>
-                                                    <%=result[0].department%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>SCI(E)구분</td>
-                                                <td>
-                                                    <%=result[0].SCI_division%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>논문구분</td>
-                                                <td>
-                                                    <%=result[0].thesis_division%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>주저자명</td>
-                                                <td>
-                                                    <%=result[0].lead_author_name%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>공동저자명</td>
-                                                <td>
-                                                    <%=result[0].co_author_name%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>학술지명</td>
-                                                <td>
-                                                    <%=result[0].journal_name%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>볼륨번호</td>
-                                                <td>
-                                                    <%=result[0].volume_num%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>학술지 출판일</td>
-                                                <td>
-                                                    <%=result[0].journal_date%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>학술지 임팩트펙터</td>
-                                                <td>
-                                                    <%=result[0].journal_impact_factor%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>기여율</td>
-                                                <td>
-                                                    <%=result[0].contribution_rate%>%
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>ISBN 또는 ISSN</td>
-                                                <td>
-                                                    <%=result[0].isbn%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>피인용 견수</td>
-                                                <td>
-                                                    <%=result[0].citation%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>ACK 개수</td>
-                                                <td>
-                                                    <%=result[0].ack%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>학술대회명</td>
-                                                <td>
-                                                    <%=result[0].conference_name%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>학술대회 발표일</td>
-                                                <td>
-                                                    <%=result[0].conference_date%>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>학술대회 개최국</td>
-                                                <td>
-                                                    <%=result[0].conference_country%>
-                                                </td>
-                                            </tr>
-                                        </table>-->
+                                    <button class="btn btn-outline-dark float-end" onclick="location.href='/research/thesis/update/<%=t_num%>'">수정</button>
+                                    <form action = '/research/thesis/delete/<%=t_num%>?_method=PUT' method = 'POST'>
+                                        <input type = 'submit' class="btn btn-outline-dark float-end" value = '삭제'>
+                                    </form>
                                 </div>
                             </div>
                         </div>

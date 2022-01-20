@@ -289,5 +289,5 @@ module.exports = {
     post_update_question,
     question_comment,
     delete_question_comment,
-    delete_question
+    delete_question,
 }
