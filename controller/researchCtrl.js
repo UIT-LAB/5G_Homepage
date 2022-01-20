@@ -1,49 +1,35 @@
-const db = require('../config/db');
 const dayjs = require('dayjs');
-const jwt = require('jsonwebtoken');
-const key = require('../routes/auth/key');
 const researchDAO = require('../model/researchDAO');
-let jwtname;
 
-const thesis = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-            }
-        })
+const thesis = async (req, res) => {
+    const jwtname = req.body.jwtname;
+    let search = req.query.search;
+    const pageNum = req.params.num;
+    const pageList = 15;
+    if(search === undefined) search = "";
+    let parameters = {
+        search   
     }
-    researchDAO.thesis_page()
-        .then((db_data) => {
-            res.render('research/thesis', { result: db_data, t_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user });
-        })
-        .catch((err) => {
-            throw err;
-        })
+
+    try {
+        const db_data = await researchDAO.thesis_page(parameters);
+        let itemNum = db_data.length;
+        let pageSize = parseInt(itemNum/pageList);
+        console.log(pageSize + 1);
+        res.render('research/thesis', { result: db_data, t_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user, parameters });
+    } catch(err) {
+        throw err;
+    }
 }
 
 const thesisDetail = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-            }
-        })
-    }
     let parameters = {
         tid: req.params.num
     }
-
+    let jwtname = req.body.jwtname;
     researchDAO.thesis_detail(parameters)
         .then((db_data) => {
+            console.log(db_data);
             res.render('research/thesis_detail', { result: db_data, t_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user });
         })
         .catch((err) => {
@@ -51,19 +37,68 @@ const thesisDetail = (req, res) => {
         })
 }
 
-const license = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-            }
-        })
-    }
+const getThesisWrite = (req, res) => {
+    let jwtname = req.body.jwtname;
+    res.render('research/thesis_write', {name: jwtname, cookie: req.cookies.user});
+}
 
+const thesisWrite = async (req, res) => {
+    const parameters = req.body;
+    delete parameters.jwtname;
+    delete parameters.jwtid;
+
+    try {
+        await researchDAO.thesis_write(parameters);
+        res.redirect('/research/thesis/1');
+    } catch(err) {
+        throw err;
+    }
+}
+
+const getThesisUpdate = async (req, res) => {
+    const tid = req.params.num;
+    let jwtname = req.body.jwtname;
+    let parameters = {
+        tid
+    }
+    try {
+        const db_data = await researchDAO.thesis_detail(parameters);
+        res.render('research/thesis_update', { result: db_data, name: jwtname, cookie: req.cookies.user, num: parameters.tid});
+    } catch(err) {
+        throw err;
+    }
+}
+
+const patchThesis = async (req, res) => {
+    const parameters = req.body;
+    delete parameters.jwtname;
+    delete parameters.jwtid;
+    parameters.tid = req.params.num;
+    const jwtname = req.body.jwtname;
+    try {
+        await researchDAO.thesis_update(parameters);
+        const db_data = await researchDAO.thesis_detail(parameters);
+        res.render('research/thesis_detail', { result: db_data, t_num: parameters.tid, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user })
+    }
+    catch(err) {
+        console.log(err);
+    }
+}
+
+const deleteThesis = async (req, res) => {
+    const parameters = {
+        tid : req.params.num
+    }
+    try {
+        await researchDAO.thesis_delete(parameters);
+        res.redirect('/research/thesis/1');
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+const license = (req, res) => {
+    let jwtname = req.body.jwtname;
     researchDAO.license_page()
         .then((db_data) => {
             res.render('research/license', { result: db_data, l_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user });
@@ -74,17 +109,7 @@ const license = (req, res) => {
 }
 
 const licenseDetail = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-            }
-        })
-    }
+    let jwtname = req.body.jwtname;
     let parameters = {
         lid: req.params.num
     }
@@ -94,19 +119,17 @@ const licenseDetail = (req, res) => {
         })
 }
 
-const software = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-            }
-        })
+const searchLicense = async (req, res) => {
+    let input = req.body.input;
+    let parameters = {
+        input
     }
+    const db_data = await researchDAO.search_license(parameters);
+    console.log(db_data);
+}
 
+const software = (req, res) => {
+    let jwtname = req.body.jwtname;
     researchDAO.software_page()
         .then((db_data) => {
             res.render('research/software', { result: db_data, s_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user });
@@ -117,39 +140,27 @@ const software = (req, res) => {
 }
 
 const softwareDetail = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-            }
-        })
-    }
     let parameters = {
         sid: req.params.num
     }
+    let jwtname = req.body.jwtname;
     researchDAO.software_detail(parameters)
         .then((db_data) => {
             res.render('research/software_detail', { result: db_data, s_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user });
         })
 }
 
-const standard = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-            }
-        })
+const searchSoftware = async (req, res) => {
+    let input = req.body.input;
+    let parameters = {
+        input
     }
+    const db_data = await researchDAO.search_software(parameters);
+    console.log(db_data);
+}
 
+const standard = (req, res) => {
+    let jwtname = req.body.jwtname;
     researchDAO.standard_page()
         .then((db_data) => {
             res.render('research/standard', { result: db_data, st_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user });
@@ -160,41 +171,30 @@ const standard = (req, res) => {
 }
 
 const standardDetail = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-            }
-        })
-    }
     let parameters = {
         stid: req.params.num
     }
+    let jwtname = req.body.jwtname;
     researchDAO.standard_detail(parameters)
         .then((db_data) => {
             res.render('research/standard_detail', { result: db_data, s_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user })
         })
         .catch((err) => {
-            throw err
+            throw err;
         })
 }
 
-const technology = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-            }
-        })
+const searchStandard = async (req, res) => {
+    let input = req.body.input;
+    let parameters = {
+        input
     }
+    const db_data = await researchDAO.search_standard(parameters);
+    console.log(db_data);
+}
+
+const technology = (req, res) => {
+    let jwtname = req.body.jwtname;
     researchDAO.technology_page()
         .then((db_data) => {
             res.render('research/technology', { result: db_data, t_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user });
@@ -205,21 +205,10 @@ const technology = (req, res) => {
 }
 
 const technologyDetail = (req, res) => {
-    if (req.cookies.user != undefined) {
-        let token = req.cookies.user;
-        jwt.verify(token, key, (err, decode) => {
-            if (err) {
-                res.send('<script>alert(`세션이 만료되었습니다.`); location.href=`/login`</script>')
-            }
-            else {
-                jwtname = decode.user.name
-            }
-        })
-    }
     let parameters = {
         tid: req.params.num
     }
-
+    let jwtname = req.body.jwtname;
     researchDAO.technology_detail(parameters)
         .then((db_data) => {
             res.render('research/technology_detail', { result: db_data, s_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user });
@@ -227,6 +216,15 @@ const technologyDetail = (req, res) => {
         .catch((err) => {
             throw err;
         })
+}
+
+const searchTechnology = async (req, res) => {
+    let input = req.body.input;
+    let parameters = {
+        input
+    }
+    const db_data = await researchDAO.search_technology(parameters);
+    console.log(db_data);
 }
 
 module.exports = {
@@ -239,5 +237,14 @@ module.exports = {
     standard,
     standardDetail,
     technology,
-    technologyDetail
+    technologyDetail,
+    thesisWrite,
+    searchLicense,
+    searchSoftware,
+    searchTechnology,
+    searchStandard,
+    getThesisWrite,
+    getThesisUpdate,
+    patchThesis,
+    deleteThesis
 }

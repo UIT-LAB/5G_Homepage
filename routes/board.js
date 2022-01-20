@@ -1,12 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var db = require('../config/db')
-var dayjs = require('dayjs')
-const jwt = require('jsonwebtoken');
-const key = require("./auth/key");
-var fs = require('fs');
+const express = require('express');
+const router = express.Router();
 const uploadWithOriginalFilename = require('../middleware/multer');
-let jwtname, jwtid;
 const boardCtrl = require('../controller/boardCtrl');
 
 //------------------------------------notice
