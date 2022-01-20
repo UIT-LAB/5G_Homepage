@@ -1,4 +1,5 @@
 import React from 'react'
+import Home from './pages/Home'
 import Nav from './component/Nav'
 import Board from './pages/Board';
 import Gallery from './pages/Gallery';
@@ -12,6 +13,7 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
+          <Route path='/home' element ={<Home/>}/>
           <Route path='/board' element={<Board />} />
           <Route path='/gallery' element={<Gallery />} />
           <Route path='/member' element={<Member />} />

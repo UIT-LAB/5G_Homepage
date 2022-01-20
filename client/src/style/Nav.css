@@ -19,22 +19,22 @@
 .nav_item li{
     padding: 0px 30px;
     color: #141d68;
-    font-size: 1.2vw;
+    font-size: 12px;
     font-weight: bold;
 }
 .nav_item li :hover{
     color: rgb(83, 134, 134);
 }
 .nav_logo {
-    width: 180px;
-    height: 70px;
+    width: 170px;
+    height: 60px;
 }
 .nav_login{
     list-style-type: none;
     display: flex;
     color: #141d68;
     padding-left: 0;
-    font-size: 1.2vw;
+    font-size: 12px;
     font-weight: bold;
 }
 .nav_login li{
