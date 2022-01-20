@@ -1,8 +1,20 @@
 const db = require('../config/db');
 
+const thesis_page_count = (parameters) => {
+    return new Promise((resolve, reject) => {
+        db.query(`SELECT COUNT(CASE WHEN (thesis_name LIKE ? || abstracts LIKE ?) && shows = 1 THEN thesis_name END) AS COUNT FROM thesis`, [`%${parameters.search}%`, `%${parameters.search}%`], (err, db_data) => {
+            if(err) {
+                reject(err);
+            } else {
+                resolve(db_data);
+            }
+        })
+    })
+}
+
 const thesis_page = (parameters) => {
     return new Promise((resolve, reject) => {
-        db.query(`SELECT tid, SCI_division, thesis_name, lead_author_name, co_author_name FROM thesis WHERE (thesis_name LIKE ? || abstracts LIKE ?) && shows = '1' ORDER BY tid DESC`, [`%${parameters.search}%`, `%${parameters.search}%`], (err, db_data) => {
+        db.query(`SELECT tid, SCI_division, thesis_name, lead_author_name, co_author_name FROM thesis WHERE (thesis_name LIKE ? || abstracts LIKE ?) && shows = '1' ORDER BY tid DESC LIMIT ?, ?`, [`%${parameters.search}%`, `%${parameters.search}%`, parameters.offset, parameters.limit], (err, db_data) => {
             if (err) {
                 reject(err)
             } else {
@@ -208,6 +220,9 @@ const search_technology = (parameters) => {
 module.exports = {
     thesis_page,
     thesis_detail,
+    thesis_page_count,
+    thesis_update,
+    thesis_delete,
     license_page,
     license_detail,
     software_page,
@@ -221,6 +236,4 @@ module.exports = {
     search_software,
     search_technology,
     search_standard,
-    thesis_update,
-    thesis_delete
 }

@@ -1,22 +1,35 @@
 const dayjs = require('dayjs');
 const researchDAO = require('../model/researchDAO');
 
+const paging = (currentPage) => {
+    const default_start_page = 1;
+    const page_size = 15;
+    if(currentPage < 1 || !currentPage) currnetPage = default_start_page;
+
+    let result = {
+        offset : (currentPage - 1) * page_size,
+        limit : Number(page_size)
+    }
+
+    return result;
+}
+
 const thesis = async (req, res) => {
     const jwtname = req.body.jwtname;
     let search = req.query.search;
-    const pageNum = req.params.num;
-    const pageList = 15;
+    let currentPage = req.params.num;
+    const query = await paging(currentPage);
     if(search === undefined) search = "";
     let parameters = {
-        search   
+        search,
+        offset: query.offset,
+        limit: query.limit
     }
 
     try {
+        const db_data_length = await researchDAO.thesis_page_count(parameters);
         const db_data = await researchDAO.thesis_page(parameters);
-        let itemNum = db_data.length;
-        let pageSize = parseInt(itemNum/pageList);
-        console.log(pageSize + 1);
-        res.render('research/thesis', { result: db_data, t_num: req.params.num, max_value: 15, dayjs, name: jwtname, cookie: req.cookies.user, parameters });
+        res.render('research/thesis', { result: db_data, t_num: req.params.num, max_value: parameters.limit, dayjs, name: jwtname, cookie: req.cookies.user, parameters, data_length: db_data_length[0].COUNT });
     } catch(err) {
         throw err;
     }
