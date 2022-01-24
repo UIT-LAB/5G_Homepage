@@ -44,8 +44,7 @@
                                 <div class="col text-center">
                                     <%var str_split=result[0].application_number.split('-');%>
                                         <%var img_src="" %>
-                                            <%for(var i=0; i<str_split.length; i++){ img_src=img_src+str_split[i];
-                                                console.log(img_src + " " + i); }%>
+                                            <%for(var i=0; i<str_split.length; i++){ img_src=img_src+str_split[i]; }%>
                                                 <%if(result[0].country_application=="KR" ){%>
                                                     <img class="img-fluid img-thumbnail mx-auto d-block m-3" width="80%"
                                                         src="/images/license/<%=img_src%>.jpg"
@@ -125,6 +124,10 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
+                                    <button class="btn btn-outline-dark float-end" onclick="location.href='/research/license/update/<%=l_num%>'">수정</button>
+                                    <form action = '/research/license/delete/<%=l_num%>?_method=PUT' method = 'POST'>
+                                        <input type = 'submit' class="btn btn-outline-dark float-end" value = '삭제'>
+                                    </form>
                                 </div>
                             </div>
                         </div>
