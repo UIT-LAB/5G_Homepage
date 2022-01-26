@@ -43,3 +43,44 @@
 .nav_login li{
     padding:0px 20px;
  }
+ .modal_wrap{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+ .modal{
+    display: flex;
+     background-color: #ffffff;
+     width: 400px;
+     height: 300px;
+     align-items: center;  
+     flex-direction: column;
+ }
+
+ .modal_header{
+     display: flex;
+     width: 100%;
+     justify-content: center;
+     padding:0px 20px;
+ }
+ .modal_header ul{
+    list-style: none;
+ }
+ .login_close{
+    list-style-type: none;
+    display: flex;
+    color: #ffffff;
+    padding-left: 0;
+    font-size: 12px;
+    font-weight: bold;
+ }
+.login_clear{
+    width: 100px;
+    height: 30px;
+
+    margin: 15%;
+
+    
+
+
+}
