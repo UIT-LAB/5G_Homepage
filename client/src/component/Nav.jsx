@@ -23,6 +23,7 @@ function Nav() {
                    <li>Member</li>
                    <li>Research</li>
                    <li>Gallery</li>
+                   <li><Link className="link" to="/notice">Notice</Link></li>
                </ul>
                 <ul className='nav_login'>
                     <li>
