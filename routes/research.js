@@ -1,43 +1,65 @@
 const express = require('express');
 const router = express.Router();
-const researchCtrl = require('../controller/researchCtrl');
+const thesisCtrl = require('../controller/research/thesisCtrl');
+const licenseCtrl = require('../controller/research/licenseCtrl');
+const softwareCtrl = require('../controller/research/softwareCtrl');
+const standardCtrl = require('../controller/research/standardCtrl');
+const technology = require('../controller/research/technologyCtrl');
+const {test} = require('../middleware/test');
 
-router.get('/thesis/getThesisWrite', researchCtrl.getThesisWrite);
+//-----thesis-----
+router.get('/thesis/getThesisWrite', thesisCtrl.getThesisWrite);
 
-router.get('/thesis/:num', researchCtrl.thesis);
+router.get('/thesis/:num', thesisCtrl.thesis);
 
-router.get('/thesis/detail/:num', researchCtrl.thesisDetail);
+router.get('/thesis/detail/:num', thesisCtrl.thesisDetail);
 
-router.get('/thesis/update/:num', researchCtrl.getThesisUpdate);
+router.get('/thesis/update/:num', test, thesisCtrl.getThesisUpdate);
 
-router.post('/thesis/write', researchCtrl.thesisWrite);
+router.post('/thesis/write', thesisCtrl.thesisWrite);
 
-router.put('/thesis/update/:num', researchCtrl.patchThesis);
+router.put('/thesis/update/:num', test, thesisCtrl.updateThesis);
 
-router.put('/thesis/delete/:num', researchCtrl.deleteThesis);
+router.put('/thesis/delete/:num', test, thesisCtrl.deleteThesis);
 
-router.get('/license/:num', researchCtrl.license);
+//-----license-----
+router.get('/license/:num', licenseCtrl.license);
 
-router.get('/license/detail/:num', researchCtrl.licenseDetail);
+router.get('/license/detail/:num', licenseCtrl.licenseDetail);
 
-router.get('/software/:num', researchCtrl.software);
+router.get('/license/getLicenseWrite', licenseCtrl.getLicenseWrite);
 
-router.get('/software/detail/:num', researchCtrl.softwareDetail);
+router.get('/license/update/:num', test, licenseCtrl.getLicenseUpdate);
 
-router.get('/standard/:num', researchCtrl.standard);
+router.post('/license/write', licenseCtrl.licenseWrite);
 
-router.get('/standard/detail/:num', researchCtrl.standardDetail);
+router.put('/license/update/:num', test, licenseCtrl.updateLicense);
 
-router.get('/technology/:num', researchCtrl.technology);
+router.put('/license/delete/:num', test, licenseCtrl.deleteLicense);
 
-router.get('/technology/detail/:num', researchCtrl.technologyDetail);
+//-----software-----
+router.get('/software/:num', softwareCtrl.software);
 
-router.post('/license/search', researchCtrl.searchLicense);
+router.get('/software/detail/:num', softwareCtrl.softwareDetail);
 
-router.post('/software/search', researchCtrl.searchSoftware);
+router.get('/software/getLicenseWrite', softwareCtrl.getSoftwareWrite);
 
-router.post('/technology/search', researchCtrl.searchTechnology);
+router.get('/software/update/:num', test, softwareCtrl.getSoftwareUpdate);
 
-router.post('/standard/search', researchCtrl.searchStandard);
+router.post('/software/write', softwareCtrl.softwareWrite);
+
+router.put('/software/update/:num', test, softwareCtrl.updateSoftware);
+
+router.put('/software/delete/:num', test, softwareCtrl.deleteSoftware);
+
+//-----standard-----
+router.get('/standard/:num', standardCtrl.standard);
+
+router.get('/standard/detail/:num', standardCtrl.standardDetail);
+
+//-----technology-----
+router.get('/technology/:num', technology.technology);
+
+router.get('/technology/detail/:num', technology.technologyDetail);
 
 module.exports = router;
