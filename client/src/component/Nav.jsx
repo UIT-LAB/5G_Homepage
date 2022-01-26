@@ -27,23 +27,33 @@ function Nav() {
                </ul>
                 <ul className='nav_login'>
                     <li>
-                        <button type="button" onClick={handleOpen}>Login</button>
+                        <button onClick={handleOpen}>Login</button>
                         <Modal
+                            className='modal_wrap'
                             open={open}
                             onClose={handleClose}
-                            arai-labelledby="modal-modal-title"
-                            arai-describedby="modal-modal-description"
                         >
-                            <Box>
-                                <Typography id="modal-modal-title" variant='h6' component="h2">
-                                    LoginPage
-                                </Typography>
-                                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            <Box className='modal'>
+                                <div className='modal_header'>
+                                    <ul>
+                                        <li>
+                                            LoginPage
+                                        </li>
+                                    </ul>
+                                    <ul className='modal_close'>
+                                        <li>
+                                            <button
+                                                onClick={handleClose}
+                                            >x
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <Typography className='modal_content' sx={{ mt: 2 }}>
                                     <form>
-                                        <input type='text' name='username' placeholder='username' />
-                                        <input type='password' name='password' placeholder='passowrd' />
-                                        <input type="submit" value="Login" />
-                                        <button onClick={handleClose}>x</button>
+                                        <p><input type='text' name='username' placeholder='username' /></p>
+                                        <p><input type='password' name='password' placeholder='passowrd' /></p>
+                                        <input className='login_clear' type="submit" value="Login" />
                                     </form>
                                 </Typography>
                             </Box>
