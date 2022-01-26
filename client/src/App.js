@@ -22,9 +22,7 @@ function App() {
           <Route path='/research' element={<Research />} />
         </Routes>
       </BrowserRouter>
-      <div className="footer_wrap">
-      <Footer/>
-      </div>
+
 
     </div>
   )

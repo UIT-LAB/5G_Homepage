@@ -1,0 +1,23 @@
+.container {
+    margin-left: 15%;
+    margin-right:15%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.item:nth-child(1) {
+    grid-column: 1/4;
+    text-align: center;
+    margin: 5%;
+    border: 2px solid #eea12e;
+}
+
+.Research_Content {
+    margin: 2%;
+    border: 1px solid #eea12e;
+    border-radius: 5px;
+}
+
+ul {
+    list-style: none;
+}
