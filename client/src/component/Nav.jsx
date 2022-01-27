@@ -15,7 +15,7 @@ function Nav() {
         <div>
             <nav className='nav'>
                 <div>
-                    <i><img className='nav_logo' src='../../public/Image/nav_logo.png'></img></i>
+                    <i><img className='nav_logo'src='../image/nav_logo.png'></img></i>
                 </div>
                 <ul className='nav_item'>
                     <li><Link className="link" to='/'>Home</Link></li>
@@ -23,6 +23,7 @@ function Nav() {
                     <li><Link className="link" to="/member">Member</Link></li>
                     <li><Link className="link" to="/research">Research</Link></li>
                     <li><Link className="link" to="/gallery">Gallery</Link></li>
+                    <li><Link className="link" to="/notice">Notice</Link></li>
                 </ul>
                 <ul className='nav_login'>
                     <li>
