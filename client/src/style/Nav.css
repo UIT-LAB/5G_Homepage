@@ -88,7 +88,6 @@
      width: 25%;
     list-style-type: none;
     color: #ffffff;
-
     padding-left: 0;
     font-size: 12px;
     font-weight: bold;
@@ -103,6 +102,8 @@
     margin-right: 3px;
     background-color: #121827;
     width: 25px;
+    border: none;
+
 }
 .login_input{
     display:block;
