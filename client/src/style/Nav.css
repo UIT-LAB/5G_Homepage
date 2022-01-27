@@ -44,43 +44,79 @@
     padding:0px 20px;
  }
  .modal_wrap{
+   
      display: flex;
      align-items: center;
      justify-content: center;
+     
  }
- .modal{
+.modal{
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     display: flex;
      background-color: #ffffff;
      width: 400px;
-     height: 300px;
+     height: 400px;
      align-items: center;  
      flex-direction: column;
+  
  }
 
  .modal_header{
-     display: flex;
-     width: 100%;
-     justify-content: center;
-     padding:0px 20px;
- }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-left: auto;
+    background-color: #121827;
+}
  .modal_header ul{
     list-style: none;
  }
+ .small_logo{
+     width: 25%;
+ }
+ .modal_title{
+     color: #ffffff;
+     text-align: center;
+     width: 50%;
+    justify-content: center;
+
+ }
  .login_close{
+     width: 25%;
     list-style-type: none;
-    display: flex;
     color: #ffffff;
+
     padding-left: 0;
     font-size: 12px;
     font-weight: bold;
  }
+
+.modal_close{
+    width: 25%;
+    text-align: right;
+}
+.close_btn{
+    color: #ffffff;
+    margin-right: 3px;
+    background-color: #121827;
+    width: 25px;
+}
+.login_input{
+    display:block;
+    width:100%;
+    margin:10px 0;
+    padding:10px;
+}
+.modal_content p{
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
 .login_clear{
+    margin-left: 15%;
     width: 100px;
     height: 30px;
-
-    margin: 15%;
-
-    
-
-
 }
