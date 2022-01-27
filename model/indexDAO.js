@@ -38,7 +38,7 @@ const select_Notice = () => {
 
 const select_License = () => {
     return new Promise((resolve, reject) => {
-        db.query(`SELECT lid, invention_name FROM license ORDER BY lid DESC LIMIT 3`, (err, db_data) => {
+        db.query(`SELECT tid, invention_name FROM license ORDER BY tid DESC LIMIT 3`, (err, db_data) => {
             if (err) {
                 reject(err);
             } else {

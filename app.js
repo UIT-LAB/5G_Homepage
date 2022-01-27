@@ -8,6 +8,7 @@ const fs = require('fs');
 const methodOverride = require('method-override');
 require('dotenv').config();
 const { auth } = require('./middleware/auth');
+const {test} = require('./middleware/test');
 
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
