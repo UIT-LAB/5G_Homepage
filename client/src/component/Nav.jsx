@@ -15,7 +15,7 @@ function Nav() {
         <div>
             <nav className='nav'>
                 <div>
-                    <i><img className='nav_logo'src='../image/nav_logo.png'></img></i>
+                    <i><img className='nav_logo' src='../image/nav_logo.png'></img></i>
                 </div>
                 <ul className='nav_item'>
                     <li><Link className="link" to='/'>Home</Link></li>
@@ -35,7 +35,10 @@ function Nav() {
                         >
                             <Box className='modal'>
                                 <div className='modal_header'>
-                                    <ul>
+                                    <div className='small_logo'>
+                                        <i><img  src='../image/small_logo.png'></img></i>
+                                    </div>
+                                    <ul className='modal_title'>
                                         <li>
                                             LoginPage
                                         </li>
@@ -43,6 +46,7 @@ function Nav() {
                                     <ul className='modal_close'>
                                         <li>
                                             <button
+                                            className='close_btn'
                                                 onClick={handleClose}
                                             >x
                                             </button>
@@ -50,10 +54,10 @@ function Nav() {
                                     </ul>
                                 </div>
                                 <Typography className='modal_content' sx={{ mt: 2 }}>
-                                    <form>
-                                        <p><input type='text' name='username' placeholder='username' /></p>
-                                        <p><input type='password' name='password' placeholder='passowrd' /></p>
-                                        <input className='login_clear' type="submit" value="Login" />
+                                    <form>    
+                                        <p><input className='login_input'type='text' name='username' placeholder='username' /></p>  
+                                        <p><input className='login_input'type='password' name='password' placeholder='passowrd' /></p>
+                                        <p><input className='login_clear' type="submit" value="Login" /></p>
                                     </form>
                                 </Typography>
                             </Box>
