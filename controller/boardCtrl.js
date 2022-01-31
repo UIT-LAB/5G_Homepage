@@ -7,7 +7,8 @@ let jwtname, jwtid;
 const notice = (req, res) => {
     boardDAO.notice_page()
         .then((db_data) => {
-            res.render('board/notice', { result: db_data, n_num: req.params.num, max_value: 15, dayjs, id: jwtid, name: req.body.jwtname, cookie: req.cookies.user });
+            res.send({result : db_data});
+            // res.render('board/notice', { result: db_data, n_num: req.params.num, max_value: 15, dayjs, id: jwtid, name: req.body.jwtname, cookie: req.cookies.user });
         })
         .catch((err) => {
             throw err;
@@ -257,7 +258,6 @@ const questionPage = (req, res) => {
 }
 
 const questionDetail = (req, res) => {
-
     let parameters = {
         qid : req.params.num
     }

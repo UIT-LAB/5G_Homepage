@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
-          <Route path='/' element ={<Home/>}/>
+          <Route path='/' element={<Home />} />
           <Route path='/board' element={<Board />} />
           <Route path='/gallery' element={<Gallery />} />
           <Route path='/member' element={<Member />} />
@@ -25,9 +25,8 @@ function App() {
         </Routes>
       </BrowserRouter>
       <div className="footer_wrap">
-      <Footer/>
+        <Footer />
       </div>
-
     </div>
   )
 }
