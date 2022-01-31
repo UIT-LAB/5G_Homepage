@@ -1,4 +1,4 @@
-const createError = require('http-errors');
+// const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -9,6 +9,7 @@ const methodOverride = require('method-override');
 require('dotenv').config();
 const { auth } = require('./middleware/auth');
 const {test} = require('./middleware/test');
+const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
@@ -31,6 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
+app.use(cors());
 
 app.use(auth);
 app.use('/', indexRouter);
@@ -70,5 +72,6 @@ app.use(function (err, req, res, next) {
 
 app.use(helmet());
 
-app.listen(3000, () => winston.info(`server start`));
+
+app.listen(3001, () => winston.info(`server start`));
 module.exports = app;

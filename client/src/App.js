@@ -16,16 +16,17 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
-          <Route path='/' element ={<Home/>}/>
-          <Route path='/about' element={<About />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/board' element={<Board />} />
           <Route path='/gallery' element={<Gallery />} />
           <Route path='/member' element={<Member />} />
           <Route path='/research' element={<Research />} />
           <Route path='/notice' element={<Notice />} />
         </Routes>
       </BrowserRouter>
-
-
+      <div className="footer_wrap">
+        <Footer />
+      </div>
     </div>
   )
 }

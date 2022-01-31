@@ -3,7 +3,7 @@ const db = require('../config/db');
 //------------------------------------notice
 const notice_page = () => {
     return new Promise((resolve, reject) => {
-        db.query(`SELECT nid, n_title, n_writer_date, n_view FROM Notice_Board ORDER BY n_writer_date DESC`, (err, db_data) => {
+        db.query(`SELECT nid, n_title, n_writer_date, n_view, n_writer FROM Notice_Board ORDER BY n_writer_date DESC`, (err, db_data) => {
             if (err) {
                 reject(err);
             } else {
