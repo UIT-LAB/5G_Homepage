@@ -12,7 +12,7 @@ import './style/App.css'
 
 function App() {
   return (
-    <div>
+    <div className='wrap'>
       <BrowserRouter>
         <Nav />
         <Routes>
