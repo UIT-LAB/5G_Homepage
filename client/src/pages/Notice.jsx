@@ -2,16 +2,40 @@ import React from 'react';
 import '../style/Notice.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Notice() {
     const [dataFromServer, setData] = useState([]);
+    const [btnPage, setBtnPage] = useState(1);
+    const [pageCount, setPageCount] = useState(2);
+
+    const PageCount = (page) => {
+        setPageCount(page);
+    }
 
     useEffect(async () => {
-        await axios.get('http://localhost:9928/board/notice/1')
+        await axios.get('http://localhost:9928/board/notice', {
+            params: { page: btnPage }
+        })
             .then((response) => {
+                // console.log(btnPage);
                 setData(response.data.result);
+                PageCount(response.data.page.COUNT);
             })
     }, []);
+
+    async function getPage() {
+        await axios.get('http://localhost:9928/board/notice', {
+            params: { page: btnPage }
+        })
+            .then((response) => {
+                // console.log(btnPage);
+                setData(response.data.result);
+                PageCount(response.data.page.COUNT);
+            })
+    }
+
+    // getPage([]);
 
     const renderData = dataFromServer.map((data, index) => {
         return (
@@ -23,11 +47,18 @@ function Notice() {
             </tr>
         );
     })
-    const renderButton = dataFromServer.map((data, index) => {
-        return (
-            <button>{index + 1}</button>
-        )
-    })
+
+    const renderButton = () => {
+        const btn = [];
+        for (let i = 1; i <= Math.ceil(pageCount / 5); i++) {
+            btn.push(<button onClick={() => {
+                setBtnPage(i);
+                getPage();
+            }}>{i}</button>)
+        }
+        return btn;
+    }
+
     return (
         <div className='notice_main'>
             <div>
@@ -48,7 +79,7 @@ function Notice() {
                 </tbody>
             </table>
             <div className='pageBtn'>
-                {renderButton}
+                {renderButton()}
             </div>
         </div>
     );
