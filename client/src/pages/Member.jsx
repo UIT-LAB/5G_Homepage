@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import Carousel from "react-elastic-carousel"
 import Card from '../component/Card'
 import "../style/Member.css"
@@ -10,17 +11,24 @@ function Member() {
         {width: 768, itemsToShow: 4},
         {width: 1200, itemsToShow: 6},
     ];
+    let memberData = []
+    const [state, setState] = useState([])
+    useEffect(async () => {
+        await axios.get('http://localhost:9928/member/member')   
+            .then((res) => {
+               console.log(res)
+               memberData = res
+                setState(res.data.result);
+            })
+    }, []);
+
+    const photos = memberData.map(value => [value['m_photo']]);
+    console.log(photos)
     return (
         <div  className='member'>
             <Carousel breakPoints ={contentNumber}>
-                <Card number= "1"/>
-                <Card number= "2"/>
-                <Card number= "3"/>
-                <Card number= "4"/>
-                <Card number= "5"/>
-                <Card number= "6"/>
-                <Card number= "7"/>
-                <Card number= "8"/>
+                <Card photo = {photos}/>
+              
             </Carousel>
             <div className='member_item'>
             <div className='member_img'>

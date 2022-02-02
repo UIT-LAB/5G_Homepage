@@ -3,7 +3,6 @@ import '../style/Notice.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { data } from 'jquery';
 
 function Notice() {
     const [dataFromServer, setData] = useState([]);
@@ -39,7 +38,6 @@ function Notice() {
     // getPage([]);
 
     const renderData = dataFromServer.map((data, index) => {
-       
         return (
             <tr className='line'>
                 <td className='category'>공지</td>
@@ -49,7 +47,7 @@ function Notice() {
             </tr>
         );
     })
-    console.log(data.n_writer)
+
     const renderButton = () => {
         const btn = [];
         for (let i = 1; i <= Math.ceil(pageCount / 5); i++) {

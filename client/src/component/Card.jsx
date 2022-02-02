@@ -1,8 +1,8 @@
 import React from "react"
-const Card = ({number}) => {
+const Card = ({photo}) => {
     return (
         <div className="card">
-            {number}
+           {photo}
         </div>
     )
 };
