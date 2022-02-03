@@ -12,23 +12,15 @@ function Notice() {
         setPageCount(page);
     }
 
-    // useEffect(async () => {
-    //     await axios.get('http://localhost:9928/board/notice?page=1')
-    //         .then((response) => {
-    //             setData(response.data.result);
-    //             PageCount(response.data.page.COUNT);
-    //         })
-    // }, []);
-
-    async function getPage() {
         await axios.get('http://localhost:9928/board/notice', {
-            params: { page: btnPage }
+            params : {page: btnPage}
         })
             .then((response) => {
                 setData(response.data.result);
                 PageCount(response.data.page.COUNT);
             })
-    }
+    }, [btnPage]);
+
 
     const renderData = dataFromServer.map((data, index) => {
         return (
@@ -43,11 +35,9 @@ function Notice() {
 
     const renderButton = () => {
         const btn = [];
-        for (let i = 1; i <= Math.ceil(pageCount / 5); i++) {
+        for (let i = 1; i <= Math.ceil(pageCount / 10); i++) {
             btn.push(<button onClick={() => {
-                console.log(i);
                 setBtnPage(i);
-                getPage();
             }}>{i}</button>)
         }
         return btn;
