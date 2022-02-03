@@ -24,9 +24,7 @@ function App() {
           <Route path='/notice' element={<Notice />} />
         </Routes>
       </BrowserRouter>
-      <div className="footer_wrap">
-        <Footer />
-      </div>
+    
     </div>
   )
 }

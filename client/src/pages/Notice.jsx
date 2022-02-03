@@ -12,13 +12,13 @@ function Notice() {
         setPageCount(page);
     }
 
-    useEffect(async () => {
-        await axios.get('http://localhost:9928/board/notice?page=1')
-            .then((response) => {
-                setData(response.data.result);
-                PageCount(response.data.page.COUNT);
-            })
-    }, []);
+    // useEffect(async () => {
+    //     await axios.get('http://localhost:9928/board/notice?page=1')
+    //         .then((response) => {
+    //             setData(response.data.result);
+    //             PageCount(response.data.page.COUNT);
+    //         })
+    // }, []);
 
     async function getPage() {
         await axios.get('http://localhost:9928/board/notice', {
