@@ -5,7 +5,7 @@ let jwtname, jwtid;
 
 const paging = (currentPage) => {
     const default_start_page = 1;
-    const page_size = 5;
+    const page_size = 10;
     if (currentPage < 1 || !currentPage) currnetPage = default_start_page;
 
     let result = {
@@ -20,7 +20,7 @@ const paging = (currentPage) => {
 const notice = async (req, res) => {
     let search = req.query.search;
     let currentPage = req.query.page;
-    // let currentPage = req.params.num;
+
     console.log(currentPage);
     const query = await paging(currentPage);
     if (search === undefined) search = "";
@@ -32,7 +32,6 @@ const notice = async (req, res) => {
     }
     try {
         const db_data = await boardDAO.notice_page(parameters);
-        console.log(db_data);
         const db_data_length = await boardDAO.notice_page_count(parameters);
         res.send({result : db_data, page : db_data_length[0]});
     } catch (err) {
