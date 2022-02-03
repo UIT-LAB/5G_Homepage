@@ -12,8 +12,6 @@ function Notice() {
         setPageCount(page);
     }
 
-    useEffect(async () => {
-        console.log('asd'); 
         await axios.get('http://localhost:9928/board/notice', {
             params : {page: btnPage}
         })
