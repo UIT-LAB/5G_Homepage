@@ -2,23 +2,19 @@ import React from 'react';
 import '../style/Notice.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 function Notice() {
     const [dataFromServer, setData] = useState([]);
     const [btnPage, setBtnPage] = useState(1);
-    const [pageCount, setPageCount] = useState(2);
+    const [pageCount, setPageCount] = useState(1);
 
     const PageCount = (page) => {
         setPageCount(page);
     }
 
     useEffect(async () => {
-        await axios.get('http://localhost:9928/board/notice', {
-            params: { page: btnPage }
-        })
+        await axios.get('http://localhost:9928/board/notice?page=1')
             .then((response) => {
-                // console.log(btnPage);
                 setData(response.data.result);
                 PageCount(response.data.page.COUNT);
             })
@@ -29,13 +25,10 @@ function Notice() {
             params: { page: btnPage }
         })
             .then((response) => {
-                // console.log(btnPage);
                 setData(response.data.result);
                 PageCount(response.data.page.COUNT);
             })
     }
-
-    // getPage([]);
 
     const renderData = dataFromServer.map((data, index) => {
         return (
@@ -52,6 +45,7 @@ function Notice() {
         const btn = [];
         for (let i = 1; i <= Math.ceil(pageCount / 5); i++) {
             btn.push(<button onClick={() => {
+                console.log(i);
                 setBtnPage(i);
                 getPage();
             }}>{i}</button>)
@@ -77,6 +71,7 @@ function Notice() {
                     {renderData}
                     <br></br>
                 </tbody>
+                
             </table>
             <div className='pageBtn'>
                 {renderButton()}

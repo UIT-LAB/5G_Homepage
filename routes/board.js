@@ -4,7 +4,8 @@ const uploadWithOriginalFilename = require('../middleware/multer');
 const boardCtrl = require('../controller/boardCtrl');
 
 //------------------------------------notice
-router.get('/notice/:num', boardCtrl.notice);
+// router.get('/notice/:num', boardCtrl.notice);
+router.get('/notice', boardCtrl.notice);
 
 router.get('/notice/detail/:num', boardCtrl.noticeDetail);
 

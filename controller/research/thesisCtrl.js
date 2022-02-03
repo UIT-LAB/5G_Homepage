@@ -29,6 +29,7 @@ const thesis = async (req, res) => {
     try {
         const db_data_length = await researchDAO.thesis_page_count(parameters);
         const db_data = await researchDAO.thesis_page(parameters);
+        console.log(db_data.length);
         res.render('research/thesis', { result: db_data, t_num: req.params.num, max_value: parameters.limit, dayjs, name: jwtname, cookie: req.cookies.user, parameters, data_length: db_data_length[0].COUNT });
     } catch(err) {
         throw err;

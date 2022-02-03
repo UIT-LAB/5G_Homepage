@@ -1,9 +1,22 @@
 const db = require('../config/db');
 
 //------------------------------------notice
-const notice_page = () => {
+const notice_page_count = (parameters) => {
     return new Promise((resolve, reject) => {
-        db.query(`SELECT nid, n_title, n_writer_date, n_view, n_writer FROM Notice_Board ORDER BY n_writer_date DESC`, (err, db_data) => {
+        db.query(`SELECT COUNT(CASE WHEN (n_title LIKE ? || n_content LIKE ?) && shows = 1 THEN n_title END) AS COUNT FROM Notice_Board`, [`%${parameters.search}%`, `%${parameters.search}%`], (err, db_data) => {
+            if(err) {
+                reject(err);
+            } else {
+                resolve(db_data);
+            }
+        })
+    })
+}
+
+const notice_page = (parameters) => {
+    return new Promise((resolve, reject) => {
+        // db.query(`SELECT nid, n_title, n_writer_date, n_view, n_writer FROM Notice_Board ORDER BY n_writer_date DESC`, (err, db_data) => {
+        db.query(`SELECT nid, n_title, n_writer_date, n_view, n_writer FROM Notice_Board WHERE (n_title LIKE ? || n_content LIKE ?) && shows = '1' ORDER BY nid DESC LIMIT ?, ?`, [`%${parameters.search}%`, `%${parameters.search}%`, parameters.offset, parameters.limit], (err, db_data) => {
             if (err) {
                 reject(err);
             } else {
@@ -268,6 +281,7 @@ const delete_question = (parameters) => {
 }
 
 module.exports = {
+    notice_page_count,
     notice_page,
     notice_detail,
     notice_views,
