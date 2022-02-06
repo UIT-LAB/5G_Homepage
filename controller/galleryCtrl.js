@@ -102,7 +102,10 @@ const galleryPage = (req, res) => {
     let jwtname = req.body.jwtname;
     galleryDAO.readGalleryPage()
         .then((db_data) => {
-            res.render('gallery/gallery', { result: db_data, g_num: req.params.num, max_value: 9, dayjs, name: jwtname, cookie: req.cookies.user });
+            res.json({
+                db_data
+            })
+            // res.render('gallery/gallery', { result: db_data, g_num: req.params.num, max_value: 9, dayjs, name: jwtname, cookie: req.cookies.user });
         })
         .catch((err) => {
             throw err;
