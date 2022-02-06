@@ -3,7 +3,7 @@ const fs = require('fs');
 const boardDAO = require('../model/boardDAO');
 let jwtname, jwtid;
 
-const paging = (currentPage) => {
+const paging = (currentPage) =>     {
     const default_start_page = 1;
     const page_size = 10;
     if (currentPage < 1 || !currentPage) currnetPage = default_start_page;
@@ -20,8 +20,7 @@ const paging = (currentPage) => {
 const notice = async (req, res) => {
     let search = req.query.search;
     let currentPage = req.query.page;
-
-    console.log(currentPage);
+    console.log(req.cookies)
     const query = await paging(currentPage);
     if (search === undefined) search = "";
 

@@ -2,6 +2,11 @@ import React from 'react';
 import '../style/Notice.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
+
+axios.defaults.withCredentials = true;
+
+const cookies = new Cookies();
 
 function Notice() {
     const [dataFromServer, setData] = useState([]);
@@ -13,13 +18,13 @@ function Notice() {
     }
 
     useEffect(async () => {
-        console.log('asd'); 
         await axios.get('http://localhost:9928/board/notice', {
-            params : {page: btnPage}
+            params: { page: btnPage }
         })
             .then((response) => {
                 setData(response.data.result);
                 PageCount(response.data.page.COUNT);
+                console.log(cookies.get('user'))
             })
     }, [btnPage]);
 
@@ -63,7 +68,7 @@ function Notice() {
                     {renderData}
                     <br></br>
                 </tbody>
-                
+
             </table>
             <div className='pageBtn'>
                 {renderButton()}

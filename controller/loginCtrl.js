@@ -9,29 +9,25 @@ const getLoginPage = (req, res) => {
 }
 
 const postLoginPage = async (req, res) => {
-    console.log(req.body.inputid);
-    console.log(req.body.inputpw);
     let parameters = {
         u_id: req.body.inputid,
         u_pw: crypto.createHash('sha512').update(req.body.inputpw).digest('base64')
     }
-
     let accessToken;
     let refreshToken;
+    console.log(parameters);
 
     try {
         const db_data = await loginDAO.login(parameters)
-        if(db_data[0] !== undefined) {
+        if (db_data[0] !== undefined) {
             const user = {
-                id: db_data[0].u_id ,
+                id: db_data[0].u_id,
                 name: db_data[0].u_name,
                 isAd: db_data[0].is_admin
             }
 
             accessToken = jwt.sign({ user: user }, key, { expiresIn: '1h' });
             refreshToken = jwt.sign({ user: user }, key, { expiresIn: '1d' });
-            res.cookie("user", accessToken, {expires: new Date(Date.now() + 3600000), httpOnly: true});
-            res.cookie("refreshToken", refreshToken, {expires: new Date(Date.now() + (3600000 * 24)), httpOnly: true});
 
             const parameters = {
                 refreshToken,
@@ -40,14 +36,21 @@ const postLoginPage = async (req, res) => {
 
             try {
                 await loginDAO.insertToken(parameters);
-                res.redirect('/');
-            } catch(err) {
+                res.status(202).cookie("user", accessToken, {
+                    expires: new Date(Date.now() + 3600000),
+                    // httpOnly: true
+                });
+                res.status(200).cookie("refreshToken", refreshToken, {
+                    expires: new Date(Date.now() + (3600000 * 24)),
+                    // httpOnly: true
+                }).send("login");
+            } catch (err) {
                 console.log(err);
             }
         } else {
             res.send('<script>alert(`정보가 일치하지 않습니다.`); location.href=`/login`</script>')
         }
-    } catch(err) {
+    } catch (err) {
         console.log(err);
     }
 }
