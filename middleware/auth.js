@@ -47,7 +47,7 @@ const auth = async (req, res, next) => {
             }
         }
     } else {
-        console.log('로그인 안되어있음')
+        console.log('로그인 안되어있음');
         next();
     }
 }

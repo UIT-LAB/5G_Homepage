@@ -5,15 +5,43 @@ import { useState, useEffect } from 'react';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
+
+axios.defaults.withCredentials = true;
 
 function Nav() {
     const [open, setOpen] = useState(false);
+    const [id, setId] = useState("");
+    const [pw, setPw] = useState("");
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    useEffect(() => {
+    const postData = async () => {
+        axios.post('http://localhost:9928/login', {
+            inputid: id,
+            inputpw: pw
+        })
+            .then((response) => {
+                console.log(response.data);
+                if(response.data == 'login')
+                    handleClose();
+                else
+                    alert('아이디 혹은 비밀번호 오류입니다.');
+            })
+    }
 
-    }, [])
+    const onIdHandler = (event) => {
+        setId(event.currentTarget.value);
+    }
+
+    const onPwHandler = (event) => {
+        setPw(event.currentTarget.value);
+    }
+
+    const onSubmitHandler = (event) => {
+        event.preventDefault();
+        postData();
+    }
 
     return (
         <div>
@@ -40,7 +68,7 @@ function Nav() {
                             <Box className='modal'>
                                 <div className='modal_header'>
                                     <div className='small_logo'>
-                                        <i><img  src='../image/small_logo.png'></img></i>
+                                        <i><img src='../image/small_logo.png'></img></i>
                                     </div>
                                     <ul className='modal_title'>
                                         <li>
@@ -50,7 +78,7 @@ function Nav() {
                                     <ul className='modal_close'>
                                         <li>
                                             <button
-                                            className='close_btn'
+                                                className='close_btn'
                                                 onClick={handleClose}
                                             >x
                                             </button>
@@ -58,9 +86,9 @@ function Nav() {
                                     </ul>
                                 </div>
                                 <Typography className='modal_content' sx={{ mt: 2 }}>
-                                    <form>    
-                                        <p><input className='login_input'type='text' name='username' placeholder='username' /></p>  
-                                        <p><input className='login_input'type='password' name='password' placeholder='passowrd' /></p>
+                                    <form onSubmit={onSubmitHandler}>
+                                        <p><input className='login_input' type='text' name='username' placeholder='username' onChange={onIdHandler} /></p>
+                                        <p><input className='login_input' type='password' name='password' placeholder='passowrd' onChange={onPwHandler} /></p>
                                         <p><input className='login_clear' type="submit" value="Login" /></p>
                                     </form>
                                 </Typography>

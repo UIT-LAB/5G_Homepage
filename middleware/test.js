@@ -1,14 +1,6 @@
 const url = require('url');
 const {get_writter} = require('../model/researchDAO');
 
-// const test = (req, res, next) => {
-//     const url = req.url;
-//     const slice = url.split('/');
-//     console.log(slice);
-//     console.log(req.url);
-//     next();
-// }
-
 const test = async (req, res, next) => {
     if(req.body.jwtid == undefined || req.body.jwtname == undefined) {
         res.send('<script>alert(`로그인이 되어있지 않습니다.`); location.href = `/login`</script>');
