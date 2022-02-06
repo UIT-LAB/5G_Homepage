@@ -54,6 +54,7 @@ const readGalleryPage = () => {
             if (err) {
                 reject(err);
             } else {
+                console.log(db_data)
                 resolve(db_data);
             }
         })
