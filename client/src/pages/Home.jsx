@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from '../component/Image'
+import Notice from './Notice'
 import '../style/Home.css'
 import * as GiIcons from "react-icons/gi"
 import * as HiIcons from "react-icons/hi"
@@ -13,7 +14,7 @@ function Home() {
                 </div>
                 <div className='home_middle'>
                     <div className='small_notice'>
-
+                        <Notice/>
                     </div>
                     <div className='icon_box'>
                          <p className='icon_item'>
