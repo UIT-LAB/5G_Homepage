@@ -8,6 +8,7 @@ import Research from './pages/Research';
 import Notice from './pages/Notice';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './component/Footer';
+import GalleryDetail from './pages/GalleryDetail';
 import './style/App.css'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/gallery' element={<Gallery />} />
+          <Route path='/gallery/detail/:num' element={<GalleryDetail />} />
           <Route path='/member' element={<Member />} />
           <Route path='/research' element={<Research />} />
           <Route path='/notice' element={<Notice />} />
