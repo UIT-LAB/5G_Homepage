@@ -3,6 +3,8 @@ import axios from 'axios'
 import Carousel from "react-elastic-carousel"
 import Card from '../component/Card'
 import "../style/Member.css"
+import { data } from 'jquery'
+import CardItem from '../component/CardItem'
 
 function Member() {
     const contentNumber = [
@@ -11,8 +13,9 @@ function Member() {
         { width: 768, itemsToShow: 4 },
         { width: 1200, itemsToShow: 6 },
     ];
-    
+
     const [state, setState] = useState([])
+    const [userdata, setuserData] = useState([])
     useEffect(async () => {
         await axios.get('http://localhost:9928/member/member')
             .then((res) => {
@@ -23,37 +26,28 @@ function Member() {
     }, []);
 
     const photos = state.map(value => [value['m_photo']]);
-    const rows = state.map((data, index) => {
-        return (
-           <ul>
-               <li>{data.m_division}</li>
-               <li>{data.m_partdivision}</li>
-               <li>{data.m_gender}</li>
-               <li>{data.m_univ}</li>
-               <li>{data.m_group}</li>
-               <li>{data.name}</li>
-           </ul>
-        );
-    })
+
+    const onClickData = (e) => {
+        const dataFilter = state.filter((value) => value.m_photo == e.target.name)
+        setuserData(dataFilter[0])
+    }
     return (
         <div>
             <div className='member_header'>
-            <h1>멤버 소개</h1>
+                <h1>멤버 소개</h1>
             </div>
-        <div className='member'>
-            <Carousel breakPoints={contentNumber}>
-                {photos.map((value)=>
-                <Card photo={value}/>)}
-            </Carousel>
-            <div className='member_item'>
-                <div className='member_img'>
-             
-                </div>
-                <div className='member_detail'>
-                    {rows}
+            <div className='member'>
+                <Carousel breakPoints={contentNumber}>
+                    {photos.map((value) =>
+                        <Card onClick={onClickData} photo={value} />)}
+                </Carousel>
+                <div>
+                    {userdata ?
+                        <CardItem
+                            data={userdata}
+                        /> : <>기다려</>}
                 </div>
             </div>
-        </div>
         </div>
     )
 }
