@@ -6,7 +6,7 @@ const galleryCtrl = require('../controller/galleryCtrl');
 router.get('/write', galleryCtrl.getWrite);
 router.post('/insert_write', uploadWithOriginalFilename.uploadGallery.array('attachments'), galleryCtrl.postWrite);
 
-router.get('/update/:num', galleryCtrl.getUpdate);
+router.get('/update', galleryCtrl.getUpdate);
 router.post('/update_data', uploadWithOriginalFilename.uploadGallery.array('attachments'), galleryCtrl.postUpdate);
 
 router.post('/delete', galleryCtrl.deleteGallery);

@@ -3,6 +3,7 @@
     margin-right:15%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2%;
 }
 
 .item:nth-child(1) {
@@ -22,7 +23,7 @@ ul {
     list-style: none;
 }
 
-.card_media{
+img{
     height: 250px;
     width: 100%;
     border-radius: 3%;

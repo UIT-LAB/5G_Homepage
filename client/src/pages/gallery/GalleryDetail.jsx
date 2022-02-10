@@ -1,9 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import TestCard from '../component/TestCard';
-import '../style/Detail.css'
+import '../../style/Detail.css';
 
 function GalleryDetail(){
     let params = useParams();
@@ -27,16 +26,25 @@ function GalleryDetail(){
     console.log(image.map((value) => value));
 
     return (
+    <div>
         <div className='container'>
             <div className='item'>
                 <h2 className='Research_Header'>{title}</h2>
                     <p>작성 번호 : {gid}</p>
                     <p>작성 날짜 : {date}</p>
             </div>
-        {image.map((value) => 
-            <img src={`/image/gallery/${value}`} alt=''/>
-        )};    
+            {image.map((value) => 
+                <div className='image-box'>
+                    <img src={`/image/gallery/${value}`} alt=''/>
+                </div>
+            )};    
         </div>
+        <Link to={`/gallery/update/${gid}`}><button>수정</button></Link>
+        {/* <form action="/gallery/delete"method="POST" name="form" class="d-inline">
+            <button type="submit">삭제</button>
+            <input type="hidden" name="gidx" value={gid}/>                          
+        </form> */}
+    </div>
     )
 }
 

@@ -1,11 +1,10 @@
 import Card from '@mui/material/Card';
 import React from 'react'
 import CardContent from '@mui/material/CardContent';
+import '../../style/Gallery.css';
 import Typography from '@mui/material/Typography';
-import '../style/Gallery.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import TestCard from '../component/TestCard';
 import { Link } from 'react-router-dom'
 
 function Gallery() {
@@ -27,6 +26,7 @@ function Gallery() {
     }
 
     return (
+    <div>
         <div className='container'>
             <div className='item'>
                 <h1 className='Research_Header'>Gallery</h1>
@@ -40,7 +40,7 @@ function Gallery() {
                                 {value['g_title']}
                             </Typography>
                             <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                                    <TestCard photo={images[index]}/>
+                                    <img src={`/image/gallery/${images[index]}`}/>
                             </Typography>
                             <Typography variant="body2">
                                 {value['g_write_date']}
@@ -51,6 +51,8 @@ function Gallery() {
                 </Link>
             )}
         </div>
+        <button>작성</button>
+    </div>
     )
 }
 
