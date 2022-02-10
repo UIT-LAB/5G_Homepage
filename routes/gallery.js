@@ -11,8 +11,8 @@ router.post('/update_data', uploadWithOriginalFilename.uploadGallery.array('atta
 
 router.post('/delete', galleryCtrl.deleteGallery);
 
-router.get('/:num', galleryCtrl.galleryPage);
+router.get('/', galleryCtrl.galleryPage);
 
-router.get('/detail/:num', galleryCtrl.galleryDetail);
+router.get('/detail', galleryCtrl.galleryDetail);
 
 module.exports = router;

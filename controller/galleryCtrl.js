@@ -112,17 +112,20 @@ const galleryPage = (req, res) => {
         });
 }
 
-const galleryDetail = (req, res) => {
+const galleryDetail = async (req, res) => {
     let parameters = {
-        gid: req.params.num
+        gid : req.query.num
     }
 
     let jwtname = req.body.jwtname;
 
     galleryDAO.readGalleryDetail(parameters)
         .then((db_data) => {
+            res.json({
+                db_data
+            })
             console.log(db_data);
-            res.render('gallery/gallery_detail', { result: db_data, g_num: db_data.gid, max_value: 9, dayjs, name: jwtname, cookie: req.cookies.user })
+            // res.render('gallery/gallery_detail', { result: db_data, g_num: db_data.gid, max_value: 9, dayjs, name: jwtname, cookie: req.cookies.user })
         })
         .catch((err) => {
             throw err;
