@@ -13,42 +13,46 @@ const postLoginPage = async (req, res) => {
         u_id: req.body.inputid,
         u_pw: crypto.createHash('sha512').update(req.body.inputpw).digest('base64')
     }
+    console.log(parameters);
     let accessToken;
     let refreshToken;
-    console.log(parameters);
 
     try {
         const db_data = await loginDAO.login(parameters)
-        if (db_data[0] !== undefined) {
-            const user = {
-                id: db_data[0].u_id,
-                name: db_data[0].u_name,
-                isAd: db_data[0].is_admin
-            }
-
-            accessToken = jwt.sign({ user: user }, key, { expiresIn: '1h' });
-            refreshToken = jwt.sign({ user: user }, key, { expiresIn: '1d' });
-
-            const parameters = {
-                refreshToken,
-                u_id: db_data[0].u_id
-            }
-
-            try {
-                await loginDAO.insertToken(parameters);
-                res.status(202).cookie("user", accessToken, {
-                    expires: new Date(Date.now() + 3600000),
-                    // httpOnly: true
-                });
-                res.status(200).cookie("refreshToken", refreshToken, {
-                    expires: new Date(Date.now() + (3600000 * 24)),
-                    // httpOnly: true
-                }).send("login");
-            } catch (err) {
-                console.log(err);
-            }
+        if(db_data[0].is_admin == 0) {
+            res.send('<script>alert(`관리자의 승인을 기다리는 중입니다.`); location.href=`/login`</script>')
         } else {
-            res.send('<script>alert(`정보가 일치하지 않습니다.`); location.href=`/login`</script>')
+            if (db_data[0] !== undefined) {
+                const user = {
+                    id: db_data[0].u_id,
+                    name: db_data[0].u_name,
+                    isAd: db_data[0].is_admin
+                }
+    
+                accessToken = jwt.sign({ user: user }, key, { expiresIn: '1h' });
+                refreshToken = jwt.sign({ user: user }, key, { expiresIn: '1d' });
+    
+                const parameters = {
+                    refreshToken,
+                    u_id: db_data[0].u_id
+                }
+    
+                try {
+                    await loginDAO.insertToken(parameters);
+                    res.status(202).cookie("user", accessToken, {
+                        expires: new Date(Date.now() + 3600000),
+                        // httpOnly: true
+                    });
+                    res.status(200).cookie("refreshToken", refreshToken, {
+                        expires: new Date(Date.now() + (3600000 * 24)),
+                        // httpOnly: true
+                    }).send({state: "login", name: user.name});
+                } catch (err) {
+                    console.log(err);
+                }
+            } else {
+                res.send('<script>alert(`정보가 일치하지 않습니다.`); location.href=`/login`</script>')
+            }
         }
     } catch (err) {
         console.log(err);
@@ -178,8 +182,8 @@ const getIdCheck = (req, res) => {
 }
 
 const postIdCheck = (req, res) => {
-    var chk_id = req.body.input_id;
-    var parameters = {
+    let chk_id = req.body.input_id;
+    let parameters = {
         chk_id
     };
     loginDAO.isIdDup(parameters)
@@ -195,6 +199,15 @@ const postIdCheck = (req, res) => {
         })
 }
 
+const signOut = async (req, res) => {
+    let parameters = {
+        u_id : req.body.jwtid
+    }
+    console.log(parameters);
+    await loginDAO.signOut(parameters);
+    res.redirect('/login/logout')
+}
+
 module.exports = {
     getLoginPage,
     postLoginPage,
@@ -207,5 +220,6 @@ module.exports = {
     getSignUp,
     postSignUp,
     getIdCheck,
-    postIdCheck
+    postIdCheck,
+    signOut
 }

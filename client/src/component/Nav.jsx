@@ -6,6 +6,10 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
+// import storage from 'lib/storage'
+
+const cookies = new Cookies();
 
 axios.defaults.withCredentials = true;
 
@@ -13,8 +17,26 @@ function Nav() {
     const [open, setOpen] = useState(false);
     const [id, setId] = useState("");
     const [pw, setPw] = useState("");
+    const [state, setState] = useState('Login');
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    useEffect(async () => {
+        if (cookies.get('user') || cookies.get('refreshToken'))
+            setState(localStorage.getItem('user'));
+    }, [])
+
+    const loginButton = () => {
+        let btn = [];
+        if(cookies.get('user') || cookies.get('refreshToken')) {
+            console.log('asd' + cookies.get('user') || cookies.get('refreshToken'));
+            btn.push(<p>{state}</p>)
+        } else {
+            console.log('dsa' + console.log(cookies.get('user') || cookies.get('refreshToken')));
+            btn.push(<button onClick={handleOpen}>{state}</button>)
+        }
+        return btn;
+    }
 
     const postData = async () => {
         axios.post('http://localhost:9928/login', {
@@ -22,11 +44,14 @@ function Nav() {
             inputpw: pw
         })
             .then((response) => {
-                console.log(response.data);
-                if(response.data == 'login')
+                if (response.data.state == 'login' && (cookies.get('user') || cookies.get('refreshToken'))) {
+                    localStorage.setItem('user', JSON.stringify(response.data.name));
+                    setState(localStorage.getItem('user'));
                     handleClose();
-                else
+                }
+                else {
                     alert('아이디 혹은 비밀번호 오류입니다.');
+                }
             })
     }
 
@@ -59,7 +84,8 @@ function Nav() {
                 </ul>
                 <ul className='nav_login'>
                     <li>
-                        <button onClick={handleOpen}>Login</button>
+                        {loginButton()}
+                        {/* <button>asd</button> */}
                         <Modal
                             className='modal_wrap'
                             open={open}

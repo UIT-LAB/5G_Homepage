@@ -3,7 +3,7 @@ var router = express.Router();
 const introCtrl = require('../controller/introCtrl');
 
 
-router.get('/', introCtrl.introRoot);
+// router.get('/', introCtrl.introRoot);
 
 router.get('/business', introCtrl.getBusiness);
 

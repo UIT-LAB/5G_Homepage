@@ -1,7 +1,7 @@
-const introRoot = (req, res) => {
-    let jwtname = req.body.jwtname;
-    res.render('intro/intro', { name: jwtname, cookie: req.cookies.user });
-}
+// const introRoot = (req, res) => {
+//     let jwtname = req.body.jwtname;
+//     res.render('intro/intro', { name: jwtname, cookie: req.cookies.user });
+// }
 
 const getBusiness = (req, res) => {
     let jwtname = req.body.jwtname;
@@ -14,7 +14,7 @@ const getOrganization = (req, res) => {
 }
 
 module.exports = {
-    introRoot,
+    // introRoot,
     getBusiness,
     getOrganization
 }
