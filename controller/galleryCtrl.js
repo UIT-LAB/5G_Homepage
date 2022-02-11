@@ -39,16 +39,19 @@ const postWrite = (req, res) => {
 
 const getUpdate = (req, res) => {
     let parameters = {
-        num: req.params.num
+        num: req.query.num
     }
     let jwtname = req.body.jwtname;
 
     galleryDAO.updatePage(parameters)
         .then((db_data) => {
             if (db_data[0] !== undefined) {
-                res.render('gallery/gallery_update', { result: db_data, g_num: parameters.num, dayjs, name: jwtname, cookie: req.cookies.user });
+                res.json({
+                    db_data
+                })
+                // res.render('gallery/gallery_update', { result: db_data, g_num: parameters.num, dayjs, name: jwtname, cookie: req.cookies.user });
             } else {
-                res.render('error');
+                res.send('error');
             }
         })
         .catch((err) => {
