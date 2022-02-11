@@ -2,11 +2,6 @@ import React from 'react';
 import '../style/Notice.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Cookies from 'universal-cookie';
-
-axios.defaults.withCredentials = true;
-
-const cookies = new Cookies();
 
 function Notice() {
     const [dataFromServer, setData] = useState([]);
@@ -24,7 +19,6 @@ function Notice() {
             .then((response) => {
                 setData(response.data.result);
                 PageCount(response.data.page.COUNT);
-                console.log(cookies.get('user'))
             })
     }, [btnPage]);
 

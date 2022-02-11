@@ -10,7 +10,7 @@ const paging = (currentPage) => {
         offset : (currentPage - 1) * page_size,
         limit : Number(page_size)
     }
-
+    console.log(result);
     return result;
 }
 

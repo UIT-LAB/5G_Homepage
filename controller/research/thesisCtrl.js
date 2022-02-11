@@ -59,6 +59,7 @@ const thesisWrite = async (req, res) => {
     const parameters = req.body;
     delete parameters.jwtname;
     delete parameters.jwtid;
+    delete parameters.isAd;
 
     try {
         await researchDAO.thesis_write(parameters);
@@ -77,6 +78,7 @@ const getThesisUpdate = async (req, res) => {
     try {
         const db_data = await researchDAO.thesis_detail(parameters);
         res.render('research/thesis_update', { result: db_data, name: jwtname, cookie: req.cookies.user, num: parameters.tid});
+        console.log(db_data);
     } catch(err) {
         throw err;
     }
@@ -86,6 +88,7 @@ const updateThesis = async (req, res) => {
     const parameters = req.body;
     delete parameters.jwtname;
     delete parameters.jwtid;
+    delete parameters.isAd;
     parameters.tid = req.params.num;
     const jwtname = req.body.jwtname;
     try {

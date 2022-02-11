@@ -82,7 +82,7 @@ const getTechnologyUpdate = async (req, res) => {
     }
 }
 
-const updatetechnology = async (req, res) => {
+const updateTechnology = async (req, res) => {
     const parameters = req.body;
     delete parameters.jwtname;
     delete parameters.jwtid;
@@ -98,7 +98,7 @@ const updatetechnology = async (req, res) => {
     }
 }
 
-const deletetechnology = async (req, res) => {
+const deleteTechnology = async (req, res) => {
     const parameters = {
         tid : req.params.num
     }
@@ -117,6 +117,6 @@ module.exports = {
     getTechnologyWrite,
     technologyWrite,
     getTechnologyUpdate,
-    updatetechnology,
-    deletetechnology
+    updateTechnology,
+    deleteTechnology
 }

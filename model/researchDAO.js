@@ -51,6 +51,7 @@ const thesis_detail = (parameters) => {
 }
 
 const thesis_write = (parameters) => {
+    console.log(parameters);
     return new Promise((resolve, reject) => {
         db.query(`INSERT INTO thesis SET ?`, parameters, (err, db_data) => {
             if(err) {

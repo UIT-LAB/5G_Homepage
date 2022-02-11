@@ -10,7 +10,6 @@ router.get('/logout', loginCtrl.logout);
 
 //----------- findID
 router.get('/findId', loginCtrl.getFindId);
-
 router.post('/findId', loginCtrl.postFindId);
 
 //----------- findPW
@@ -26,4 +25,6 @@ router.post('/signup_data', loginCtrl.postSignUp);
 router.get('/idcheck', loginCtrl.getIdCheck);
 router.post('/idcheck', loginCtrl.postIdCheck);
 
+//----------- signOut
+router.post('/signout', loginCtrl.signOut);
 module.exports = router;

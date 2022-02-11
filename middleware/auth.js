@@ -41,8 +41,10 @@ const auth = async (req, res, next) => {
                 console.log(' // accessToken과 refreshToken 모두가 유효한 경우')
                 let jwtname = accessToken.user.name;
                 let jwtid = accessToken.user.id;
+                let isAd = accessToken.user.isAd;
                 req.body.jwtname = jwtname;
                 req.body.jwtid = jwtid;
+                req.body.isAd = isAd
                 next();
             }
         }

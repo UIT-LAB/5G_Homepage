@@ -84,6 +84,18 @@ const isIdDup = (parameters) => {
     })
 }
 
+const signOut = (parameters) => {
+    return new Promise((resolve, reject) => {
+        db.query(`DELETE FROM UserInfo WHERE u_id = ?`, parameters.u_id, (err, db_data) => {
+            if(err) {
+                reject(err);
+            } else {
+                resolve(db_data);
+            }
+        })
+    })
+}
+
 module.exports = {
     login,
     insertToken,
@@ -91,5 +103,6 @@ module.exports = {
     findPw,
     pwCheck,
     signUp,
-    isIdDup
+    isIdDup,
+    signOut
 }
