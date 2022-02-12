@@ -81,3 +81,7 @@
     background:rgb(230, 230, 230);
     border-bottom: 1px solid black;
 }
+.table_row{
+    display: table-row;
+    
+}
