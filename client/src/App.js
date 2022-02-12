@@ -2,15 +2,22 @@ import React from 'react'
 import Home from './pages/Home'
 import Nav from './component/Nav'
 import About from './pages/About';
-import Gallery from './pages/Gallery';
+import Gallery from './pages/gallery/Gallery';
 import Member from './pages/Member';
 import Research from './pages/Research';
 import Notice from './pages/Notice';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './component/Footer';
+<<<<<<< HEAD
 import GalleryDetail from './pages/GalleryDetail';
 import NoticeDetail from './pages/NoticeDetail';
+=======
+import GalleryDetail from './pages/gallery/GalleryDetail';
+>>>>>>> a217d5be47203835d6ab81532d64dc1ee106a6d3
 import './style/App.css'
+import Update from './component/Update';
+import Delete from './component/Delete';
+
 
 function App() {
   return (
@@ -22,6 +29,8 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/gallery' element={<Gallery />} />
           <Route path='/gallery/detail/:num' element={<GalleryDetail />} />
+          <Route path='/gallery/update/:num' element={<Update />} />
+          {/* <Route path='/gallery/delete' element={<Delete />} /> */}
           <Route path='/member' element={<Member />} />
           <Route path='/research' element={<Research />} />
           <Route path='/notice' element={<Notice />} />
