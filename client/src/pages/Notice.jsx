@@ -2,6 +2,7 @@ import React from 'react';
 import '../style/Notice.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Notice() {
     const [dataFromServer, setData] = useState([]);
@@ -34,6 +35,19 @@ function Notice() {
         );
     })
 
+    const renderDataLink = dataFromServer.map((data) => {
+        return (
+            <Link className='link' to={`/notice/detail/${data.nid}`}>
+                <tr className='line'>
+                    <td className='category'>공지</td>
+                    <td className='title'>{data.n_title}</td>
+                    <td className='author'>{data.n_writer}</td>
+                    <td className='createAt'>{data.n_writer_date}</td>
+                </tr>
+            </Link>
+        )
+    })
+
     const renderButton = () => {
         const btn = [];
         for (let i = 1; i <= Math.ceil(pageCount / 10); i++) {
@@ -59,10 +73,10 @@ function Notice() {
                     </tr>
                 </thead>
                 <tbody className='notice_body'>
-                    {renderData}
+                    {renderDataLink}
+                    {/* {renderData} */}
                     <br></br>
                 </tbody>
-
             </table>
             <div className='pageBtn'>
                 {renderButton()}

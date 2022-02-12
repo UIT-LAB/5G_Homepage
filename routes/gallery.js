@@ -7,7 +7,7 @@ const {notice} = require('../middleware/test');
 router.get('/write', notice, galleryCtrl.getWrite);
 router.post('/insert_write', notice, uploadWithOriginalFilename.uploadGallery.array('attachments'), galleryCtrl.postWrite);
 
-router.get('/update/:num', notice, galleryCtrl.getUpdate);
+router.get('/update', notice, galleryCtrl.getUpdate);
 router.post('/update_data', notice, uploadWithOriginalFilename.uploadGallery.array('attachments'), galleryCtrl.postUpdate);
 
 router.post('/delete', notice, galleryCtrl.deleteGallery);

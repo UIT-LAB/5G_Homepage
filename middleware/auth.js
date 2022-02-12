@@ -8,7 +8,7 @@ const auth = async (req, res, next) => {
         const accessToken = await verifyToken(req.cookies.user);
         const refreshToken = await verifyToken(req.cookies.refreshToken);
 
-        if (accessToken === null) {
+        if (accessToken === undefined || accessToken === null) {
             if (refreshToken === undefined) { // accessToken과 refreshToken 모두 만료된 경우
                 res.clearCookie('user');
                 res.clearCookie('refreshToken');

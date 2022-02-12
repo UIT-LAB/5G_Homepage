@@ -25,7 +25,7 @@
 }
 
 .notice_header th:nth-child(1) {
-    width: 10%;
+    width:10%;
 }
 
 .notice_header th:nth-child(2) {
@@ -42,16 +42,21 @@
     width: 20%;
 }
 
-.notice_body td{
+/* .notice_body td {
     font-size: 17px;
-    padding-top: 5px;
+    padding-top: 10px;
     text-align: center;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     border-bottom: 1px solid rgb(197, 192, 192);
-}
+} */
 
 .notice_body td {
+    font-size: 17px;
+    padding-top: 10px;
+    text-align: center;
+    padding-bottom: 10px;
     color: rgb(34, 34, 34);
+    border-bottom: 1px solid rgb(197, 192, 192);
 }
 
 .notice_body td:nth-child(2) {

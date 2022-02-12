@@ -9,6 +9,7 @@ import Notice from './pages/Notice';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './component/Footer';
 import GalleryDetail from './pages/GalleryDetail';
+import NoticeDetail from './pages/NoticeDetail';
 import './style/App.css'
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path='/member' element={<Member />} />
           <Route path='/research' element={<Research />} />
           <Route path='/notice' element={<Notice />} />
+          <Route path='/notice/detail/:num' element={<NoticeDetail />} />
         </Routes>
       </BrowserRouter>
     
