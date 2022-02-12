@@ -37,14 +37,12 @@ function Notice() {
 
     const renderDataLink = dataFromServer.map((data) => {
         return (
-            <Link className='link' to={`/notice/detail/${data.nid}`}>
                 <tr className='line'>
                     <td className='category'>공지</td>
-                    <td className='title'>{data.n_title}</td>
+                    <td className='title'>   <Link to={`/notice/detail/${data.nid}`}>{data.n_title} </Link></td>  
                     <td className='author'>{data.n_writer}</td>
                     <td className='createAt'>{data.n_writer_date}</td>
                 </tr>
-            </Link>
         )
     })
 
