@@ -25,6 +25,12 @@ function GalleryDetail(){
 
     console.log(image);
 
+    // const remove = useEffect(async (event) => {
+    //     await axios.post('http://localhost:9928/gallery/delete'), {
+    //         gidx : gid 
+    //     },        
+    // });
+
     return (
         <div className='container'>
             <div className='item'>
@@ -38,10 +44,7 @@ function GalleryDetail(){
                 </div>
             )};    
         <Link to={`/gallery/update/${gid}`}><button>수정</button></Link>
-        {/* <form action="/gallery/delete"method="POST" name="form" class="d-inline">
-            <button type="submit">삭제</button>
-            <input type="hidden" name="gidx" value={gid}/>                          
-        </form> */}
+            <button type="submit" >삭제</button>
         </div>
     )
 }

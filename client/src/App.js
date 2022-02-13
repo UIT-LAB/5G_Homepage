@@ -12,7 +12,6 @@ import GalleryDetail from './pages/gallery/GalleryDetail';
 import NoticeDetail from './pages/NoticeDetail';
 import './style/App.css'
 import Update from './component/Update';
-import Delete from './component/Delete';
 
 
 function App() {
@@ -26,7 +25,6 @@ function App() {
           <Route path='/gallery' element={<Gallery />} />
           <Route path='/gallery/detail/:num' element={<GalleryDetail />} />
           <Route path='/gallery/update/:num' element={<Update />} />
-          {/* <Route path='/gallery/delete' element={<Delete />} /> */}
           <Route path='/member' element={<Member />} />
           <Route path='/research' element={<Research />} />
           <Route path='/notice' element={<Notice />} />

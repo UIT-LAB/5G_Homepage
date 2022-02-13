@@ -8,9 +8,9 @@ router.get('/write', notice, galleryCtrl.getWrite);
 router.post('/insert_write', notice, uploadWithOriginalFilename.uploadGallery.array('attachments'), galleryCtrl.postWrite);
 
 router.get('/update', galleryCtrl.getUpdate); // notice,
-router.post('/update_data',uploadWithOriginalFilename.uploadGallery.array('attachments'), galleryCtrl.postUpdate); // notice, 
+router.post('/update_data',uploadWithOriginalFilename.uploadGallery.array('files'), galleryCtrl.postUpdate); //notice
 
-router.post('/delete', notice, galleryCtrl.deleteGallery);
+router.post('/delete',  galleryCtrl.deleteGallery); //notice,
 
 router.get('/', galleryCtrl.galleryPage);
 

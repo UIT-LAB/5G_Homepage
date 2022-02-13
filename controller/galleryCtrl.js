@@ -59,16 +59,24 @@ const getUpdate = (req, res) => {
         });
 }
 
+// const test = (req, res) => {
+//     console.log(req.body);
+// }
+
 const postUpdate = (req, res) => {
-    let title = req.body.gall_title;
+    let title = req.body.title;
     let titlex = req.body.titlex;
     let files = req.files;
 
-    let string = "";
+    console.log(req.files.length);
+
+    let str = "";
     for (let k in files) {
-        console.log(k + " : " + files[k].filename);
-        string += files[k].filename + ",";
+            console.log(k + " : " + files[k].filename);
+            str += files[k].filename + ",";
     }
+
+    string = str.slice(0, -1);
 
     let parameters = {
         title,
@@ -77,8 +85,9 @@ const postUpdate = (req, res) => {
     }
 
     galleryDAO.updateGallery(parameters)
-        .then(() => {
-            res.redirect('/gallery/1');
+        .then((db_data) => {
+            res.send(true);
+            console.log(db_data)
         })
         .catch((err) => {
             throw err;
@@ -94,7 +103,7 @@ const deleteGallery = (req, res) => {
 
     galleryDAO.delete_Gallery(parameters)
         .then(() => {
-            res.redirect('/gallery/1');
+            res.send('confirm');
         })
         .catch((err) => {
             throw err;
@@ -142,5 +151,5 @@ module.exports = {
     postUpdate,
     deleteGallery,
     galleryPage,
-    galleryDetail
+    galleryDetail, 
 }
