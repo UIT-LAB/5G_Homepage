@@ -1,3 +1,7 @@
-.img-box {
-    padding: 2%;
+.container {
+    margin-left: 15%;
+    margin-right:15%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2%;
 }

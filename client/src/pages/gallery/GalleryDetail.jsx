@@ -23,10 +23,9 @@ function GalleryDetail(){
     const gid = state.map(value => value['gid']);
     const date = state.map(value => value['g_write_date']);
 
-    console.log(image.map((value) => value));
+    console.log(image);
 
     return (
-    <div>
         <div className='container'>
             <div className='item'>
                 <h2 className='Research_Header'>{title}</h2>
@@ -35,16 +34,15 @@ function GalleryDetail(){
             </div>
             {image.map((value) => 
                 <div className='image-box'>
-                    <img src={`/image/gallery/${value}`} alt=''/>
+                    <img className='image-box' src={`/image/gallery/${value}`} alt=''/>
                 </div>
             )};    
-        </div>
         <Link to={`/gallery/update/${gid}`}><button>수정</button></Link>
         {/* <form action="/gallery/delete"method="POST" name="form" class="d-inline">
             <button type="submit">삭제</button>
             <input type="hidden" name="gidx" value={gid}/>                          
         </form> */}
-    </div>
+        </div>
     )
 }
 

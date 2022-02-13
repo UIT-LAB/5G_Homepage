@@ -40,7 +40,7 @@ function Gallery() {
                                 {value['g_title']}
                             </Typography>
                             <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                                    <img src={`/image/gallery/${images[index]}`}/>
+                                    <img className='image-box' src={`/image/gallery/${images[index]}`}/>
                             </Typography>
                             <Typography variant="body2">
                                 {value['g_write_date']}

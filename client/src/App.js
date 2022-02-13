@@ -8,7 +8,7 @@ import Research from './pages/Research';
 import Notice from './pages/Notice';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './component/Footer';
-// import GalleryDetail from './pages/GalleryDetail';
+import GalleryDetail from './pages/gallery/GalleryDetail';
 import NoticeDetail from './pages/NoticeDetail';
 import './style/App.css'
 import Update from './component/Update';
@@ -24,7 +24,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/gallery' element={<Gallery />} />
-          {/* <Route path='/gallery/detail/:num' element={<GalleryDetail />} /> */}
+          <Route path='/gallery/detail/:num' element={<GalleryDetail />} />
           <Route path='/gallery/update/:num' element={<Update />} />
           {/* <Route path='/gallery/delete' element={<Delete />} /> */}
           <Route path='/member' element={<Member />} />
