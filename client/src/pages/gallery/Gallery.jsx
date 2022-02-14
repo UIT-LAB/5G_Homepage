@@ -51,7 +51,7 @@ function Gallery() {
                 </Link>
             )}
         </div>
-        <button>작성</button>
+        <Link to="/gallery/write"><button>작성</button></Link>
     </div>
     )
 }

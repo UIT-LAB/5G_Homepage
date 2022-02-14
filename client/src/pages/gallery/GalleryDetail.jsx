@@ -1,11 +1,12 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../../style/Detail.css';
 
 function GalleryDetail(){
     let params = useParams();
+    const navigate = useNavigate();
     const [state, setState] = useState([]);
 
     useEffect(async () => {
@@ -23,13 +24,24 @@ function GalleryDetail(){
     const gid = state.map(value => value['gid']);
     const date = state.map(value => value['g_write_date']);
 
-    console.log(image);
+    // trigger를 이용하여 처리
+    // const DeleteAction = useEffect( async () => {
+    //         await axios.post('http:/localhost:9928/gallery/delete', {
+    //             gidx : gid[0],
+    //         })
+    //             .then((res) => {
+    //                 navigate(-1);
+    //             });
+    //     });
 
-    // const remove = useEffect(async (event) => {
-    //     await axios.post('http://localhost:9928/gallery/delete'), {
-    //         gidx : gid 
-    //     },        
-    // });
+    const onRemove = () => {
+        if(window.confirm('삭제하시겠습니까?')){
+            alert('성공');
+            navigate(-1);
+        } else{
+            alert('실패');
+        }
+    }
 
     return (
         <div className='container'>
@@ -44,7 +56,7 @@ function GalleryDetail(){
                 </div>
             )};    
         <Link to={`/gallery/update/${gid}`}><button>수정</button></Link>
-            <button type="submit" >삭제</button>
+        <button onClick={onRemove}>삭제</button>
         </div>
     )
 }

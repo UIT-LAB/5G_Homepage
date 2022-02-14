@@ -1,11 +1,15 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { Redirect } from 'react-router';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Update(){
     let params = useParams();
+    const navigate = useNavigate();
+
+    const goBack = () => {
+        navigate(-1);
+    }
 
     const [state, setState] = useState([]);
     const [selectedFile, setSelectedFile] = useState([]);
@@ -44,7 +48,7 @@ function Update(){
         const formData = new FormData();
         Object.values(selectedFile).forEach(file => {
             formData.append("files", file);
-        })
+        });
         // formData.append("files", selectedFile);
         formData.append("titlex", g_title[0]);
         formData.append("title", title);
@@ -55,7 +59,11 @@ function Update(){
                     'Content-Type' : 'multipart/form-data'
                 },
             }) .then((res) => {
-                // <Redirect to={`/gallery/detail/${gid}`}/>
+                if(res.data == true){
+                    goBack();
+                } else {
+                    console.log('실패');
+                }
                 // console.log(res.data.db_data);
                 // console.log(state[0].gid);
             })
@@ -96,6 +104,7 @@ function Update(){
             <input type="submit" value="수정"/>
             <input type="hidden" name="titlex" value={g_title} />
             <input type="hidden" name="imgx" value={image} />
+            <button onClick={goBack}>취소</button>
           </div>
         </form>
     </div>
