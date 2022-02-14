@@ -44,19 +44,21 @@ function GalleryDetail(){
     }
 
     return (
-        <div className='container'>
-            <div className='item'>
-                <h2 className='Research_Header'>{title}</h2>
-                    <p>작성 번호 : {gid}</p>
-                    <p>작성 날짜 : {date}</p>
-            </div>
-            {image.map((value) => 
-                <div className='image-box'>
-                    <img className='image-box' src={`/image/gallery/${value}`} alt=''/>
+        <div>
+            <div className='container'>
+                <div className='item'>
+                    <h2 className='Research_Header'>{title}</h2>
+                        <p>작성 번호 : {gid}</p>
+                        <p>작성 날짜 : {date}</p>
                 </div>
-            )};    
-        <Link to={`/gallery/update/${gid}`}><button>수정</button></Link>
-        <button onClick={onRemove}>삭제</button>
+                {image.map((value) => 
+                    <div className='image-box'>
+                        <img className='image-box' src={`/image/gallery/${value}`} alt=''/>
+                    </div>
+                )};    
+            <Link to={`/gallery/update/${gid}`}><button>수정</button></Link>
+            <button onClick={onRemove}>삭제</button>
+            </div>
         </div>
     )
 }

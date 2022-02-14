@@ -73,7 +73,7 @@ function Write() {
             <p>작성자 : {name}</p>
             <input type="file" onChange={FileSelectHandler} accept="image/*" required name="attachments" required id="input_imgs" multiple/>
             <input type="submit" value="저장"/>
-            <input type="hidden" name="gall_writer" value="<%= name %>" />
+            <input type="hidden" name="gall_writer" value={name} />
         </form>
     </div>
   )

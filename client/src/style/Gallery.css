@@ -1,31 +1,149 @@
-.container {
+@import url('https://fonts.googleapis.com/css?family=Heebo:400,700|Open+Sans:400,700');
+
+.gallery-container {
     margin-left: 15%;
     margin-right:15%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2%;
+    grid-gap: 4rem;
+    padding: 4rem;
+    margin: 0 auto;
+    width: max-content;
+    justify-content: center;
+    align-items: center;
+    background : #fafafa;
+    --transition-time: 0.5s;
+    font-family: 'Open Sans';
 }
 
-.item:nth-child(1) {
+.gallery-item:nth-child(1) {
     grid-column: 1/4;
     text-align: center;
     margin: 5%;
-    border: 2px solid #eea12e;
 }
 
-.Research_Content {
-    margin: 2%;
-    border: 1px solid #eea12e;
-    border-radius: 5px;
+.gallery-Research-Content {
+    font-family: 'Heebo';
+    --bg-filter-opacity: 0.5;
+    background-image: linear-gradient(rgba(0,0,0,var(--bg-filter-opacity)),rgba(0,0,0,var(--bg-filter-opacity))), var(--bg-img);
+    height: 20em;
+    width: 15em;
+    font-size: 1.5em;
+    color: white;
+    border-radius: 1em;
+    padding: 1em;
+    /*margin: 2em;*/
+    display: flex;
+    align-items: flex-end;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 5em -1em black;
+    transition: all, var(--transition-time);
+    position: relative;
+    overflow: hidden;
+    border: 10px solid #ccc;
+    text-decoration: none;
 }
 
-ul {
-    list-style: none;
+.gallery-Research-Content:hover {
+    transform: rotate(0);
+}
+
+.gallery-Research-Content h1 {
+    margin: 0;
+    font-size: 1.5em;
+    line-height: 1.2em;
+}
+
+.gallery-contents {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    width: 100%;
+    align-items: center;
+}
+
+.gallery-contents h1{
+    flex : 1;
+}
+
+.gallery-contents .gallery-tags{
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    padding: 1em;
+    line-height: 1em;
+    opacity: .8;
+}
+
+.gallery-Research-Content .gallery-tags {
+    display: flex;
+}
+
+.gallery-Research-Content .gallery-tags .gallery-tag {
+    font-size: 0.75em;
+    background: rgba(0, 0, 255, 0.5);
+    border-radius: 0.3rem;
+    padding: 0 0.5em;
+    margin-right: 0.5em;
+    line-height: 1.5em;
+    transition: all, var(--transition-time);
+}
+
+.gallery-Research-Content:hover .gallery-tags .gallery-tag {
+    background: var(--color);
+    color:black;
+}
+
+.gallery-Research-Content .gallery-date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0.75em;
+    padding: 1em;
+    line-height: 1em;
+    opacity: .8;
+}
+
+.gallery-Research-Content:before, .gallery-Research-Content:after {
+    content: '';
+    transform: scale(0);
+    transform-origin: top left;
+    border-radius: 50%;
+    position: absolute;
+    left: -50%;
+    top: -50%;
+    z-index: -5;
+    transition: all, var(--transition-time);
+    transition-timing-function: ease-in-out;
+}
+
+.gallery-Research-Content:before {
+    background: #808080;
+    width: 250%;
+    height: 250%;
+}
+
+.gallery-Research-Content:after {
+    background: #828284;
+    width: 200%;
+    height: 200%;
+}
+
+.gallery-Research-Content:hover {
+    color: var(--color);
+}
+
+.gallery-Research-Content:hover:before, .gallery-Research-Content:hover:after {
+    transform: scale(1);
 }
 
 .image-box{
-    height: 250px;
-    width: 100%;
-    border-radius: 3%;
+    height: max-content;
+    width: max-content;
 }
 
+.gallery-container .image-box {
+    height: 3em;
+    margin-right: 0.5em;
+}
