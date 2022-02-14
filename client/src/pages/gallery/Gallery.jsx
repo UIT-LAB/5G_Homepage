@@ -27,26 +27,23 @@ function Gallery() {
 
     return (
     <div>
-        <div className='container'>
-            <div className='item'>
-                <h1 className='Research_Header'>Gallery</h1>
+        <div className='gallery-container'>
+            <div className='gallery-item'>
+                <h1 className='gallery-Research_Header'>Gallery</h1>
             </div>
             {state.map((value, index) => 
                 <Link className='link' to={`/gallery/detail/${value['gid']}`}>
-                    <div className='Research_Content'>
-                        <Card sx={{ minWidth: 275 }}>
-                        <CardContent>
-                            <Typography sx = {{ fontSize : 14}} color="text.secondary" gutterBottom >
-                                {value['g_title']}
-                            </Typography>
-                            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                                    <img className='image-box' src={`/image/gallery/${images[index]}`}/>
-                            </Typography>
-                            <Typography variant="body2">
-                                {value['g_write_date']}
-                            </Typography>
-                        </CardContent>
-                        </Card>
+                    <div className='gallery-Research-Content' style={{ backgroundImage: `url("/image/gallery/${images[index]}")`}}>
+                            <div className='gallery-contents'>
+                                <h1>{value['g_title']}</h1>
+                                <div className='gallery-date'>
+                                    {value['g_write_date']}
+                                </div>
+                                <div className="gallery-tags">
+                                    <div className='gallery-tag'>Gallery</div>
+                                </div>
+                            </div>
+
                     </div>
                 </Link>
             )}

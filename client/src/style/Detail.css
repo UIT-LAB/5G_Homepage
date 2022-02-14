@@ -5,3 +5,8 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2%;
 }
+
+.image-box {
+    width: 400px;
+    height: 400px;
+}
