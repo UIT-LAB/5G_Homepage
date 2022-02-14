@@ -4,8 +4,8 @@ const uploadWithOriginalFilename = require('../middleware/multer');
 const galleryCtrl = require('../controller/galleryCtrl');
 const {notice} = require('../middleware/test'); 
 
-router.get('/write', notice, galleryCtrl.getWrite);
-router.post('/insert_write', notice, uploadWithOriginalFilename.uploadGallery.array('attachments'), galleryCtrl.postWrite);
+router.get('/write',  galleryCtrl.getWrite); //notice,
+router.post('/insert_write',uploadWithOriginalFilename.uploadGallery.array('files'), galleryCtrl.postWrite); // notice, 
 
 router.get('/update', galleryCtrl.getUpdate); // notice,
 router.post('/update_data',uploadWithOriginalFilename.uploadGallery.array('files'), galleryCtrl.postUpdate); //notice

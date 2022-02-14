@@ -12,6 +12,7 @@ import GalleryDetail from './pages/gallery/GalleryDetail';
 import NoticeDetail from './pages/NoticeDetail';
 import './style/App.css'
 import Update from './component/Update';
+import Write from './component/Write';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path='/gallery' element={<Gallery />} />
           <Route path='/gallery/detail/:num' element={<GalleryDetail />} />
           <Route path='/gallery/update/:num' element={<Update />} />
+          <Route path='/gallery/write' element={<Write />} />
           <Route path='/member' element={<Member />} />
           <Route path='/research' element={<Research />} />
           <Route path='/notice' element={<Notice />} />

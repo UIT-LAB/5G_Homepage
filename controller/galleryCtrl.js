@@ -3,19 +3,24 @@ const galleryDAO = require('../model/galleryDAO');
 
 const getWrite = (req, res) => {
     let jwtname = req.body.jwtname;
-    res.render('gallery/gallery_write', { dayjs, name: jwtname, cookie: req.cookies.user })
+    const data = {dayjs, name:jwtname, cookie:req.cookies.user}
+        res.send(data);
+    
+    // res.render('gallery/gallery_write', { dayjs, name: jwtname, cookie: req.cookies.user })
 }
 
 const postWrite = (req, res) => {
     let date = new dayjs();
-    let title = req.body.gall_title;
+    let title = req.body.title;
     let datetime = date.format('YYYY-MM-DD');
     let files = req.files;
-    let string = "";
+    let str = "";
     for (let k in files) {
         console.log(k + " : " + files[k].filename);
-        string += files[k].filename + ",";
+        str += files[k].filename + ",";
     }
+
+    string = str.slice(0, -1);
 
     let parameters = {
         g_title: title,
@@ -29,7 +34,7 @@ const postWrite = (req, res) => {
     else {
         galleryDAO.createGallery(parameters)
             .then(() => {
-                res.redirect("/gallery/1");
+                res.send(true);
             })
             .catch((err) => {
                 throw err;
