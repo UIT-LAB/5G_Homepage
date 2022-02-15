@@ -3,6 +3,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../../style/Detail.css';
+import '../../component/ImageComponent';
+import ImageComponent from '../../component/ImageComponent';
 
 function GalleryDetail(){
     let params = useParams();
@@ -33,6 +35,7 @@ function GalleryDetail(){
     //                 navigate(-1);
     //             });
     //     });
+    
 
     const onRemove = () => {
         if(window.confirm('삭제하시겠습니까?')){
@@ -47,15 +50,15 @@ function GalleryDetail(){
         <div>
             <div className='container'>
                 <div className='item'>
-                    <h2 className='Research_Header'>{title}</h2>
+                    <h2 className='Research_Header'>제목 : {title}</h2>
                         <p>작성 번호 : {gid}</p>
                         <p>작성 날짜 : {date}</p>
                 </div>
-                {image.map((value) => 
-                    <div className='image-box'>
-                        <img className='image-box' src={`/image/gallery/${value}`} alt=''/>
-                    </div>
-                )};    
+                <div>
+                    <ImageComponent
+                        image = {image}
+                    />
+                </div>
             <Link to={`/gallery/update/${gid}`}><button>수정</button></Link>
             <button onClick={onRemove}>삭제</button>
             </div>
