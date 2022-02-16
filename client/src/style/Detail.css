@@ -1,17 +1,18 @@
-.container {
+.gallery-main {
     margin-left: 15%;
     margin-right:15%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2%;
+    align-items: center;
+    width: max-content;
+    padding: 4rem;
+    margin: 0 auto;
 }
 
-.image-box {
-    width: 400px;
-    height: 400px;
+.detail-title {
+    text-align: center;
+    margin: 5%;
 }
 
-.dialog {
-    border: solid gray 2px;
-    border-radius: 10px;  
+.detail-table {
+
 }

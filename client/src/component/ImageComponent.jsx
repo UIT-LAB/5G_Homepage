@@ -1,57 +1,40 @@
 import { Modal } from '@mui/material';
 import React from 'react'
 import { useState } from 'react';
+import '../style/modal.css';
 
 function ImageComponent({image}) {
 
-    const [isOpen, setIsOpen] = useState(false);
-    // const [galleryData, setgalleryData] = useState([]);
+    console.log(image);
+    const [src, setSrc] = useState('');
 
-    const handleOpen = () => {
-        setIsOpen(!isOpen);
+    const handleOpen = (e) => {
+        if(e.target.name){
+            const imgsrc = "/Image/gallery/" + e.target.name;
+            setSrc(imgsrc);
+        } else {
+            setSrc('');
+        }
+        
     }
+    console.log('src', src);
 
-    // const Imagemap = () => {
-    //     {image.map((value) => 
-    //         <div className='image-box'>
-    //             <img className='image-box' src={`/image/gallery/${value}`} alt='' onClick={handleOpen}/>
-    //         </div>
-    //     )};
-    // }
-    // const [Modal, setModal] = useState({
-    //     contents : image,
-    //     index : null,
-    //     hasModal : false
-    // });
-
-    //     const images = images.contents.map((value, index) => 
-    //         <img className='image-box' src={`/image/gallery/${value}`} alt='' onClick={handleOpen}/>
-    // )
-
-    // const handleModal = (index) => {
-    //     setModal({
-    //         index : index,
-    //         hasModal : !Modal.hasModal
-    //     })
-    // }
-    // isOpen && Modal(open) Modal 통해서 들어감. img(onClick) 이미지
-    
   return (
-    <div>
-        {image.map((value, index) => 
-                    <div className='image-box'>
-                        <img className='image-box' src={`/image/gallery/${value}`} alt='' onClick={handleOpen} name={null}/>
-                        { isOpen && (
-                            <Modal
-                                className='dialog'
-                                open
-                                onClick={handleOpen}
-                                >
-                                    <img className={`image-box-${index}`} src={`/image/gallery/${value}`} alt='' onClick={handleOpen}/>
-                                </Modal>
-                        )}
-                    </div>
+    <div className='image-container'>
+        {image.map((value) => 
+            <div className='imagecomponent'>
+                <img className='image-box' src={`/image/gallery/${value}`} alt='' onClick={handleOpen} name={value}/>
+            </div>
         )}
+        {src? 
+            <Modal 
+                className='gallery-modal'
+                open
+                onClick={handleOpen}
+            >
+                <img className='Modal-image' src={src} alt='' onClick={handleOpen}/>
+            </Modal> : <></>
+        }
     </div>
   )
 }
