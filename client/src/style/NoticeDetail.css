@@ -1,0 +1,35 @@
+.notice_detail_main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.body {
+    width: 60%;
+    height: 100%;
+    border-collapse: collapse;
+    border: 10px soild black;
+}
+
+.header {
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-top: 5px solid black;
+    border-bottom: 1px solid rgb(197, 192, 192);
+}
+
+.date {
+    float: right;
+}
+
+.writer {
+    text-align: right;
+    padding-left: 10px;
+}
+
+.secdiv {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 20px;
+}

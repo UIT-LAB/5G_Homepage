@@ -26,6 +26,18 @@ const thesis_page_count = (parameters) => {
     })
 }
 
+const android_thesis = () => {
+    return new Promise((resolve, reject) => {
+        db.query(`SELECT tid, SCI_division, thesis_name, lead_author_name, co_author_name FROM thesis WHERE shows = '1' ORDER BY tid DESC`, (err, db_data) => {
+            if(err) {
+                reject(err);
+            } else {
+                resolve(db_data);
+            }
+        })
+    })
+}
+
 const thesis_page = (parameters) => {
     return new Promise((resolve, reject) => {
         db.query(`SELECT tid, SCI_division, thesis_name, lead_author_name, co_author_name FROM thesis WHERE (thesis_name LIKE ? || abstracts LIKE ?) && shows = '1' ORDER BY tid DESC LIMIT ?, ?`, [`%${parameters.search}%`, `%${parameters.search}%`, parameters.offset, parameters.limit], (err, db_data) => {
@@ -384,6 +396,7 @@ module.exports = {
     thesis_write,
     thesis_update,
     thesis_delete,
+    android_thesis,
 
     license_page,
     license_detail,

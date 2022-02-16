@@ -5,8 +5,10 @@ const loginCtrl = require('../controller/loginCtrl');
 router.get('/', loginCtrl.getLoginPage);
 
 router.post('/', loginCtrl.postLoginPage);
+router.post('/android/login', loginCtrl.postLoginPage);
 //------------------logout
 router.get('/logout', loginCtrl.logout);
+router.get('/android/logout', loginCtrl.logout);
 
 //----------- findID
 router.get('/findId', loginCtrl.getFindId);
@@ -16,7 +18,9 @@ router.post('/findId', loginCtrl.postFindId);
 router.get('/findPw', loginCtrl.getFindPw);
 
 router.post('/changePw', loginCtrl.postChangePw);
+router.post('/android/revise', loginCtrl.postChangePw);
 router.post('/pwCheck', loginCtrl.postPwCheck);
+router.post('/android/revise_check', loginCtrl.postPwCheck);
 
 //----------- signUp
 router.get('/signUp', loginCtrl.getSignUp);

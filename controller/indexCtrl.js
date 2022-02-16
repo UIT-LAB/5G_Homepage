@@ -13,6 +13,7 @@ const rootPage = async (req, res) => {
         const l_result = await indexDAO.select_License();
         if(req.cookies.user) {
             const name = await indexDAO.select_Profile(parameters);
+            console.log(req.cookies);
             console.log(name);
             res.render('index', { 'g_result': g_result, 'r_result': r_result, 'n_result': n_result, dayjs, 'p_result': l_result, 'name': name[0].u_name, cookie: req.cookies.user });
         } else {

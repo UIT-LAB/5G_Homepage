@@ -6,11 +6,6 @@ const indexCtrl = require('../controller/indexCtrl');
   
 router.get('/', indexCtrl.rootPage);
 
-router.get('/api', (req, res) => {
-    console.log('asd');
-    res.json({test : ["data", "data2"]});
-})
-
 router.get('/profile', indexCtrl.profile);
 
 router.get('/profile_update', indexCtrl.getUpdateProfile);

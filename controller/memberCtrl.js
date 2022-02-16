@@ -14,7 +14,6 @@ const member = (req, res) => {
       res.json({
         db_data
       })
-      // res.render('member/member', { result: db_data, m_num: req.params.num, max_value: 12, name: jwtname, cookie: req.cookies.user });
     })
     .catch((err) => {
       throw err;
