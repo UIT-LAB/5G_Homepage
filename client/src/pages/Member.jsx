@@ -16,8 +16,9 @@ function Member() {
 
     const [state, setState] = useState([])
     const [userdata, setuserData] = useState([])
+    console.log(userdata);
     useEffect(async () => {
-        await axios.get('http://localhost:9928/member/member')
+        await axios.get('http://localhost:9928/member')
             .then((res) => {
                 //    console.log(res.data.db_data)
                 //    memberData += res.data.db_data
@@ -27,8 +28,9 @@ function Member() {
 
     const photos = state.map(value => [value['m_photo']]);
 
+    console.log(photos);
     const onClickData = (e) => {
-        const dataFilter = state.filter((value) => value.m_photo == e.target.name)
+        const dataFilter = state.filter((value) => value.m_photo === e.target.name)
         setuserData(dataFilter[0])
     }
     return (

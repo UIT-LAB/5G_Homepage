@@ -109,7 +109,7 @@ const deleteGallery = (req, res) => {
 
     galleryDAO.delete_Gallery(parameters)
         .then(() => {
-            res.send('confirm');
+            res.send(true);
         })
         .catch((err) => {
             throw err;
