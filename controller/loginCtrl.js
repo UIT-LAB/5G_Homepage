@@ -78,7 +78,7 @@ const postFindId = (req, res) => {
         name: name,
         email
     }
-    console.log(parameters);
+    
     loginDAO.findId(parameters)
         .then((db_data) => {
             if (db_data.length == 0) {

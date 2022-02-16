@@ -19,16 +19,23 @@ const auth = async (req, res, next) => {
                     token: req.cookies.refreshToken
                 }
                 try {
-                    let user_data = await indexDAO.select_Profile(parameters);
-                    const user = {
-                        id: user_data[0].u_id,
-                        name: user_data[0].u_name,
+                    const user_data = await indexDAO.select_Profile(parameters);
+                    if (user_data[0].u_id === undefined || user_data[0].u_name === undefined) {
+                        console.log('asd00');
+                        res.send(`<script>alert('다른 컴퓨터에서 로그인했습니다.')<script>`).redirect('/logout')
+                    } else {
+                        const user = {
+                            id: user_data[0].u_id,
+                            name: user_data[0].u_name,
+                        }
+
+                        const newAccessToken = await jwt.sign({ user: user }, key, { expiresIn: '30m' });
+                        res.cookie('user', newAccessToken);
+                        next();
                     }
-                    const newAccessToken = await jwt.sign({ user: user }, key, { expiresIn: '30m' });
-                    res.cookie('user', newAccessToken);
-                    next();
-                } catch(err) {
+                } catch (err) {
                     console.log(err);
+                    next();
                 }
             }
         } else { // accessToken은 유효하지만 refreshToken이 만료된 경우

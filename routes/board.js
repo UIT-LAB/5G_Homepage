@@ -10,7 +10,7 @@ router.get('/notice', boardCtrl.notice);
 
 router.get('/notice_main', boardCtrl.noticeForMain);
 
-router.get('/notice/detail/:num', boardCtrl.noticeDetail);
+router.get('/notice/detail', boardCtrl.noticeDetail);
 
 router.get('/notice_write', notice, boardCtrl.getNoticeWrite);
 

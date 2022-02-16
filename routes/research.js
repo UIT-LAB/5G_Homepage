@@ -22,6 +22,8 @@ router.put('/thesis/update/:num', research, thesisCtrl.updateThesis);
 
 router.put('/thesis/delete/:num', research, thesisCtrl.deleteThesis);
 
+router.get('/android/thesis', thesisCtrl.androidThesis);
+
 //-----license-----
 router.get('/license/:num', licenseCtrl.license);
 

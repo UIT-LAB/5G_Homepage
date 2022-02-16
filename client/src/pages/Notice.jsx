@@ -23,18 +23,6 @@ function Notice() {
             })
     }, [btnPage]);
 
-
-    const renderData = dataFromServer.map((data, index) => {
-        return (
-            <tr className='line'>
-                <td className='category'>공지</td>
-                <td className='title'>{data.n_title}</td>
-                <td className='author'>{data.n_writer}</td>
-                <td className='createAt'>{data.n_writer_date}</td>
-            </tr>
-        );
-    })
-
     const renderDataLink = dataFromServer.map((data) => {
         return (
                 <tr className='line'>

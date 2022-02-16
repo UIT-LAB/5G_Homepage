@@ -1,6 +1,11 @@
 const dayjs = require('dayjs');
 const researchDAO = require('../../model/researchDAO');
 
+const androidThesis = async (req, res) => {
+    const db_data = await researchDAO.android_thesis();
+    res.send({result: db_data});
+}
+
 const paging = (currentPage) => {
     const default_start_page = 1;
     const page_size = 15;
@@ -114,6 +119,7 @@ const deleteThesis = async (req, res) => {
 }
 
 module.exports = {
+    androidThesis,
     thesis,
     thesisDetail,
     thesisWrite,

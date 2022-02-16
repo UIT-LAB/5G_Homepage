@@ -52,7 +52,7 @@ const notice = async (req, res) => {
 
 const noticeDetail = (req, res) => {
     let parameters = {
-        nid: req.params.num
+        nid: req.query.num
     }
 
     boardDAO.notice_detail(parameters)
@@ -60,8 +60,10 @@ const noticeDetail = (req, res) => {
             if (db_data[0] !== undefined) {
                 boardDAO.notice_views(parameters)
                     .then(() => {
+                        console.log(db_data);
                         db_data[0].n_view++;
-                        res.render('board/notice_detail', { result: db_data, n_num: req.params.num, max_value: 15, dayjs, id: jwtid, name: req.body.jwtname, cookie: req.cookies.user });
+                        res.send({result: db_data});
+                        // res.render('board/notice_detail', { result: db_data, n_num: req.params.num, max_value: 15, dayjs, id: jwtid, name: req.body.jwtname, cookie: req.cookies.user });
                     })
                     .catch((err) => {
                         throw err;
