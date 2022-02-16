@@ -169,7 +169,7 @@ const changePw = async (req, res) => {
     if (pw === confirmPw) {
         const parameters = {
             output: confirmPw,
-            u_id = req.body.u_id
+            u_id: req.body.u_id
         }
         try {
             await loginDAO.pwCheck(parameters);
