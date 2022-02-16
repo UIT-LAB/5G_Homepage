@@ -100,6 +100,7 @@ const postUpdate = (req, res) => {
 }
 
 const deleteGallery = (req, res) => {
+    console.log(req.body);
     let gid = req.body.gidx;
 
     let parameters = {

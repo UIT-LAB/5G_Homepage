@@ -5,6 +5,7 @@ import { useState } from 'react';
 function ImageComponent({image}) {
 
     const [isOpen, setIsOpen] = useState(false);
+    // const [galleryData, setgalleryData] = useState([]);
 
     const handleOpen = () => {
         setIsOpen(!isOpen);
@@ -39,7 +40,7 @@ function ImageComponent({image}) {
     <div>
         {image.map((value, index) => 
                     <div className='image-box'>
-                        <img className='image-box' src={`/image/gallery/${value}`} alt='' onClick={handleOpen}/>
+                        <img className='image-box' src={`/image/gallery/${value}`} alt='' onClick={handleOpen} name={null}/>
                         { isOpen && (
                             <Modal
                                 className='dialog'

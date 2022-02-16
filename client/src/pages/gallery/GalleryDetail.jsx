@@ -27,20 +27,20 @@ function GalleryDetail(){
     const date = state.map(value => value['g_write_date']);
 
     // trigger를 이용하여 처리
-    // const DeleteAction = useEffect( async () => {
-    //         await axios.post('http:/localhost:9928/gallery/delete', {
-    //             gidx : gid[0],
-    //         })
-    //             .then((res) => {
-    //                 navigate(-1);
-    //             });
-    //     });
+    const DeleteAction = ( async () => {
+            await axios.post('http://localhost:9928/gallery/delete', {
+                gidx : gid[0],
+            })
+                .then((res) => {
+                    alert('성공');
+                    navigate(-1);
+                });
+        });
     
 
-    const onRemove = () => {
+    const onRemove = async () => {
         if(window.confirm('삭제하시겠습니까?')){
-            alert('성공');
-            navigate(-1);
+            await DeleteAction();
         } else{
             alert('실패');
         }
