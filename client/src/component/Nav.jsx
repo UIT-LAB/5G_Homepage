@@ -23,22 +23,20 @@ function Nav() {
 
     useEffect(async () => {
         if (cookies.get('user') || cookies.get('refreshToken'))
-            setState(localStorage.getItem('user'));
+            setState(localStorage.getItem('user'))
     }, [])
 
-    const loginButton = () => {
+    const signButton = () => {
         let btn = [];
-        if(cookies.get('user') || cookies.get('refreshToken')) {
-            console.log('asd' + cookies.get('user') || cookies.get('refreshToken'));
-            btn.push(<p>{state}</p>)
+        if (!cookies.get('user') || !cookies.get('refreshToken')) {
+            btn.push(<button className="sign" onClick={handleOpen}>{state}</button>)
         } else {
-            console.log('dsa' + console.log(cookies.get('user') || cookies.get('refreshToken')));
-            btn.push(<button onClick={handleOpen}>{state}</button>)
+            btn.push(<button className="sign" onClick={postLogout}>{state}</button>)
         }
         return btn;
     }
 
-    const postData = async () => {
+    const postLogin = async () => {
         axios.post('http://localhost:9928/login', {
             inputid: id,
             inputpw: pw
@@ -55,6 +53,14 @@ function Nav() {
             })
     }
 
+    const postLogout = async () => {
+        axios.get('http://localhost:9928/login/logout')
+            .then((res) => {
+                localStorage.removeItem('user');
+                window.location.reload();
+            })
+    }
+
     const onIdHandler = (event) => {
         setId(event.currentTarget.value);
     }
@@ -65,7 +71,7 @@ function Nav() {
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        postData();
+        postLogin();
     }
 
     return (
@@ -84,8 +90,7 @@ function Nav() {
                 </ul>
                 <ul className='nav_login'>
                     <li>
-                        {loginButton()}
-                        {/* <button>asd</button> */}
+                        {signButton()}
                         <Modal
                             className='modal_wrap'
                             open={open}

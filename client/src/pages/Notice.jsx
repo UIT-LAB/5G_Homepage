@@ -60,7 +60,6 @@ function Notice() {
                 </thead>
                 <tbody className='notice_body'>
                     {renderDataLink}
-                    {/* {renderData} */}
                     <br></br>
                 </tbody>
             </table>

@@ -61,6 +61,7 @@ const postLoginPage = async (req, res) => {
 
 //------------------logout
 const logout = (req, res) => {
+    console.log('logout');
     res.clearCookie('user');
     res.clearCookie('refreshToken');
     res.redirect('/');
